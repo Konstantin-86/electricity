@@ -1,0 +1,226 @@
+
+.breaker {
+  background: white;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-left: 4px solid #3b82f6;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.breaker:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.breaker.selected {
+  border-left-color: #10b981;
+  background-color: #f0fdf4;
+  animation: pulse 2s infinite;
+}
+
+.breaker.animating {
+  animation: flash 0.3s ease-in-out;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 rgba(16, 185, 129, 0.4); }
+  50% { box-shadow: 0 0 20px rgba(16, 185, 129, 0.8); }
+  100% { box-shadow: 0 0 0 rgba(16, 185, 129, 0.4); }
+}
+
+@keyframes flash {
+  0% { background-color: white; }
+  50% { background-color: #fffbeb; }
+  100% { background-color: white; }
+}
+
+.compact {
+  padding: 12px;
+  border-left-width: 3px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0;
+}
+
+.toggleButton {
+  width: 50px;
+  height: 24px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.toggleButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.toggleButton.on {
+  background-color: #10b981;
+}
+
+.toggleButton.off {
+  background-color: #6b7280;
+}
+
+.toggleCircle {
+  position: absolute;
+  top: 2px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: white;
+  transition: transform 0.3s ease;
+}
+
+.toggleButton.on .toggleCircle {
+  transform: translateX(26px);
+}
+
+.toggleButton.off .toggleCircle {
+  transform: translateX(2px);
+}
+
+.status {
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.status.on {
+  background-color: #dcfce7;
+  color: #166534;
+}
+
+.status.off {
+  background-color: #f3f4f6;
+  color: #6b7280;
+}
+
+.details {
+  border-top: 1px solid #e5e7eb;
+  padding-top: 12px;
+}
+
+.rating {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 8px;
+}
+
+.types {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.badge {
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  background-color: #eff6ff;
+  color: #1d4ed8;
+}
+
+.powers {
+  margin-top: 8px;
+}
+
+.powers h4 {
+  font-size: 14px;
+  margin: 0 0 8px 0;
+  color: #374151;
+}
+
+.powerItem {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  font-size: 13px;
+  padding: 6px 0;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.powerItem:last-child {
+  border-bottom: none;
+}
+
+.roomId {
+  grid-column: 1 / -1;
+  font-size: 12px;
+  color: #9ca3af;
+  margin-top: 2px;
+}
+
+.totalPower {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 2px solid #e5e7eb;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.animationOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+.spark {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #f59e0b;
+  border-radius: 50%;
+  animation: spark 0.6s ease-out;
+}
+
+.spark:nth-child(1) {
+  top: 20%;
+  left: 30%;
+  animation-delay: 0.1s;
+}
+
+.spark:nth-child(2) {
+  top: 60%;
+  left: 70%;
+  animation-delay: 0.2s;
+}
+
+.spark:nth-child(3) {
+  top: 40%;
+  left: 50%;
+  animation-delay: 0.3s;
+}
+
+@keyframes spark {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(3);
+    opacity: 0;
+  }
+}
