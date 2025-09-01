@@ -1,43 +1,16 @@
 .roomCard {
-  background: white;
+  border: 2px solid #e0e0e0;
   border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  background: white;
   transition: all 0.3s ease;
-  border: 2px solid transparent;
   position: relative;
   overflow: hidden;
 }
 
-.roomCard.powered {
-  border-color: #10b981;
-}
-
-.roomCard.unpowered {
-  border-color: #ef4444;
-  background-color: #fef2f2;
-}
-
 .roomCard.affected {
-  animation: highlight 1s ease-in-out;
-}
-
-@keyframes highlight {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-    box-shadow: 0 0 20px rgba(245, 158, 11, 0.5);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-.roomCard:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-color: #2196f3;
+  box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.3);
 }
 
 .header {
@@ -57,79 +30,244 @@
 }
 
 .name {
-  font-size: 18px;
-  font-weight: 600;
-  color: #1f2937;
   margin: 0 0 4px 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+.typeBadge {
+  display: inline-block;
+  padding: 4px 8px;
+  background: #f0f0f0;
+  border-radius: 6px;
+  font-size: 12px;
+  color: #666;
 }
 
 .powerStatus {
-  padding: 2px 8px;
-  border-radius: 4px;
-  font-size: 12px;
-  font-weight: 600;
-  display: inline-block;
+  font-size: 20px;
+  flex-shrink: 0;
 }
 
-.powerStatus.on {
-  background-color: #dcfce7;
-  color: #166534;
+.powerStatus.powered {
+  color: #4caf50;
 }
 
-.powerStatus.off {
-  background-color: #fee2e2;
-  color: #b91c1c;
+.powerStatus.notPowered {
+  color: #f44336;
 }
 
 .details {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 12px;
-  padding: 8px 0;
-  border-top: 1px solid #f3f4f6;
-}
-
-.number {
-  font-size: 14px;
-  color: #6b7280;
+  margin-bottom: 16px;
 }
 
 .area {
   font-size: 14px;
-  color: #6b7280;
-  font-weight: 600;
+  color: #666;
 }
 
-.typeBadge {
-  padding: 6px 12px;
-  background: #eff6ff;
-  color: #1d4ed8;
-  border-radius: 20px;
-  font-size: 12px;
-  font-weight: 600;
-  text-align: center;
-  text-transform: uppercase;
-}
-
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(239, 68, 68, 0.1);
+.devices {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  backdrop-filter: blur(2px);
+  flex-direction: column;
+  gap: 16px;
 }
 
-.overlayText {
-  font-size: 16px;
-  font-weight: 700;
-  color: #dc2626;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  transform: rotate(-15deg);
-  opacity: 0.8;
+.deviceGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.deviceLabel {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+}
+
+.lightsContainer,
+.outletsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Стили для лампочек */
+.light {
+  position: relative;
+  width: 32px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.lightBulb {
+  position: relative;
+  width: 20px;
+  height: 24px;
+}
+
+.bulb {
+  width: 16px;
+  height: 16px;
+  background: #ccc;
+  border-radius: 50%;
+  position: relative;
+  margin: 0 auto;
+  transition: all 0.3s ease;
+}
+
+.base {
+  width: 12px;
+  height: 4px;
+  background: #999;
+  border-radius: 2px;
+  margin: 2px auto 0;
+}
+
+.lightOn .bulb {
+  background: #ffeb3b;
+  box-shadow: 0 0 20px rgba(255, 235, 59, 0.8);
+}
+
+.lightOff .bulb {
+  background: #ccc;
+}
+
+.glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 30px;
+  height: 30px;
+  background: radial-gradient(circle, rgba(255, 235, 59, 0.4) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  animation: glow 2s infinite;
+}
+
+.lightOn .glow {
+  opacity: 1;
+}
+
+@keyframes glow {
+
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+
+  50% {
+    opacity: 0.8;
+  }
+}
+
+/* Стили для розеток */
+.outlet {
+  position: relative;
+  width: 40px;
+  height: 30px;
+}
+
+.outletFace {
+  width: 36px;
+  height: 26px;
+  background: #f5f5f5;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.outletOn .outletFace {
+  border-color: #4caf50;
+  background: #f1f8e9;
+}
+
+.outletOff .outletFace {
+  border-color: #ddd;
+  background: #f5f5f5;
+}
+
+.slots {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.slot {
+  width: 20px;
+  height: 4px;
+  background: #bbb;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.outletOn .slot {
+  background: #4caf50;
+}
+
+.powerIndicator {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 6px;
+  height: 6px;
+  background: #4caf50;
+  border-radius: 50%;
+  opacity: 0;
+  animation: blink 1s infinite;
+}
+
+.outletOn .powerIndicator {
+  opacity: 1;
+}
+
+@keyframes blink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.3;
+  }
+}
+
+/* Индикатор изменения */
+.changeIndicator {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  animation: slideIn 0.3s ease;
+}
+
+.changeIndicator.powerOn {
+  background: #4caf50;
+  color: white;
+}
+
+.changeIndicator.powerOff {
+  background: #f44336;
+  color: white;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }

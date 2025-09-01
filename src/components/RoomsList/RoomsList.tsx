@@ -1,21 +1,28 @@
-// components/RoomsList/RoomsList.tsx
-import React from "react";
-import type { Room, Breaker } from "../../types";
+import type { Room, IBreaker } from "../../types";
 import RoomCard from "../RoomCard/RoomCard";
 import styles from "./RoomsList.module.css";
 
 interface RoomsListProps {
   rooms: Room[];
-  roomsState: { [roomId: string]: boolean };
-  selectedBreaker?: Breaker | null;
+  deviceState: { [roomId: string]: { lights: boolean[]; outlets: boolean[] } };
+  selectedBreaker?: IBreaker | null;
+  powerChanges?: {
+    roomId: string;
+    lights: number;
+    outlets: number;
+    type: 'powerOn' | 'powerOff';
+  }[];
+  getRoomPowerStatus: (roomId: string) => boolean;
   title?: string;
 }
 
 const RoomsList: React.FC<RoomsListProps> = ({
   rooms,
-  roomsState,
+  deviceState,
   selectedBreaker,
-  title = "Помещения",
+  powerChanges = [],
+  getRoomPowerStatus,
+  title = "Помещения"
 }) => {
   const getRoomsByType = () => {
     const grouped: { [key: string]: Room[] } = {};
@@ -31,23 +38,17 @@ const RoomsList: React.FC<RoomsListProps> = ({
   const groupedRooms = getRoomsByType();
 
   const getTypeLabel = (type: string) => {
-    switch (type) {
-      case "office":
-        return "Офисы";
-      case "conference":
-        return "Переговорные";
-      case "kitchen":
-        return "Кухни";
-      case "bathroom":
-        return "Санузлы";
-      case "server":
-        return "Серверные";
-      default:
-        return "Другие помещения";
-    }
+    const labels: { [key: string]: string } = {
+      office: "Офисы",
+      conference: "Переговорные",
+      kitchen: "Кухни",
+      bathroom: "Санузлы",
+      technical: "Технические",
+      corridor: "Коридоры"
+    };
+    return labels[type] || "Другие помещения";
   };
 
-  // Проверяем, связано ли помещение с выбранным автоматом
   const isRoomAffectedByBreaker = (roomId: string) => {
     if (!selectedBreaker) return false;
     return selectedBreaker.powers.some((power) => power.roomId === roomId);
@@ -55,27 +56,21 @@ const RoomsList: React.FC<RoomsListProps> = ({
 
   return (
     <div className={styles.roomsList}>
-      <h2 className={styles.title}>
-        {title} ({rooms.length})
-      </h2>
+      <h2 className={styles.title}>{title} ({rooms.length})</h2>
 
       {Object.entries(groupedRooms).map(([type, typeRooms]) => (
         <div key={type} className={styles.typeSection}>
           <h3 className={styles.typeTitle}>{getTypeLabel(type)}</h3>
           <div className={styles.roomsGrid}>
-            {typeRooms.map((room) => {
-              const isPowered = roomsState[room.id];
-              const isAffected = isRoomAffectedByBreaker(room.id);
-
-              return (
-                <RoomCard
-                  key={room.id}
-                  room={room}
-                  isPowered={isPowered}
-                  isAffected={isAffected}
-                />
-              );
-            })}
+            {typeRooms.map((room) => (
+              <RoomCard
+                key={room.id}
+                room={room}
+                deviceState={deviceState[room.id]}
+                isPowered={getRoomPowerStatus(room.id)}
+                isAffected={isRoomAffectedByBreaker(room.id)}
+              />
+            ))}
           </div>
         </div>
       ))}

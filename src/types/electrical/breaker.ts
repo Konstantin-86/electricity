@@ -31,7 +31,7 @@ export interface AdditionalInfo {
   manufacturer: string;
 }
 
-export interface Breaker {
+export interface IBreaker {
   id: string;
   name: string;
   rating: string;
@@ -42,3 +42,5 @@ export interface Breaker {
   socketDetails?: SocketDetails;
   additionalInfo?: AdditionalInfo;
 }
+
+

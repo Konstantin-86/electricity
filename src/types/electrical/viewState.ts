@@ -1,0 +1,1 @@
+export type ViewState = "floors" | "floor-view" | "buildings";

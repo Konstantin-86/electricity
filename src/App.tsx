@@ -1,6 +1,5 @@
-// App.tsx
 import React, { useState } from "react";
-import type { Building, Floor, Panel, Room, Breaker, ViewState } from "./types";
+import type { Building, Floor, IBreaker, Panel, ViewState, BreakerPower } from "./types";
 import { mockData } from "./components/data";
 import BuildingSelector from "./components/BuildingSelector/BuildingSelector";
 import FloorSelector from "./components/FloorSelector/FloorSelector";
@@ -8,18 +7,29 @@ import ElectricalPanel from "./components/ElectricalPanel/ElectricalPanel";
 import RoomsList from "./components/RoomsList/RoomsList";
 import styles from "./App.module.css";
 
+interface DeviceState {
+  [roomId: string]: {
+    lights: boolean[]; // Массив состояний каждой лампы
+    outlets: boolean[]; // Массив состояний каждой розетки
+  };
+}
+
+interface PowerChange {
+  roomId: string;
+  lights: number;
+  outlets: number;
+  type: 'powerOn' | 'powerOff';
+}
+
 const App: React.FC = () => {
   const [currentView, setCurrentView] = useState<ViewState>("buildings");
-  const [selectedBuilding, setSelectedBuilding] = useState<Building | null>(
-    null
-  );
+  const [selectedBuilding, setSelectedBuilding] = useState<Building | null>(null);
   const [selectedFloor, setSelectedFloor] = useState<Floor | null>(null);
-  const [selectedBreaker, setSelectedBreaker] = useState<Breaker | null>(null);
-  const [roomsState, setRoomsState] = useState<{ [roomId: string]: boolean }>(
-    {}
-  );
+  const [selectedBreaker, setSelectedBreaker] = useState<IBreaker | null>(null);
+  const [deviceState, setDeviceState] = useState<DeviceState>({});
+  const [powerChanges, setPowerChanges] = useState<PowerChange[]>([]);
+  const [panelsState, setPanelsState] = useState<Panel[]>([]);
 
-  // Обработчик выбора здания
   const handleBuildingSelect = (building: Building) => {
     setSelectedBuilding(building);
     setSelectedFloor(null);
@@ -27,54 +37,99 @@ const App: React.FC = () => {
     setCurrentView("floors");
   };
 
-  // Обработчик выбора этажа
   const handleFloorSelect = (floor: Floor) => {
     setSelectedFloor(floor);
     setSelectedBreaker(null);
+    setPanelsState(floor.panels);
     setCurrentView("floor-view");
 
-    // Инициализируем состояние помещений
-    const initialState: { [roomId: string]: boolean } = {};
+    // Изначально все устройства включены
+    const initialState: DeviceState = {};
     floor.rooms.forEach((room) => {
-      initialState[room.id] = true; // Все помещения включены по умолчанию
+      initialState[room.id] = {
+        lights: Array(room.lights).fill(true),
+        outlets: Array(room.outlets).fill(true)
+      };
     });
-    setRoomsState(initialState);
+    setDeviceState(initialState);
   };
 
-  // Обработчик переключения автомата
   const handleBreakerToggle = (breakerId: string, isOn: boolean) => {
     if (!selectedFloor) return;
 
-    // Находим автомат
-    let targetBreaker: Breaker | null = null;
-    let affectedRoomIds: string[] = [];
+    // Обновляем состояние автомата
+    const updatedPanels = panelsState.map(panel => ({
+      ...panel,
+      breakers: panel.breakers.map(breaker =>
+        breaker.id === breakerId
+          ? { ...breaker, isOn: isOn }
+          : breaker
+      )
+    }));
 
-    selectedFloor.panels.forEach((panel) => {
+    setPanelsState(updatedPanels);
+
+    // Находим выбранный автомат и помещения, которые он контролирует
+    let targetBreaker: IBreaker | null = null;
+    const changes: PowerChange[] = [];
+
+    updatedPanels.forEach((panel) => {
       panel.breakers.forEach((breaker) => {
         if (breaker.id === breakerId) {
           targetBreaker = breaker;
-          affectedRoomIds = breaker.powers.map((power) => power.roomId);
+          breaker.powers.forEach((power) => {
+            changes.push({
+              roomId: power.roomId,
+              lights: power.lights || 0,
+              outlets: power.outlets || 0,
+              type: isOn ? 'powerOn' : 'powerOff'
+            });
+          });
         }
       });
     });
 
-    if (targetBreaker) {
+    if (targetBreaker && changes.length > 0) {
       setSelectedBreaker(targetBreaker);
+      setPowerChanges(changes);
 
-      // Анимация: сначала мигание, затем изменение состояния
-      setTimeout(() => {
-        setRoomsState((prev) => {
-          const newState = { ...prev };
-          affectedRoomIds.forEach((roomId) => {
-            newState[roomId] = isOn;
-          });
-          return newState;
+      // Обновляем состояние устройств
+      setDeviceState(prev => {
+        const newState = { ...prev };
+        changes.forEach(change => {
+          const room = newState[change.roomId];
+          if (room) {
+            // Обновляем лампы
+            if (change.lights > 0) {
+              const lightsToChange = Math.min(change.lights, room.lights.length);
+              const newLights = [...room.lights];
+              for (let i = 0; i < lightsToChange; i++) {
+                newLights[i] = isOn;
+              }
+              room.lights = newLights;
+            }
+
+            // Обновляем розетки
+            if (change.outlets > 0) {
+              const outletsToChange = Math.min(change.outlets, room.outlets.length);
+              const newOutlets = [...room.outlets];
+              for (let i = 0; i < outletsToChange; i++) {
+                newOutlets[i] = isOn;
+              }
+              room.outlets = newOutlets;
+            }
+          }
         });
-      }, 300); // Задержка для анимации мигания
+        return newState;
+      });
+
+      // Очищаем изменения через 2 секунды
+      setTimeout(() => {
+        setPowerChanges([]);
+      }, 2000);
     }
   };
 
-  // Навигация назад
   const handleBack = () => {
     switch (currentView) {
       case "floors":
@@ -85,24 +140,29 @@ const App: React.FC = () => {
         setCurrentView("floors");
         setSelectedFloor(null);
         setSelectedBreaker(null);
+        setPowerChanges([]);
         break;
       default:
         setCurrentView("buildings");
     }
   };
 
-  // Получение заголовка для текущего вида
   const getTitle = () => {
     switch (currentView) {
-      case "buildings":
-        return "Выбор здания";
-      case "floors":
-        return `Этажи: ${selectedBuilding?.name}`;
-      case "floor-view":
-        return `Этаж: ${selectedFloor?.name}`;
-      default:
-        return "Электрические щиты";
+      case "buildings": return "Выбор здания";
+      case "floors": return `Этажи: ${selectedBuilding?.name}`;
+      case "floor-view": return `Этаж: ${selectedFloor?.name}`;
+      default: return "Электрические щиты";
     }
+  };
+
+  // Проверяем, есть ли вообще питание в помещении
+  const getRoomPowerStatus = (roomId: string): boolean => {
+    const roomDevices = deviceState[roomId];
+    if (!roomDevices) return false;
+
+    // Помещение считается с питанием, если хотя бы одно устройство включено
+    return roomDevices.lights.some(on => on) || roomDevices.outlets.some(on => on);
   };
 
   return (
@@ -146,7 +206,7 @@ const App: React.FC = () => {
               <div className={styles.panelsSection}>
                 <h2>Электрические щиты</h2>
                 <div className={styles.panelsGrid}>
-                  {selectedFloor.panels.map((panel) => (
+                  {panelsState.map((panel) => (
                     <ElectricalPanel
                       key={panel.id}
                       panel={panel}
@@ -160,8 +220,10 @@ const App: React.FC = () => {
               <div className={styles.roomsSection}>
                 <RoomsList
                   rooms={selectedFloor.rooms}
-                  roomsState={roomsState}
+                  deviceState={deviceState}
                   selectedBreaker={selectedBreaker}
+                  powerChanges={powerChanges}
+                  getRoomPowerStatus={getRoomPowerStatus}
                   title="Помещения на этаже"
                 />
               </div>

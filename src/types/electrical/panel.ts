@@ -1,4 +1,4 @@
-import type { Breaker } from "./breaker";
+import type { IBreaker } from "./breaker";
 
 export type PanelType = "lighting" | "power" | "emergency" | "distribution";
 
@@ -7,5 +7,5 @@ export interface Panel {
   name: string;
   type: PanelType;
   location: string;
-  breakers: Breaker[];
+  breakers: IBreaker[];
 }
