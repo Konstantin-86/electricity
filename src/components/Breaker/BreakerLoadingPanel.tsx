@@ -1,6 +1,5 @@
-// LoadIndicator.tsx (остается без изменений)
 import React from "react";
-import styles from "./LoadIndicator.module.css";
+import styles from "./BreakerLoadingPanel.module.css";
 
 interface LoadIndicatorProps {
   loadPercentage: number;
@@ -8,7 +7,7 @@ interface LoadIndicatorProps {
   maxLoad: number;
 }
 
-const LoadIndicator: React.FC<LoadIndicatorProps> = ({
+const BreakerLoadingPanel: React.FC<LoadIndicatorProps> = ({
   loadPercentage,
   currentLoad,
   maxLoad,
@@ -38,4 +37,4 @@ const LoadIndicator: React.FC<LoadIndicatorProps> = ({
   );
 };
 
-export default LoadIndicator;
+export default BreakerLoadingPanel;

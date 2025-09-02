@@ -1,9 +1,8 @@
-// Breaker.tsx
 import React from "react";
 import type { IBreaker, Room, Lamp } from "../../types";
 import styles from "./Breaker.module.css";
 import { calculateBreakerLoad } from "../utils/loadCalculator";
-import LoadIndicator from "./LoadIndicator"; // Импортируем новый компонент
+import BreakerLoadingPanel from "./BreakerLoadingPanel";
 
 interface BreakerProps {
   breaker: IBreaker;
@@ -45,7 +44,7 @@ const Breaker: React.FC<BreakerProps> = ({
           </div>
         </div>
 
-        <LoadIndicator
+        <BreakerLoadingPanel
           loadPercentage={loadInfo.loadPercentage}
           currentLoad={loadInfo.currentLoad}
           maxLoad={breaker.rating}
