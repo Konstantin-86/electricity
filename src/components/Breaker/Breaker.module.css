@@ -1,122 +1,150 @@
 .breaker {
-  border: 2px solid #ddd;
-  border-radius: 12px;
-  padding: 16px;
+  background: linear-gradient(145deg, #34495e, #2c3e50);
+  border-radius: 10px;
+  padding: 15px;
   cursor: pointer;
-  transition: all 0.2s ease;
-  background: white;
-  margin-bottom: 8px;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.breaker::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
 }
 
 .breaker:hover {
-  border-color: #999;
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  border-color: rgba(52, 152, 219, 0.3);
 }
 
 .breaker.selected {
-  border-color: #2196f3;
-  box-shadow: 0 2px 8px rgba(33, 150, 243, 0.3);
+  border-color: #3498db;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+  background: linear-gradient(145deg, #3d566e, #34495e);
 }
 
 .breaker.on {
-  border-color: #4caf50;
-  background: rgba(76, 175, 80, 0.05);
+  border-left: 3px solid #2ecc71;
 }
 
 .breaker.off {
-  border-color: #f44336;
-  background: rgba(244, 67, 54, 0.05);
+  border-left: 3px solid #e74c3c;
 }
 
 .breakerContent {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 15px;
   align-items: center;
-  gap: 16px;
 }
 
 .info {
-  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .name {
+  color: #ecf0f1;
   font-weight: 600;
-  font-size: 14px;
-  margin-bottom: 4px;
-  color: #333;
+  font-size: 1rem;
+  margin: 0;
 }
 
 .rating {
-  font-size: 12px;
-  color: #666;
-  margin-bottom: 8px;
+  color: #bdc3c7;
+  font-size: 0.85rem;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 2px 8px;
+  border-radius: 12px;
+  display: inline-block;
+  width: fit-content;
 }
 
 .status {
   display: flex;
   align-items: center;
   gap: 6px;
-  font-size: 12px;
-  font-weight: 500;
+  font-size: 0.8rem;
+  color: #95a5a6;
 }
 
 .statusIndicator {
   width: 8px;
   height: 8px;
   border-radius: 50%;
+  transition: background-color 0.3s ease;
 }
 
 .breaker.on .statusIndicator {
-  background: #4caf50;
+  background: #2ecc71;
+  box-shadow: 0 0 8px #2ecc71;
 }
 
 .breaker.off .statusIndicator {
-  background: #f44336;
+  background: #e74c3c;
 }
 
 .switchContainer {
   display: flex;
   align-items: center;
-  cursor: pointer;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+}
+
+.switchContainer:hover {
+  background: rgba(0, 0, 0, 0.3);
 }
 
 .switch {
   width: 50px;
   height: 24px;
+  background: #7f8c8d;
   border-radius: 12px;
   position: relative;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  padding: 2px;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
 }
 
 .switchOn {
-  background: #4caf50;
-  justify-content: flex-end;
+  background: #2ecc71;
 }
 
 .switchOff {
-  background: #f44336;
-  justify-content: flex-start;
+  background: #e74c3c;
 }
 
 .switchHandle {
+  position: absolute;
+  top: 2px;
   width: 20px;
   height: 20px;
-  border-radius: 50%;
   background: white;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.additionalInfo {
-  border-top: 1px solid #eee;
-  padding-top: 8px;
-  margin-top: 12px;
+.switchOn .switchHandle {
+  transform: translateX(26px);
 }
 
-.additionalInfo small {
-  color: #888;
-  font-size: 10px;
+.switchOff .switchHandle {
+  transform: translateX(2px);
 }

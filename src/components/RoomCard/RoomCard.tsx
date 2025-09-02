@@ -4,92 +4,108 @@ import styles from "./RoomCard.module.css";
 
 interface RoomCardProps {
   room: Room;
-  deviceState?: {
-    lights: boolean[];
-    outlets: boolean[];
-  };
-  isPowered: boolean;
+  loadState: { [loadId: string]: boolean };
   isAffected: boolean;
+  deviceCounts: {
+    activeLights: number;
+    totalLights: number;
+    activeOutlets: number;
+    totalOutlets: number;
+  };
 }
 
 const RoomCard: React.FC<RoomCardProps> = ({
   room,
-  deviceState,
-  isPowered,
-  isAffected
+  loadState,
+  isAffected,
+  deviceCounts,
 }) => {
   const getRoomIcon = () => {
-    const icons: { [key: string]: string } = {
+    const icons: Record<string, string> = {
       office: "🏢",
-      conference: "💬",
-      kitchen: "🍽️",
+      corridor: "🚶",
+      conference: "👥",
       bathroom: "🚻",
+      kitchen: "🍳",
+      storage: "📦",
       technical: "🔧",
-      corridor: "🚶"
+      other: "🏠",
     };
-    return icons[room.type] || "🚪";
+    return icons[room.type] || "🏠";
   };
 
   const getRoomTypeLabel = () => {
-    const labels: { [key: string]: string } = {
+    const typeLabels: Record<string, string> = {
       office: "Офис",
-      conference: "Переговорная",
-      kitchen: "Кухня",
+      corridor: "Коридор",
+      conference: "Конференц-зал",
       bathroom: "Санузел",
+      kitchen: "Кухня",
+      storage: "Кладовая",
       technical: "Техническое",
-      corridor: "Коридор"
+      other: "Другое",
     };
-    return labels[room.type] || room.type;
+    return typeLabels[room.type] || room.type;
   };
 
-  const countActiveLights = () => {
-    if (!deviceState) return 0;
-    return deviceState.lights.filter(isOn => isOn).length;
-  };
+  // Подсчет общего количества ламп во всех светильниках
+  const totalLampsCount =
+    room.lightFixtures?.reduce(
+      (total, fixture) => total + fixture.lampIds.length,
+      0
+    ) || 0;
 
-  const countActiveOutlets = () => {
-    if (!deviceState) return 0;
-    return deviceState.outlets.filter(isOn => isOn).length;
-  };
+  // Подсчет активных ламп
+  const activeLampsCount =
+    room.lightFixtures?.reduce((total, fixture) => {
+      if (loadState[fixture.id]) {
+        return total + fixture.lampIds.length;
+      }
+      return total;
+    }, 0) || 0;
 
-  const renderLights = () => {
-    if (!deviceState) return null;
+  // Визуализация ламп (всех, а не только светильников)
+  const renderLamps = () => {
+    if (!room.lightFixtures) return null;
 
-    return deviceState.lights.map((isOn, index) => (
-      <div
-        key={`light-${index}`}
-        className={`${styles.light} ${isOn ? styles.lightOn : styles.lightOff}`}
-      >
-        <div className={styles.lightBulb}>
-          <div className={styles.bulb}></div>
-          <div className={styles.base}></div>
-          {isOn && <div className={styles.glow}></div>}
+    return room.lightFixtures.flatMap((fixture) =>
+      fixture.lampIds.map((lampId, index) => (
+        <div
+          key={`${fixture.id}-${lampId}`}
+          className={`${styles.lamp} ${
+            loadState[fixture.id] ? styles.lampOn : styles.lampOff
+          }`}
+          title={`Лампа ${index + 1} (${fixture.name})`}
+        >
+          💡
         </div>
-      </div>
-    ));
+      ))
+    );
   };
 
+  // Визуализация розеток (всех по отдельности)
   const renderOutlets = () => {
-    if (!deviceState) return null;
+    if (!room.outletGroups) return null;
 
-    return deviceState.outlets.map((isOn, index) => (
-      <div
-        key={`outlet-${index}`}
-        className={`${styles.outlet} ${isOn ? styles.outletOn : styles.outletOff}`}
-      >
-        <div className={styles.outletFace}>
-          <div className={styles.slots}>
-            <div className={styles.slot}></div>
-            <div className={styles.slot}></div>
+    return room.outletGroups.flatMap((outletGroup) =>
+      Array(outletGroup.count)
+        .fill(0)
+        .map((_, index) => (
+          <div
+            key={`${outletGroup.id}-${index}`}
+            className={`${styles.outlet} ${
+              loadState[outletGroup.id] ? styles.outletOn : styles.outletOff
+            }`}
+            title={`Розетка ${index + 1} (${outletGroup.name || "группа"})`}
+          >
+            🔌
           </div>
-          {isOn && <div className={styles.powerIndicator}></div>}
-        </div>
-      </div>
-    ));
+        ))
+    );
   };
 
   return (
-    <div className={`${styles.roomCard} ${isAffected ? styles.affected : ''}`}>
+    <div className={`${styles.roomCard} ${isAffected ? styles.affected : ""}`}>
       <div className={styles.header}>
         <span className={styles.icon}>{getRoomIcon()}</span>
         <div className={styles.title}>
@@ -100,24 +116,41 @@ const RoomCard: React.FC<RoomCardProps> = ({
 
       <div className={styles.details}>
         <div className={styles.area}>{room.area} м²</div>
-        <div className={styles.deviceCounts}>
-          {countActiveLights()}/{room.lights} ламп • {countActiveOutlets()}/{room.outlets} розеток
+        <div className={styles.deviceStats}>
+          <div className={styles.stat}>
+            <span className={styles.statValue}>
+              {activeLampsCount}/{totalLampsCount}
+            </span>
+            <span className={styles.statLabel}>ламп</span>
+          </div>
+          <div className={styles.stat}>
+            <span className={styles.statValue}>
+              {deviceCounts.activeOutlets}/{deviceCounts.totalOutlets}
+            </span>
+            <span className={styles.statLabel}>розеток</span>
+          </div>
         </div>
       </div>
 
       <div className={styles.devices}>
         <div className={styles.deviceGroup}>
-          <span className={styles.deviceLabel}>Освещение</span>
-          <div className={styles.lightsContainer}>
-            {renderLights()}
+          <div className={styles.deviceHeader}>
+            <span className={styles.deviceLabel}>Лампы</span>
+            <span className={styles.deviceCount}>
+              ({activeLampsCount}/{totalLampsCount})
+            </span>
           </div>
+          <div className={styles.lampsContainer}>{renderLamps()}</div>
         </div>
 
         <div className={styles.deviceGroup}>
-          <span className={styles.deviceLabel}>Розетки</span>
-          <div className={styles.outletsContainer}>
-            {renderOutlets()}
+          <div className={styles.deviceHeader}>
+            <span className={styles.deviceLabel}>Розетки</span>
+            <span className={styles.deviceCount}>
+              ({deviceCounts.activeOutlets}/{deviceCounts.totalOutlets})
+            </span>
           </div>
+          <div className={styles.outletsContainer}>{renderOutlets()}</div>
         </div>
       </div>
     </div>

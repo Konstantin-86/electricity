@@ -1,4 +1,4 @@
-export interface BreakerPower {
+/* export interface BreakerPower {
   roomId: string;
   outlets?: number;
   lights?: number;
@@ -41,6 +41,24 @@ export interface IBreaker {
   lightingDetails?: LightingDetails;
   socketDetails?: SocketDetails;
   additionalInfo?: AdditionalInfo;
+} */
+
+export interface IBreaker {
+  id: string;
+  name: string;
+  rating: number; // Изменим на number для удобства расчетов (например, 16 вместо "16A")
+  type: "lighting" | "socket" | "mixed"; // Упростим тип
+  isOn: boolean;
+
+  // Связи с нагрузками (вместо rooms)
+  controlledLoads: {
+    roomId: string;
+    lightFixtureIds?: string[]; // Какие светильники управляет
+    outletGroupIds?: string[]; // Какие группы розеток управляет
+  }[];
+
+  // Дополнительная информация (опционально)
+  installationDate?: string;
+  comments?: string;
+  manufacturer?: string;
 }
-
-

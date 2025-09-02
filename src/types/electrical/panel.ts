@@ -8,4 +8,6 @@ export interface Panel {
   type: PanelType;
   location: string;
   breakers: IBreaker[];
+  cableType: string;
+  poweredFrom: string;
 }

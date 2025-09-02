@@ -1,28 +1,27 @@
 .roomCard {
-  border: 2px solid #e0e0e0;
+  background: white;
   border-radius: 12px;
   padding: 16px;
-  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 2px solid #e1e5e9;
   transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
 }
 
 .roomCard.affected {
-  border-color: #2196f3;
-  box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.3);
+  border-color: #ff6b35;
+  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+  transform: translateY(-2px);
 }
 
 .header {
   display: flex;
-  align-items: flex-start;
-  gap: 12px;
+  align-items: center;
   margin-bottom: 12px;
 }
 
 .icon {
   font-size: 24px;
-  flex-shrink: 0;
+  margin-right: 12px;
 }
 
 .title {
@@ -33,29 +32,17 @@
   margin: 0 0 4px 0;
   font-size: 16px;
   font-weight: 600;
-  color: #333;
+  color: #2c3e50;
 }
 
 .typeBadge {
   display: inline-block;
   padding: 4px 8px;
-  background: #f0f0f0;
+  background: #ecf0f1;
   border-radius: 6px;
   font-size: 12px;
-  color: #666;
-}
-
-.powerStatus {
-  font-size: 20px;
-  flex-shrink: 0;
-}
-
-.powerStatus.powered {
-  color: #4caf50;
-}
-
-.powerStatus.notPowered {
-  color: #f44336;
+  color: #7f8c8d;
+  font-weight: 500;
 }
 
 .details {
@@ -64,7 +51,30 @@
 
 .area {
   font-size: 14px;
-  color: #666;
+  color: #7f8c8d;
+  margin-bottom: 8px;
+}
+
+.deviceStats {
+  display: flex;
+  gap: 16px;
+}
+
+.stat {
+  text-align: center;
+}
+
+.statValue {
+  display: block;
+  font-size: 18px;
+  font-weight: 700;
+  color: #2c3e50;
+}
+
+.statLabel {
+  display: block;
+  font-size: 12px;
+  color: #7f8c8d;
 }
 
 .devices {
@@ -74,200 +84,101 @@
 }
 
 .deviceGroup {
+  border-top: 1px solid #ecf0f1;
+  padding-top: 12px;
+}
+
+.deviceHeader {
   display: flex;
-  flex-direction: column;
-  gap: 8px;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
 }
 
 .deviceLabel {
   font-size: 14px;
-  font-weight: 500;
-  color: #333;
+  font-weight: 600;
+  color: #2c3e50;
 }
 
-.lightsContainer,
+.deviceCount {
+  font-size: 12px;
+  color: #7f8c8d;
+}
+
+.lampsContainer,
 .outletsContainer {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 6px;
 }
 
-/* Стили для лампочек */
-.light {
-  position: relative;
-  width: 32px;
-  height: 40px;
-  display: flex;
-  justify-content: center;
-}
-
-.lightBulb {
-  position: relative;
-  width: 20px;
-  height: 24px;
-}
-
-.bulb {
-  width: 16px;
-  height: 16px;
-  background: #ccc;
+.lamp {
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
-  position: relative;
-  margin: 0 auto;
-  transition: all 0.3s ease;
-}
-
-.base {
-  width: 12px;
-  height: 4px;
-  background: #999;
-  border-radius: 2px;
-  margin: 2px auto 0;
-}
-
-.lightOn .bulb {
-  background: #ffeb3b;
-  box-shadow: 0 0 20px rgba(255, 235, 59, 0.8);
-}
-
-.lightOff .bulb {
-  background: #ccc;
-}
-
-.glow {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 30px;
-  height: 30px;
-  background: radial-gradient(circle, rgba(255, 235, 59, 0.4) 0%, transparent 70%);
-  transform: translate(-50%, -50%);
-  opacity: 0;
-  animation: glow 2s infinite;
-}
-
-.lightOn .glow {
-  opacity: 1;
-}
-
-@keyframes glow {
-
-  0%,
-  100% {
-    opacity: 0.6;
-  }
-
-  50% {
-    opacity: 0.8;
-  }
-}
-
-/* Стили для розеток */
-.outlet {
-  position: relative;
-  width: 40px;
-  height: 30px;
-}
-
-.outletFace {
-  width: 36px;
-  height: 26px;
-  background: #f5f5f5;
-  border: 2px solid #ddd;
-  border-radius: 6px;
-  position: relative;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  font-size: 14px;
   transition: all 0.3s ease;
+  cursor: pointer;
 }
 
-.outletOn .outletFace {
-  border-color: #4caf50;
-  background: #f1f8e9;
+.lampOff {
+  background: #ecf0f1;
+  opacity: 0.5;
+  transform: scale(0.9);
 }
 
-.outletOff .outletFace {
-  border-color: #ddd;
-  background: #f5f5f5;
+.lampOn {
+  background: #fff3e0;
+  box-shadow: 0 0 12px #ffb300;
+  transform: scale(1);
 }
 
-.slots {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.slot {
-  width: 20px;
-  height: 4px;
-  background: #bbb;
-  border-radius: 2px;
-  transition: all 0.3s ease;
-}
-
-.outletOn .slot {
-  background: #4caf50;
-}
-
-.powerIndicator {
-  position: absolute;
-  top: 4px;
-  right: 4px;
-  width: 6px;
-  height: 6px;
-  background: #4caf50;
-  border-radius: 50%;
-  opacity: 0;
-  animation: blink 1s infinite;
-}
-
-.outletOn .powerIndicator {
-  opacity: 1;
-}
-
-@keyframes blink {
-
-  0%,
-  100% {
-    opacity: 1;
-  }
-
-  50% {
-    opacity: 0.3;
-  }
-}
-
-/* Индикатор изменения */
-.changeIndicator {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  padding: 4px 8px;
+.outlet {
+  width: 24px;
+  height: 24px;
   border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 12px;
-  font-weight: 500;
-  animation: slideIn 0.3s ease;
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
-.changeIndicator.powerOn {
-  background: #4caf50;
-  color: white;
+.outletOff {
+  background: #ecf0f1;
+  opacity: 0.5;
+  transform: scale(0.9);
 }
 
-.changeIndicator.powerOff {
-  background: #f44336;
-  color: white;
+.outletOn {
+  background: #e8f5e8;
+  box-shadow: 0 0 8px #4caf50;
+  transform: scale(1);
 }
 
-@keyframes slideIn {
+/* Анимации для плавного появления */
+.lampsContainer,
+.outletsContainer {
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateX(20px);
+    transform: translateY(10px);
   }
-
   to {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateY(0);
   }
+}
+
+.lamp:hover,
+.outlet:hover {
+  transform: scale(1.1);
 }

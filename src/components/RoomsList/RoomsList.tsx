@@ -2,61 +2,69 @@ import type { Room, IBreaker } from "../../types";
 import RoomCard from "../RoomCard/RoomCard";
 import styles from "./RoomsList.module.css";
 
+interface PowerChange {
+  roomId: string;
+  loadIds: string[];
+  type: "powerOn" | "powerOff";
+}
+
 interface RoomsListProps {
   rooms: Room[];
-  deviceState: { [roomId: string]: { lights: boolean[]; outlets: boolean[] } };
+  loadState: { [loadId: string]: boolean };
   selectedBreaker?: IBreaker | null;
-  powerChanges?: {
-    roomId: string;
-    lights: number;
-    outlets: number;
-    type: 'powerOn' | 'powerOff';
-  }[];
-  getRoomPowerStatus: (roomId: string) => boolean;
+  powerChanges?: PowerChange[];
+  getRoomPowerStatus: (room: Room) => boolean;
+  getRoomDeviceCounts: (room: Room) => {
+    activeLights: number;
+    totalLights: number;
+    activeOutlets: number;
+    totalOutlets: number;
+  };
   title?: string;
 }
 
 const RoomsList: React.FC<RoomsListProps> = ({
   rooms,
-  deviceState,
+  loadState,
   selectedBreaker,
-  powerChanges = [],
-  getRoomPowerStatus,
-  title = "Помещения"
+  getRoomDeviceCounts,
+  title = "Помещения",
 }) => {
-  const getRoomsByType = () => {
-    const grouped: { [key: string]: Room[] } = {};
-    rooms.forEach((room) => {
-      if (!grouped[room.type]) {
-        grouped[room.type] = [];
-      }
-      grouped[room.type].push(room);
-    });
-    return grouped;
-  };
+  // Группировка помещений по типам
+  const groupedRooms = rooms.reduce((acc, room) => {
+    if (!acc[room.type]) {
+      acc[room.type] = [];
+    }
+    acc[room.type].push(room);
+    return acc;
+  }, {} as Record<string, Room[]>);
 
-  const groupedRooms = getRoomsByType();
-
-  const getTypeLabel = (type: string) => {
-    const labels: { [key: string]: string } = {
+  const getTypeLabel = (type: string): string => {
+    const typeLabels: Record<string, string> = {
       office: "Офисы",
-      conference: "Переговорные",
-      kitchen: "Кухни",
+      corridor: "Коридоры",
+      conference: "Конференц-залы",
       bathroom: "Санузлы",
-      technical: "Технические",
-      corridor: "Коридоры"
+      kitchen: "Кухни",
+      storage: "Кладовые",
+      technical: "Технические помещения",
+      other: "Прочие помещения",
     };
-    return labels[type] || "Другие помещения";
+    return typeLabels[type] || type;
   };
 
-  const isRoomAffectedByBreaker = (roomId: string) => {
+  const isRoomAffectedByBreaker = (room: Room) => {
     if (!selectedBreaker) return false;
-    return selectedBreaker.powers.some((power) => power.roomId === roomId);
+    return selectedBreaker.controlledLoads.some(
+      (load) => load.roomId === room.id
+    );
   };
 
   return (
     <div className={styles.roomsList}>
-      <h2 className={styles.title}>{title} ({rooms.length})</h2>
+      <h2 className={styles.title}>
+        {title} ({rooms.length})
+      </h2>
 
       {Object.entries(groupedRooms).map(([type, typeRooms]) => (
         <div key={type} className={styles.typeSection}>
@@ -66,9 +74,9 @@ const RoomsList: React.FC<RoomsListProps> = ({
               <RoomCard
                 key={room.id}
                 room={room}
-                deviceState={deviceState[room.id]}
-                isPowered={getRoomPowerStatus(room.id)}
-                isAffected={isRoomAffectedByBreaker(room.id)}
+                loadState={loadState}
+                isAffected={isRoomAffectedByBreaker(room)}
+                deviceCounts={getRoomDeviceCounts(room)}
               />
             ))}
           </div>
