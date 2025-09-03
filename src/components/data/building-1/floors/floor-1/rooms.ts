@@ -67,4 +67,80 @@ export const floor1Rooms: Room[] = [
       },
     ],
   },
+  {
+    id: "room-1-105",
+    name: "Раздевалка",
+    type: "office",
+    area: 18,
+    outletGroups: [{ id: "out-105-1", count: 2, estimatedLoad: 2000 }],
+    lightFixtures: [
+      {
+        id: "fix-105-1",
+        name: "Раздевалка",
+        fixtureType: "ceiling",
+        lampIds: [
+          sharedLamps[6],
+          sharedLamps[6],
+          sharedLamps[6],
+          sharedLamps[6],
+        ],
+      },
+    ],
+  },
+  {
+    id: "room-1-106",
+    name: "Помещение старшего смены",
+    type: "office",
+    area: 12,
+    outletGroups: [{ id: "out-105-1", count: 2, estimatedLoad: 2000 }],
+    lightFixtures: [
+      {
+        id: "fix-105-1",
+        name: "Помещение старшего смены",
+        fixtureType: "ceiling",
+        lampIds: [
+          sharedLamps[6],
+          sharedLamps[6],
+          sharedLamps[6],
+          sharedLamps[6],
+        ],
+      },
+    ],
+  },
+  {
+    id: "room-1-107",
+    name: "Холл розетки",
+    type: "corridor",
+    area: 12,
+    outletGroups: [{ id: "out-107-1", count: 5, estimatedLoad: 2000 }],
+    lightFixtures: [],
+  },
+  {
+    id: "room-1-108",
+    name: "Проходная",
+    type: "corridor",
+    area: 12,
+    outletGroups: [{ id: "out-108-1", count: 5, estimatedLoad: 2000 }],
+    lightFixtures: [
+      {
+        id: "fix-108-1",
+        name: "Помещение старшего смены",
+        fixtureType: "ceiling",
+        lampIds: [
+          sharedLamps[6],
+          sharedLamps[6],
+          sharedLamps[6],
+          sharedLamps[6],
+        ],
+      },
+    ],
+  },
+  {
+    id: "room-1-109",
+    name: "Розетки кладовка (прием пищи)",
+    type: "other",
+    area: 12,
+    outletGroups: [{ id: "out-109-1", count: 5, estimatedLoad: 2000 }],
+    lightFixtures: [],
+  },
 ];

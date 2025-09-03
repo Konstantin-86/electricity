@@ -116,7 +116,6 @@ const RoomCard: React.FC<RoomCardProps> = ({
         </div>
       </div>
 
-      {/* Добавьте секцию с автоматами */}
       {breakers.length > 0 && (
         <div className={styles.breakersInfo}>
           <div className={styles.breakerList}>
@@ -155,22 +154,10 @@ const RoomCard: React.FC<RoomCardProps> = ({
 
       <div className={styles.devices}>
         <div className={styles.deviceGroup}>
-          <div className={styles.deviceHeader}>
-            <span className={styles.deviceLabel}>Лампы</span>
-            <span className={styles.deviceCount}>
-              ({activeLampsCount}/{totalLampsCount})
-            </span>
-          </div>
           <div className={styles.lampsContainer}>{renderLamps()}</div>
         </div>
 
         <div className={styles.deviceGroup}>
-          <div className={styles.deviceHeader}>
-            <span className={styles.deviceLabel}>Розетки</span>
-            <span className={styles.deviceCount}>
-              ({deviceCounts.activeOutlets}/{deviceCounts.totalOutlets})
-            </span>
-          </div>
           <div className={styles.outletsContainer}>{renderOutlets()}</div>
         </div>
       </div>

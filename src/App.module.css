@@ -109,23 +109,17 @@
 }
 
 .roomsSection {
+  width: 100%;
   background: white;
   padding: 24px;
   border-radius: 16px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  max-height: 80vh;
-  overflow-y: auto;
 }
 
 @media (max-width: 1200px) {
   .floorView {
     grid-template-columns: 1fr;
     gap: 24px;
-  }
-
-  .panelsSection,
-  .roomsSection {
-    max-height: none;
   }
 }
 

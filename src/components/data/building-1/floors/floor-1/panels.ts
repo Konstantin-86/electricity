@@ -79,18 +79,18 @@ export const floor1Panels: Panel[] = [
           warrantyUntil: "2026-01-15",
           comments: "Автомат для кухонного оборудования",
         },
-      } /* 
+      },
       {
         id: "breaker-1-1-4",
         designation: "QF4",
-        description: "Серверная (питание оборудования)",
-        rating: 32,
-        type: "socket",
+        description: "Туалет и Умывальня",
+        rating: 20,
+        type: "lighting",
         isOn: true,
         controlledLoads: [
           {
             roomId: "room-1-104",
-            outletGroupIds: ["out-104-1", "out-104-2"],
+            lightFixtureIds: ["fix-103-1", "fix-103-2"],
           },
         ],
         technicalInfo: {
@@ -110,26 +110,20 @@ export const floor1Panels: Panel[] = [
       {
         id: "breaker-1-1-5",
         designation: "QF5",
-        description: "Аварийное освещение (все помещения)",
-        rating: 16,
-        type: "lighting",
+        description: "Раздевалка, Помещение старшего смены",
+        rating: 20,
+        type: "mixed",
         isOn: true,
         controlledLoads: [
           {
-            roomId: "room-1-101",
-            lightFixtureIds: ["fix-101-3"],
+            roomId: "room-1-105",
+            lightFixtureIds: ["fix-105-1"],
+            outletGroupIds: ["out-105-1"],
           },
           {
-            roomId: "room-1-102",
-            lightFixtureIds: ["fix-102-3"],
-          },
-          {
-            roomId: "room-1-103",
-            lightFixtureIds: ["fix-103-4"],
-          },
-          {
-            roomId: "room-1-104",
-            lightFixtureIds: ["fix-104-2"],
+            roomId: "room-1-106",
+            lightFixtureIds: ["fix-106-1"],
+            outletGroupIds: ["out-106-1"],
           },
         ],
         technicalInfo: {
@@ -146,26 +140,14 @@ export const floor1Panels: Panel[] = [
       {
         id: "breaker-1-1-6",
         designation: "QF6",
-        description: "Дополнительные розетки",
-        rating: 16,
-        type: "lighting",
+        description: "Холл розетки",
+        rating: 20,
+        type: "socket",
         isOn: true,
         controlledLoads: [
           {
-            roomId: "room-1-101",
-            outletGroupIds: ["out-101-3", "out-101-4"],
-          },
-          {
-            roomId: "room-1-102",
-            outletGroupIds: ["out-102-3", "out-102-4"],
-          },
-          {
-            roomId: "room-1-103",
-            outletGroupIds: ["out-103-3", "out-103-4"],
-          },
-          {
-            roomId: "room-1-104",
-            outletGroupIds: ["out-104-3"],
+            roomId: "room-1-107",
+            outletGroupIds: ["out-107-1"],
           },
         ],
         technicalInfo: {
@@ -181,21 +163,46 @@ export const floor1Panels: Panel[] = [
       {
         id: "breaker-1-1-7",
         designation: "QF7",
-        description: "Дополнительное освещение",
-        rating: 16,
+        description: "Пожарная сигнализация",
+        rating: 20,
         type: "lighting",
+        isOn: true,
+        controlledLoads: [],
+      },
+      {
+        id: "breaker-1-1-8",
+        designation: "QF8",
+        description: "Резерв",
+        rating: 25,
+        type: "mixed",
+        isOn: false,
+        technicalInfo: {
+          manufacturer: "IEK",
+          model: "ВА47-29",
+          characteristic: "C",
+          breakingCapacity: 4.5,
+          polesCount: 2,
+          installationDate: "2024-01-15",
+          status: "active",
+          warrantyUntil: "2026-01-15",
+          comments: "Автомат для кухонного оборудования",
+        },
+      },
+      {
+        id: "breaker-1-1-9",
+        designation: "QF9",
+        description: "Проходная , Розетка еда",
+        rating: 25,
+        type: "mixed",
         isOn: true,
         controlledLoads: [
           {
-            roomId: "room-1-102",
-            lightFixtureIds: ["fix-102-2"],
-          },
-          {
-            roomId: "room-1-104",
-            lightFixtureIds: ["fix-104-1", "fix-104-3"],
+            roomId: "room-1-109",
+            lightFixtureIds: ["fix-108-1", "fix-109-1"],
+            outletGroupIds: ["out-108-1", "out-109-1"],
           },
         ],
-      }, */,
+      },
     ],
   },
 ];
