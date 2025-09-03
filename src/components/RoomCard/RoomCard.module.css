@@ -182,3 +182,32 @@
 .outlet:hover {
   transform: scale(1.1);
 }
+@media (max-width: 768px) {
+  .roomCard {
+    padding: 7px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+  }
+  .header,
+  .details {
+    width: 50%;
+  }
+  .devices {
+    width: 100%;
+  }
+  .details {
+    display: flex;
+    justify-content: end;
+    gap: 7px;
+  }
+  .area {
+    display: none;
+  }
+}

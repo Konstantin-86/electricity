@@ -1,4 +1,5 @@
 .breaker {
+  width: 140px;
   background: linear-gradient(145deg, #34495e, #2c3e50);
   border-radius: 10px;
   padding: 7px;
@@ -58,29 +59,21 @@
   gap: 4px;
 }
 
-.namePrefix,
-.nameFull {
-  text-align: center;
+.nameBreaker,
+.description {
+  text-align: left;
   color: #ecf0f1;
   font-weight: 600;
   font-size: 14px;
   margin: 0;
 }
-.nameFull {
-  text-align: left;
+.description {
   font-size: 12px;
 }
 
-.rating {
+.moreInfo {
   position: absolute;
   right: -3%;
-  color: #bdc3c7;
-  font-size: 0.85rem;
-  background: rgba(0, 0, 0, 0.3);
-  padding: 2px 8px;
-  border-radius: 12px;
-  display: inline-block;
-  width: fit-content;
 }
 
 .status {
@@ -156,4 +149,17 @@
 
 .switchOff .switchHandle {
   transform: translateX(2px);
+}
+
+@media (max-width: 768px) {
+  .breakerContent {
+    height: 230px;
+    align-items: stretch;
+  }
+  .info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
 }

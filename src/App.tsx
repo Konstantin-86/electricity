@@ -200,7 +200,7 @@ const App: React.FC = () => {
       case "floors":
         return `Этажи: ${selectedBuilding?.name}`;
       case "floor-view":
-        return `Этаж: ${selectedFloor?.name}`;
+        return `${selectedFloor?.name}`;
       default:
         return "Электрические щиты";
     }
@@ -215,7 +215,6 @@ const App: React.FC = () => {
               ← Назад
             </button>
           )}
-          <h1 className={styles.title}>{getTitle()}</h1>
         </div>
 
         {selectedBuilding && (

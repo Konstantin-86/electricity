@@ -11,7 +11,8 @@ export const floor2Panels: Panel[] = [
     breakers: [
       {
         id: "breaker-2-1-1",
-        name: "QF1 - Отдел разработки (основное освещение + розетки)",
+        designation: "QF1",
+        description: "Отдел разработки (основное освещение + розетки)",
         rating: 55,
         type: "mixed",
         isOn: true,
@@ -25,7 +26,8 @@ export const floor2Panels: Panel[] = [
       },
       {
         id: "breaker-2-1-2",
-        name: "QF2 - Переговорная комната (освещение + розетки)",
+        designation: "QF2",
+        description: "Переговорная комната (освещение + розетки)",
         rating: 20,
         type: "mixed",
         isOn: true,
@@ -39,7 +41,8 @@ export const floor2Panels: Panel[] = [
       },
       {
         id: "breaker-2-1-3",
-        name: "QF3 - Зона отдыха (освещение + розетки)",
+        designation: "QF3",
+        description: "Зона отдыха (освещение + розетки)",
         rating: 20,
         type: "mixed",
         isOn: true,
@@ -53,7 +56,8 @@ export const floor2Panels: Panel[] = [
       },
       {
         id: "breaker-2-1-4",
-        name: "QF4 - Кабинет руководителя (освещение + розетки)",
+        designation: "QF4",
+        description: "Кабинет руководителя (освещение + розетки)",
         rating: 20,
         type: "mixed",
         isOn: true,
@@ -67,7 +71,8 @@ export const floor2Panels: Panel[] = [
       },
       {
         id: "breaker-2-1-5",
-        name: "QF5 - Техническое помещение (питание оборудования)",
+        designation: "QF5",
+        description: "Техническое помещение (питание оборудования)",
         rating: 16,
         type: "socket",
         isOn: true,
@@ -80,7 +85,8 @@ export const floor2Panels: Panel[] = [
       },
       {
         id: "breaker-2-1-6",
-        name: "QF6 - Аварийное освещение (все помещения)",
+        designation: "QF6",
+        description: "Аварийное освещение (все помещения)",
         rating: 16,
         type: "lighting",
         isOn: true,
@@ -109,7 +115,8 @@ export const floor2Panels: Panel[] = [
       },
       {
         id: "breaker-2-1-7",
-        name: "QF7 - Дополнительные розетки",
+        designation: "QF7",
+        description: "Дополнительные розетки",
         rating: 16,
         type: "socket",
         isOn: true,
@@ -138,7 +145,8 @@ export const floor2Panels: Panel[] = [
       },
       {
         id: "breaker-2-1-8",
-        name: "QF8 - Дополнительное освещение",
+        designation: "QF8",
+        description: "Дополнительное освещение",
         rating: 16,
         type: "lighting",
         isOn: true,

@@ -135,6 +135,10 @@
 
 /* Текст тоже анимируем */
 .loadText {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   font-size: 0.9rem;
   font-weight: 600;
   color: #ecf0f1;

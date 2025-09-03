@@ -11,7 +11,8 @@ export const floor1Panels: Panel[] = [
     breakers: [
       {
         id: "breaker-1-1-1",
-        name: "QF1 - Рецепция (освещение + розетки)",
+        designation: "QF1",
+        description: "Рецепция (освещение + розетки)",
         rating: 20,
         type: "mixed",
         isOn: true,
@@ -25,7 +26,8 @@ export const floor1Panels: Panel[] = [
       },
       {
         id: "breaker-1-1-2",
-        name: "QF2 - Конференц-зал (основное освещение + розетки)",
+        designation: "QF2",
+        description: "Конференц-зал (основное освещение + розетки)",
         rating: 25,
         type: "mixed",
         isOn: true,
@@ -39,7 +41,8 @@ export const floor1Panels: Panel[] = [
       },
       {
         id: "breaker-1-1-3",
-        name: "QF3 - Кухня-столовая (освещение + розетки)",
+        designation: "QF3",
+        description: "Кухня-столовая (освещение + розетки)",
         rating: 25,
         type: "mixed",
         isOn: true,
@@ -53,7 +56,8 @@ export const floor1Panels: Panel[] = [
       },
       {
         id: "breaker-1-1-4",
-        name: "QF4 - Серверная (питание оборудования)",
+        designation: "QF4",
+        description: "Серверная (питание оборудования)",
         rating: 32,
         type: "socket",
         isOn: true,
@@ -66,7 +70,8 @@ export const floor1Panels: Panel[] = [
       },
       {
         id: "breaker-1-1-5",
-        name: "QF5 - Аварийное освещение (все помещения)",
+        designation: "QF5",
+        description: "Аварийное освещение (все помещения)",
         rating: 16,
         type: "lighting",
         isOn: true,
@@ -91,7 +96,8 @@ export const floor1Panels: Panel[] = [
       },
       {
         id: "breaker-1-1-6",
-        name: "QF6 - Дополнительные розетки",
+        designation: "QF6",
+        description: "Дополнительные розетки",
         rating: 16,
         type: "socket",
         isOn: true,
@@ -116,7 +122,8 @@ export const floor1Panels: Panel[] = [
       },
       {
         id: "breaker-1-1-7",
-        name: "QF7 - Дополнительное освещение",
+        designation: "QF7",
+        description: "Дополнительное освещение",
         rating: 16,
         type: "lighting",
         isOn: true,

@@ -52,5 +52,21 @@
 
 .breakers {
   display: flex;
-  gap: 12px;
+  gap: 7px;
+}
+@media (max-width: 768px) {
+  .breakers {
+    flex-wrap: wrap;
+  }
+  .panelName {
+    font-size: 14px;
+    margin-bottom: 0;
+  }
+  .panelType {
+    font-size: 12px;
+    margin-bottom: 0;
+  }
+  .panelHeader {
+    align-items: center;
+  }
 }

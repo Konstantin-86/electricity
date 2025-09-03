@@ -29,9 +29,11 @@ const BreakerLoadingPanel: React.FC<LoadIndicatorProps> = ({
         <div className={styles.loadSparkle}></div>
       </div>
 
-      <div className={styles.loadText}>{loadPercentage.toFixed(0)}%</div>
-      <div className={styles.loadDetails}>
-        {currentLoad.toFixed(1)}A / {maxLoad}A
+      <div className={styles.loadText}>
+        <div>{loadPercentage.toFixed(0)}%</div>
+        <div className={styles.loadDetails}>
+          {currentLoad.toFixed(1)}A / {maxLoad}A
+        </div>
       </div>
     </div>
   );
