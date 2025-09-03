@@ -57,6 +57,20 @@ export const calculateBreakerLoad = (
   let lightingPower = 0;
   let socketPower = 0;
 
+  // Проверяем наличие controlledLoads (для резервных автоматов)
+  if (!breaker.controlledLoads || breaker.controlledLoads.length === 0) {
+    return {
+      totalPower: 0,
+      currentLoad: 0,
+      loadPercentage: 0,
+      lightingPower: 0,
+      socketPower: 0,
+      isOverloaded: false,
+      isCritical: false,
+      rating: breaker.rating,
+    };
+  }
+
   for (const load of breaker.controlledLoads) {
     const room = rooms.find((r) => r.id === load.roomId);
     if (!room) continue;

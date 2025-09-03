@@ -1,5 +1,5 @@
 import React from "react";
-import type { Room } from "../../types";
+import type { IBreaker, Room } from "../../types";
 import styles from "./RoomCard.module.css";
 
 interface RoomCardProps {
@@ -12,6 +12,7 @@ interface RoomCardProps {
     activeOutlets: number;
     totalOutlets: number;
   };
+  breakers: IBreaker[];
 }
 
 const RoomCard: React.FC<RoomCardProps> = ({
@@ -19,6 +20,7 @@ const RoomCard: React.FC<RoomCardProps> = ({
   loadState,
   isAffected,
   deviceCounts,
+  breakers,
 }) => {
   const getRoomIcon = () => {
     const icons: Record<string, string> = {
@@ -113,6 +115,25 @@ const RoomCard: React.FC<RoomCardProps> = ({
           <div className={styles.typeBadge}>{getRoomTypeLabel()}</div>
         </div>
       </div>
+
+      {/* Добавьте секцию с автоматами */}
+      {breakers.length > 0 && (
+        <div className={styles.breakersInfo}>
+          <div className={styles.breakerList}>
+            {breakers.map((breaker) => (
+              <span
+                key={breaker.id}
+                className={`${styles.breakerTag} ${
+                  breaker.isOn ? styles.breakerOn : styles.breakerOff
+                }`}
+                title={breaker.description}
+              >
+                {breaker.designation}
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
 
       <div className={styles.details}>
         <div className={styles.area}>{room.area} м²</div>

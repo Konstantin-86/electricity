@@ -37,7 +37,19 @@ const Breaker: React.FC<BreakerProps> = ({
     setShowTechnicalInfo(false);
   };
 
-  const loadInfo = calculateBreakerLoad(breaker, rooms, sharedLamps);
+  // Для резервных автоматов без controlledLoads используем нулевую нагрузку
+  const loadInfo = breaker.controlledLoads
+    ? calculateBreakerLoad(breaker, rooms, sharedLamps)
+    : {
+        totalPower: 0,
+        currentLoad: 0,
+        loadPercentage: 0,
+        lightingPower: 0,
+        socketPower: 0,
+        isOverloaded: false,
+        isCritical: false,
+        rating: breaker.rating,
+      };
 
   return (
     <>

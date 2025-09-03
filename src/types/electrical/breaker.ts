@@ -7,8 +7,8 @@ export interface IBreaker {
   isOn: boolean;
 
   // Связи с нагрузками (вместо rooms)
-  controlledLoads: {
-    roomId: string;
+  controlledLoads?: {
+    roomId?: string;
     lightFixtureIds?: string[]; // Какие светильники управляет
     outletGroupIds?: string[]; // Какие группы розеток управляет
   }[];

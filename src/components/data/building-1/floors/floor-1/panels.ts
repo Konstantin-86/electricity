@@ -5,22 +5,22 @@ export const floor1Panels: Panel[] = [
     id: "panel-1-1",
     name: "ЩО-1-1",
     type: "lighting",
-    location: "Возле лифтовой шахты",
+    location: "холл на входе, возле туалета",
     cableType: "ВВГнг-LS 3x6",
-    poweredFrom: "Главный распределительный щит",
+    poweredFrom: "ЩРС № 7",
     breakers: [
       {
         id: "breaker-1-1-1",
         designation: "QF1",
-        description: "Рецепция (освещение + розетки)",
-        rating: 20,
-        type: "mixed",
+        description: "Холл Коридор (освещиени + розетки)",
+        rating: 25,
+        type: "lighting",
         isOn: true,
         controlledLoads: [
           {
             roomId: "room-1-101",
-            lightFixtureIds: ["fix-101-1", "fix-101-2", "fix-101-4"],
-            outletGroupIds: ["out-101-1", "out-101-2"],
+            lightFixtureIds: ["fix-101-1"],
+            outletGroupIds: ["out-101-1"],
           },
         ],
         technicalInfo: {
@@ -39,15 +39,14 @@ export const floor1Panels: Panel[] = [
       {
         id: "breaker-1-1-2",
         designation: "QF2",
-        description: "Конференц-зал (основное освещение + розетки)",
+        description: "Освещение лестницы",
         rating: 25,
         type: "mixed",
         isOn: true,
         controlledLoads: [
           {
             roomId: "room-1-102",
-            lightFixtureIds: ["fix-102-1", "fix-102-4"],
-            outletGroupIds: ["out-102-1", "out-102-2"],
+            lightFixtureIds: ["fix-102-1"],
           },
         ],
         technicalInfo: {
@@ -65,17 +64,10 @@ export const floor1Panels: Panel[] = [
       {
         id: "breaker-1-1-3",
         designation: "QF3",
-        description: "Кухня-столовая (освещение + розетки)",
+        description: "Резерв",
         rating: 25,
         type: "mixed",
-        isOn: true,
-        controlledLoads: [
-          {
-            roomId: "room-1-103",
-            lightFixtureIds: ["fix-103-1", "fix-103-2", "fix-103-3"],
-            outletGroupIds: ["out-103-1", "out-103-2"],
-          },
-        ],
+        isOn: false,
         technicalInfo: {
           manufacturer: "IEK",
           model: "ВА47-29",
@@ -87,7 +79,7 @@ export const floor1Panels: Panel[] = [
           warrantyUntil: "2026-01-15",
           comments: "Автомат для кухонного оборудования",
         },
-      },
+      } /* 
       {
         id: "breaker-1-1-4",
         designation: "QF4",
@@ -156,7 +148,7 @@ export const floor1Panels: Panel[] = [
         designation: "QF6",
         description: "Дополнительные розетки",
         rating: 16,
-        type: "socket",
+        type: "lighting",
         isOn: true,
         controlledLoads: [
           {
@@ -203,7 +195,7 @@ export const floor1Panels: Panel[] = [
             lightFixtureIds: ["fix-104-1", "fix-104-3"],
           },
         ],
-      },
+      }, */,
     ],
   },
 ];

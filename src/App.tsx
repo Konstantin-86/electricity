@@ -87,10 +87,13 @@ const App: React.FC = () => {
         if (breaker.id === breakerId) {
           targetBreaker = breaker;
 
+          // Проверяем наличие controlledLoads (для резервных автоматов)
+          if (!breaker.controlledLoads) return;
+
           // Для каждой управляемой нагрузки этого автомата
           breaker.controlledLoads.forEach((load) => {
             const roomChanges: PowerChange = {
-              roomId: load.roomId,
+              roomId: load.roomId || "", // Добавляем проверку на roomId
               loadIds: [],
               type: isOn ? "powerOn" : "powerOff",
             };
@@ -193,17 +196,31 @@ const App: React.FC = () => {
     }
   };
 
-  const getTitle = () => {
-    switch (currentView) {
-      case "buildings":
-        return "Выбор здания";
-      case "floors":
-        return `Этажи: ${selectedBuilding?.name}`;
-      case "floor-view":
-        return `${selectedFloor?.name}`;
-      default:
-        return "Электрические щиты";
-    }
+  const getRoomBreakers = (room: Room): IBreaker[] => {
+    const roomBreakers: IBreaker[] = [];
+
+    panelsState.forEach((panel) => {
+      panel.breakers.forEach((breaker) => {
+        if (
+          breaker.controlledLoads?.some(
+            (load) =>
+              load.roomId === room.id ||
+              (load.lightFixtureIds &&
+                room.lightFixtures?.some((f) =>
+                  load.lightFixtureIds?.includes(f.id)
+                )) ||
+              (load.outletGroupIds &&
+                room.outletGroups?.some((o) =>
+                  load.outletGroupIds?.includes(o.id)
+                ))
+          )
+        ) {
+          roomBreakers.push(breaker);
+        }
+      });
+    });
+
+    return roomBreakers;
   };
 
   return (
@@ -265,6 +282,7 @@ const App: React.FC = () => {
                   powerChanges={powerChanges}
                   getRoomPowerStatus={getRoomPowerStatus}
                   getRoomDeviceCounts={getRoomDeviceCounts}
+                  getRoomBreakers={getRoomBreakers}
                   title="Помещения на этаже"
                 />
               </div>

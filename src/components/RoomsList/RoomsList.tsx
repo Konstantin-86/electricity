@@ -21,6 +21,7 @@ interface RoomsListProps {
     totalOutlets: number;
   };
   title?: string;
+  getRoomBreakers?: (room: Room) => IBreaker[];
 }
 
 const RoomsList: React.FC<RoomsListProps> = ({
@@ -29,6 +30,7 @@ const RoomsList: React.FC<RoomsListProps> = ({
   selectedBreaker,
   getRoomDeviceCounts,
   title = "Помещения",
+  getRoomBreakers,
 }) => {
   // Группировка помещений по типам
   const groupedRooms = rooms.reduce((acc, room) => {
@@ -54,7 +56,8 @@ const RoomsList: React.FC<RoomsListProps> = ({
   };
 
   const isRoomAffectedByBreaker = (room: Room) => {
-    if (!selectedBreaker) return false;
+    if (!selectedBreaker || !selectedBreaker.controlledLoads) return false;
+
     return selectedBreaker.controlledLoads.some(
       (load) => load.roomId === room.id
     );
@@ -77,6 +80,7 @@ const RoomsList: React.FC<RoomsListProps> = ({
                 loadState={loadState}
                 isAffected={isRoomAffectedByBreaker(room)}
                 deviceCounts={getRoomDeviceCounts(room)}
+                breakers={getRoomBreakers?.(room) || []}
               />
             ))}
           </div>
