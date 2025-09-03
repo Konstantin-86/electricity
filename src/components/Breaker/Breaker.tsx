@@ -1,8 +1,9 @@
 import React from "react";
-import type { IBreaker, Room, Lamp } from "../../types";
+import type { IBreaker, Room } from "../../types";
 import styles from "./Breaker.module.css";
 import { calculateBreakerLoad } from "../utils/loadCalculator";
 import BreakerLoadingPanel from "./BreakerLoadingPanel";
+import { sharedLamps } from "../data/lamps/lamps";
 
 interface BreakerProps {
   breaker: IBreaker;
@@ -10,7 +11,6 @@ interface BreakerProps {
   isSelected: boolean;
   isOn: boolean;
   rooms: Room[];
-  lamps: Lamp[];
 }
 
 const Breaker: React.FC<BreakerProps> = ({
@@ -19,14 +19,17 @@ const Breaker: React.FC<BreakerProps> = ({
   isSelected,
   isOn,
   rooms,
-  lamps,
 }) => {
   const handleSwitchClick = (e: React.MouseEvent) => {
     e.stopPropagation();
     onClick();
   };
 
-  const loadInfo = calculateBreakerLoad(breaker, rooms, lamps);
+  const loadInfo = calculateBreakerLoad(breaker, rooms, sharedLamps);
+
+  const prefix = breaker.name.substring(0, 3);
+  // Получаем остальную часть названия
+  const restOfName = breaker.name.substring(3);
 
   return (
     <div
@@ -36,7 +39,8 @@ const Breaker: React.FC<BreakerProps> = ({
     >
       <div className={styles.breakerContent}>
         <div className={styles.info}>
-          <div className={styles.name}>{breaker.name}</div>
+          <div className={styles.namePrefix}>{prefix}</div>
+          <div className={styles.nameFull}>{restOfName}</div>
           <div className={styles.rating}>{breaker.rating}A</div>
           <div className={styles.status}>
             <div className={styles.statusIndicator}></div>

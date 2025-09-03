@@ -1,7 +1,7 @@
 .breaker {
   background: linear-gradient(145deg, #34495e, #2c3e50);
   border-radius: 10px;
-  padding: 15px;
+  padding: 7px;
   cursor: pointer;
   transition: all 0.3s ease;
   border: 2px solid transparent;
@@ -45,26 +45,35 @@
 }
 
 .breakerContent {
-  display: grid;
-  grid-template-columns: 1fr auto auto;
-  gap: 15px;
-  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
 .info {
+  position: relative;
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
   gap: 4px;
 }
 
-.name {
+.namePrefix,
+.nameFull {
+  text-align: center;
   color: #ecf0f1;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 14px;
   margin: 0;
+}
+.nameFull {
+  text-align: left;
+  font-size: 12px;
 }
 
 .rating {
+  position: absolute;
+  right: -3%;
   color: #bdc3c7;
   font-size: 0.85rem;
   background: rgba(0, 0, 0, 0.3);

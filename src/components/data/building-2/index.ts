@@ -3,7 +3,7 @@ import { floors } from "./floors/index";
 
 export const building2: Building = {
   id: "building-2",
-  name: "Офисное здание А",
-  address: "ул. Примерная, 123",
+  name: "Второе здание",
+  address: "ул. Примерочная, 666",
   floors: floors,
 };

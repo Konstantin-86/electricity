@@ -69,7 +69,7 @@ const RoomCard: React.FC<RoomCardProps> = ({
     if (!room.lightFixtures) return null;
 
     return room.lightFixtures.flatMap((fixture) =>
-      fixture.lampIds.map((lamp, index) => (
+      fixture.lampIds.map((_, index) => (
         <div
           key={`${fixture.id}-lamp-${index}`} // Используем индекс
           className={`${styles.lamp} ${

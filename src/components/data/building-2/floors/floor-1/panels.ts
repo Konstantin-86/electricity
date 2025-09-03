@@ -3,44 +3,133 @@ import type { Panel } from "../../../../../types";
 export const floor1Panels: Panel[] = [
   {
     id: "panel-1-1",
-    name: "ЩО-1",
+    name: "ЩО-1-1",
     type: "lighting",
     location: "Возле лифтовой шахты",
+    cableType: "ВВГнг-LS 3x6",
+    poweredFrom: "Главный распределительный щит",
     breakers: [
       {
         id: "breaker-1-1-1",
-        name: "QF1 - Рецепция (розетки)",
-        rating: "16A",
-        types: { lighting: true, socket: true, special: false },
+        name: "QF1 - Рецепция (освещение + розетки)",
+        rating: 20,
+        type: "mixed",
         isOn: true,
-        powers: [
-          { roomId: "room-1-101", outlets: 3, lights: 10 },
-          { roomId: "room-1-102", lights: 8 },
+        controlledLoads: [
+          {
+            roomId: "room-1-101",
+            lightFixtureIds: ["fix-101-1", "fix-101-2", "fix-101-4"],
+            outletGroupIds: ["out-101-1", "out-101-2"],
+          },
         ],
       },
       {
         id: "breaker-1-1-2",
-        name: "QF2 - Холл (освещение)",
-        rating: "10A",
-        types: { lighting: true, socket: false, special: false },
+        name: "QF2 - Конференц-зал (основное освещение + розетки)",
+        rating: 25,
+        type: "mixed",
         isOn: true,
-        powers: [{ roomId: "room-1-102", lights: 4 }],
+        controlledLoads: [
+          {
+            roomId: "room-1-102",
+            lightFixtureIds: ["fix-102-1", "fix-102-4"],
+            outletGroupIds: ["out-102-1", "out-102-2"],
+          },
+        ],
       },
-    ],
-  },
-  {
-    id: "panel-1-2",
-    name: "ЩР-1-1",
-    type: "power",
-    location: "В серверной",
-    breakers: [
       {
-        id: "breaker-1-2-1",
-        name: "QF6 - Рецепция (доп. розетки)",
-        rating: "16A",
-        types: { lighting: false, socket: true, special: false },
+        id: "breaker-1-1-3",
+        name: "QF3 - Кухня-столовая (освещение + розетки)",
+        rating: 25,
+        type: "mixed",
         isOn: true,
-        powers: [{ roomId: "room-1-101", outlets: 3 }],
+        controlledLoads: [
+          {
+            roomId: "room-1-103",
+            lightFixtureIds: ["fix-103-1", "fix-103-2", "fix-103-3"],
+            outletGroupIds: ["out-103-1", "out-103-2"],
+          },
+        ],
+      },
+      {
+        id: "breaker-1-1-4",
+        name: "QF4 - Серверная (питание оборудования)",
+        rating: 32,
+        type: "socket",
+        isOn: true,
+        controlledLoads: [
+          {
+            roomId: "room-1-104",
+            outletGroupIds: ["out-104-1", "out-104-2"],
+          },
+        ],
+      },
+      {
+        id: "breaker-1-1-5",
+        name: "QF5 - Аварийное освещение (все помещения)",
+        rating: 16,
+        type: "lighting",
+        isOn: true,
+        controlledLoads: [
+          {
+            roomId: "room-1-101",
+            lightFixtureIds: ["fix-101-3"],
+          },
+          {
+            roomId: "room-1-102",
+            lightFixtureIds: ["fix-102-3"],
+          },
+          {
+            roomId: "room-1-103",
+            lightFixtureIds: ["fix-103-4"],
+          },
+          {
+            roomId: "room-1-104",
+            lightFixtureIds: ["fix-104-2"],
+          },
+        ],
+      },
+      {
+        id: "breaker-1-1-6",
+        name: "QF6 - Дополнительные розетки",
+        rating: 16,
+        type: "socket",
+        isOn: true,
+        controlledLoads: [
+          {
+            roomId: "room-1-101",
+            outletGroupIds: ["out-101-3", "out-101-4"],
+          },
+          {
+            roomId: "room-1-102",
+            outletGroupIds: ["out-102-3", "out-102-4"],
+          },
+          {
+            roomId: "room-1-103",
+            outletGroupIds: ["out-103-3", "out-103-4"],
+          },
+          {
+            roomId: "room-1-104",
+            outletGroupIds: ["out-104-3"],
+          },
+        ],
+      },
+      {
+        id: "breaker-1-1-7",
+        name: "QF7 - Дополнительное освещение",
+        rating: 16,
+        type: "lighting",
+        isOn: true,
+        controlledLoads: [
+          {
+            roomId: "room-1-102",
+            lightFixtureIds: ["fix-102-2"],
+          },
+          {
+            roomId: "room-1-104",
+            lightFixtureIds: ["fix-104-1", "fix-104-3"],
+          },
+        ],
       },
     ],
   },

@@ -1,22 +1,21 @@
-import React from "react";
-import type { Panel } from "../../types";
 import Breaker from "../Breaker/Breaker";
+
+import type { Panel, Room } from "../../types";
+
 import styles from "./ElectricalPanel.module.css";
-import {
-  floor1Rooms,
-  sharedLamps,
-} from "../data/building-1/floors/floor-1/rooms";
 
 interface ElectricalPanelProps {
   panel: Panel;
   onBreakerToggle: (breakerId: string, isOn: boolean) => void;
   selectedBreakerId?: string;
+  rooms: Room[];
 }
 
 const ElectricalPanel: React.FC<ElectricalPanelProps> = ({
   panel,
   onBreakerToggle,
   selectedBreakerId,
+  rooms,
 }) => {
   const handleBreakerClick = (breakerId: string, currentState: boolean) => {
     onBreakerToggle(breakerId, !currentState);
@@ -38,8 +37,7 @@ const ElectricalPanel: React.FC<ElectricalPanelProps> = ({
             isSelected={selectedBreakerId === breaker.id}
             isOn={breaker.isOn}
             onClick={() => handleBreakerClick(breaker.id, breaker.isOn)}
-            rooms={floor1Rooms}
-            lamps={sharedLamps}
+            rooms={rooms}
           />
         ))}
       </div>

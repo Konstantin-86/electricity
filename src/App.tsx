@@ -245,14 +245,14 @@ const App: React.FC = () => {
           {currentView === "floor-view" && selectedFloor && (
             <div className={styles.floorView}>
               <div className={styles.panelsSection}>
-                <h2>Электрические щиты</h2>
-                <div className={styles.panelsGrid}>
+                <div className={styles.panels}>
                   {panelsState.map((panel) => (
                     <ElectricalPanel
                       key={panel.id}
                       panel={panel}
                       onBreakerToggle={handleBreakerToggle}
                       selectedBreakerId={selectedBreaker?.id}
+                      rooms={selectedFloor.rooms}
                     />
                   ))}
                 </div>
