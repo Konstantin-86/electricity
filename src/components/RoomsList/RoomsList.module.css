@@ -30,6 +30,12 @@
   gap: 16px;
 }
 @media (max-width: 768px) {
+  .roomsGrid {
+    display: flex;
+    justify-content: center;
+    gap: 7px;
+    flex-wrap: wrap;
+  }
   .title {
     font-size: 18px;
     margin-bottom: 7px;

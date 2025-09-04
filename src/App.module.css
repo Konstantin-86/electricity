@@ -138,6 +138,11 @@
   .navigation {
     margin: 0;
   }
+  .panelsSection,
+  .roomsSection {
+    max-height: calc(50dvh - 33px);
+    overflow-y: auto;
+  }
   .roomsSection {
     padding: 0;
   }

@@ -32,29 +32,6 @@ const RoomsList: React.FC<RoomsListProps> = ({
   title = "Помещения",
   getRoomBreakers,
 }) => {
-  // Группировка помещений по типам
-  const groupedRooms = rooms.reduce((acc, room) => {
-    if (!acc[room.type]) {
-      acc[room.type] = [];
-    }
-    acc[room.type].push(room);
-    return acc;
-  }, {} as Record<string, Room[]>);
-
-  const getTypeLabel = (type: string): string => {
-    const typeLabels: Record<string, string> = {
-      office: "Офисы",
-      corridor: "Коридоры",
-      conference: "Конференц-залы",
-      bathroom: "Санузлы",
-      kitchen: "Кухни",
-      storage: "Кладовые",
-      technical: "Технические помещения",
-      other: "Прочие помещения",
-    };
-    return typeLabels[type] || type;
-  };
-
   const isRoomAffectedByBreaker = (room: Room) => {
     if (!selectedBreaker || !selectedBreaker.controlledLoads) return false;
 
@@ -69,23 +46,18 @@ const RoomsList: React.FC<RoomsListProps> = ({
         {title} ({rooms.length})
       </h2>
 
-      {Object.entries(groupedRooms).map(([type, typeRooms]) => (
-        <div key={type} className={styles.typeSection}>
-          <h3 className={styles.typeTitle}>{getTypeLabel(type)}</h3>
-          <div className={styles.roomsGrid}>
-            {typeRooms.map((room) => (
-              <RoomCard
-                key={room.id}
-                room={room}
-                loadState={loadState}
-                isAffected={isRoomAffectedByBreaker(room)}
-                deviceCounts={getRoomDeviceCounts(room)}
-                breakers={getRoomBreakers?.(room) || []}
-              />
-            ))}
-          </div>
-        </div>
-      ))}
+      <div className={styles.roomsGrid}>
+        {rooms.map((room) => (
+          <RoomCard
+            key={room.id}
+            room={room}
+            loadState={loadState}
+            isAffected={isRoomAffectedByBreaker(room)}
+            deviceCounts={getRoomDeviceCounts(room)}
+            breakers={getRoomBreakers?.(room) || []}
+          />
+        ))}
+      </div>
     </div>
   );
 };
