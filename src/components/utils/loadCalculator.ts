@@ -42,9 +42,9 @@ const calculateFixturePower = (
 // Функция для расчета мощности группы розеток
 const calculateOutletGroupPower = (outletGroup: OutletGroup): number => {
   if (outletGroup.estimatedLoad !== undefined) {
-    return outletGroup.estimatedLoad;
+    return outletGroup.count * outletGroup.estimatedLoad; // 2 * 2000 = 4000Вт
   }
-  return outletGroup.count * 200; // 200Вт на розетку по умолчанию
+  return outletGroup.count * 200; // fallback: 2 * 200 = 400Вт
 };
 
 // Основная функция расчета нагрузки на автомат

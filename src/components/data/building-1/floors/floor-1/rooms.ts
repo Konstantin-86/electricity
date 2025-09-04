@@ -7,7 +7,7 @@ export const floor1Rooms: Room[] = [
     name: "Холл Коридор",
     type: "corridor",
     area: 28,
-    outletGroups: [{ id: "out-101-1", count: 4, estimatedLoad: 2000 }],
+    outletGroups: [{ id: "out-101-1", count: 4, estimatedLoad: 300 }],
     lightFixtures: [
       {
         id: "fix-101-1",
@@ -72,7 +72,7 @@ export const floor1Rooms: Room[] = [
     name: "Раздевалка",
     type: "office",
     area: 18,
-    outletGroups: [{ id: "out-105-1", count: 2, estimatedLoad: 2000 }],
+    outletGroups: [{ id: "out-105-1", count: 2, estimatedLoad: 500 }],
     lightFixtures: [
       {
         id: "fix-105-1",
@@ -92,7 +92,7 @@ export const floor1Rooms: Room[] = [
     name: "Помещение старшего смены",
     type: "office",
     area: 12,
-    outletGroups: [{ id: "out-105-1", count: 2, estimatedLoad: 2000 }],
+    outletGroups: [{ id: "out-105-1", count: 2, estimatedLoad: 500 }],
     lightFixtures: [
       {
         id: "fix-105-1",
@@ -112,7 +112,7 @@ export const floor1Rooms: Room[] = [
     name: "Холл розетки",
     type: "corridor",
     area: 12,
-    outletGroups: [{ id: "out-107-1", count: 5, estimatedLoad: 2000 }],
+    outletGroups: [{ id: "out-107-1", count: 5, estimatedLoad: 500 }],
     lightFixtures: [],
   },
   {
@@ -120,7 +120,7 @@ export const floor1Rooms: Room[] = [
     name: "Проходная",
     type: "corridor",
     area: 12,
-    outletGroups: [{ id: "out-108-1", count: 5, estimatedLoad: 2000 }],
+    outletGroups: [{ id: "out-108-1", count: 5, estimatedLoad: 500 }],
     lightFixtures: [
       {
         id: "fix-108-1",
@@ -140,7 +140,39 @@ export const floor1Rooms: Room[] = [
     name: "Розетки кладовка (прием пищи)",
     type: "other",
     area: 12,
-    outletGroups: [{ id: "out-109-1", count: 5, estimatedLoad: 2000 }],
+    outletGroups: [{ id: "out-109-1", count: 5, estimatedLoad: 500 }],
     lightFixtures: [],
+  },
+  {
+    id: "room-1-110",
+    name: "Холл розетка",
+    type: "other",
+    area: 12,
+    outletGroups: [{ id: "out-110-1", count: 2, estimatedLoad: 300 }],
+    lightFixtures: [],
+  },
+  {
+    id: "room-1-111",
+    name: " Дежурное освещение",
+    type: "corridor",
+    area: 12,
+    outletGroups: [],
+    lightFixtures: [
+      {
+        id: "fix-111-1",
+        name: "Дежурное освещение",
+        fixtureType: "ceiling",
+        lampIds: [
+          sharedLamps[6],
+          sharedLamps[6],
+          sharedLamps[6],
+          sharedLamps[6],
+          sharedLamps[6],
+          sharedLamps[6],
+          sharedLamps[6],
+          sharedLamps[6],
+        ],
+      },
+    ],
   },
 ];

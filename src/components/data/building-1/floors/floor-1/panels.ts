@@ -203,6 +203,36 @@ export const floor1Panels: Panel[] = [
           },
         ],
       },
+      {
+        id: "breaker-1-1-10",
+        designation: "QF10",
+        description: "Холл розетки",
+        rating: 25,
+        type: "socket",
+        isOn: true,
+        controlledLoads: [
+          {
+            roomId: "room-1-110",
+            lightFixtureIds: [],
+            outletGroupIds: ["out-110-1"],
+          },
+        ],
+      },
+      {
+        id: "breaker-1-1-11",
+        designation: "QF11",
+        description: "Дежурное освещение",
+        rating: 25,
+        type: "lighting",
+        isOn: true,
+        controlledLoads: [
+          {
+            roomId: "room-1-111",
+            lightFixtureIds: ["fix-111-1"],
+            outletGroupIds: [],
+          },
+        ],
+      },
     ],
   },
 ];

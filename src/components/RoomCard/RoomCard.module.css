@@ -18,11 +18,15 @@
   display: flex;
   align-items: center;
   margin-bottom: 12px;
+  margin-top: 24px;
+  text-align: center;
 }
 
 .icon {
+  position: absolute;
+  top: 7px;
+  right: 7px;
   font-size: 24px;
-  margin-right: 12px;
 }
 
 .title {
@@ -48,6 +52,7 @@
 
 .details {
   margin-bottom: 16px;
+  text-align: center;
 }
 
 .area {
@@ -58,6 +63,7 @@
 
 .deviceStats {
   display: flex;
+  justify-content: center;
   gap: 16px;
 }
 
@@ -208,9 +214,12 @@
 }
 
 .breakerTag {
+  position: absolute;
+  top: 0;
+  left: 7px;
   padding: 2px 6px;
   border-radius: 3px;
-  font-size: 11px;
+  font-size: 16px;
   font-weight: 500;
   border: 1px solid #ddd;
 }
@@ -297,4 +306,52 @@
   .devices {
     gap: 0px;
   }
+}
+.lampOn {
+  background: #ffd54f; /* Более яркий желтый */
+  box-shadow: 0 0 15px #ffb300, 0 0 25px rgba(255, 179, 0, 0.7); /* Двойная тень для большего свечения */
+  transform: scale(1);
+  border: 1px solid #ffb300; /* Добавляем обводку для лучшей видимости */
+}
+
+.outletOn {
+  background: #66bb6a; /* Более яркий зеленый */
+  box-shadow: 0 0 12px #4caf50, 0 0 20px rgba(76, 175, 80, 0.6);
+  transform: scale(1);
+  border: 1px solid #4caf50;
+}
+
+/* Дополнительные улучшения для лучшей видимости */
+.lamp {
+  width: 32px; /* Немного увеличиваем размер */
+  height: 32px;
+  font-size: 16px;
+  border: 1px solid transparent; /* Заготовка для бордера */
+  transition: all 0.3s ease;
+}
+
+.outlet {
+  width: 28px; /* Немного увеличиваем размер */
+  height: 28px;
+  font-size: 14px;
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.lampOff,
+.outletOff {
+  border-color: #ddd; /* Серая обводка для выключенных состояний */
+}
+
+/* Улучшаем контрастность текста/иконок */
+.lampOn,
+.outletOn {
+  color: #333; /* Темный цвет для иконок/текста */
+  font-weight: bold;
+}
+
+/* Альтернативный вариант - использовать SVG иконки с фильтрами */
+.lampOn svg,
+.outletOn svg {
+  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.5));
 }

@@ -49,6 +49,8 @@
   display: flex;
   flex-direction: column;
   gap: 14px;
+  height: 230px;
+  align-items: stretch;
 }
 
 .info {
@@ -56,7 +58,9 @@
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
+  justify-content: space-between;
   gap: 4px;
+  flex: 1;
 }
 
 .nameBreaker,
@@ -149,17 +153,4 @@
 
 .switchOff .switchHandle {
   transform: translateX(2px);
-}
-
-@media (max-width: 768px) {
-  .breakerContent {
-    height: 230px;
-    align-items: stretch;
-  }
-  .info {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
 }
