@@ -9,4 +9,5 @@ export const sharedLamps: Lamp[] = [
   { id: "lamp-halogen-50w", wattage: 50, type: "incandescent" },
   { id: "lamp-led-spot-7w", wattage: 7, type: "led" },
   { id: "lamp-led-panel-40w", wattage: 40, type: "led" },
+  { id: "lamp-energy", wattage: 15, type: "led" },
 ];

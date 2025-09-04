@@ -8,6 +8,35 @@ export type RoomType =
   | "technical"
   | "other";
 
+export interface LightFixtureTechnicalInfo {
+  model?: string;
+
+  socketType?:
+    | "E27"
+    | "E14"
+    | "E40" // Эдисоновские цоколи
+    | "GU10"
+    | "GU5.3"
+    | "G4" // Штырьковые цоколи
+    | "GX53"
+    | "G13"
+    | "G5" // Линейные и другие
+    | "B22"
+    | "B15" // Байонетные
+    | "special"; // Специальный
+  socketQuantity?: number; // Количество цоколей
+  socketDescription?: string; // Описание цоколя (если special)
+
+  //Световой поток
+  luminousFlux?: number;
+
+  // Срок службы
+  lifespan?: number; // Часы
+
+  //IP
+  safetyStandards?: string;
+}
+
 // Простая лампа
 export interface Lamp {
   id: string;
@@ -21,6 +50,7 @@ export interface LightFixture {
   name: string;
   fixtureType?: "ceiling" | "wall" | "emergency";
   lampIds: Lamp[];
+  technicalInfo?: LightFixtureTechnicalInfo;
 }
 
 // Простая розеточная группа

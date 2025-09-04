@@ -11,9 +11,29 @@ export const floor1Rooms: Room[] = [
     lightFixtures: [
       {
         id: "fix-101-1",
-        name: "Основное освещение холла",
+        name: "Армстронг светильник",
         fixtureType: "ceiling",
-        lampIds: [sharedLamps[0], sharedLamps[0], sharedLamps[0]],
+        lampIds: [sharedLamps[2], sharedLamps[2], sharedLamps[2]],
+        technicalInfo: {
+          model: "Светильник Армстронг 36Вт",
+          lifespan: 100000,
+          luminousFlux: 4500,
+          safetyStandards: "IP54",
+        },
+      },
+      {
+        id: "fix-101-2",
+        name: "Армстронг светильник 2",
+        fixtureType: "ceiling",
+        lampIds: [sharedLamps[8]],
+        technicalInfo: {
+          model: "Светильник Армстронг 36Вт",
+          socketDescription: "Энергосберегающая лампа",
+          socketType: "E27",
+          lifespan: 100000,
+          luminousFlux: 4500,
+          safetyStandards: "IP54",
+        },
       },
     ],
   },

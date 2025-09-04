@@ -306,6 +306,9 @@
   .devices {
     gap: 0px;
   }
+  .breakerTag {
+    font-size: 12px;
+  }
 }
 .lampOn {
   background: #ffd54f; /* Более яркий желтый */
@@ -355,3 +358,55 @@
 .outletOn svg {
   filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.5));
 }
+.fixturesContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.fixture {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  font-size: 1.5rem;
+  transition: all 0.2s ease;
+}
+
+.fixtureOn {
+  background-color: #e8f5e8;
+  border: 2px solid #4caf50;
+  opacity: 1;
+}
+
+.fixtureOff {
+  background-color: #f5f5f5;
+  border: 2px solid #ddd;
+  opacity: 0.6;
+}
+
+.fixtureIcon {
+  font-size: 1.5rem;
+}
+
+.lampCount {
+  position: absolute;
+  bottom: -5px;
+  right: -5px;
+  background-color: #ff6b6b;
+  color: white;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  font-size: 0.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+/* Остальные существующие стили остаются без изменений */

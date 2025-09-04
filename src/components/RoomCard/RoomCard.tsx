@@ -1,6 +1,8 @@
-import React from "react";
-import type { IBreaker, Room } from "../../types";
+// RoomCard.tsx (обновленная версия)
+import React, { useState } from "react";
+import type { IBreaker, Room, LightFixture } from "../../types";
 import styles from "./RoomCard.module.css";
+import FixtureModal from "./FixtureModal";
 
 interface RoomCardProps {
   room: Room;
@@ -22,6 +24,11 @@ const RoomCard: React.FC<RoomCardProps> = ({
   deviceCounts,
   breakers,
 }) => {
+  const [selectedFixture, setSelectedFixture] = useState<LightFixture | null>(
+    null
+  );
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const getRoomIcon = () => {
     const icons: Record<string, string> = {
       office: "🏢",
@@ -50,14 +57,22 @@ const RoomCard: React.FC<RoomCardProps> = ({
     return typeLabels[room.type] || room.type;
   };
 
-  // Подсчет общего количества ламп во всех светильниках
+  const handleFixtureClick = (fixture: LightFixture) => {
+    setSelectedFixture(fixture);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedFixture(null);
+  };
+
   const totalLampsCount =
     room.lightFixtures?.reduce(
       (total, fixture) => total + fixture.lampIds.length,
       0
     ) || 0;
 
-  // Подсчет активных ламп
   const activeLampsCount =
     room.lightFixtures?.reduce((total, fixture) => {
       if (loadState[fixture.id]) {
@@ -66,26 +81,27 @@ const RoomCard: React.FC<RoomCardProps> = ({
       return total;
     }, 0) || 0;
 
-  // Визуализация ламп (всех, а не только светильников)
-  const renderLamps = () => {
+  const renderFixtures = () => {
     if (!room.lightFixtures) return null;
 
-    return room.lightFixtures.flatMap((fixture) =>
-      fixture.lampIds.map((_, index) => (
-        <div
-          key={`${fixture.id}-lamp-${index}`} // Используем индекс
-          className={`${styles.lamp} ${
-            loadState[fixture.id] ? styles.lampOn : styles.lampOff
-          }`}
-          title={`Лампа ${index + 1} (${fixture.name})`}
-        >
-          💡
-        </div>
-      ))
-    );
+    return room.lightFixtures.map((fixture) => (
+      <div
+        key={fixture.id}
+        className={`${styles.fixture} ${
+          loadState[fixture.id] ? styles.fixtureOn : styles.fixtureOff
+        }`}
+        title={`${fixture.name} (${fixture.lampIds.length} ламп)`}
+        onClick={() => handleFixtureClick(fixture)}
+        style={{ cursor: "pointer" }}
+      >
+        <span className={styles.fixtureIcon}>💡</span>
+        {fixture.lampIds.length > 1 && (
+          <span className={styles.lampCount}>{fixture.lampIds.length}</span>
+        )}
+      </div>
+    ));
   };
 
-  // Визуализация розеток (всех по отдельности)
   const renderOutlets = () => {
     if (!room.outletGroups) return null;
 
@@ -107,61 +123,74 @@ const RoomCard: React.FC<RoomCardProps> = ({
   };
 
   return (
-    <div className={`${styles.roomCard} ${isAffected ? styles.affected : ""}`}>
-      <div className={styles.header}>
-        <span className={styles.icon}>{getRoomIcon()}</span>
-        <div className={styles.title}>
-          <h3 className={styles.name}>{room.name}</h3>
-          <div className={styles.typeBadge}>{getRoomTypeLabel()}</div>
+    <>
+      <div
+        className={`${styles.roomCard} ${isAffected ? styles.affected : ""}`}
+      >
+        <div className={styles.header}>
+          <span className={styles.icon}>{getRoomIcon()}</span>
+          <div className={styles.title}>
+            <h3 className={styles.name}>{room.name}</h3>
+            <div className={styles.typeBadge}>{getRoomTypeLabel()}</div>
+          </div>
         </div>
-      </div>
 
-      {breakers.length > 0 && (
-        <div className={styles.breakersInfo}>
-          <div className={styles.breakerList}>
-            {breakers.map((breaker) => (
-              <span
-                key={breaker.id}
-                className={`${styles.breakerTag} ${
-                  breaker.isOn ? styles.breakerOn : styles.breakerOff
-                }`}
-                title={breaker.description}
-              >
-                {breaker.designation}
+        {breakers.length > 0 && (
+          <div className={styles.breakersInfo}>
+            <div className={styles.breakerList}>
+              {breakers.map((breaker) => (
+                <span
+                  key={breaker.id}
+                  className={`${styles.breakerTag} ${
+                    breaker.isOn ? styles.breakerOn : styles.breakerOff
+                  }`}
+                  title={breaker.description}
+                >
+                  {breaker.designation}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
+
+        <div className={styles.details}>
+          <div className={styles.area}>{room.area} м²</div>
+          <div className={styles.deviceStats}>
+            <div className={styles.stat}>
+              <span className={styles.statValue}>
+                {activeLampsCount}/{totalLampsCount}
               </span>
-            ))}
+              <span className={styles.statLabel}>ламп</span>
+            </div>
+            <div className={styles.stat}>
+              <span className={styles.statValue}>
+                {deviceCounts.activeOutlets}/{deviceCounts.totalOutlets}
+              </span>
+              <span className={styles.statLabel}>розеток</span>
+            </div>
           </div>
         </div>
+
+        <div className={styles.devices}>
+          <div className={styles.deviceGroup}>
+            <div className={styles.fixturesContainer}>{renderFixtures()}</div>
+          </div>
+
+          <div className={styles.deviceGroup}>
+            <div className={styles.outletsContainer}>{renderOutlets()}</div>
+          </div>
+        </div>
+      </div>
+
+      {selectedFixture && (
+        <FixtureModal
+          fixture={selectedFixture}
+          isOpen={isModalOpen}
+          onClose={closeModal}
+          isActive={loadState[selectedFixture.id]}
+        />
       )}
-
-      <div className={styles.details}>
-        <div className={styles.area}>{room.area} м²</div>
-        <div className={styles.deviceStats}>
-          <div className={styles.stat}>
-            <span className={styles.statValue}>
-              {activeLampsCount}/{totalLampsCount}
-            </span>
-            <span className={styles.statLabel}>ламп</span>
-          </div>
-          <div className={styles.stat}>
-            <span className={styles.statValue}>
-              {deviceCounts.activeOutlets}/{deviceCounts.totalOutlets}
-            </span>
-            <span className={styles.statLabel}>розеток</span>
-          </div>
-        </div>
-      </div>
-
-      <div className={styles.devices}>
-        <div className={styles.deviceGroup}>
-          <div className={styles.lampsContainer}>{renderLamps()}</div>
-        </div>
-
-        <div className={styles.deviceGroup}>
-          <div className={styles.outletsContainer}>{renderOutlets()}</div>
-        </div>
-      </div>
-    </div>
+    </>
   );
 };
 
