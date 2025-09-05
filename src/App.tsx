@@ -1,32 +1,27 @@
-import React, { useState } from "react";
-import type {
-  Building,
-  Floor,
-  IBreaker,
-  Panel,
-  ViewState,
-  Room,
-} from "./types";
-import { mockData } from "./components/data";
+import { useState, useCallback } from "react";
+import type { Building, Floor, IBreaker, Panel, Room } from "./types";
+import { mockData } from "./data";
 import BuildingSelector from "./components/BuildingSelector/BuildingSelector";
 import FloorSelector from "./components/FloorSelector/FloorSelector";
 import ElectricalPanel from "./components/ElectricalPanel/ElectricalPanel";
 import RoomsList from "./components/RoomsList/RoomsList";
-import styles from "./App.module.css";
 
-// Упрощаем состояние устройств - теперь нам нужно только знать, включена ли нагрузка
+import styles from "./App.module.css";
+import { building1 } from "./data/building-1";
+
 interface LoadState {
-  [loadId: string]: boolean; // ID нагрузки -> включена/выключена
+  [loadId: string]: boolean;
 }
 
 interface PowerChange {
   roomId: string;
-  loadIds: string[]; // Какие нагрузки изменили состояние
+  loadIds: string[];
   type: "powerOn" | "powerOff";
 }
 
 const App: React.FC = () => {
-  const [currentView, setCurrentView] = useState<ViewState>("buildings");
+  console.log(mockData);
+
   const [selectedBuilding, setSelectedBuilding] = useState<Building | null>(
     null
   );
@@ -36,205 +31,193 @@ const App: React.FC = () => {
   const [powerChanges, setPowerChanges] = useState<PowerChange[]>([]);
   const [panelsState, setPanelsState] = useState<Panel[]>([]);
 
-  const handleBuildingSelect = (building: Building) => {
+  const handleBuildingSelect = useCallback((building: Building) => {
     setSelectedBuilding(building);
     setSelectedFloor(null);
     setSelectedBreaker(null);
-    setCurrentView("floors");
-  };
+  }, []);
 
-  const handleFloorSelect = (floor: Floor) => {
+  const handleFloorSelect = useCallback((floor: Floor) => {
     setSelectedFloor(floor);
     setSelectedBreaker(null);
     setPanelsState(floor.panels);
-    setCurrentView("floor-view");
 
-    // Изначально все нагрузки включены
+    // Инициализируем состояние нагрузок
     const initialState: LoadState = {};
     floor.rooms.forEach((room) => {
-      // Обрабатываем светильники
       room.lightFixtures?.forEach((fixture) => {
-        initialState[fixture.id] = true; // Светильник включен
+        initialState[fixture.id] = true;
       });
-
-      // Обрабатываем группы розеток
       room.outletGroups?.forEach((outletGroup) => {
-        initialState[outletGroup.id] = true; // Группа розеток включена
+        initialState[outletGroup.id] = true;
       });
     });
     setLoadState(initialState);
-  };
+  }, []);
 
-  const handleBreakerToggle = (breakerId: string, isOn: boolean) => {
-    if (!selectedFloor) return;
+  const handleBreakerToggle = useCallback(
+    (breakerId: string, isOn: boolean) => {
+      if (!selectedFloor) return;
 
-    // Обновляем состояние автомата
-    const updatedPanels = panelsState.map((panel) => ({
-      ...panel,
-      breakers: panel.breakers.map((breaker) =>
-        breaker.id === breakerId ? { ...breaker, isOn: isOn } : breaker
-      ),
-    }));
+      // Обновляем состояние автомата
+      const updatedPanels = panelsState.map((panel) => ({
+        ...panel,
+        breakers: panel.breakers.map((breaker) =>
+          breaker.id === breakerId ? { ...breaker, isOn } : breaker
+        ),
+      }));
 
-    setPanelsState(updatedPanels);
+      setPanelsState(updatedPanels);
 
-    // Находим выбранный автомат и нагрузки, которые он контролирует
-    let targetBreaker: IBreaker | null = null;
-    const changes: PowerChange[] = [];
+      // Находим выбранный автомат и обрабатываем нагрузки
+      let targetBreaker: IBreaker | null = null;
+      const changes: PowerChange[] = [];
 
-    updatedPanels.forEach((panel) => {
-      panel.breakers.forEach((breaker) => {
-        if (breaker.id === breakerId) {
-          targetBreaker = breaker;
+      updatedPanels.forEach((panel) => {
+        panel.breakers.forEach((breaker) => {
+          if (breaker.id === breakerId) {
+            targetBreaker = breaker;
 
-          // Проверяем наличие controlledLoads (для резервных автоматов)
-          if (!breaker.controlledLoads) return;
+            if (!breaker.controlledLoads) return;
 
-          // Для каждой управляемой нагрузки этого автомата
-          breaker.controlledLoads.forEach((load) => {
-            const roomChanges: PowerChange = {
-              roomId: load.roomId || "", // Добавляем проверку на roomId
-              loadIds: [],
-              type: isOn ? "powerOn" : "powerOff",
-            };
+            breaker.controlledLoads.forEach((load) => {
+              const roomChanges: PowerChange = {
+                roomId: load.roomId || "",
+                loadIds: [],
+                type: isOn ? "powerOn" : "powerOff",
+              };
 
-            // Добавляем светильники
-            if (load.lightFixtureIds) {
-              roomChanges.loadIds.push(...load.lightFixtureIds);
-            }
+              if (load.lightFixtureIds) {
+                roomChanges.loadIds.push(...load.lightFixtureIds);
+              }
 
-            // Добавляем группы розеток
-            if (load.outletGroupIds) {
-              roomChanges.loadIds.push(...load.outletGroupIds);
-            }
+              if (load.outletGroupIds) {
+                roomChanges.loadIds.push(...load.outletGroupIds);
+              }
 
-            if (roomChanges.loadIds.length > 0) {
-              changes.push(roomChanges);
-            }
-          });
-        }
-      });
-    });
-
-    if (targetBreaker && changes.length > 0) {
-      setSelectedBreaker(targetBreaker);
-      setPowerChanges(changes);
-
-      // Обновляем состояние нагрузок
-      setLoadState((prev) => {
-        const newState = { ...prev };
-        changes.forEach((change) => {
-          change.loadIds.forEach((loadId) => {
-            newState[loadId] = isOn; // Устанавливаем состояние для каждой нагрузки
-          });
+              if (roomChanges.loadIds.length > 0) {
+                changes.push(roomChanges);
+              }
+            });
+          }
         });
-        return newState;
       });
 
-      // Очищаем изменения через 2 секунды
-      setTimeout(() => {
-        setPowerChanges([]);
-      }, 2000);
-    }
-  };
+      if (targetBreaker && changes.length > 0) {
+        setSelectedBreaker(targetBreaker);
+        setPowerChanges(changes);
 
-  // Проверяем, есть ли вообще питание в помещении
-  const getRoomPowerStatus = (room: Room): boolean => {
-    // Проверяем светильники
-    const hasLightPower = room.lightFixtures?.some(
-      (fixture) => loadState[fixture.id]
-    );
+        // Обновляем состояние нагрузок
+        setLoadState((prev) => {
+          const newState = { ...prev };
+          changes.forEach((change) => {
+            change.loadIds.forEach((loadId) => {
+              newState[loadId] = isOn;
+            });
+          });
+          return newState;
+        });
 
-    // Проверяем группы розеток
-    const hasOutletPower = room.outletGroups?.some(
-      (outletGroup) => loadState[outletGroup.id]
-    );
-
-    return hasLightPower || hasOutletPower;
-  };
-
-  // Получаем количество активных устройств в комнате
-  const getRoomDeviceCounts = (room: Room) => {
-    let activeLights = 0;
-    let totalLights = 0;
-    let activeOutlets = 0;
-    let totalOutlets = 0;
-
-    // Обрабатываем светильники
-    room.lightFixtures?.forEach((fixture) => {
-      if (loadState[fixture.id]) {
-        activeLights += fixture.lampIds.length;
+        setTimeout(() => setPowerChanges([]), 2000);
       }
-      totalLights += fixture.lampIds.length;
-    });
+    },
+    [selectedFloor, panelsState]
+  );
 
-    // Обрабатываем группы розеток
-    room.outletGroups?.forEach((outletGroup) => {
-      if (loadState[outletGroup.id]) {
-        activeOutlets += outletGroup.count;
-      }
-      totalOutlets += outletGroup.count;
-    });
+  const getRoomPowerStatus = useCallback(
+    (room: Room): boolean => {
+      const hasLightPower = room.lightFixtures?.some(
+        (fixture) => loadState[fixture.id]
+      );
+      const hasOutletPower = room.outletGroups?.some(
+        (outletGroup) => loadState[outletGroup.id]
+      );
+      return hasLightPower || hasOutletPower;
+    },
+    [loadState]
+  );
 
-    return { activeLights, totalLights, activeOutlets, totalOutlets };
-  };
+  const getRoomDeviceCounts = useCallback(
+    (room: Room) => {
+      let activeLights = 0;
+      let totalLights = 0;
+      let activeOutlets = 0;
+      let totalOutlets = 0;
 
-  const handleBack = () => {
-    switch (currentView) {
-      case "floors":
-        setCurrentView("buildings");
-        setSelectedBuilding(null);
-        break;
-      case "floor-view":
-        setCurrentView("floors");
-        setSelectedFloor(null);
-        setSelectedBreaker(null);
-        setPowerChanges([]);
-        break;
-      default:
-        setCurrentView("buildings");
-    }
-  };
-
-  const getRoomBreakers = (room: Room): IBreaker[] => {
-    const roomBreakers: IBreaker[] = [];
-
-    panelsState.forEach((panel) => {
-      panel.breakers.forEach((breaker) => {
-        if (
-          breaker.controlledLoads?.some(
-            (load) =>
-              load.roomId === room.id ||
-              (load.lightFixtureIds &&
-                room.lightFixtures?.some((f) =>
-                  load.lightFixtureIds?.includes(f.id)
-                )) ||
-              (load.outletGroupIds &&
-                room.outletGroups?.some((o) =>
-                  load.outletGroupIds?.includes(o.id)
-                ))
-          )
-        ) {
-          roomBreakers.push(breaker);
+      room.lightFixtures?.forEach((fixture) => {
+        if (loadState[fixture.id]) {
+          activeLights += fixture.lampIds.length;
         }
+        totalLights += fixture.lampIds.length;
       });
-    });
 
-    return roomBreakers;
-  };
+      room.outletGroups?.forEach((outletGroup) => {
+        if (loadState[outletGroup.id]) {
+          activeOutlets += outletGroup.count;
+        }
+        totalOutlets += outletGroup.count;
+      });
+
+      return { activeLights, totalLights, activeOutlets, totalOutlets };
+    },
+    [loadState]
+  );
+
+  const getRoomBreakers = useCallback(
+    (room: Room): IBreaker[] => {
+      const roomBreakers: IBreaker[] = [];
+
+      panelsState.forEach((panel) => {
+        panel.breakers.forEach((breaker) => {
+          if (
+            breaker.controlledLoads?.some(
+              (load) =>
+                load.roomId === room.id ||
+                (load.lightFixtureIds &&
+                  room.lightFixtures?.some((f) =>
+                    load.lightFixtureIds?.includes(f.id)
+                  )) ||
+                (load.outletGroupIds &&
+                  room.outletGroups?.some((o) =>
+                    load.outletGroupIds?.includes(o.id)
+                  ))
+            )
+          ) {
+            roomBreakers.push(breaker);
+          }
+        });
+      });
+
+      return roomBreakers;
+    },
+    [panelsState]
+  );
+
+  const handleBack = useCallback(() => {
+    if (selectedFloor) {
+      setSelectedFloor(null);
+      setSelectedBreaker(null);
+      setPowerChanges([]);
+    } else if (selectedBuilding) {
+      setSelectedBuilding(null);
+    }
+  }, [selectedBuilding, selectedFloor]);
+
+  const showBackButton = selectedBuilding !== null;
+  const showBreadcrumbs = selectedBuilding !== null;
 
   return (
-    <div className={styles.app}>
+    /*   <div className={styles.app}>
       <header className={styles.header}>
         <div className={styles.navigation}>
-          {currentView !== "buildings" && (
+          {showBackButton && (
             <button className={styles.backButton} onClick={handleBack}>
               ← Назад
             </button>
           )}
         </div>
 
-        {selectedBuilding && (
+        {showBreadcrumbs && (
           <div className={styles.breadcrumbs}>
             <span>{selectedBuilding.name}</span>
             {selectedFloor && <span> › {selectedFloor.name}</span>}
@@ -244,21 +227,21 @@ const App: React.FC = () => {
 
       <main className={styles.main}>
         <div className={styles.content}>
-          {currentView === "buildings" && (
+          {!selectedBuilding && (
             <BuildingSelector
               buildings={mockData}
               onBuildingSelect={handleBuildingSelect}
             />
           )}
 
-          {currentView === "floors" && selectedBuilding && (
+          {selectedBuilding && !selectedFloor && (
             <FloorSelector
               floors={selectedBuilding.floors}
               onFloorSelect={handleFloorSelect}
             />
           )}
 
-          {currentView === "floor-view" && selectedFloor && (
+          {selectedBuilding && selectedFloor && (
             <div className={styles.floorView}>
               <div className={styles.panelsSection}>
                 <div className={styles.panels}>
@@ -290,7 +273,10 @@ const App: React.FC = () => {
           )}
         </div>
       </main>
-    </div>
+    </div> */
+    <>
+      <BuildingSelector buildings={mockData} />
+    </>
   );
 };
 

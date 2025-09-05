@@ -1,0 +1,231 @@
+/* FloorPlan.module.css */
+.container {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.building {
+  position: relative;
+  width: 800px;
+  height: 600px;
+  border: 2px solid #333;
+  margin: 0 auto;
+  background-color: #f9f9f9;
+}
+
+.entrance,
+.exit {
+  position: absolute;
+  width: 100px;
+  height: 30px;
+  background-color: #8bc34a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  border: 1px solid #666;
+}
+
+.entrance {
+  top: -32px;
+  left: 350px;
+}
+
+.exit {
+  bottom: -32px;
+  left: 350px;
+}
+
+.passageRoom {
+  position: absolute;
+  top: 30px;
+  left: 350px;
+  width: 100px;
+  height: 60px;
+  background-color: #c8e6c9;
+  border: 1px solid #666;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.securityRoom {
+  position: absolute;
+  top: 30px;
+  left: 240px;
+  width: 100px;
+  height: 60px;
+  background-color: #ffcdd2;
+  border: 1px solid #666;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hall {
+  position: absolute;
+  top: 90px;
+  left: 240px;
+  width: 210px;
+  height: 150px;
+  background-color: #bbdefb;
+  border: 1px solid #666;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.rightRooms {
+  position: absolute;
+  top: 90px;
+  left: 450px;
+  width: 100px;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.restroom,
+.storage {
+  height: 45px;
+  background-color: #e1bee7;
+  border: 1px solid #666;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.storage {
+  background-color: #d7ccc8;
+}
+
+.diningRoom {
+  position: absolute;
+  top: 90px;
+  left: 40px;
+  width: 190px;
+  height: 150px;
+  background-color: #fff9c4;
+  border: 1px solid #666;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.kitchenArea {
+  position: absolute;
+  top: 250px;
+  left: 40px;
+  width: 510px;
+  height: 250px;
+  display: flex;
+}
+
+.kitchenCorridor {
+  width: 30px;
+  height: 250px;
+  background-color: #f5f5f5;
+  border: 1px solid #666;
+  writing-mode: vertical-lr;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.kitchenRooms {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 5px;
+  margin-left: 5px;
+  width: 475px;
+}
+
+.kitchenRoom {
+  background-color: #ffccbc;
+  border: 1px solid #666;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  min-height: 115px;
+}
+
+.mainCorridor {
+  position: absolute;
+  top: 250px;
+  left: 560px;
+  width: 100px;
+  height: 250px;
+  background-color: #eeeeee;
+  border: 1px solid #666;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 10px;
+}
+
+.stairs {
+  position: absolute;
+  top: 30px;
+  right: 10px;
+  background-color: #b2ebf2;
+  padding: 5px;
+  border-radius: 3px;
+  border: 1px solid #0097a7;
+}
+
+.roomName {
+  font-size: 12px;
+  text-align: center;
+  padding: 5px;
+}
+
+.electricalPanel {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  background-color: #ffecb3;
+  padding: 3px;
+  border-radius: 3px;
+  font-size: 10px;
+  border: 1px dashed #ff9800;
+}
+
+.passage1 {
+  position: absolute;
+  top: 30px;
+  left: 350px;
+  width: 100px;
+  height: 60px;
+  background-color: #f9f9f9;
+  border: none;
+}
+
+.passage2 {
+  position: absolute;
+  top: 90px;
+  left: 350px;
+  width: 100px;
+  height: 60px;
+  background-color: #f9f9f9;
+  border: none;
+}
+
+.passage3 {
+  position: absolute;
+  top: 150px;
+  left: 350px;
+  width: 100px;
+  height: 90px;
+  background-color: #f9f9f9;
+  border: none;
+}

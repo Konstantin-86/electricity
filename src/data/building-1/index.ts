@@ -1,4 +1,4 @@
-import type { Building } from "../../../types";
+import type { Building } from "../../types";
 import { floors } from "./floors";
 
 export const building1: Building = {

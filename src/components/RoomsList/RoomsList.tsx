@@ -1,62 +1,29 @@
-import type { Room, IBreaker } from "../../types";
+import type { Panel, Room } from "../../types";
+import FloorPlan from "../FloorPlan/FloorPlan";
 import RoomCard from "../RoomCard/RoomCard";
-import styles from "./RoomsList.module.css";
+import { getRoomPowerState } from "../utils/getRoomPowerState";
 
-interface PowerChange {
-  roomId: string;
-  loadIds: string[];
-  type: "powerOn" | "powerOff";
-}
+import styles from "./RoomsList.module.css";
 
 interface RoomsListProps {
   rooms: Room[];
-  loadState: { [loadId: string]: boolean };
-  selectedBreaker?: IBreaker | null;
-  powerChanges?: PowerChange[];
-  getRoomPowerStatus: (room: Room) => boolean;
-  getRoomDeviceCounts: (room: Room) => {
-    activeLights: number;
-    totalLights: number;
-    activeOutlets: number;
-    totalOutlets: number;
-  };
-  title?: string;
-  getRoomBreakers?: (room: Room) => IBreaker[];
+  panels: Panel[];
+  breakersState: { [key: string]: boolean };
 }
 
-const RoomsList: React.FC<RoomsListProps> = ({
-  rooms,
-  loadState,
-  selectedBreaker,
-  getRoomDeviceCounts,
-  title = "Помещения",
-  getRoomBreakers,
-}) => {
-  const isRoomAffectedByBreaker = (room: Room) => {
-    if (!selectedBreaker || !selectedBreaker.controlledLoads) return false;
-
-    return selectedBreaker.controlledLoads.some(
-      (load) => load.roomId === room.id
-    );
-  };
+const RoomsList = ({ rooms, panels, breakersState }: RoomsListProps) => {
+  console.log("breakersState", breakersState);
 
   return (
     <div className={styles.roomsList}>
-      <h2 className={styles.title}>
-        {title} ({rooms.length})
-      </h2>
-
+      <FloorPlan />
       <div className={styles.roomsGrid}>
-        {rooms.map((room) => (
-          <RoomCard
-            key={room.id}
-            room={room}
-            loadState={loadState}
-            isAffected={isRoomAffectedByBreaker(room)}
-            deviceCounts={getRoomDeviceCounts(room)}
-            breakers={getRoomBreakers?.(room) || []}
-          />
-        ))}
+        {rooms.map((room) => {
+          const powerState = getRoomPowerState(room, breakersState, panels);
+          console.log(`Power state for ${room.name}:`, powerState);
+
+          return <RoomCard key={room.id} room={room} powerState={powerState} />;
+        })}
       </div>
     </div>
   );

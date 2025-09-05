@@ -1,4 +1,4 @@
-import type { Panel } from "../../../../../types";
+import type { Panel } from "../../../../types";
 
 export const floor2Panels: Panel[] = [
   {

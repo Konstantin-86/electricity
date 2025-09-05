@@ -3,56 +3,26 @@ import type { IBreaker, Room } from "../../types";
 import styles from "./Breaker.module.css";
 import { calculateBreakerLoad } from "../utils/loadCalculator";
 import BreakerLoadingPanel from "./BreakerLoadingPanel";
-import { sharedLamps } from "../data/lamps/lamps";
+import { lampTemplates } from "../../data/fixture/lamps";
 import BreakerTechnicalInfo from "./BreakerTechnicalInfo";
 
 interface BreakerProps {
   breaker: IBreaker;
-  onClick: () => void;
-  isSelected: boolean;
-  isOn: boolean;
-  rooms: Room[];
+  onToggle: (breakerId: string) => void;
 }
 
-const Breaker: React.FC<BreakerProps> = ({
-  breaker,
-  onClick,
-  isSelected,
-  isOn,
-  rooms,
-}) => {
+const Breaker = ({ breaker, onToggle }: BreakerProps) => {
   const [showTechnicalInfo, setShowTechnicalInfo] = useState(false);
-
-  const handleSwitchClick = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    onClick();
-  };
-
-  const handleInfoClick = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    setShowTechnicalInfo(true);
-  };
-
-  const handleCloseTechnicalInfo = () => {
-    setShowTechnicalInfo(false);
-  };
-
-  // Для резервных автоматов без controlledLoads используем нулевую нагрузку
-  const loadInfo = breaker.controlledLoads
-    ? calculateBreakerLoad(breaker, rooms, sharedLamps)
-    : {
-        totalPower: 0,
-        currentLoad: 0,
-        loadPercentage: 0,
-        lightingPower: 0,
-        socketPower: 0,
-        isOverloaded: false,
-        isCritical: false,
-        rating: breaker.rating,
-      };
 
   return (
     <>
+      <h2>
+        {breaker.designation}
+        <span>`${breaker.isOn}`</span>
+      </h2>
+      <button onClick={() => onToggle(breaker.id)}>adsfas</button>
+    </>
+    /*   <>
       <div
         className={`${styles.breaker} ${isSelected ? styles.selected : ""} ${
           isOn ? styles.on : styles.off
@@ -96,7 +66,7 @@ const Breaker: React.FC<BreakerProps> = ({
         isVisible={showTechnicalInfo}
         onClose={handleCloseTechnicalInfo}
       />
-    </>
+    </> */
   );
 };
 

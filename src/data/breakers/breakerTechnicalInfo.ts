@@ -1,5 +1,5 @@
 // breakerTechnicalInfo.ts
-import type { IBreaker } from "../../../types/index";
+import type { IBreaker } from "../../types/index";
 
 // Экспортируем готовые объекты technicalInfo
 export const techInfoTemplates: { [key: string]: IBreaker["technicalInfo"] } = {

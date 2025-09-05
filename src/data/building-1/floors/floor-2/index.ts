@@ -1,6 +1,6 @@
 import { floor2Rooms } from "./rooms";
 import { floor2Panels } from "./panels";
-import type { Floor } from "../../../../../types";
+import type { Floor } from "../../../../types";
 
 export const floor2: Floor = {
   id: "floor-2",

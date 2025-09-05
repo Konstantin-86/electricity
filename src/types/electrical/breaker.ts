@@ -5,7 +5,6 @@ export interface IBreaker {
   rating: number; // Изменим на number для удобства расчетов (например, 16 вместо "16A")
   type: "lighting" | "socket" | "mixed"; // Упростим тип
   isOn: boolean;
-
   // Связи с нагрузками (вместо rooms)
   controlledLoads?: {
     roomId?: string;

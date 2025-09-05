@@ -1,4 +1,6 @@
 export * from "./electrical/room";
+export * from "./electrical/outlet";
+export * from "./electrical/fixture";
 export * from "./electrical/breaker";
 export * from "./electrical/panel";
 export * from "./electrical/floor";

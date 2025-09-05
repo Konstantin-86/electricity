@@ -1,24 +1,60 @@
-// components/FloorSelector/FloorSelector.tsx
-import React from "react";
+import { useState } from "react";
 import type { Floor } from "../../types";
 import styles from "./FloorSelector.module.css";
+import RoomsList from "../RoomsList/RoomsList";
+import ElectricalPanel from "../ElectricalPanel/ElectricalPanel";
 
 interface FloorSelectorProps {
   floors: Floor[];
-  onFloorSelect: (floor: Floor) => void;
 }
 
-const FloorSelector: React.FC<FloorSelectorProps> = ({
-  floors,
-  onFloorSelect,
-}) => {
+const FloorSelector: React.FC<FloorSelectorProps> = ({ floors }) => {
+  const [currentFloor, setCurrentFloor] = useState<Floor | null>(null);
+  const [breakersState, setBreakersState] = useState<Record<string, boolean>>(
+    {}
+  );
+
+  const click = (floor: Floor) => {
+    setCurrentFloor(floor);
+    const initialBreakersState: Record<string, boolean> = {};
+    floor.panels.forEach((panel) => {
+      panel.breakers.forEach((breaker) => {
+        initialBreakersState[breaker.id] = breaker.isOn;
+      });
+    });
+    setBreakersState(initialBreakersState);
+  };
+
+  const toggleBreaker = (breakerId: string) => {
+    setBreakersState((prev) => ({
+      ...prev,
+      [breakerId]: !prev[breakerId],
+    }));
+  };
+
+  if (currentFloor) {
+    return (
+      <>
+        <RoomsList
+          rooms={currentFloor.rooms}
+          breakersState={breakersState}
+          panels={currentFloor.panels}
+        />
+        <ElectricalPanel
+          panels={currentFloor.panels}
+          onToggleBreaker={toggleBreaker}
+        />
+      </>
+    );
+  }
+
   return (
     <div className={styles.floorsGrid}>
       {floors.map((floor) => (
         <div
           key={floor.id}
           className={styles.floorCard}
-          onClick={() => onFloorSelect(floor)}
+          onClick={() => click(floor)}
         >
           <div className={styles.floorNumber}>{floor.level}</div>
           <h3 className={styles.floorName}>{floor.name}</h3>

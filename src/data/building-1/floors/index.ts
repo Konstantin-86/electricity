@@ -1,4 +1,4 @@
-import type { Floor } from "../../../../types";
+import type { Floor } from "../../../types";
 import { floor1 } from "./floor-1/index";
 import { floor2 } from "./floor-2/index";
 

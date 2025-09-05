@@ -1,4 +1,5 @@
-import type { Panel } from "../../../../../types";
+import type { Panel } from "../../../../types";
+import { techInfoTemplates } from "../../../breakers/breakerTechnicalInfo";
 
 export const floor1Panels: Panel[] = [
   {
@@ -12,7 +13,7 @@ export const floor1Panels: Panel[] = [
       {
         id: "breaker-1-1-1",
         designation: "QF1",
-        description: "Холл Коридор (освещиени + розетки)",
+        description: "Холл Коридор (освещение + розетки)",
         rating: 25,
         type: "lighting",
         isOn: true,
@@ -24,14 +25,7 @@ export const floor1Panels: Panel[] = [
           },
         ],
         technicalInfo: {
-          manufacturer: "ABB",
-          model: "S203",
-          characteristic: "C",
-          breakingCapacity: 10,
-          polesCount: 2,
-          ratedVoltage: 230,
-          installationDate: "2024-01-15",
-          status: "active",
+          ...techInfoTemplates.ABB_SOCKET_16A,
           serialNumber: "ABB-S203-001",
           comments: "Основной автомат рецепции",
         },
@@ -50,14 +44,8 @@ export const floor1Panels: Panel[] = [
           },
         ],
         technicalInfo: {
-          manufacturer: "Schneider Electric",
-          model: "iC60N",
-          characteristic: "C",
-          breakingCapacity: 6,
-          polesCount: 2,
-          installationDate: "2024-01-15",
+          ...techInfoTemplates.SCHNEIDER_IC60N,
           lastMaintenanceDate: "2024-06-10",
-          status: "active",
           serialNumber: "SE-IC60N-002",
         },
       },
@@ -69,13 +57,7 @@ export const floor1Panels: Panel[] = [
         type: "mixed",
         isOn: false,
         technicalInfo: {
-          manufacturer: "IEK",
-          model: "ВА47-29",
-          characteristic: "C",
-          breakingCapacity: 4.5,
-          polesCount: 2,
-          installationDate: "2024-01-15",
-          status: "active",
+          ...techInfoTemplates.IEK_BA47_29,
           warrantyUntil: "2026-01-15",
           comments: "Автомат для кухонного оборудования",
         },
@@ -94,14 +76,7 @@ export const floor1Panels: Panel[] = [
           },
         ],
         technicalInfo: {
-          manufacturer: "ABB",
-          model: "S204",
-          characteristic: "D",
-          breakingCapacity: 15,
-          polesCount: 2,
-          ratedVoltage: 230,
-          installationDate: "2024-02-20",
-          status: "active",
+          ...techInfoTemplates.ABB_HEAVY_DUTY_32A,
           serialNumber: "ABB-S204-004",
           maintenanceComments:
             "Требует регулярной проверки из-за критичной нагрузки",
@@ -127,13 +102,7 @@ export const floor1Panels: Panel[] = [
           },
         ],
         technicalInfo: {
-          manufacturer: "Schneider Electric",
-          model: "Acti9",
-          characteristic: "B",
-          breakingCapacity: 6,
-          polesCount: 1,
-          installationDate: "2024-01-15",
-          status: "active",
+          ...techInfoTemplates.SCHNEIDER_EMERGENCY,
           comments: "Аварийное освещение - не отключать!",
         },
       },
@@ -150,15 +119,7 @@ export const floor1Panels: Panel[] = [
             outletGroupIds: ["out-107-1"],
           },
         ],
-        technicalInfo: {
-          manufacturer: "IEK",
-          model: "ВА47-29",
-          characteristic: "C",
-          breakingCapacity: 4.5,
-          polesCount: 1,
-          installationDate: "2024-01-15",
-          status: "active",
-        },
+        technicalInfo: techInfoTemplates.IEK_BA47_29,
       },
       {
         id: "breaker-1-1-7",
@@ -168,6 +129,7 @@ export const floor1Panels: Panel[] = [
         type: "lighting",
         isOn: true,
         controlledLoads: [],
+        technicalInfo: techInfoTemplates.SCHNEIDER_EMERGENCY,
       },
       {
         id: "breaker-1-1-8",
@@ -177,13 +139,7 @@ export const floor1Panels: Panel[] = [
         type: "mixed",
         isOn: false,
         technicalInfo: {
-          manufacturer: "IEK",
-          model: "ВА47-29",
-          characteristic: "C",
-          breakingCapacity: 4.5,
-          polesCount: 2,
-          installationDate: "2024-01-15",
-          status: "active",
+          ...techInfoTemplates.IEK_BA47_29,
           warrantyUntil: "2026-01-15",
           comments: "Автомат для кухонного оборудования",
         },
@@ -191,7 +147,7 @@ export const floor1Panels: Panel[] = [
       {
         id: "breaker-1-1-9",
         designation: "QF9",
-        description: "Проходная , Розетка еда",
+        description: "Проходная, Розетка еда",
         rating: 25,
         type: "mixed",
         isOn: true,
@@ -202,6 +158,7 @@ export const floor1Panels: Panel[] = [
             outletGroupIds: ["out-108-1", "out-109-1"],
           },
         ],
+        technicalInfo: techInfoTemplates.ABB_SOCKET_16A,
       },
       {
         id: "breaker-1-1-10",
@@ -213,10 +170,10 @@ export const floor1Panels: Panel[] = [
         controlledLoads: [
           {
             roomId: "room-1-110",
-            lightFixtureIds: [],
             outletGroupIds: ["out-110-1"],
           },
         ],
+        technicalInfo: techInfoTemplates.ABB_SOCKET_16A,
       },
       {
         id: "breaker-1-1-11",
@@ -229,9 +186,9 @@ export const floor1Panels: Panel[] = [
           {
             roomId: "room-1-111",
             lightFixtureIds: ["fix-111-1"],
-            outletGroupIds: [],
           },
         ],
+        technicalInfo: techInfoTemplates.ABB_LIGHTING_16A,
       },
     ],
   },
