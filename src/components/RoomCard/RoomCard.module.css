@@ -1,152 +1,100 @@
+/* components/RoomCard/RoomCard.module.css */
 .roomCard {
-  border: 2px solid #e0e0e0;
+  border: 1px solid #e0e0e0;
   border-radius: 12px;
   padding: 16px;
   background: white;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-  min-height: 200px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
 }
 
 .roomCard:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
-/* Состояния питания */
-.powered {
-  border-color: #4caf50;
-  background: linear-gradient(135deg, #f8fff8 0%, #ffffff 100%);
-}
-
-.powered .powerStatus {
-  color: #2e7d32;
-}
-
-.noPower {
-  border-color: #f44336;
-  background: linear-gradient(135deg, #fff8f8 0%, #ffffff 100%);
-}
-
-.noPower .powerStatus {
-  color: #d32f2f;
-}
-
-.partialPower {
-  border-color: #ff9800;
-  background: linear-gradient(135deg, #fff8e1 0%, #ffffff 100%);
-}
-
-.partialPower .powerStatus {
-  color: #f57c00;
-}
-
-/* Заголовок и основная информация */
-.roomCard h3 {
-  margin: 0 0 8px 0;
-  font-size: 18px;
-  font-weight: 600;
-  color: #333;
-}
-
-.roomCard p {
-  margin: 0;
-  font-size: 14px;
-  color: #666;
-}
-
-/* Статус питания */
-.powerStatus {
-  font-weight: 600;
-  font-size: 14px;
-  padding: 8px 12px;
-  border-radius: 6px;
-  background-color: #f5f5f5;
-  text-align: center;
-}
-
-.powerStatus .full {
-  color: #2e7d32;
-  background-color: #e8f5e8;
-  padding: 4px 8px;
-  border-radius: 4px;
-}
-
-.powerStatus .partial {
-  color: #f57c00;
-  background-color: #fff3e0;
-  padding: 4px 8px;
-  border-radius: 4px;
-}
-
-.powerStatus .off {
-  color: #d32f2f;
-  background-color: #ffebee;
-  padding: 4px 8px;
-  border-radius: 4px;
-}
-
-/* Системы (свет и розетки) */
-.systems {
+.header {
   display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.systems > div {
-  padding: 8px 12px;
-  border-radius: 6px;
-  font-size: 14px;
-  font-weight: 500;
-  display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 8px;
+  margin-bottom: 16px;
+  gap: 12px;
 }
 
-.systems .on {
-  background-color: #e8f5e8;
-  color: #2e7d32;
-  border: 1px solid #c8e6c9;
+.header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #333;
+  flex-shrink: 0;
 }
 
-.systems .off {
-  background-color: #ffebee;
-  color: #d32f2f;
-  border: 1px solid #ffcdd2;
-}
-
-/* Оборудование */
-.equipment {
+.breakers {
+  position: relative;
   display: flex;
-  flex-direction: column;
   gap: 6px;
-  font-size: 13px;
-  color: #757575;
-  margin-top: auto;
-  padding-top: 12px;
-  border-top: 1px solid #f0f0f0;
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
-.equipment span {
-  display: block;
+.breaker {
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
 }
 
-/* Адаптивность */
-@media (max-width: 768px) {
-  .roomCard {
-    padding: 12px;
-    min-height: 180px;
-  }
+.breaker:hover {
+  transform: scale(1.05);
+}
 
-  .roomCard h3 {
-    font-size: 16px;
-  }
+.breakerOn {
+  background-color: #e8f5e8;
+  border-color: #4caf50;
+  color: #2e7d32;
+}
 
-  .systems > div {
-    padding: 6px 10px;
-    font-size: 13px;
-  }
+.breakerOff {
+  background-color: #ffebee;
+  border-color: #f44336;
+  color: #c62828;
+  opacity: 0.7;
+}
+
+.icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.icon {
+  font-size: 1.5rem;
+  transition: all 0.2s ease;
+  padding: 4px;
+  border-radius: 4px;
+}
+
+.icon.on {
+  opacity: 1;
+  filter: brightness(1.2);
+}
+
+.icon.off {
+  opacity: 0.3;
+  filter: grayscale(0.8);
+}
+
+.outletGroup {
+  display: flex;
+  gap: 2px;
+}
+.panelName {
+  position: absolute;
+  width: 100px;
+  top: -15px;
+  left: 0;
+  font-size: 12px;
+  color: #9b9b9b;
 }

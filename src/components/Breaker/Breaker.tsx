@@ -1,32 +1,52 @@
-import React, { useState } from "react";
-import type { IBreaker, Room } from "../../types";
+import { useState } from "react";
+import type { IBreaker } from "../../types";
 import styles from "./Breaker.module.css";
-import { calculateBreakerLoad } from "../utils/loadCalculator";
-import BreakerLoadingPanel from "./BreakerLoadingPanel";
-import { lampTemplates } from "../../data/fixture/lamps";
 import BreakerTechnicalInfo from "./BreakerTechnicalInfo";
+import { useBreakerStore } from "../../store/breakerStore";
 
 interface BreakerProps {
   breaker: IBreaker;
-  onToggle: (breakerId: string) => void;
+  isOn: boolean;
 }
 
-const Breaker = ({ breaker, onToggle }: BreakerProps) => {
+const Breaker = ({ breaker, isOn }: BreakerProps) => {
   const [showTechnicalInfo, setShowTechnicalInfo] = useState(false);
+  const toggleBreaker = useBreakerStore((state) => state.toggleBreaker);
+
+  const handleSwitchClick = (e: React.MouseEvent) => {
+    e.stopPropagation(); // Предотвращаем всплытие
+    toggleBreaker(breaker.id);
+  };
+
+  const handleInfoClick = (e: React.MouseEvent) => {
+    e.stopPropagation(); // Предотвращаем всплытие
+    setShowTechnicalInfo(true);
+  };
+
+  const handleCloseTechnicalInfo = () => {
+    setShowTechnicalInfo(false);
+  };
+
+  // Добавим класс для разных типов автоматов
+  const getTypeClass = () => {
+    switch (breaker.type) {
+      case "lighting":
+        return styles.typeLighting;
+      case "socket":
+        return styles.typeSocket;
+      case "mixed":
+        return styles.typeMixed;
+      default:
+        return "";
+    }
+  };
 
   return (
     <>
-      <h2>
-        {breaker.designation}
-        <span>`${breaker.isOn}`</span>
-      </h2>
-      <button onClick={() => onToggle(breaker.id)}>adsfas</button>
-    </>
-    /*   <>
       <div
-        className={`${styles.breaker} ${isSelected ? styles.selected : ""} ${
+        className={`${styles.breaker} ${
           isOn ? styles.on : styles.off
-        }`}
+        } ${getTypeClass()}`}
       >
         <div className={styles.breakerContent}>
           <div className={styles.info}>
@@ -40,14 +60,9 @@ const Breaker = ({ breaker, onToggle }: BreakerProps) => {
             <div className={styles.status}>
               <div className={styles.statusIndicator}></div>
               {isOn ? "ВКЛ" : "ВЫКЛ"}
+              <span className={styles.rating}>{breaker.rating}A</span>
             </div>
           </div>
-
-          <BreakerLoadingPanel
-            loadPercentage={loadInfo.loadPercentage}
-            currentLoad={loadInfo.currentLoad}
-            maxLoad={breaker.rating}
-          />
 
           <div className={styles.switchContainer} onClick={handleSwitchClick}>
             <div
@@ -66,7 +81,7 @@ const Breaker = ({ breaker, onToggle }: BreakerProps) => {
         isVisible={showTechnicalInfo}
         onClose={handleCloseTechnicalInfo}
       />
-    </> */
+    </>
   );
 };
 

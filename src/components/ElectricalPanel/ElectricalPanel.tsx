@@ -1,41 +1,36 @@
 import Breaker from "../Breaker/Breaker";
-
-import type { Panel } from "../../types";
-
+import { useBreakerStore } from "../../store/breakerStore";
 import styles from "./ElectricalPanel.module.css";
 
-interface ElectricalPanelProps {
-  panels: Panel[];
-  onToggleBreaker: (breakerId: string) => void;
-}
+const ElectricalPanel = () => {
+  const { panels, breakersState } = useBreakerStore();
 
-const ElectricalPanel = ({ panels, onToggleBreaker }: ElectricalPanelProps) => {
-  console.log("panels", panels);
+  if (!panels || panels.length === 0) {
+    return (
+      <div className={styles.panel}>
+        <h1>Панель управления</h1>
+        <p>Выберите этаж для отображения щитов</p>
+      </div>
+    );
+  }
 
   return (
     <div className={styles.panel}>
-      <h1>panel</h1>
+      <h1>Панель управления</h1>
       {panels.map((panel) => (
-        <div key={panel.id}>
+        <div key={panel.id} className={styles.panelSection}>
           <h2>{panel.name}</h2>
-          {panel.breakers.map((breaker) => (
-            <Breaker
-              key={breaker.id}
-              breaker={breaker}
-              onToggle={() => onToggleBreaker(breaker.id)}
-            />
-          ))}
+          <div className={styles.breakersGrid}>
+            {panel.breakers.map((breaker) => (
+              <Breaker
+                key={breaker.id}
+                breaker={breaker}
+                isOn={breakersState[breaker.id]}
+              />
+            ))}
+          </div>
         </div>
       ))}
-      {/*  <div className={styles.panelHeader}>
-        <h3 className={styles.panelName}>{panel.name}</h3>
-        <div className={styles.panelType}>{panel.type}</div>
-        <div className={styles.panelLocation}>{panel.location}</div>
-      </div>
-
-      <div className={styles.breakers}>
-        
-      </div> */}
     </div>
   );
 };

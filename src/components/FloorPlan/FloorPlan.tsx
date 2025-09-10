@@ -1,86 +1,74 @@
-import React from "react";
+// components/FloorPlan/FloorPlan.tsx
+import type { Room, RoomType } from "../../types";
 import styles from "./FloorPlan.module.css";
 
-const FloorPlan: React.FC = () => {
+interface FloorPlanProps {
+  rooms: Room[];
+}
+
+const FloorPlan = ({ rooms }: FloorPlanProps) => {
+  // Функция для получения иконки по типу комнаты
+  const getRoomIcon = (type: RoomType) => {
+    switch (type) {
+      case "office":
+        return "💼";
+      case "corridor":
+        return "🚶";
+      case "conference":
+        return "👥";
+      case "bathroom":
+        return "🚽";
+      case "kitchen":
+        return "🍳";
+      case "storage":
+        return "📦";
+      case "technical":
+        return "🔧";
+      case "other":
+      default:
+        return "🏠";
+    }
+  };
+
+  // Функция для получения класса по типу комнаты
+  const getRoomClass = (type: RoomType) => {
+    switch (type) {
+      case "office":
+        return styles.office;
+      case "corridor":
+        return styles.corridor;
+      case "conference":
+        return styles.conference;
+      case "bathroom":
+        return styles.bathroom;
+      case "kitchen":
+        return styles.kitchen;
+      case "storage":
+        return styles.storage;
+      case "technical":
+        return styles.technical;
+      case "other":
+      default:
+        return styles.other;
+    }
+  };
+
   return (
-    <div className={styles.container}>
-      <h2 className={styles.title}>План первого этажа</h2>
-
-      <div className={styles.building}>
-        {/* Вход сверху */}
-        <div className={styles.entrance}>Вход</div>
-
-        {/* Проходная */}
-        <div className={styles.passageRoom}>
-          <div className={styles.roomName}>Проходная</div>
-        </div>
-
-        {/* Помещение охраны */}
-        <div className={styles.securityRoom}>
-          <div className={styles.roomName}>Охрана</div>
-        </div>
-
-        {/* Холл */}
-        <div className={styles.hall}>
-          <div className={styles.roomName}>Холл</div>
-          <div className={styles.electricalPanel}>Щит освещения 1</div>
-        </div>
-
-        {/* Помещения справа от холла */}
-        <div className={styles.rightRooms}>
-          <div className={styles.restroom}>Санузел 1</div>
-          <div className={styles.restroom}>Санузел 2</div>
-          <div className={styles.storage}>Кладовка</div>
-        </div>
-
-        {/* Столовая */}
-        <div className={styles.diningRoom}>
-          <div className={styles.roomName}>Столовая</div>
-        </div>
-
-        {/* Кухонная зона */}
-        <div className={styles.kitchenArea}>
-          <div className={styles.kitchenCorridor}>Кухонный коридор</div>
-
-          <div className={styles.kitchenRooms}>
-            <div className={styles.kitchenRoom}>
-              <div className={styles.roomName}>Хранение продуктов</div>
-            </div>
-            <div className={styles.kitchenRoom}>
-              <div className={styles.roomName}>Приготовление пищи</div>
-              <div className={styles.electricalPanel}>Щит освещения 2</div>
-            </div>
-            <div className={styles.kitchenRoom}>
-              <div className={styles.roomName}>Мойка</div>
-            </div>
-            <div className={styles.kitchenRoom}>
-              <div className={styles.roomName}>Выпечка</div>
-            </div>
-            <div className={styles.kitchenRoom}>
-              <div className={styles.roomName}>Хранение посуды</div>
-            </div>
-            <div className={styles.kitchenRoom}>
-              <div className={styles.roomName}>Разделка</div>
-            </div>
-            <div className={styles.kitchenRoom}>
-              <div className={styles.roomName}>Персонал</div>
+    <div className={styles.floorPlan}>
+      <div className={styles.gridContainer}>
+        {rooms.map((room) => (
+          <div
+            key={room.id}
+            className={`${styles.room} ${getRoomClass(room.type)}`}
+            title={`${room.name}\nПлощадь: ${room.area} м²`}
+          >
+            <div className={styles.roomIcon}>{getRoomIcon(room.type)}</div>
+            <div className={styles.roomContent}>
+              <div className={styles.roomName}>{room.name}</div>
+              <div className={styles.roomArea}>{room.area} м²</div>
             </div>
           </div>
-        </div>
-
-        {/* Коридор с выходом */}
-        <div className={styles.mainCorridor}>
-          <div className={styles.roomName}>Коридор</div>
-          <div className={styles.stairs}>Лестница</div>
-        </div>
-
-        {/* Выход */}
-        <div className={styles.exit}>Выход</div>
-
-        {/* Проходы */}
-        <div className={styles.passage1}></div>
-        <div className={styles.passage2}></div>
-        <div className={styles.passage3}></div>
+        ))}
       </div>
     </div>
   );

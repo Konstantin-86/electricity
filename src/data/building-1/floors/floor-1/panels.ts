@@ -1,5 +1,7 @@
 import type { Panel } from "../../../../types";
 import { techInfoTemplates } from "../../../breakers/breakerTechnicalInfo";
+import { ROOM_IDS_1_FLOOR } from "./roomID";
+import { ELECTRICAL_POINT_IDS_1_FLOOR } from "./roomID";
 
 export const floor1Panels: Panel[] = [
   {
@@ -19,9 +21,9 @@ export const floor1Panels: Panel[] = [
         isOn: true,
         controlledLoads: [
           {
-            roomId: "room-1-101",
-            lightFixtureIds: ["fix-101-1"],
-            outletGroupIds: ["out-101-1"],
+            roomId: ROOM_IDS_1_FLOOR.HALL_CORRIDOR,
+            lightFixtureIds: [ELECTRICAL_POINT_IDS_1_FLOOR.FIX_101_1],
+            outletGroupIds: [ELECTRICAL_POINT_IDS_1_FLOOR.OUT_101_1],
           },
         ],
         technicalInfo: {
@@ -39,8 +41,8 @@ export const floor1Panels: Panel[] = [
         isOn: true,
         controlledLoads: [
           {
-            roomId: "room-1-102",
-            lightFixtureIds: ["fix-102-1"],
+            roomId: ROOM_IDS_1_FLOOR.STAIRS,
+            lightFixtureIds: [ELECTRICAL_POINT_IDS_1_FLOOR.FIX_102_1],
           },
         ],
         technicalInfo: {
@@ -71,8 +73,18 @@ export const floor1Panels: Panel[] = [
         isOn: true,
         controlledLoads: [
           {
-            roomId: "room-1-104",
-            lightFixtureIds: ["fix-103-1", "fix-103-2"],
+            roomId: ROOM_IDS_1_FLOOR.WASHROOM,
+            lightFixtureIds: [
+              ELECTRICAL_POINT_IDS_1_FLOOR.FIX_104_1,
+              ELECTRICAL_POINT_IDS_1_FLOOR.FIX_104_2,
+            ],
+          },
+          {
+            roomId: ROOM_IDS_1_FLOOR.TOILET,
+            lightFixtureIds: [
+              ELECTRICAL_POINT_IDS_1_FLOOR.FIX_103_1,
+              ELECTRICAL_POINT_IDS_1_FLOOR.FIX_103_2,
+            ],
           },
         ],
         technicalInfo: {
@@ -91,14 +103,14 @@ export const floor1Panels: Panel[] = [
         isOn: true,
         controlledLoads: [
           {
-            roomId: "room-1-105",
-            lightFixtureIds: ["fix-105-1"],
-            outletGroupIds: ["out-105-1"],
+            roomId: ROOM_IDS_1_FLOOR.DRESSING_ROOM,
+            lightFixtureIds: [ELECTRICAL_POINT_IDS_1_FLOOR.FIX_105_1],
+            outletGroupIds: [ELECTRICAL_POINT_IDS_1_FLOOR.OUT_105_1],
           },
           {
-            roomId: "room-1-106",
-            lightFixtureIds: ["fix-106-1"],
-            outletGroupIds: ["out-106-1"],
+            roomId: ROOM_IDS_1_FLOOR.SENIOR_ROOM,
+            lightFixtureIds: [ELECTRICAL_POINT_IDS_1_FLOOR.FIX_106_1],
+            outletGroupIds: [ELECTRICAL_POINT_IDS_1_FLOOR.OUT_106_1],
           },
         ],
         technicalInfo: {
@@ -115,8 +127,8 @@ export const floor1Panels: Panel[] = [
         isOn: true,
         controlledLoads: [
           {
-            roomId: "room-1-107",
-            outletGroupIds: ["out-107-1"],
+            roomId: ROOM_IDS_1_FLOOR.HALL_SOCKETS,
+            outletGroupIds: [ELECTRICAL_POINT_IDS_1_FLOOR.OUT_107_1],
           },
         ],
         technicalInfo: techInfoTemplates.IEK_BA47_29,
@@ -153,9 +165,14 @@ export const floor1Panels: Panel[] = [
         isOn: true,
         controlledLoads: [
           {
-            roomId: "room-1-109",
-            lightFixtureIds: ["fix-108-1", "fix-109-1"],
-            outletGroupIds: ["out-108-1", "out-109-1"],
+            roomId: ROOM_IDS_1_FLOOR.CHECKPOINT,
+            lightFixtureIds: [ELECTRICAL_POINT_IDS_1_FLOOR.FIX_108_1],
+            outletGroupIds: [ELECTRICAL_POINT_IDS_1_FLOOR.OUT_108_1],
+          },
+          {
+            roomId: ROOM_IDS_1_FLOOR.STORAGE_SOCKETS,
+            lightFixtureIds: [ELECTRICAL_POINT_IDS_1_FLOOR.FIX_109_1],
+            outletGroupIds: [ELECTRICAL_POINT_IDS_1_FLOOR.OUT_109_1],
           },
         ],
         technicalInfo: techInfoTemplates.ABB_SOCKET_16A,
@@ -169,8 +186,8 @@ export const floor1Panels: Panel[] = [
         isOn: true,
         controlledLoads: [
           {
-            roomId: "room-1-110",
-            outletGroupIds: ["out-110-1"],
+            roomId: ROOM_IDS_1_FLOOR.HALL_SOCKET,
+            outletGroupIds: [ELECTRICAL_POINT_IDS_1_FLOOR.OUT_110_1],
           },
         ],
         technicalInfo: techInfoTemplates.ABB_SOCKET_16A,
@@ -184,8 +201,8 @@ export const floor1Panels: Panel[] = [
         isOn: true,
         controlledLoads: [
           {
-            roomId: "room-1-111",
-            lightFixtureIds: ["fix-111-1"],
+            roomId: ROOM_IDS_1_FLOOR.EMERGENCY_LIGHTING,
+            lightFixtureIds: [ELECTRICAL_POINT_IDS_1_FLOOR.FIX_111_1],
           },
         ],
         technicalInfo: techInfoTemplates.ABB_LIGHTING_16A,

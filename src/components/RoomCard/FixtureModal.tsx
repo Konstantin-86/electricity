@@ -108,7 +108,7 @@ const FixtureModal: React.FC<FixtureModalProps> = ({
                 <div className={styles.infoItem}>
                   <span className={styles.label}>Количество цоколей:</span>
                   <span className={styles.value}>
-                    {fixture.technicalInfo.socketQuantity || "Не указано"}
+                    {fixture.technicalInfo.socketType || "Не указано"}
                   </span>
                 </div>
 

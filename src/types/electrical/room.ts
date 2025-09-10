@@ -1,5 +1,3 @@
-import type { LightFixture, Outlet } from "..";
-
 export type RoomType =
   | "office"
   | "corridor"
@@ -15,6 +13,4 @@ export interface Room {
   name: string;
   type: RoomType;
   area: number;
-  outletGroups: Outlet[]; // Группы розеток
-  lightFixtures: LightFixture[]; // Светильники
 }

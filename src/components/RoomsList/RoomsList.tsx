@@ -1,32 +1,32 @@
-import type { Panel, Room } from "../../types";
-import FloorPlan from "../FloorPlan/FloorPlan";
+// components/RoomsList/RoomsList.tsx
+import { memo } from "react";
+import { useBreakerStore } from "../../store/breakerStore";
 import RoomCard from "../RoomCard/RoomCard";
-import { getRoomPowerState } from "../utils/getRoomPowerState";
-
+import type { Room, LightFixtureInstance, OutletInstance } from "../../types";
 import styles from "./RoomsList.module.css";
 
 interface RoomsListProps {
   rooms: Room[];
-  panels: Panel[];
-  breakersState: { [key: string]: boolean };
+  points: (OutletInstance | LightFixtureInstance)[];
 }
 
-const RoomsList = ({ rooms, panels, breakersState }: RoomsListProps) => {
-  console.log("breakersState", breakersState);
+const RoomsList = ({ rooms, points }: RoomsListProps) => {
+  const currentFloor = useBreakerStore((state) => state.currentFloor);
+
+  if (!currentFloor) {
+    return <div className={styles.placeholder}>Выберите этаж</div>;
+  }
 
   return (
-    <div className={styles.roomsList}>
-      <FloorPlan />
-      <div className={styles.roomsGrid}>
-        {rooms.map((room) => {
-          const powerState = getRoomPowerState(room, breakersState, panels);
-          console.log(`Power state for ${room.name}:`, powerState);
+    <div className={styles.roomsGrid}>
+      {rooms.map((room) => {
+        const roomPoints = points.filter((point) => point.roomId === room.id);
 
-          return <RoomCard key={room.id} room={room} powerState={powerState} />;
-        })}
-      </div>
+        return <RoomCard key={room.id} room={room} points={roomPoints} />;
+      })}
     </div>
   );
 };
 
-export default RoomsList;
+// RoomsList тоже можно мемоизировать
+export default memo(RoomsList);
