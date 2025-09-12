@@ -11,8 +11,6 @@ interface FloorSelectorProps {
 }
 
 const FloorSelector: React.FC<FloorSelectorProps> = ({ floors }) => {
-  console.log("floors", floors);
-
   const [currentFloor, setCurrentFloor] = useState<Floor | null>(null);
 
   const setCurrentFloorInStore = useBreakerStore(
@@ -20,8 +18,6 @@ const FloorSelector: React.FC<FloorSelectorProps> = ({ floors }) => {
   );
 
   const handleFloorClick = (floor: Floor) => {
-    console.log("floor", floor);
-
     setCurrentFloor(floor);
 
     setCurrentFloorInStore(floor);
@@ -34,8 +30,8 @@ const FloorSelector: React.FC<FloorSelectorProps> = ({ floors }) => {
   if (currentFloor) {
     return (
       <>
-        {/*  <FloorPlan rooms={currentFloor.rooms} /> */}
-        {/*   <ElectricalPanel /> */}
+        <FloorPlan rooms={currentFloor.rooms} />
+        <ElectricalPanel />
         <RoomsList
           rooms={currentFloor.rooms}
           points={currentFloor.points}

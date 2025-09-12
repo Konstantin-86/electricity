@@ -5,7 +5,7 @@ export const getBreakersForRoomLoad = (
   loadType: "lighting" | "sockets" | "all",
   panels: Panel[]
 ): IBreaker[] => {
-  const breakers: Breaker[] = [];
+  const breakers: IBreaker[] = [];
 
   panels.forEach((panel) => {
     panel.breakers.forEach((breaker) => {

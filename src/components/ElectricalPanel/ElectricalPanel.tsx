@@ -1,5 +1,6 @@
 import Breaker from "../Breaker/Breaker";
 import { useBreakerStore } from "../../store/breakerStore";
+
 import styles from "./ElectricalPanel.module.css";
 
 const ElectricalPanel = () => {
@@ -16,7 +17,6 @@ const ElectricalPanel = () => {
 
   return (
     <div className={styles.panel}>
-      <h1>Панель управления</h1>
       {panels.map((panel) => (
         <div key={panel.id} className={styles.panelSection}>
           <h2>{panel.name}</h2>

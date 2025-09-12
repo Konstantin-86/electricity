@@ -55,6 +55,11 @@
   flex-wrap: wrap;
   gap: 7px;
 }
+.breakersGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
 @media (max-width: 768px) {
   .panelName {
     font-size: 14px;
