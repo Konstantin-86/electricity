@@ -5,9 +5,12 @@ import type {
   OutletInstance,
 } from "../../../../types/electrical/points";
 
-export const electricalInstances2Floor: (OutletInstance | LightFixtureInstance)[] = [
+export const electricalInstances2Floor: (
+  | OutletInstance
+  | LightFixtureInstance
+)[] = [
   // ========== РОЗЕТКИ ==========
-  
+
   // Коридор (201)
   {
     id: ELECTRICAL_POINT_IDS_2_FLOOR.OUT_201_1,
@@ -30,7 +33,7 @@ export const electricalInstances2Floor: (OutletInstance | LightFixtureInstance)[
     count: 1,
     estimatedLoad: 500,
   },
-  
+
   // Начальник участка АТХ (204)
   {
     id: ELECTRICAL_POINT_IDS_2_FLOOR.OUT_204_1,
@@ -53,7 +56,53 @@ export const electricalInstances2Floor: (OutletInstance | LightFixtureInstance)[
     count: 1,
     estimatedLoad: 1500,
   },
-  
+  // Начальник участка АВР (206)
+  {
+    id: ELECTRICAL_POINT_IDS_2_FLOOR.OUT_207_1,
+    roomId: ROOM_IDS_2_FLOOR.OFFICE_AVR_HEAD,
+    type: "outlet",
+    count: 2,
+    estimatedLoad: 300,
+  },
+
+  // Начальник участка ДиПНР (207)
+  {
+    id: ELECTRICAL_POINT_IDS_2_FLOOR.OUT_207_1,
+    roomId: ROOM_IDS_2_FLOOR.OFFICE_DIPNR_HEAD,
+    type: "outlet",
+    count: 1,
+    estimatedLoad: 300,
+  },
+  {
+    id: ELECTRICAL_POINT_IDS_2_FLOOR.OUT_207_2,
+    roomId: ROOM_IDS_2_FLOOR.OFFICE_DIPNR_HEAD,
+    type: "outlet",
+    count: 2,
+    estimatedLoad: 400,
+  },
+  // Зам. начальника УАВР-4 (208)
+  {
+    id: ELECTRICAL_POINT_IDS_2_FLOOR.OUT_208_1,
+    roomId: ROOM_IDS_2_FLOOR.OFFICE_AVR4_DEPUTY,
+    type: "outlet",
+    count: 2,
+    estimatedLoad: 400,
+  },
+  {
+    id: ELECTRICAL_POINT_IDS_2_FLOOR.OUT_208_2,
+    roomId: ROOM_IDS_2_FLOOR.OFFICE_AVR4_DEPUTY,
+    type: "outlet",
+    count: 1,
+    estimatedLoad: 300,
+  },
+  {
+    id: ELECTRICAL_POINT_IDS_2_FLOOR.OUT_208_3,
+    roomId: ROOM_IDS_2_FLOOR.OFFICE_AVR4_DEPUTY,
+    type: "outlet",
+    count: 1,
+    estimatedLoad: 1000,
+  },
+
   // ПТО (211)
   {
     id: ELECTRICAL_POINT_IDS_2_FLOOR.OUT_211_1,
@@ -90,7 +139,7 @@ export const electricalInstances2Floor: (OutletInstance | LightFixtureInstance)[
     count: 1,
     estimatedLoad: 1000,
   },
-  
+
   // Начальник участка ЭВС (205)
   {
     id: ELECTRICAL_POINT_IDS_2_FLOOR.OUT_205_1,
@@ -106,7 +155,7 @@ export const electricalInstances2Floor: (OutletInstance | LightFixtureInstance)[
     count: 2,
     estimatedLoad: 400,
   },
-  
+
   // Кабинет директора газторг (209)
   {
     id: ELECTRICAL_POINT_IDS_2_FLOOR.OUT_209_1,
@@ -136,7 +185,7 @@ export const electricalInstances2Floor: (OutletInstance | LightFixtureInstance)[
     count: 1,
     estimatedLoad: 1500,
   },
-  
+
   // Техник АТХ и ГОЧС (212)
   {
     id: ELECTRICAL_POINT_IDS_2_FLOOR.OUT_212_1,
@@ -161,7 +210,7 @@ export const electricalInstances2Floor: (OutletInstance | LightFixtureInstance)[
   },
 
   // ========== СВЕТИЛЬНИКИ ==========
-  
+
   // Коридор (201)
   {
     id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_201_1,
@@ -193,7 +242,7 @@ export const electricalInstances2Floor: (OutletInstance | LightFixtureInstance)[
     type: "light",
     template: fixtureTemplates.EMERGENCY_EXIT_SIGN,
   },
-  
+
   // Лестница (202)
   {
     id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_202_1,
@@ -213,7 +262,7 @@ export const electricalInstances2Floor: (OutletInstance | LightFixtureInstance)[
     type: "light",
     template: fixtureTemplates.EMERGENCY_LUMINAIRE,
   },
-  
+
   // Лестница столовая (203)
   {
     id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_203_1,
@@ -227,7 +276,7 @@ export const electricalInstances2Floor: (OutletInstance | LightFixtureInstance)[
     type: "light",
     template: fixtureTemplates.RECESSED_SPOT_10W,
   },
-  
+
   // Начальник участка АТХ (204)
   {
     id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_204_1,
@@ -241,7 +290,54 @@ export const electricalInstances2Floor: (OutletInstance | LightFixtureInstance)[
     type: "light",
     template: fixtureTemplates.RECESSED_SPOT_10W,
   },
-  
+  // Начальник участка АВР (206)
+
+  {
+    id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_206_1,
+    roomId: ROOM_IDS_2_FLOOR.OFFICE_ATX_HEAD,
+    type: "light",
+    template: fixtureTemplates.OFFICE_PANEL_2x36W,
+  },
+  {
+    id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_206_2,
+    roomId: ROOM_IDS_2_FLOOR.OFFICE_ATX_HEAD,
+    type: "light",
+    template: fixtureTemplates.OFFICE_PANEL_2x36W,
+  },
+  {
+    id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_206_3,
+    roomId: ROOM_IDS_2_FLOOR.OFFICE_ATX_HEAD,
+    type: "light",
+    template: fixtureTemplates.LED_PANEL_SINGLE_40W,
+  },
+
+  // Начальник участка ДиПНР (207)
+  {
+    id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_207_1,
+    roomId: ROOM_IDS_2_FLOOR.OFFICE_DIPNR_HEAD,
+    type: "light",
+    template: fixtureTemplates.OFFICE_PANEL_2x36W,
+  },
+  {
+    id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_207_2,
+    roomId: ROOM_IDS_2_FLOOR.OFFICE_DIPNR_HEAD,
+    type: "light",
+    template: fixtureTemplates.RECESSED_SPOT_10W,
+  },
+  // Зам. начальника УАВР-4 (208)
+  {
+    id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_208_1,
+    roomId: ROOM_IDS_2_FLOOR.OFFICE_AVR4_DEPUTY,
+    type: "light",
+    template: fixtureTemplates.OFFICE_PANEL_2x36W,
+  },
+  {
+    id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_208_2,
+    roomId: ROOM_IDS_2_FLOOR.OFFICE_AVR4_DEPUTY,
+    type: "light",
+    template: fixtureTemplates.RECESSED_SPOT_10W,
+  },
+
   // ПТО (211)
   {
     id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_211_1,
@@ -279,7 +375,7 @@ export const electricalInstances2Floor: (OutletInstance | LightFixtureInstance)[
     type: "light",
     template: fixtureTemplates.EMERGENCY_EXIT_SIGN,
   },
-  
+
   // Туалет (215)
   {
     id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_215_1,
@@ -293,7 +389,7 @@ export const electricalInstances2Floor: (OutletInstance | LightFixtureInstance)[
     type: "light",
     template: fixtureTemplates.RECESSED_SPOT_10W,
   },
-  
+
   // Мужской туалет (216)
   {
     id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_216_1,
@@ -307,7 +403,7 @@ export const electricalInstances2Floor: (OutletInstance | LightFixtureInstance)[
     type: "light",
     template: fixtureTemplates.RECESSED_SPOT_10W,
   },
-  
+
   // Женский туалет (217)
   {
     id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_217_1,
@@ -321,7 +417,7 @@ export const electricalInstances2Floor: (OutletInstance | LightFixtureInstance)[
     type: "light",
     template: fixtureTemplates.RECESSED_SPOT_10W,
   },
-  
+
   // Кабинет директора газторг (209)
   {
     id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_209_1,
@@ -341,7 +437,7 @@ export const electricalInstances2Floor: (OutletInstance | LightFixtureInstance)[
     type: "light",
     template: fixtureTemplates.PENDANT_LIGHT_3x18W,
   },
-  
+
   // Начальник участка ЭВС (205)
   {
     id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_205_1,
@@ -355,7 +451,7 @@ export const electricalInstances2Floor: (OutletInstance | LightFixtureInstance)[
     type: "light",
     template: fixtureTemplates.RECESSED_SPOT_10W,
   },
-  
+
   // Начальник участка АВР (206)
   {
     id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_206_1,
@@ -369,7 +465,7 @@ export const electricalInstances2Floor: (OutletInstance | LightFixtureInstance)[
     type: "light",
     template: fixtureTemplates.RECESSED_SPOT_10W,
   },
-  
+
   // Подсобное помещение (213)
   {
     id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_213_1,
@@ -377,7 +473,7 @@ export const electricalInstances2Floor: (OutletInstance | LightFixtureInstance)[
     type: "light",
     template: fixtureTemplates.LED_PANEL_SINGLE_40W,
   },
-  
+
   // Освещение программиста (214)
   {
     id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_214_1,

@@ -11,14 +11,24 @@ interface FloorSelectorProps {
 }
 
 const FloorSelector: React.FC<FloorSelectorProps> = ({ floors }) => {
+  console.log("floors", floors);
+
   const [currentFloor, setCurrentFloor] = useState<Floor | null>(null);
+
   const setCurrentFloorInStore = useBreakerStore(
     (state) => state.setCurrentFloor
   );
 
   const handleFloorClick = (floor: Floor) => {
+    console.log("floor", floor);
+
     setCurrentFloor(floor);
+
     setCurrentFloorInStore(floor);
+  };
+
+  const goBackButton = () => {
+    setCurrentFloor(null);
   };
 
   if (currentFloor) {
@@ -26,7 +36,11 @@ const FloorSelector: React.FC<FloorSelectorProps> = ({ floors }) => {
       <>
         {/*  <FloorPlan rooms={currentFloor.rooms} /> */}
         {/*   <ElectricalPanel /> */}
-        <RoomsList rooms={currentFloor.rooms} points={currentFloor.points} />
+        <RoomsList
+          rooms={currentFloor.rooms}
+          points={currentFloor.points}
+          goBackButton={goBackButton}
+        />
       </>
     );
   }

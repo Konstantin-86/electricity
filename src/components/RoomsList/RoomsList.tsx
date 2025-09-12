@@ -8,9 +8,10 @@ import styles from "./RoomsList.module.css";
 interface RoomsListProps {
   rooms: Room[];
   points: (OutletInstance | LightFixtureInstance)[];
+  goBackButton: () => void;
 }
 
-const RoomsList = ({ rooms, points }: RoomsListProps) => {
+const RoomsList = ({ rooms, points, goBackButton }: RoomsListProps) => {
   const currentFloor = useBreakerStore((state) => state.currentFloor);
 
   if (!currentFloor) {
@@ -19,6 +20,7 @@ const RoomsList = ({ rooms, points }: RoomsListProps) => {
 
   return (
     <div className={styles.roomsGrid}>
+      <button onClick={goBackButton}>I`ll be back</button>
       {rooms.map((room) => {
         const roomPoints = points.filter((point) => point.roomId === room.id);
 
@@ -28,5 +30,4 @@ const RoomsList = ({ rooms, points }: RoomsListProps) => {
   );
 };
 
-// RoomsList тоже можно мемоизировать
 export default memo(RoomsList);
