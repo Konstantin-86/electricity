@@ -171,7 +171,7 @@ export const electricalInstances2Floor: (
     roomId: ROOM_IDS_2_FLOOR.DEPT_ATX_TECH,
     type: "outlet",
     count: 4,
-    estimatedLoad: 800,
+    estimatedLoad: 300,
   },
   {
     id: ELECTRICAL_POINT_IDS_2_FLOOR.OUT_212_2,
@@ -185,7 +185,7 @@ export const electricalInstances2Floor: (
     roomId: ROOM_IDS_2_FLOOR.DEPT_ATX_TECH,
     type: "outlet",
     count: 1,
-    estimatedLoad: 1000,
+    estimatedLoad: 400,
   },
 
   // ========== СВЕТИЛЬНИКИ ==========
@@ -287,6 +287,19 @@ export const electricalInstances2Floor: (
     type: "light",
     template: fixtureTemplates.RECESSED_SPOT_10W,
   },
+  // Начальник участка ЭВС (205)
+  {
+    id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_205_1,
+    roomId: ROOM_IDS_2_FLOOR.OFFICE_EVS_HEAD,
+    type: "light",
+    template: fixtureTemplates.OFFICE_PANEL_2x36W,
+  },
+  {
+    id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_205_2,
+    roomId: ROOM_IDS_2_FLOOR.OFFICE_EVS_HEAD,
+    type: "light",
+    template: fixtureTemplates.RECESSED_SPOT_10W,
+  },
   // Начальник участка АВР (206)
 
   {
@@ -335,6 +348,26 @@ export const electricalInstances2Floor: (
     template: fixtureTemplates.RECESSED_SPOT_10W,
   },
 
+  // Кабинет директора газторг (209)
+  {
+    id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_209_1,
+    roomId: ROOM_IDS_2_FLOOR.OFFICE_GAZTORG_DIRECTOR,
+    type: "light",
+    template: fixtureTemplates.OFFICE_PANEL_2x36W,
+  },
+  {
+    id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_209_2,
+    roomId: ROOM_IDS_2_FLOOR.OFFICE_GAZTORG_DIRECTOR,
+    type: "light",
+    template: fixtureTemplates.OFFICE_PANEL_2x36W,
+  },
+  {
+    id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_209_3,
+    roomId: ROOM_IDS_2_FLOOR.OFFICE_GAZTORG_DIRECTOR,
+    type: "light",
+    template: fixtureTemplates.PENDANT_LIGHT_3x18W,
+  },
+
   // ПТО (211)
   {
     id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_211_1,
@@ -371,6 +404,25 @@ export const electricalInstances2Floor: (
     roomId: ROOM_IDS_2_FLOOR.DEPT_PTO,
     type: "light",
     template: fixtureTemplates.EMERGENCY_EXIT_SIGN,
+  },
+  // Техник АТХ и ГОЧС (212)
+  {
+    id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_212_1,
+    roomId: ROOM_IDS_2_FLOOR.DEPT_ATX_TECH,
+    type: "light",
+    template: fixtureTemplates.OFFICE_PANEL_2x36W,
+  },
+  {
+    id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_212_2,
+    roomId: ROOM_IDS_2_FLOOR.DEPT_ATX_TECH,
+    type: "light",
+    template: fixtureTemplates.OFFICE_PANEL_2x36W,
+  },
+  {
+    id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_212_3,
+    roomId: ROOM_IDS_2_FLOOR.DEPT_ATX_TECH,
+    type: "light",
+    template: fixtureTemplates.OFFICE_PANEL_2x36W,
   },
 
   // Туалет (215)
@@ -414,63 +466,6 @@ export const electricalInstances2Floor: (
     type: "light",
     template: fixtureTemplates.RECESSED_SPOT_10W,
   },
-
-  // Кабинет директора газторг (209)
-  {
-    id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_209_1,
-    roomId: ROOM_IDS_2_FLOOR.OFFICE_GAZTORG_DIRECTOR,
-    type: "light",
-    template: fixtureTemplates.OFFICE_PANEL_2x36W,
-  },
-  {
-    id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_209_2,
-    roomId: ROOM_IDS_2_FLOOR.OFFICE_GAZTORG_DIRECTOR,
-    type: "light",
-    template: fixtureTemplates.OFFICE_PANEL_2x36W,
-  },
-  {
-    id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_209_3,
-    roomId: ROOM_IDS_2_FLOOR.OFFICE_GAZTORG_DIRECTOR,
-    type: "light",
-    template: fixtureTemplates.PENDANT_LIGHT_3x18W,
-  },
-
-  // Начальник участка ЭВС (205)
-  {
-    id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_205_1,
-    roomId: ROOM_IDS_2_FLOOR.OFFICE_EVS_HEAD,
-    type: "light",
-    template: fixtureTemplates.OFFICE_PANEL_2x36W,
-  },
-  {
-    id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_205_2,
-    roomId: ROOM_IDS_2_FLOOR.OFFICE_EVS_HEAD,
-    type: "light",
-    template: fixtureTemplates.RECESSED_SPOT_10W,
-  },
-
-  // Начальник участка АВР (206)
-  {
-    id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_206_1,
-    roomId: ROOM_IDS_2_FLOOR.OFFICE_AVR_HEAD,
-    type: "light",
-    template: fixtureTemplates.OFFICE_PANEL_2x36W,
-  },
-  {
-    id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_206_2,
-    roomId: ROOM_IDS_2_FLOOR.OFFICE_AVR_HEAD,
-    type: "light",
-    template: fixtureTemplates.RECESSED_SPOT_10W,
-  },
-
-  // Подсобное помещение (213)
-  {
-    id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_213_1,
-    roomId: ROOM_IDS_2_FLOOR.UTILITY_STORAGE,
-    type: "light",
-    template: fixtureTemplates.LED_PANEL_SINGLE_40W,
-  },
-
   // Освещение программиста (214)
   {
     id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_214_1,

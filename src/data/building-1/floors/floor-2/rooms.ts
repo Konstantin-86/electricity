@@ -75,12 +75,6 @@ export const floor2Rooms: Room[] = [
     area: 15,
   },
   {
-    id: ROOM_IDS_2_FLOOR.UTILITY_STORAGE,
-    name: "Подсобное помещение",
-    type: "other",
-    area: 12,
-  },
-  {
     id: ROOM_IDS_2_FLOOR.UTILITY_PROGRAMMER_LIGHTING,
     name: "Освещение программиста",
     type: "other",

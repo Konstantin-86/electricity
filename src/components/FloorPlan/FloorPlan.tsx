@@ -1,82 +1,32 @@
-// components/FloorPlan/FloorPlan.tsx
-import { useState } from "react";
-import type { Room, RoomType } from "../../types";
 import styles from "./FloorPlan.module.css";
+import Floor2Plan from "../FloorPlan/building1/floor2/Floor2Plan";
+import { useState } from "react";
+// Импортируйте другие компоненты планов этажей по мере их создания
 
 interface FloorPlanProps {
-  rooms: Room[];
+  floor: string;
 }
 
-const FloorPlan = ({ rooms }: FloorPlanProps) => {
+// Словарь компонентов планов этажей
+const floorPlanComponents: Record<string, React.ComponentType> = {
+  "floor-1-2": Floor2Plan,
+  // Добавьте другие этажи по мере необходимости
+  // "floor-1-1": Floor1Plan,
+  // "floor-1-3": Floor3Plan,
+};
+
+const FloorPlan = ({ floor }: FloorPlanProps) => {
   const [showPlan, setShowPlan] = useState(false);
+  const FloorComponent = floorPlanComponents[floor];
 
-  const getRoomIcon = (type: RoomType) => {
-    switch (type) {
-      case "office":
-        return "💼";
-      case "corridor":
-        return "🚶";
-      case "conference":
-        return "👥";
-      case "bathroom":
-        return "🚽";
-      case "kitchen":
-        return "🍳";
-      case "storage":
-        return "📦";
-      case "technical":
-        return "🔧";
-      case "other":
-      default:
-        return "🏠";
-    }
-  };
-
-  // Функция для получения класса по типу комнаты
-  const getRoomClass = (type: RoomType) => {
-    switch (type) {
-      case "office":
-        return styles.office;
-      case "corridor":
-        return styles.corridor;
-      case "conference":
-        return styles.conference;
-      case "bathroom":
-        return styles.bathroom;
-      case "kitchen":
-        return styles.kitchen;
-      case "storage":
-        return styles.storage;
-      case "technical":
-        return styles.technical;
-      case "other":
-      default:
-        return styles.other;
-    }
-  };
+  if (!FloorComponent) {
+    return <div className={styles.placeholder}>План этажа недоступен</div>;
+  }
 
   return (
     <>
-      <div onClick={() => setShowPlan(!showPlan)}>Plan</div>
-      {showPlan ? (
-        <div className={styles.floorPlan}>
-          <div className={styles.gridContainer}>
-            {rooms.map((room) => (
-              <div
-                key={room.id}
-                className={`${styles.room} ${getRoomClass(room.type)}`}
-                title={`${room.name}\nПлощадь: ${room.area} м²`}
-              >
-                <div className={styles.roomIcon}>{getRoomIcon(room.type)}</div>
-                <div className={styles.roomContent}>
-                  <div className={styles.roomName}>{room.name}</div>
-                  <div className={styles.roomArea}>{room.area} м²</div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      ) : null}
+      <button onClick={() => setShowPlan(!showPlan)}>План этажа</button>
+      {showPlan ? <FloorComponent /> : null}
     </>
   );
 };

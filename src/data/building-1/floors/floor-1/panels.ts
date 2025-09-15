@@ -6,7 +6,7 @@ import { ELECTRICAL_POINT_IDS_1_FLOOR } from "./roomID";
 export const floor1Panels: Panel[] = [
   {
     id: "panel-1-1",
-    name: "ЩО-1-1",
+    name: "ЩО-1",
     type: "lighting",
     location: "холл на входе, возле туалета",
     cableType: "ВВГнг-LS 3x6",

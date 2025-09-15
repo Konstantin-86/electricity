@@ -6,12 +6,14 @@ import ElectricalPanel from "../ElectricalPanel/ElectricalPanel";
 import { useBreakerStore } from "../../store/breakerStore";
 import FloorPlan from "../FloorPlan/FloorPlan";
 import ElectricalScheme from "../ElectricalScheme/ElectricalScheme";
+import Floor2Plan from "../FloorPlan/building1/floor2/Floor2Plan";
 
 interface FloorSelectorProps {
   floors: Floor[];
+  goBack: () => void;
 }
 
-const FloorSelector: React.FC<FloorSelectorProps> = ({ floors }) => {
+const FloorSelector = ({ floors, goBack }: FloorSelectorProps) => {
   const [currentFloor, setCurrentFloor] = useState<Floor | null>(null);
 
   const setCurrentFloorInStore = useBreakerStore(
@@ -20,7 +22,6 @@ const FloorSelector: React.FC<FloorSelectorProps> = ({ floors }) => {
 
   const handleFloorClick = (floor: Floor) => {
     setCurrentFloor(floor);
-
     setCurrentFloorInStore(floor);
   };
 
@@ -32,7 +33,7 @@ const FloorSelector: React.FC<FloorSelectorProps> = ({ floors }) => {
     return (
       <>
         {/*  <ElectricalScheme /> */}
-        <FloorPlan rooms={currentFloor.rooms} />
+        <FloorPlan floor={currentFloor.id} />
         <ElectricalPanel />
         <RoomsList
           rooms={currentFloor.rooms}
@@ -44,22 +45,25 @@ const FloorSelector: React.FC<FloorSelectorProps> = ({ floors }) => {
   }
 
   return (
-    <div className={styles.floorsGrid}>
-      {floors.map((floor) => (
-        <div
-          key={floor.id}
-          className={styles.floorCard}
-          onClick={() => handleFloorClick(floor)}
-        >
-          <div className={styles.floorNumber}>{floor.level}</div>
-          <h3 className={styles.floorName}>{floor.name}</h3>
-          <div className={styles.floorStats}>
-            <span>Щитов: {floor.panels.length}</span>
-            <span>Помещений: {floor.rooms.length}</span>
+    <>
+      <button onClick={goBack}>Назад</button>
+      <div className={styles.floorsGrid}>
+        {floors.map((floor) => (
+          <div
+            key={floor.id}
+            className={styles.floorCard}
+            onClick={() => handleFloorClick(floor)}
+          >
+            <div className={styles.floorNumber}>{floor.level}</div>
+            <h3 className={styles.floorName}>{floor.name}</h3>
+            <div className={styles.floorStats}>
+              <span>Щитов: {floor.panels.length}</span>
+              <span>Помещений: {floor.rooms.length}</span>
+            </div>
           </div>
-        </div>
-      ))}
-    </div>
+        ))}
+      </div>
+    </>
   );
 };
 

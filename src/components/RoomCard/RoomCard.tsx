@@ -10,8 +10,6 @@ interface RoomCardProps {
 }
 
 const RoomCard = ({ room, points }: RoomCardProps) => {
-  console.log("points", points);
-
   const electricalState = useRoomElectricalState(room.id);
   const toggleBreaker = useBreakerStore((state) => state.toggleBreaker);
 
@@ -19,7 +17,6 @@ const RoomCard = ({ room, points }: RoomCardProps) => {
     toggleBreaker(breakerId);
   };
 
-  // Собираем уникальные автоматы для помещения
   const breakers = new Map<
     string,
     { designation: string; isOn: boolean; panelName: string }

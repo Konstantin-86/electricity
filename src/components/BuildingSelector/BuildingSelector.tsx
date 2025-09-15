@@ -12,8 +12,12 @@ interface BuildingSelectorProps {
 const BuildingSelector: React.FC<BuildingSelectorProps> = ({ buildings }) => {
   const [floors, setFloors] = useState<Building | null>(null);
 
+  const goBack = () => {
+    setFloors(null);
+  };
+
   if (floors) {
-    return <FloorSelector floors={floors.floors} />;
+    return <FloorSelector floors={floors.floors} goBack={goBack} />;
   }
 
   return (

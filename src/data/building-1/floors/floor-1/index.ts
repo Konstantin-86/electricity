@@ -4,7 +4,7 @@ import type { Floor } from "../../../../types";
 import { electricalInstances } from "./pointsRooms";
 
 export const floor1: Floor = {
-  id: "floor-1",
+  id: "floor-1-1", // здание 1, этаж 1
   name: "Первый этаж",
   level: 1,
   rooms: floor1Rooms,

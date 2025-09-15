@@ -4,7 +4,7 @@ import type { Floor } from "../../../../types";
 import { electricalInstances2Floor } from "../floor-2/pointsRooms";
 
 export const floor2: Floor = {
-  id: "floor-2",
+  id: "floor-1-2",
   name: "Второй этаж",
   level: 2,
   rooms: floor2Rooms,

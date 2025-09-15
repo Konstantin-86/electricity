@@ -19,14 +19,16 @@ const RoomsList = ({ rooms, points, goBackButton }: RoomsListProps) => {
   }
 
   return (
-    <div className={styles.roomsGrid}>
-      <button onClick={goBackButton}>I`ll be back</button>
-      {rooms.map((room) => {
-        const roomPoints = points.filter((point) => point.roomId === room.id);
+    <>
+      <button onClick={goBackButton}>Назад</button>
+      <div className={styles.roomsGrid}>
+        {rooms.map((room) => {
+          const roomPoints = points.filter((point) => point.roomId === room.id);
 
-        return <RoomCard key={room.id} room={room} points={roomPoints} />;
-      })}
-    </div>
+          return <RoomCard key={room.id} room={room} points={roomPoints} />;
+        })}
+      </div>
+    </>
   );
 };
 

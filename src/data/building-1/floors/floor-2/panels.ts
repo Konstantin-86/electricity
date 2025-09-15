@@ -5,7 +5,7 @@ import { ELECTRICAL_POINT_IDS_2_FLOOR } from "./roomID";
 
 export const floor2Panels: Panel[] = [
   {
-    id: "panel-2-1",
+    id: "panel-2-2", // 2 этаж 2 ЩО
     name: "ЩО-2",
     type: "lighting",
     location: "в коридоре",
@@ -13,7 +13,7 @@ export const floor2Panels: Panel[] = [
     poweredFrom: "ЩРС № 7",
     breakers: [
       {
-        id: "breaker-1-1-1",
+        id: "breaker-2-2-1",
         designation: "QF1",
         description: "Зам. начальника УАВР-4 (208)",
         rating: 25,
@@ -39,7 +39,7 @@ export const floor2Panels: Panel[] = [
         },
       },
       {
-        id: "breaker-1-1-2",
+        id: "breaker-2-2-2",
         designation: "QF2",
         description: "Водонагреватель (Неизвестно где???)",
         rating: 25,
@@ -58,7 +58,7 @@ export const floor2Panels: Panel[] = [
         },
       },
       {
-        id: "breaker-1-1-3",
+        id: "breaker-2-2-3",
         designation: "QF3",
         description: "Начальник участка ДиПНР (207)",
         rating: 25,
@@ -84,7 +84,7 @@ export const floor2Panels: Panel[] = [
         },
       },
       {
-        id: "breaker-1-1-4",
+        id: "breaker-2-2-4",
         designation: "QF4",
         description: "Начальник участка АВР (206)",
         rating: 25,
@@ -111,7 +111,7 @@ export const floor2Panels: Panel[] = [
         },
       },
       {
-        id: "breaker-1-1-5",
+        id: "breaker-2-2-5",
         designation: "QF5",
         description: "Резерв",
         rating: 25,
@@ -124,7 +124,7 @@ export const floor2Panels: Panel[] = [
         },
       },
       {
-        id: "breaker-1-1-6",
+        id: "breaker-2-2-6",
         designation: "QF6",
         description: "Резерв",
         rating: 25,
@@ -137,7 +137,7 @@ export const floor2Panels: Panel[] = [
         },
       },
       {
-        id: "breaker-1-1-7",
+        id: "breaker-2-2-7",
         designation: "QF7",
         description: "Резерв",
         rating: 25,
@@ -150,7 +150,7 @@ export const floor2Panels: Panel[] = [
         },
       },
       {
-        id: "breaker-1-1-8",
+        id: "breaker-2-2-8",
         designation: "QF8",
         description: "Резерв",
         rating: 25,
@@ -163,7 +163,7 @@ export const floor2Panels: Panel[] = [
         },
       },
       {
-        id: "breaker-1-1-9",
+        id: "breaker-2-2-9",
         designation: "QF9",
         description: "Коридор (201)",
         rating: 25,
@@ -192,7 +192,7 @@ export const floor2Panels: Panel[] = [
         },
       },
       {
-        id: "breaker-1-1-10",
+        id: "breaker-2-2-10",
         designation: "QF10",
         description: "Начальник участка ЭВС (205)",
         rating: 25,
@@ -218,7 +218,7 @@ export const floor2Panels: Panel[] = [
         },
       },
       {
-        id: "breaker-1-1-11",
+        id: "breaker-2-2-11",
         designation: "QF11",
         description: "Начальник участка АТХ (204)",
         rating: 25,
@@ -245,8 +245,8 @@ export const floor2Panels: Panel[] = [
         },
       },
       {
-        id: "breaker-1-1-11",
-        designation: "QF11",
+        id: "breaker-2-2-12",
+        designation: "QF12",
         description: "Производственно-технический отдел (211)",
         rating: 25,
         type: "mixed",
@@ -275,6 +275,105 @@ export const floor2Panels: Panel[] = [
           ...techInfoTemplates.SCHNEIDER_IC60N,
           lastMaintenanceDate: "2024-06-10",
           serialNumber: "SE-IC60N-002",
+        },
+      },
+    ],
+  },
+  {
+    id: "panel-2-3", // 2 этаж 3 ЩО
+    name: "ЩО-3",
+    type: "lighting",
+    location: "в коридоре",
+    cableType: "ВВГ 5*25 (65м) ",
+    poweredFrom: "ЩРС № 7",
+    breakers: [
+      {
+        id: "breaker-2-3-1", // 2 этаж, 3 ЩО, 1 автомат
+        designation: "QF1",
+        description: "Резерв",
+        rating: 25,
+        type: "mixed",
+        isOn: false,
+        technicalInfo: {
+          ...techInfoTemplates.ABB_SOCKET_16A,
+          serialNumber: "ABB-S203-001",
+          comments: "Основной автомат рецепции",
+        },
+      },
+      {
+        id: "breaker-2-3-2",
+        designation: "QF2",
+        description: "Подсобное помещение Освещение программиста (214)",
+        rating: 25,
+        type: "lighting",
+        isOn: true,
+        controlledLoads: [
+          {
+            roomId: ROOM_IDS_2_FLOOR.UTILITY_PROGRAMMER_LIGHTING,
+            lightFixtureIds: [
+              ELECTRICAL_POINT_IDS_2_FLOOR.FIX_214_1,
+              ELECTRICAL_POINT_IDS_2_FLOOR.FIX_214_2,
+            ],
+          },
+        ],
+        technicalInfo: {
+          ...techInfoTemplates.ABB_SOCKET_16A,
+          serialNumber: "ABB-S203-001",
+          comments: "Основной автомат рецепции",
+        },
+      },
+      {
+        id: "breaker-2-3-3",
+        designation: "QF3",
+        description: "Резерв",
+        rating: 25,
+        type: "mixed",
+        isOn: false,
+        technicalInfo: {
+          ...techInfoTemplates.ABB_SOCKET_16A,
+          serialNumber: "ABB-S203-001",
+          comments: "Основной автомат рецепции",
+        },
+      },
+      {
+        id: "breaker-2-3-4",
+        designation: "QF4",
+        description: "Резерв",
+        rating: 25,
+        type: "mixed",
+        isOn: false,
+        technicalInfo: {
+          ...techInfoTemplates.ABB_SOCKET_16A,
+          serialNumber: "ABB-S203-001",
+          comments: "Основной автомат рецепции",
+        },
+      },
+      {
+        id: "breaker-2-3-5",
+        designation: "QF5",
+        description: "Техник АТХ и ГОЧС (212)",
+        rating: 25,
+        type: "mixed",
+        isOn: true,
+        controlledLoads: [
+          {
+            roomId: ROOM_IDS_2_FLOOR.DEPT_ATX_TECH,
+            lightFixtureIds: [
+              ELECTRICAL_POINT_IDS_2_FLOOR.FIX_212_1,
+              ELECTRICAL_POINT_IDS_2_FLOOR.FIX_212_2,
+              ELECTRICAL_POINT_IDS_2_FLOOR.FIX_212_3,
+            ],
+            outletGroupIds: [
+              ELECTRICAL_POINT_IDS_2_FLOOR.OUT_212_1,
+              ELECTRICAL_POINT_IDS_2_FLOOR.OUT_212_2,
+              ELECTRICAL_POINT_IDS_2_FLOOR.OUT_212_3,
+            ],
+          },
+        ],
+        technicalInfo: {
+          ...techInfoTemplates.ABB_SOCKET_16A,
+          serialNumber: "ABB-S203-001",
+          comments: "Основной автомат рецепции",
         },
       },
     ],
