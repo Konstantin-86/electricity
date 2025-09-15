@@ -2,9 +2,11 @@ import Breaker from "../Breaker/Breaker";
 import { useBreakerStore } from "../../store/breakerStore";
 
 import styles from "./ElectricalPanel.module.css";
+import { useState } from "react";
 
 const ElectricalPanel = () => {
   const { panels, breakersState } = useBreakerStore();
+  const [showPanel, setShowPanel] = useState(false);
 
   if (!panels || panels.length === 0) {
     return (
@@ -17,20 +19,23 @@ const ElectricalPanel = () => {
 
   return (
     <div className={styles.panel}>
-      {panels.map((panel) => (
-        <div key={panel.id} className={styles.panelSection}>
-          <h2>{panel.name}</h2>
-          <div className={styles.breakersGrid}>
-            {panel.breakers.map((breaker) => (
-              <Breaker
-                key={breaker.id}
-                breaker={breaker}
-                isOn={breakersState[breaker.id]}
-              />
-            ))}
-          </div>
-        </div>
-      ))}
+      <div onClick={() => setShowPanel(!showPanel)}>panel</div>
+      {showPanel
+        ? panels.map((panel) => (
+            <div key={panel.id} className={styles.panelSection}>
+              <h2>{panel.name}</h2>
+              <div className={styles.breakersGrid}>
+                {panel.breakers.map((breaker) => (
+                  <Breaker
+                    key={breaker.id}
+                    breaker={breaker}
+                    isOn={breakersState[breaker.id]}
+                  />
+                ))}
+              </div>
+            </div>
+          ))
+        : null}
     </div>
   );
 };

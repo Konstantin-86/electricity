@@ -90,6 +90,9 @@ export const ELECTRICAL_POINT_IDS_2_FLOOR = {
   FIX_201_3: "fix-201-3",
   FIX_201_4: "fix-201-4",
   FIX_201_5: "fix-201-5",
+  FIX_201_6: "fix-201-6",
+  FIX_201_7: "fix-201-7",
+  FIX_201_8: "fix-201-8",
 
   // Лестница (202)
   FIX_202_1: "fix-202-1",

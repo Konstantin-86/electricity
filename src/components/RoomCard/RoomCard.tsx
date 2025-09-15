@@ -10,6 +10,8 @@ interface RoomCardProps {
 }
 
 const RoomCard = ({ room, points }: RoomCardProps) => {
+  console.log("points", points);
+
   const electricalState = useRoomElectricalState(room.id);
   const toggleBreaker = useBreakerStore((state) => state.toggleBreaker);
 

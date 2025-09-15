@@ -16,22 +16,8 @@ export const electricalInstances2Floor: (
     id: ELECTRICAL_POINT_IDS_2_FLOOR.OUT_201_1,
     roomId: ROOM_IDS_2_FLOOR.CORRIDOR,
     type: "outlet",
-    count: 3,
-    estimatedLoad: 300,
-  },
-  {
-    id: ELECTRICAL_POINT_IDS_2_FLOOR.OUT_201_2,
-    roomId: ROOM_IDS_2_FLOOR.CORRIDOR,
-    type: "outlet",
     count: 2,
     estimatedLoad: 300,
-  },
-  {
-    id: ELECTRICAL_POINT_IDS_2_FLOOR.OUT_201_3,
-    roomId: ROOM_IDS_2_FLOOR.CORRIDOR,
-    type: "outlet",
-    count: 1,
-    estimatedLoad: 500,
   },
 
   // Начальник участка АТХ (204)
@@ -40,25 +26,25 @@ export const electricalInstances2Floor: (
     roomId: ROOM_IDS_2_FLOOR.OFFICE_ATX_HEAD,
     type: "outlet",
     count: 4,
-    estimatedLoad: 800,
+    estimatedLoad: 300,
   },
   {
     id: ELECTRICAL_POINT_IDS_2_FLOOR.OUT_204_2,
     roomId: ROOM_IDS_2_FLOOR.OFFICE_ATX_HEAD,
     type: "outlet",
     count: 2,
-    estimatedLoad: 500,
-  },
-  {
-    id: ELECTRICAL_POINT_IDS_2_FLOOR.OUT_204_3,
-    roomId: ROOM_IDS_2_FLOOR.OFFICE_ATX_HEAD,
-    type: "outlet",
-    count: 1,
-    estimatedLoad: 1500,
+    estimatedLoad: 400,
   },
   // Начальник участка АВР (206)
   {
-    id: ELECTRICAL_POINT_IDS_2_FLOOR.OUT_207_1,
+    id: ELECTRICAL_POINT_IDS_2_FLOOR.OUT_206_1,
+    roomId: ROOM_IDS_2_FLOOR.OFFICE_AVR_HEAD,
+    type: "outlet",
+    count: 2,
+    estimatedLoad: 300,
+  },
+  {
+    id: ELECTRICAL_POINT_IDS_2_FLOOR.OUT_206_2,
     roomId: ROOM_IDS_2_FLOOR.OFFICE_AVR_HEAD,
     type: "outlet",
     count: 2,
@@ -85,7 +71,7 @@ export const electricalInstances2Floor: (
     id: ELECTRICAL_POINT_IDS_2_FLOOR.OUT_208_1,
     roomId: ROOM_IDS_2_FLOOR.OFFICE_AVR4_DEPUTY,
     type: "outlet",
-    count: 2,
+    count: 1,
     estimatedLoad: 400,
   },
   {
@@ -100,7 +86,7 @@ export const electricalInstances2Floor: (
     roomId: ROOM_IDS_2_FLOOR.OFFICE_AVR4_DEPUTY,
     type: "outlet",
     count: 1,
-    estimatedLoad: 1000,
+    estimatedLoad: 300,
   },
 
   // ПТО (211)
@@ -108,36 +94,29 @@ export const electricalInstances2Floor: (
     id: ELECTRICAL_POINT_IDS_2_FLOOR.OUT_211_1,
     roomId: ROOM_IDS_2_FLOOR.DEPT_PTO,
     type: "outlet",
-    count: 6,
-    estimatedLoad: 1200,
+    count: 2,
+    estimatedLoad: 300,
   },
   {
     id: ELECTRICAL_POINT_IDS_2_FLOOR.OUT_211_2,
     roomId: ROOM_IDS_2_FLOOR.DEPT_PTO,
     type: "outlet",
     count: 4,
-    estimatedLoad: 800,
+    estimatedLoad: 200,
   },
   {
     id: ELECTRICAL_POINT_IDS_2_FLOOR.OUT_211_3,
     roomId: ROOM_IDS_2_FLOOR.DEPT_PTO,
     type: "outlet",
     count: 3,
-    estimatedLoad: 600,
+    estimatedLoad: 300,
   },
   {
     id: ELECTRICAL_POINT_IDS_2_FLOOR.OUT_211_4,
     roomId: ROOM_IDS_2_FLOOR.DEPT_PTO,
     type: "outlet",
     count: 2,
-    estimatedLoad: 2000,
-  },
-  {
-    id: ELECTRICAL_POINT_IDS_2_FLOOR.OUT_211_5,
-    roomId: ROOM_IDS_2_FLOOR.DEPT_PTO,
-    type: "outlet",
-    count: 1,
-    estimatedLoad: 1000,
+    estimatedLoad: 400,
   },
 
   // Начальник участка ЭВС (205)
@@ -145,8 +124,8 @@ export const electricalInstances2Floor: (
     id: ELECTRICAL_POINT_IDS_2_FLOOR.OUT_205_1,
     roomId: ROOM_IDS_2_FLOOR.OFFICE_EVS_HEAD,
     type: "outlet",
-    count: 3,
-    estimatedLoad: 600,
+    count: 2,
+    estimatedLoad: 300,
   },
   {
     id: ELECTRICAL_POINT_IDS_2_FLOOR.OUT_205_2,
@@ -242,6 +221,24 @@ export const electricalInstances2Floor: (
     type: "light",
     template: fixtureTemplates.EMERGENCY_EXIT_SIGN,
   },
+  {
+    id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_201_6,
+    roomId: ROOM_IDS_2_FLOOR.CORRIDOR,
+    type: "light",
+    template: fixtureTemplates.EMERGENCY_EXIT_SIGN,
+  },
+  {
+    id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_201_7,
+    roomId: ROOM_IDS_2_FLOOR.CORRIDOR,
+    type: "light",
+    template: fixtureTemplates.EMERGENCY_EXIT_SIGN,
+  },
+  {
+    id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_201_8,
+    roomId: ROOM_IDS_2_FLOOR.CORRIDOR,
+    type: "light",
+    template: fixtureTemplates.EMERGENCY_EXIT_SIGN,
+  },
 
   // Лестница (202)
   {
@@ -294,19 +291,19 @@ export const electricalInstances2Floor: (
 
   {
     id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_206_1,
-    roomId: ROOM_IDS_2_FLOOR.OFFICE_ATX_HEAD,
+    roomId: ROOM_IDS_2_FLOOR.OFFICE_AVR_HEAD,
     type: "light",
     template: fixtureTemplates.OFFICE_PANEL_2x36W,
   },
   {
     id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_206_2,
-    roomId: ROOM_IDS_2_FLOOR.OFFICE_ATX_HEAD,
+    roomId: ROOM_IDS_2_FLOOR.OFFICE_AVR_HEAD,
     type: "light",
     template: fixtureTemplates.OFFICE_PANEL_2x36W,
   },
   {
     id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_206_3,
-    roomId: ROOM_IDS_2_FLOOR.OFFICE_ATX_HEAD,
+    roomId: ROOM_IDS_2_FLOOR.OFFICE_AVR_HEAD,
     type: "light",
     template: fixtureTemplates.LED_PANEL_SINGLE_40W,
   },

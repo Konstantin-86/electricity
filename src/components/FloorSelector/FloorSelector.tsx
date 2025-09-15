@@ -5,6 +5,7 @@ import RoomsList from "../RoomsList/RoomsList";
 import ElectricalPanel from "../ElectricalPanel/ElectricalPanel";
 import { useBreakerStore } from "../../store/breakerStore";
 import FloorPlan from "../FloorPlan/FloorPlan";
+import ElectricalScheme from "../ElectricalScheme/ElectricalScheme";
 
 interface FloorSelectorProps {
   floors: Floor[];
@@ -30,6 +31,7 @@ const FloorSelector: React.FC<FloorSelectorProps> = ({ floors }) => {
   if (currentFloor) {
     return (
       <>
+        {/*  <ElectricalScheme /> */}
         <FloorPlan rooms={currentFloor.rooms} />
         <ElectricalPanel />
         <RoomsList
