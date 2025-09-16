@@ -3,6 +3,7 @@ import { useBreakerStore } from "../../store/breakerStore";
 
 import styles from "./ElectricalPanel.module.css";
 import { useState } from "react";
+import ElectricalScheme from "../ElectricalScheme/ElectricalScheme";
 
 const ElectricalPanel = () => {
   const { panels, breakersState } = useBreakerStore();
@@ -19,7 +20,13 @@ const ElectricalPanel = () => {
 
   return (
     <>
-      <button onClick={() => setShowPanel(!showPanel)}>ЩО</button>
+      <button
+        className={showPanel ? `${styles.btnOn}` : `${styles.btnOff}`}
+        onClick={() => setShowPanel(!showPanel)}
+      >
+        ЩО
+      </button>
+      <ElectricalScheme />
       {showPanel ? (
         <div className={styles.panel}>
           {panels.map((panel) => (

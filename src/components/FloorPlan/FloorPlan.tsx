@@ -25,7 +25,12 @@ const FloorPlan = ({ floor }: FloorPlanProps) => {
 
   return (
     <>
-      <button onClick={() => setShowPlan(!showPlan)}>План этажа</button>
+      <button
+        className={showPlan ? `${styles.btnOn}` : `${styles.btnOff}`}
+        onClick={() => setShowPlan(!showPlan)}
+      >
+        План этажа
+      </button>
       {showPlan ? <FloorComponent /> : null}
     </>
   );

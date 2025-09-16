@@ -20,7 +20,9 @@ const RoomsList = ({ rooms, points, goBackButton }: RoomsListProps) => {
 
   return (
     <>
-      <button onClick={goBackButton}>Назад</button>
+      <button className={styles.backButton} onClick={goBackButton}>
+        Назад
+      </button>
       <div className={styles.roomsGrid}>
         {rooms.map((room) => {
           const roomPoints = points.filter((point) => point.roomId === room.id);

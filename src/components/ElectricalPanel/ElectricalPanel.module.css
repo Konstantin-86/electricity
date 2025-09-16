@@ -60,6 +60,21 @@
   flex-wrap: wrap;
   gap: 14px;
 }
+.btnOn,
+.btnOff {
+  position: fixed;
+  top: -5px;
+  left: 222px;
+  z-index: 100;
+}
+.btnOn {
+  background-color: #6f42c1;
+  color: #fff;
+}
+.btnOff {
+  background-color: #e9ecef;
+  color: #6c757d;
+}
 @media (max-width: 768px) {
   .panelName {
     font-size: 14px;

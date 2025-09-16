@@ -3,7 +3,25 @@
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 20px;
 }
-
+.container {
+  padding-top: 50px;
+}
+.headerWrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 304px;
+  height: 50px;
+  border-radius: 0 0 7px 0;
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: 1;
+}
+.backButton {
+  position: fixed;
+  top: -5px;
+  left: 0;
+  background-color: #969696;
+}
 .floorCard {
   background: white;
   padding: 24px;
@@ -45,4 +63,11 @@
 .floorStats span {
   color: #6b7280;
   font-size: 14px;
+}
+@media (max-width: 768px) {
+  .headerWrap {
+    width: 100%;
+    border-radius: 0 0 7px 7px;
+    background-color: #c4c4c4cb;
+  }
 }

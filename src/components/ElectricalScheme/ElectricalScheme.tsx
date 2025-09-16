@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useBreakerStore } from "../../store/breakerStore";
-import type { Panel } from "../../types";
 import styles from "./ElectricalScheme.module.css";
 
 const ElectricalScheme: React.FC = () => {
@@ -8,15 +7,19 @@ const ElectricalScheme: React.FC = () => {
   const [selectedPanelId, setSelectedPanelId] = useState<string>(
     panels[0]?.id || ""
   );
-  const [isPrintView, setIsPrintView] = useState(false);
+  const [isPrinting, setIsPrinting] = useState(false);
 
   const selectedPanel = panels.find((panel) => panel.id === selectedPanelId);
 
   const handlePrint = () => {
-    setIsPrintView(true);
+    setIsPrinting(true);
+
+    // Даем время React обновить состояние и отрисовать компонент
     setTimeout(() => {
       window.print();
-      setTimeout(() => setIsPrintView(false), 100);
+
+      // Возвращаем состояние после печати
+      setTimeout(() => setIsPrinting(false), 100);
     }, 100);
   };
 
@@ -33,18 +36,9 @@ const ElectricalScheme: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      {!isPrintView && (
-        <div className={styles.header}>
-          <h1>Однолинейная электрическая схема</h1>
-          <button className={styles.printButton} onClick={handlePrint}>
-            Распечатать схему
-          </button>
-        </div>
-      )}
-
-      {!isPrintView && (
-        <div className={styles.panelSelector}>
-          <h2>Выберите щит:</h2>
+      <div className={styles.header}>
+        <h2>Электрическая схема</h2>
+        <div className={styles.controls}>
           <select
             value={selectedPanelId}
             onChange={(e) => setSelectedPanelId(e.target.value)}
@@ -56,49 +50,45 @@ const ElectricalScheme: React.FC = () => {
               </option>
             ))}
           </select>
+          <button className={styles.printButton} onClick={handlePrint}>
+            Печать
+          </button>
         </div>
-      )}
+      </div>
 
-      {selectedPanel && (
-        <div className={styles.singleLineScheme}>
-          <div className={styles.panelHeader}>
-            <h2>Щит: {selectedPanel.name}</h2>
-            {/*   <div className={styles.panelDetails}>
-              <span>
-                <strong>Тип:</strong>{" "}
-                {selectedPanel.type === "lighting" ? "Освещение" : "Силовой"}
-              </span>
-              <span>
-                <strong>Расположение:</strong> {selectedPanel.location}
-              </span>
-              <span>
-                <strong>Кабель:</strong> {selectedPanel.cableType}
-              </span>
-              <span>
-                <strong>Питание:</strong> {selectedPanel.poweredFrom}
-              </span>
-            </div> */}
-          </div>
+      <div
+        className={`${styles.singleLineScheme} ${
+          isPrinting ? styles.printView : ""
+        }`}
+        id="print-scheme"
+      >
+        {selectedPanel && (
+          <>
+            <div className={styles.panelHeader}>
+              <h3>{selectedPanel.name}</h3>
+              <p>{selectedPanel.location}</p>
+            </div>
 
-          <div className={styles.breakersGrid}>
-            {selectedPanel.breakers.map((breaker) => (
-              <div key={breaker.id} className={styles.breakerLine}>
-                <div className={styles.breakerSymbol}>
-                  <div className={styles.breakerDesignation}>
-                    {breaker.designation}
+            <div className={styles.breakersList}>
+              {selectedPanel.breakers.map((breaker) => (
+                <div key={breaker.id} className={styles.breakerItem}>
+                  <div className={styles.breakerSymbol}>
+                    <span className={styles.designation}>
+                      {breaker.designation}
+                    </span>
+                  </div>
+                  <div className={styles.breakerInfo}>
+                    <span className={styles.rating}>{breaker.rating}A</span>
+                    <span className={styles.description}>
+                      {breaker.description}
+                    </span>
                   </div>
                 </div>
-                <div className={styles.breakerInfo}>
-                  <div className={styles.breakerDescription}>
-                    {breaker.description}
-                  </div>
-                  <div className={styles.breakerRating}>{breaker.rating}A</div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
+              ))}
+            </div>
+          </>
+        )}
+      </div>
     </div>
   );
 };

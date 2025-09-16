@@ -103,25 +103,40 @@
   background: linear-gradient(135deg, #eceff1, #cfd8dc);
   border-color: #b0bec5;
 }
-
+.btnOn,
+.btnOff {
+  position: fixed;
+  top: -5px;
+  left: 90px;
+  z-index: 100;
+  background-color: #fff;
+}
+.btnOn {
+  background-color: #6f42c1;
+  color: #fff;
+}
+.btnOff {
+  background-color: #e9ecef;
+  color: #6c757d;
+}
 /* Адаптивность */
 @media (max-width: 768px) {
   .gridContainer {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 12px;
   }
-  
+
   .room {
     padding: 12px;
     min-height: 100px;
   }
-  
+
   .roomIcon {
     font-size: 1.5rem;
     width: 40px;
     height: 40px;
   }
-  
+
   .roomName {
     font-size: 13px;
   }

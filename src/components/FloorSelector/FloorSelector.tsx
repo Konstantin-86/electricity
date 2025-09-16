@@ -1,12 +1,11 @@
 import { useState } from "react";
 import type { Floor } from "../../types";
-import styles from "./FloorSelector.module.css";
 import RoomsList from "../RoomsList/RoomsList";
 import ElectricalPanel from "../ElectricalPanel/ElectricalPanel";
 import { useBreakerStore } from "../../store/breakerStore";
 import FloorPlan from "../FloorPlan/FloorPlan";
-import ElectricalScheme from "../ElectricalScheme/ElectricalScheme";
-import Floor2Plan from "../FloorPlan/building1/floor2/Floor2Plan";
+
+import styles from "./FloorSelector.module.css";
 
 interface FloorSelectorProps {
   floors: Floor[];
@@ -31,8 +30,8 @@ const FloorSelector = ({ floors, goBack }: FloorSelectorProps) => {
 
   if (currentFloor) {
     return (
-      <>
-        {/*  <ElectricalScheme /> */}
+      <div className={styles.container}>
+        <div className={styles.headerWrap}></div>
         <FloorPlan floor={currentFloor.id} />
         <ElectricalPanel />
         <RoomsList
@@ -40,13 +39,15 @@ const FloorSelector = ({ floors, goBack }: FloorSelectorProps) => {
           points={currentFloor.points}
           goBackButton={goBackButton}
         />
-      </>
+      </div>
     );
   }
 
   return (
     <>
-      <button onClick={goBack}>Назад</button>
+      <button className={styles.backButton} onClick={goBack}>
+        Назад
+      </button>
       <div className={styles.floorsGrid}>
         {floors.map((floor) => (
           <div

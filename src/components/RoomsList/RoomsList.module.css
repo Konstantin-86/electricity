@@ -29,12 +29,19 @@
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 16px;
 }
+.backButton {
+  position: fixed;
+  top: -5px;
+  left: 0;
+  z-index: 100;
+  background-color: #6f42c1;
+}
 @media (max-width: 768px) {
   .roomsGrid {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     gap: 7px;
-    flex-wrap: wrap;
   }
   .title {
     font-size: 18px;
