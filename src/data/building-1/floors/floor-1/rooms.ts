@@ -39,12 +39,6 @@ export const floor1Rooms: Room[] = [
     area: 12,
   },
   {
-    id: ROOM_IDS_1_FLOOR.HALL_SOCKETS,
-    name: "Холл розетки",
-    type: "corridor",
-    area: 12,
-  },
-  {
     id: ROOM_IDS_1_FLOOR.CHECKPOINT,
     name: "Проходная",
     type: "corridor",
@@ -53,12 +47,6 @@ export const floor1Rooms: Room[] = [
   {
     id: ROOM_IDS_1_FLOOR.STORAGE_SOCKETS,
     name: "Розетки кладовка (прием пищи)",
-    type: "other",
-    area: 12,
-  },
-  {
-    id: ROOM_IDS_1_FLOOR.HALL_SOCKET,
-    name: "Холл розетка",
     type: "other",
     area: 12,
   },

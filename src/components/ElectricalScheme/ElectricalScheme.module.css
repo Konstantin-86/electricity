@@ -88,9 +88,9 @@
 .breakerItem {
   display: flex;
   align-items: center;
-  padding: 8px;
+  padding: 4px;
   border: 1px solid #e8e8e8;
-  border-radius: 4px;
+  border-radius: 7px;
   background: #f9f9f9;
 }
 
@@ -105,11 +105,9 @@
   width: 28px;
   height: 28px;
   line-height: 28px;
-  border-radius: 50%;
-  background: #3498db;
-  color: white;
+  color: #000;
   font-weight: bold;
-  font-size: 0.75rem;
+  font-size: 16px;
 }
 
 .breakerInfo {
@@ -129,6 +127,7 @@
 .description {
   font-size: 0.875rem;
   color: #34495e;
+  margin-inline: auto;
 }
 
 .emptyState {
@@ -146,13 +145,38 @@
   margin: 0;
   font-size: 0.875rem;
 }
+.btnOn,
+.btnOff {
+  position: fixed;
+  top: -5px;
+  left: 294px;
+  z-index: 100;
+}
+.btnOn {
+  background-color: #6f42c1;
+  color: #fff;
+}
+.btnOff {
+  background-color: #e9ecef;
+  color: #6c757d;
+}
 
 /* Стили для печати */
 @media print {
-  body {
-    margin: 0;
-    padding: 0;
-    width: 148mm;
+  body * {
+    visibility: hidden;
+  }
+
+  #print-scheme,
+  #print-scheme * {
+    visibility: visible;
+  }
+
+  #print-scheme {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
   }
 
   .container > :not(.singleLineScheme) {
@@ -174,24 +198,14 @@
   }
 }
 
-@media (max-width: 768px) {
-  .header {
-    flex-direction: column;
-    align-items: flex-start;
+@media (max-width: 480px) {
+  .container {
+    padding: 0;
   }
-
-  .controls {
-    width: 100%;
+  .description {
+    font-size: 12px;
   }
-
-  .select {
-    flex-grow: 1;
-    min-width: auto;
-  }
-
-  .breakerInfo {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 4px;
+  .singleLineScheme {
+    padding: 0;
   }
 }

@@ -376,6 +376,165 @@ export const floor2Panels: Panel[] = [
           comments: "Основной автомат рецепции",
         },
       },
+      {
+        id: "breaker-2-3-6",
+        designation: "QF6",
+        description: " Начальник участка МТС (210)",
+        rating: 25,
+        type: "mixed",
+        isOn: true,
+        controlledLoads: [
+          {
+            roomId: ROOM_IDS_2_FLOOR.OFFICE_MTS_HEAD,
+            lightFixtureIds: [
+              ELECTRICAL_POINT_IDS_2_FLOOR.FIX_210_1,
+              ELECTRICAL_POINT_IDS_2_FLOOR.FIX_210_2,
+            ],
+            outletGroupIds: [
+              ELECTRICAL_POINT_IDS_2_FLOOR.OUT_210_1,
+              ELECTRICAL_POINT_IDS_2_FLOOR.OUT_210_2,
+            ],
+          },
+        ],
+        technicalInfo: {
+          ...techInfoTemplates.ABB_SOCKET_16A,
+          serialNumber: "ABB-S203-001",
+          comments: "Основной автомат рецепции",
+        },
+      },
+      {
+        id: "breaker-2-3-7",
+        designation: "QF7",
+        description: "Водонагреватель мужской туалет (216)",
+        rating: 25,
+        type: "socket",
+        isOn: true,
+        controlledLoads: [
+          {
+            roomId: ROOM_IDS_2_FLOOR.TOILET_MEN,
+
+            outletGroupIds: [ELECTRICAL_POINT_IDS_2_FLOOR.OUT_216_2],
+          },
+        ],
+        technicalInfo: {
+          ...techInfoTemplates.ABB_SOCKET_16A,
+          serialNumber: "ABB-S203-001",
+          comments: "Основной автомат рецепции",
+        },
+      },
+      {
+        id: "breaker-2-3-8",
+        designation: "QF8",
+        description: "Водонагреватель женский туалет (217)",
+        rating: 25,
+        type: "socket",
+        isOn: true,
+        controlledLoads: [
+          {
+            roomId: ROOM_IDS_2_FLOOR.TOILET_WOMEN,
+
+            outletGroupIds: [ELECTRICAL_POINT_IDS_2_FLOOR.OUT_217_2],
+          },
+        ],
+        technicalInfo: {
+          ...techInfoTemplates.ABB_SOCKET_16A,
+          serialNumber: "ABB-S203-001",
+          comments: "Основной автомат рецепции",
+        },
+      },
+      {
+        id: "breaker-2-3-9",
+        designation: "QF9",
+        description: "Освещение Лестница столовая (203)",
+        rating: 25,
+        type: "lighting",
+        isOn: true,
+        controlledLoads: [
+          {
+            roomId: ROOM_IDS_2_FLOOR.STAIRS_PANTRY,
+            lightFixtureIds: [
+              ELECTRICAL_POINT_IDS_2_FLOOR.FIX_203_1,
+              ELECTRICAL_POINT_IDS_2_FLOOR.FIX_203_2,
+            ],
+          },
+        ],
+        technicalInfo: {
+          ...techInfoTemplates.ABB_SOCKET_16A,
+          serialNumber: "ABB-S203-001",
+          comments: "Основной автомат рецепции",
+        },
+      },
+      {
+        id: "breaker-2-3-10",
+        designation: "QF10",
+        description: "Освещение туалетов (216, 217)",
+        rating: 25,
+        type: "lighting",
+        isOn: true,
+        controlledLoads: [
+          {
+            roomId: ROOM_IDS_2_FLOOR.TOILET_MEN,
+            lightFixtureIds: [
+              ELECTRICAL_POINT_IDS_2_FLOOR.FIX_216_1,
+              ELECTRICAL_POINT_IDS_2_FLOOR.FIX_216_2,
+            ],
+          },
+          {
+            roomId: ROOM_IDS_2_FLOOR.TOILET_WOMEN,
+            lightFixtureIds: [
+              ELECTRICAL_POINT_IDS_2_FLOOR.FIX_217_1,
+              ELECTRICAL_POINT_IDS_2_FLOOR.FIX_217_2,
+            ],
+          },
+        ],
+        technicalInfo: {
+          ...techInfoTemplates.ABB_SOCKET_16A,
+          serialNumber: "ABB-S203-001",
+          comments: "Основной автомат рецепции",
+        },
+      },
+      {
+        id: "breaker-2-3-11",
+        designation: "QF11",
+        description: "Кабинет директора газторг (209)",
+        rating: 25,
+        type: "lighting",
+        isOn: true,
+        controlledLoads: [
+          {
+            roomId: ROOM_IDS_2_FLOOR.OFFICE_GAZTORG_DIRECTOR,
+            lightFixtureIds: [
+              ELECTRICAL_POINT_IDS_2_FLOOR.FIX_209_1,
+              ELECTRICAL_POINT_IDS_2_FLOOR.FIX_209_2,
+              ELECTRICAL_POINT_IDS_2_FLOOR.FIX_209_3,
+            ],
+            outletGroupIds: [
+              ELECTRICAL_POINT_IDS_2_FLOOR.OUT_209_1,
+              ELECTRICAL_POINT_IDS_2_FLOOR.OUT_209_2,
+              ELECTRICAL_POINT_IDS_2_FLOOR.OUT_209_3,
+              ELECTRICAL_POINT_IDS_2_FLOOR.OUT_209_4,
+            ],
+          },
+        ],
+        technicalInfo: {
+          ...techInfoTemplates.ABB_SOCKET_16A,
+          serialNumber: "ABB-S203-001",
+          comments: "Основной автомат рецепции",
+        },
+      },
+      {
+        id: "breaker-2-3-12",
+        designation: "QF12",
+        description: "Резерв",
+        rating: 25,
+        type: "mixed",
+        isOn: false,
+        technicalInfo: {
+          ...techInfoTemplates.ABB_SOCKET_16A,
+          serialNumber: "ABB-S203-001",
+          comments: "Основной автомат рецепции",
+        },
+      },
     ],
   },
 ];

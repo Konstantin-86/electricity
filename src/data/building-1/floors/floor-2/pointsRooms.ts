@@ -165,6 +165,22 @@ export const electricalInstances2Floor: (
     estimatedLoad: 1500,
   },
 
+  // Начальник участка МТС (210)
+  {
+    id: ELECTRICAL_POINT_IDS_2_FLOOR.OUT_210_1,
+    roomId: ROOM_IDS_2_FLOOR.OFFICE_MTS_HEAD,
+    type: "outlet",
+    count: 2,
+    estimatedLoad: 400,
+  },
+  {
+    id: ELECTRICAL_POINT_IDS_2_FLOOR.OUT_210_2,
+    roomId: ROOM_IDS_2_FLOOR.OFFICE_MTS_HEAD,
+    type: "outlet",
+    count: 2,
+    estimatedLoad: 300,
+  },
+
   // Техник АТХ и ГОЧС (212)
   {
     id: ELECTRICAL_POINT_IDS_2_FLOOR.OUT_212_1,
@@ -186,6 +202,36 @@ export const electricalInstances2Floor: (
     type: "outlet",
     count: 1,
     estimatedLoad: 400,
+  },
+  // Мужской туалет (216) // TODO: [REFACTOR] Уточнить наличие розеток
+  /*  {
+    id: ELECTRICAL_POINT_IDS_2_FLOOR.OUT_216_1,
+    roomId: ROOM_IDS_2_FLOOR.TOILET_MEN,
+    type: "outlet",
+    count: 1,
+    estimatedLoad: 400,
+  }, */
+  {
+    id: ELECTRICAL_POINT_IDS_2_FLOOR.OUT_216_2,
+    roomId: ROOM_IDS_2_FLOOR.TOILET_MEN,
+    type: "outlet",
+    count: 1,
+    estimatedLoad: 600,
+  },
+  // Мужской туалет (217) // TODO: [REFACTOR] Уточнить наличие розеток
+  /*  {
+    id: ELECTRICAL_POINT_IDS_2_FLOOR.OUT_217_1,
+    roomId: ROOM_IDS_2_FLOOR.TOILET_WOMEN,
+    type: "outlet",
+    count: 1,
+    estimatedLoad: 400,
+  }, */
+  {
+    id: ELECTRICAL_POINT_IDS_2_FLOOR.OUT_217_2,
+    roomId: ROOM_IDS_2_FLOOR.TOILET_WOMEN,
+    type: "outlet",
+    count: 1,
+    estimatedLoad: 600,
   },
 
   // ========== СВЕТИЛЬНИКИ ==========
@@ -238,26 +284,6 @@ export const electricalInstances2Floor: (
     roomId: ROOM_IDS_2_FLOOR.CORRIDOR,
     type: "light",
     template: fixtureTemplates.EMERGENCY_EXIT_SIGN,
-  },
-
-  // Лестница (202)
-  {
-    id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_202_1,
-    roomId: ROOM_IDS_2_FLOOR.STAIRS,
-    type: "light",
-    template: fixtureTemplates.WALL_SCONCE_2x7W,
-  },
-  {
-    id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_202_2,
-    roomId: ROOM_IDS_2_FLOOR.STAIRS,
-    type: "light",
-    template: fixtureTemplates.WALL_SCONCE_2x7W,
-  },
-  {
-    id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_202_3,
-    roomId: ROOM_IDS_2_FLOOR.STAIRS,
-    type: "light",
-    template: fixtureTemplates.EMERGENCY_LUMINAIRE,
   },
 
   // Лестница столовая (203)
@@ -368,6 +394,20 @@ export const electricalInstances2Floor: (
     template: fixtureTemplates.PENDANT_LIGHT_3x18W,
   },
 
+  // Начальник участка МТС (210)
+  {
+    id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_210_1,
+    roomId: ROOM_IDS_2_FLOOR.OFFICE_MTS_HEAD,
+    type: "light",
+    template: fixtureTemplates.PENDANT_LIGHT_3x18W,
+  },
+  {
+    id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_210_2,
+    roomId: ROOM_IDS_2_FLOOR.OFFICE_MTS_HEAD,
+    type: "light",
+    template: fixtureTemplates.PENDANT_LIGHT_3x18W,
+  },
+
   // ПТО (211)
   {
     id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_211_1,
@@ -423,20 +463,6 @@ export const electricalInstances2Floor: (
     roomId: ROOM_IDS_2_FLOOR.DEPT_ATX_TECH,
     type: "light",
     template: fixtureTemplates.OFFICE_PANEL_2x36W,
-  },
-
-  // Туалет (215)
-  {
-    id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_215_1,
-    roomId: ROOM_IDS_2_FLOOR.TOILET,
-    type: "light",
-    template: fixtureTemplates.LED_PANEL_SINGLE_40W,
-  },
-  {
-    id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_215_2,
-    roomId: ROOM_IDS_2_FLOOR.TOILET,
-    type: "light",
-    template: fixtureTemplates.RECESSED_SPOT_10W,
   },
 
   // Мужской туалет (216)

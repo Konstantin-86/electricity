@@ -9,12 +9,6 @@ export const floor2Rooms: Room[] = [
     area: 35,
   },
   {
-    id: ROOM_IDS_2_FLOOR.STAIRS,
-    name: "Лестница",
-    type: "conference",
-    area: 15,
-  },
-  {
     id: ROOM_IDS_2_FLOOR.STAIRS_PANTRY,
     name: "Лестница столовая",
     type: "other",
@@ -81,12 +75,6 @@ export const floor2Rooms: Room[] = [
     area: 10,
   },
   {
-    id: ROOM_IDS_2_FLOOR.TOILET,
-    name: "Туалет",
-    type: "bathroom",
-    area: 8,
-  },
-  {
     id: ROOM_IDS_2_FLOOR.TOILET_MEN,
     name: "Мужской туалет",
     type: "bathroom",
@@ -97,23 +85,5 @@ export const floor2Rooms: Room[] = [
     name: "Женский туалет",
     type: "bathroom",
     area: 10,
-  },
-  {
-    id: ROOM_IDS_2_FLOOR.HEATER_TOILET_MEN,
-    name: "Водонагреватель мужской туалет",
-    type: "technical",
-    area: 2,
-  },
-  {
-    id: ROOM_IDS_2_FLOOR.HEATER_TOILET_WOMEN,
-    name: "Водонагреватель женский туалет",
-    type: "technical",
-    area: 2,
-  },
-  {
-    id: ROOM_IDS_2_FLOOR.HEATER,
-    name: "Водонагреватель",
-    type: "technical",
-    area: 2,
   },
 ];

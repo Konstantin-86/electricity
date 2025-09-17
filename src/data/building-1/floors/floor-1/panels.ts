@@ -15,15 +15,18 @@ export const floor1Panels: Panel[] = [
       {
         id: "breaker-1-1-1",
         designation: "QF1",
-        description: "Холл Коридор (освещение + розетки)",
+        description: "Холл Коридор Освещение (101)",
         rating: 25,
         type: "lighting",
         isOn: true,
         controlledLoads: [
           {
             roomId: ROOM_IDS_1_FLOOR.HALL_CORRIDOR,
-            lightFixtureIds: [ELECTRICAL_POINT_IDS_1_FLOOR.FIX_101_1],
-            outletGroupIds: [ELECTRICAL_POINT_IDS_1_FLOOR.OUT_101_1],
+            lightFixtureIds: [
+              ELECTRICAL_POINT_IDS_1_FLOOR.FIX_101_1,
+              ELECTRICAL_POINT_IDS_1_FLOOR.FIX_101_2,
+              ELECTRICAL_POINT_IDS_1_FLOOR.FIX_101_3,
+            ],
           },
         ],
         technicalInfo: {
@@ -35,14 +38,19 @@ export const floor1Panels: Panel[] = [
       {
         id: "breaker-1-1-2",
         designation: "QF2",
-        description: "Освещение лестницы",
+        description: "Освещение лестницы (102)",
         rating: 25,
-        type: "mixed",
+        type: "lighting",
         isOn: true,
         controlledLoads: [
           {
             roomId: ROOM_IDS_1_FLOOR.STAIRS,
-            lightFixtureIds: [ELECTRICAL_POINT_IDS_1_FLOOR.FIX_102_1],
+            lightFixtureIds: [
+              ELECTRICAL_POINT_IDS_1_FLOOR.FIX_102_1,
+              ELECTRICAL_POINT_IDS_1_FLOOR.FIX_102_2,
+              ELECTRICAL_POINT_IDS_1_FLOOR.FIX_102_3,
+              ELECTRICAL_POINT_IDS_1_FLOOR.FIX_102_4,
+            ],
           },
         ],
         technicalInfo: {
@@ -67,7 +75,7 @@ export const floor1Panels: Panel[] = [
       {
         id: "breaker-1-1-4",
         designation: "QF4",
-        description: "Туалет и Умывальня",
+        description: "Туалет и Умывальня (103, 104)",
         rating: 20,
         type: "lighting",
         isOn: true,
@@ -97,7 +105,7 @@ export const floor1Panels: Panel[] = [
       {
         id: "breaker-1-1-5",
         designation: "QF5",
-        description: "Раздевалка, Помещение старшего смены",
+        description: "Раздевалка, Помещение старшего смены (105, 106)",
         rating: 20,
         type: "mixed",
         isOn: true,
@@ -121,14 +129,18 @@ export const floor1Panels: Panel[] = [
       {
         id: "breaker-1-1-6",
         designation: "QF6",
-        description: "Холл розетки",
+        description: "Холл Коридор Розетки (101) ",
         rating: 20,
         type: "socket",
         isOn: true,
         controlledLoads: [
           {
-            roomId: ROOM_IDS_1_FLOOR.HALL_SOCKETS,
-            outletGroupIds: [ELECTRICAL_POINT_IDS_1_FLOOR.OUT_107_1],
+            roomId: ROOM_IDS_1_FLOOR.HALL_CORRIDOR,
+            outletGroupIds: [
+              ELECTRICAL_POINT_IDS_1_FLOOR.OUT_101_1,
+              ELECTRICAL_POINT_IDS_1_FLOOR.OUT_101_2,
+              ELECTRICAL_POINT_IDS_1_FLOOR.OUT_101_3,
+            ],
           },
         ],
         technicalInfo: techInfoTemplates.IEK_BA47_29,
@@ -159,14 +171,17 @@ export const floor1Panels: Panel[] = [
       {
         id: "breaker-1-1-9",
         designation: "QF9",
-        description: "Проходная, Розетка еда",
+        description: "Проходная, Розетка еда ",
         rating: 25,
         type: "mixed",
         isOn: true,
         controlledLoads: [
           {
             roomId: ROOM_IDS_1_FLOOR.CHECKPOINT,
-            lightFixtureIds: [ELECTRICAL_POINT_IDS_1_FLOOR.FIX_108_1],
+            lightFixtureIds: [
+              ELECTRICAL_POINT_IDS_1_FLOOR.FIX_108_1,
+              ELECTRICAL_POINT_IDS_1_FLOOR.FIX_108_2,
+            ],
             outletGroupIds: [ELECTRICAL_POINT_IDS_1_FLOOR.OUT_108_1],
           },
           {
@@ -180,14 +195,14 @@ export const floor1Panels: Panel[] = [
       {
         id: "breaker-1-1-10",
         designation: "QF10",
-        description: "Холл розетки",
+        description: "Холл розетки (201) ", // TODO: [REFACTOR] !!Уточнить
         rating: 25,
         type: "socket",
         isOn: true,
         controlledLoads: [
           {
-            roomId: ROOM_IDS_1_FLOOR.HALL_SOCKET,
-            outletGroupIds: [ELECTRICAL_POINT_IDS_1_FLOOR.OUT_110_1],
+            roomId: ROOM_IDS_1_FLOOR.HALL_CORRIDOR,
+            outletGroupIds: [ELECTRICAL_POINT_IDS_1_FLOOR.OUT_101_4],
           },
         ],
         technicalInfo: techInfoTemplates.ABB_SOCKET_16A,
@@ -202,7 +217,10 @@ export const floor1Panels: Panel[] = [
         controlledLoads: [
           {
             roomId: ROOM_IDS_1_FLOOR.EMERGENCY_LIGHTING,
-            lightFixtureIds: [ELECTRICAL_POINT_IDS_1_FLOOR.FIX_111_1],
+            lightFixtureIds: [
+              ELECTRICAL_POINT_IDS_1_FLOOR.FIX_111_1,
+              ELECTRICAL_POINT_IDS_1_FLOOR.FIX_111_2,
+            ],
           },
         ],
         technicalInfo: techInfoTemplates.ABB_LIGHTING_16A,

@@ -112,7 +112,6 @@ const RoomCard = ({ room, points }: RoomCardProps) => {
                   className={`${styles.icon} ${
                     isPowered ? styles.on : styles.off
                   }`}
-                  title={`${outlet.count} розеток`}
                 >
                   🔌
                 </div>
