@@ -5,7 +5,7 @@ import { ELECTRICAL_POINT_IDS_1_FLOOR } from "./roomID";
 
 export const floor1Panels: Panel[] = [
   {
-    id: "panel-1-1",
+    id: "panel-1-1", // 1 этаж 1 ЩО
     name: "ЩО-1",
     type: "lighting",
     location: "холл на входе, возле туалета",
@@ -13,7 +13,7 @@ export const floor1Panels: Panel[] = [
     poweredFrom: "ЩРС № 7",
     breakers: [
       {
-        id: "breaker-1-1-1",
+        id: "breaker-1-1-1", // 1 этаж, 1 ЩО, 1 автомат
         designation: "QF1",
         description: "Холл Коридор Освещение (101)",
         rating: 25,
