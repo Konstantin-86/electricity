@@ -11,29 +11,6 @@ export const electricalInstances3Floor: (
 )[] = [
   // ========== РОЗЕТКИ ==========
 
-  // Коридор (301)
-  {
-    id: ELECTRICAL_POINT_IDS_3_FLOOR.OUT_301_1,
-    roomId: ROOM_IDS_3_FLOOR.CORRIDOR,
-    type: "outlet",
-    count: 1,
-    estimatedLoad: 300,
-  },
-  {
-    id: ELECTRICAL_POINT_IDS_3_FLOOR.OUT_301_2,
-    roomId: ROOM_IDS_3_FLOOR.CORRIDOR,
-    type: "outlet",
-    count: 1,
-    estimatedLoad: 300,
-  },
-  {
-    id: ELECTRICAL_POINT_IDS_3_FLOOR.OUT_301_3,
-    roomId: ROOM_IDS_3_FLOOR.CORRIDOR,
-    type: "outlet",
-    count: 2,
-    estimatedLoad: 300,
-  },
-
   // Экономист (302)
   {
     id: ELECTRICAL_POINT_IDS_3_FLOOR.OUT_302_1,
@@ -148,6 +125,21 @@ export const electricalInstances3Floor: (
     estimatedLoad: 300,
   },
 
+  // Селекторная (310)
+  {
+    id: ELECTRICAL_POINT_IDS_3_FLOOR.OUT_310_1,
+    roomId: ROOM_IDS_3_FLOOR.MEETING_ROOM,
+    type: "outlet",
+    count: 2,
+    estimatedLoad: 300,
+  },
+  {
+    id: ELECTRICAL_POINT_IDS_3_FLOOR.OUT_310_2,
+    roomId: ROOM_IDS_3_FLOOR.MEETING_ROOM,
+    type: "outlet",
+    count: 1,
+    estimatedLoad: 400,
+  },
   // Ксерокс холл (311)
   {
     id: ELECTRICAL_POINT_IDS_3_FLOOR.OUT_311_1,
@@ -278,6 +270,18 @@ export const electricalInstances3Floor: (
   },
   {
     id: ELECTRICAL_POINT_IDS_3_FLOOR.FIX_301_4,
+    roomId: ROOM_IDS_3_FLOOR.CORRIDOR,
+    type: "light",
+    template: fixtureTemplates.EMERGENCY_EXIT_SIGN,
+  },
+  {
+    id: ELECTRICAL_POINT_IDS_3_FLOOR.FIX_301_5,
+    roomId: ROOM_IDS_3_FLOOR.CORRIDOR,
+    type: "light",
+    template: fixtureTemplates.EMERGENCY_EXIT_SIGN,
+  },
+  {
+    id: ELECTRICAL_POINT_IDS_3_FLOOR.FIX_301_6,
     roomId: ROOM_IDS_3_FLOOR.CORRIDOR,
     type: "light",
     template: fixtureTemplates.EMERGENCY_EXIT_SIGN,

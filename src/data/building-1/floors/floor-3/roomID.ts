@@ -19,10 +19,6 @@ export const ROOM_IDS_3_FLOOR = {
 
 export const ELECTRICAL_POINT_IDS_3_FLOOR = {
   // Розетки
-  // Коридор (301)
-  OUT_301_1: "out-301-1",
-  OUT_301_2: "out-301-2",
-  OUT_301_3: "out-301-3",
 
   // Экономист (302)
   OUT_302_1: "out-302-1",
@@ -50,6 +46,9 @@ export const ELECTRICAL_POINT_IDS_3_FLOOR = {
   OUT_306_2: "out-306-2",
   OUT_306_3: "out-306-3",
 
+  // Селекторная (310)
+  OUT_310_1: "out-310-1",
+  OUT_310_2: "out-310-2",
   // Ксерокс холл (311)
 
   OUT_311_1: "out-311-1",
@@ -86,6 +85,8 @@ export const ELECTRICAL_POINT_IDS_3_FLOOR = {
   FIX_301_2: "fix-301-2",
   FIX_301_3: "fix-301-3",
   FIX_301_4: "fix-301-4",
+  FIX_301_5: "fix-301-5",
+  FIX_301_6: "fix-301-6",
 
   // Экономист (302)
   FIX_302_1: "fix-302-1",

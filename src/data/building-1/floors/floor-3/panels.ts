@@ -455,6 +455,122 @@ export const floor3Panels: Panel[] = [
           comments: "Основной автомат рецепции",
         },
       },
+      {
+        id: "breaker-3-5-9",
+        designation: "QF9",
+        description: "Коридор (301)",
+        rating: 16,
+        type: "lighting",
+        isOn: true,
+        controlledLoads: [
+          {
+            roomId: ROOM_IDS_3_FLOOR.CORRIDOR,
+            lightFixtureIds: [
+              ELECTRICAL_POINT_IDS_3_FLOOR.FIX_301_4,
+              ELECTRICAL_POINT_IDS_3_FLOOR.FIX_301_5,
+              ELECTRICAL_POINT_IDS_3_FLOOR.FIX_301_6,
+            ],
+          },
+        ],
+        technicalInfo: {
+          ...techInfoTemplates.ABB_SOCKET_16A,
+          serialNumber: "ABB-S203-001",
+          comments: "Основной автомат рецепции",
+        },
+      },
+      {
+        id: "breaker-3-5-10",
+        designation: "QF10",
+        description: "Селекторная (310)",
+        rating: 16,
+        type: "mixed",
+        isOn: true,
+        controlledLoads: [
+          {
+            roomId: ROOM_IDS_3_FLOOR.MEETING_ROOM,
+            lightFixtureIds: [
+              ELECTRICAL_POINT_IDS_3_FLOOR.FIX_310_1,
+              ELECTRICAL_POINT_IDS_3_FLOOR.FIX_310_2,
+              ELECTRICAL_POINT_IDS_3_FLOOR.FIX_310_3,
+            ],
+            outletGroupIds: [
+              ELECTRICAL_POINT_IDS_3_FLOOR.OUT_310_1,
+              ELECTRICAL_POINT_IDS_3_FLOOR.OUT_310_2,
+            ],
+          },
+        ],
+        technicalInfo: {
+          ...techInfoTemplates.ABB_SOCKET_16A,
+          serialNumber: "ABB-S203-001",
+          comments: "Основной автомат рецепции",
+        },
+      },
+      {
+        id: "breaker-3-5-11",
+        designation: "QF11",
+        description: "Туалеты (315, 316)", // TODO: [REFACTOR] Уточнить один автомат за два помещения? или нет
+        rating: 16,
+        type: "mixed",
+        isOn: true,
+        controlledLoads: [
+          {
+            roomId: ROOM_IDS_3_FLOOR.TOILET_MEN,
+            lightFixtureIds: [
+              ELECTRICAL_POINT_IDS_3_FLOOR.FIX_315_1,
+              ELECTRICAL_POINT_IDS_3_FLOOR.FIX_315_2,
+            ],
+            outletGroupIds: [
+              ELECTRICAL_POINT_IDS_3_FLOOR.OUT_315_1,
+              ELECTRICAL_POINT_IDS_3_FLOOR.OUT_315_2,
+            ],
+          },
+          {
+            roomId: ROOM_IDS_3_FLOOR.TOILET_WOMEN,
+            lightFixtureIds: [
+              ELECTRICAL_POINT_IDS_3_FLOOR.FIX_316_1,
+              ELECTRICAL_POINT_IDS_3_FLOOR.FIX_316_2,
+            ],
+            outletGroupIds: [
+              ELECTRICAL_POINT_IDS_3_FLOOR.OUT_316_1,
+              ELECTRICAL_POINT_IDS_3_FLOOR.OUT_316_2,
+            ],
+          },
+        ],
+        technicalInfo: {
+          ...techInfoTemplates.ABB_SOCKET_16A,
+          serialNumber: "ABB-S203-001",
+          comments: "Основной автомат рецепции",
+        },
+      },
+      {
+        id: "breaker-3-5-12",
+        designation: "QF12",
+        description: "Главный бухгалтер и Комната отдыха (308, 309)",
+        rating: 16,
+        type: "mixed",
+        isOn: true,
+        controlledLoads: [
+          {
+            roomId: ROOM_IDS_3_FLOOR.CHIEF_ACCOUNTANT,
+            lightFixtureIds: [
+              ELECTRICAL_POINT_IDS_3_FLOOR.FIX_308_1,
+              ELECTRICAL_POINT_IDS_3_FLOOR.FIX_308_2,
+            ],
+          },
+          {
+            roomId: ROOM_IDS_3_FLOOR.REST_ROOM,
+            lightFixtureIds: [
+              ELECTRICAL_POINT_IDS_3_FLOOR.FIX_309_1,
+              ELECTRICAL_POINT_IDS_3_FLOOR.FIX_309_2,
+            ],
+          },
+        ],
+        technicalInfo: {
+          ...techInfoTemplates.ABB_SOCKET_16A,
+          serialNumber: "ABB-S203-001",
+          comments: "Основной автомат рецепции",
+        },
+      },
     ],
   },
 ];
