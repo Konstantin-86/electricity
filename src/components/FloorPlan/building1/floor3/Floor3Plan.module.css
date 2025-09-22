@@ -18,19 +18,19 @@
   flex-wrap: nowrap;
 }
 
-/* Первый уровень - офисы */
+/* Первый уровень - офисы и туалеты */
 .level:first-child {
   justify-content: flex-start;
   gap: 15px;
 }
 
-/* Второй уровень - лестница, коридор, лестница */
+/* Второй уровень - только коридор */
 .level:nth-child(2) {
-  justify-content: space-between;
+  justify-content: center;
   gap: 12px;
 }
 
-/* Третий уровень - технические помещения */
+/* Третий уровень - руководство */
 .level:last-child {
   justify-content: flex-start;
   gap: 15px;
@@ -59,7 +59,7 @@
   flex-grow: 1;
   flex-basis: 0;
   min-width: 200px;
-  max-width: calc(100% - 130px); /* Оставляем место для двух боковых комнат */
+  max-width: calc(100% - 130px);
   background: linear-gradient(135deg, #e8f5e8 0%, #d0e8d0 100%);
   border-color: #4caf50;
 }
@@ -97,6 +97,11 @@
   font-size: 0.75em;
 }
 
+[data-room-id="room-3-303"] {
+  order: -1;
+  background-color: #19e780;
+}
+
 .room.other {
   background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);
   border-color: #9c27b0;
@@ -129,6 +134,15 @@
   opacity: 0.3;
 }
 
+.room.conference::after {
+  content: "📊";
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  font-size: 0.8em;
+  opacity: 0.3;
+}
+
 .room.bathroom::after {
   content: "🚻";
   position: absolute;
@@ -138,14 +152,15 @@
   opacity: 0.3;
 }
 
-.room.technical::after {
-  content: "⚙️";
+.room.other::after {
+  content: "🛋️";
   position: absolute;
   bottom: 5px;
   right: 5px;
   font-size: 0.8em;
   opacity: 0.3;
 }
+
 .levelPanels {
   position: relative;
 }

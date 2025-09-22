@@ -1,6 +1,7 @@
 import styles from "./FloorPlan.module.css";
 import Floor2Plan from "../FloorPlan/building1/floor2/Floor2Plan";
 import { useState } from "react";
+import Floor3Plan from "./building1/floor3/Floor3Plan";
 // Импортируйте другие компоненты планов этажей по мере их создания
 
 interface FloorPlanProps {
@@ -10,6 +11,7 @@ interface FloorPlanProps {
 // Словарь компонентов планов этажей
 const floorPlanComponents: Record<string, React.ComponentType> = {
   "floor-1-2": Floor2Plan,
+  "floor-1-3": Floor3Plan,
   // Добавьте другие этажи по мере необходимости
   // "floor-1-1": Floor1Plan,
   // "floor-1-3": Floor3Plan,

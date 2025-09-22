@@ -1,8 +1,11 @@
 import { useState } from "react";
-import type { IBreaker } from "../../types";
-import styles from "./Breaker.module.css";
-import BreakerTechnicalInfo from "./BreakerTechnicalInfo";
 import { useBreakerStore } from "../../store/breakerStore";
+
+import BreakerTechnicalInfo from "./BreakerTechnicalInfo";
+
+import type { IBreaker } from "../../types";
+
+import styles from "./Breaker.module.css";
 
 interface BreakerProps {
   breaker: IBreaker;

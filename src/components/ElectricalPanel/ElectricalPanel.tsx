@@ -1,22 +1,14 @@
-import Breaker from "../Breaker/Breaker";
+import { useState } from "react";
 import { useBreakerStore } from "../../store/breakerStore";
 
-import styles from "./ElectricalPanel.module.css";
-import { useState } from "react";
+import Breaker from "../Breaker/Breaker";
 import ElectricalScheme from "../ElectricalScheme/ElectricalScheme";
+
+import styles from "./ElectricalPanel.module.css";
 
 const ElectricalPanel = () => {
   const { panels, breakersState } = useBreakerStore();
   const [showPanel, setShowPanel] = useState(false);
-
-  if (!panels || panels.length === 0) {
-    return (
-      <div className={styles.panel}>
-        <h1>Панель управления</h1>
-        <p>Выберите этаж для отображения щитов</p>
-      </div>
-    );
-  }
 
   return (
     <>

@@ -1,13 +1,15 @@
+/* Breaker.module.css */
 .breaker {
   width: 140px;
-  background: linear-gradient(145deg, #34495e, #2c3e50);
+  background: linear-gradient(145deg, #ffffff, #f8f9fa);
   border-radius: 10px;
   padding: 7px;
   cursor: pointer;
   transition: all 0.3s ease;
-  border: 2px solid transparent;
+  border: 2px solid #e9ecef;
   position: relative;
   overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 .breaker::before {
@@ -20,29 +22,29 @@
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 255, 255, 0.2),
+    rgba(111, 66, 193, 0.1),
     transparent
   );
 }
 
 .breaker:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-  border-color: rgba(52, 152, 219, 0.3);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  border-color: rgba(111, 66, 193, 0.2);
 }
 
 .breaker.selected {
-  border-color: #3498db;
-  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
-  background: linear-gradient(145deg, #3d566e, #34495e);
+  border-color: #6f42c1;
+  box-shadow: 0 0 0 3px rgba(111, 66, 193, 0.1);
+  background: linear-gradient(145deg, #ffffff, #f0f3f5);
 }
 
 .breaker.on {
-  border-left: 3px solid #2ecc71;
+  border-left: 3px solid #28a745;
 }
 
 .breaker.off {
-  border-left: 3px solid #e74c3c;
+  border-left: 3px solid #dc3545;
 }
 
 .breakerContent {
@@ -66,18 +68,25 @@
 .nameBreaker,
 .description {
   text-align: left;
-  color: #ecf0f1;
+  color: #2c3e50;
   font-weight: 600;
   font-size: 14px;
   margin: 0;
 }
+
 .description {
   font-size: 12px;
+  color: #6c757d;
 }
 
 .moreInfo {
   position: absolute;
   right: -3%;
+  cursor: pointer;
+}
+
+.moreInfo:hover svg {
+  fill: #6f42c1;
 }
 
 .status {
@@ -85,23 +94,35 @@
   align-items: center;
   gap: 6px;
   font-size: 0.8rem;
-  color: #95a5a6;
+  color: #6c757d;
+  font-weight: 500;
 }
 
 .statusIndicator {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .breaker.on .statusIndicator {
-  background: #2ecc71;
-  box-shadow: 0 0 8px #2ecc71;
+  background: #28a745;
+  box-shadow: 0 0 6px rgba(40, 167, 69, 0.4);
 }
 
 .breaker.off .statusIndicator {
-  background: #e74c3c;
+  background: #dc3545;
+  box-shadow: 0 0 6px rgba(220, 53, 69, 0.3);
+}
+
+.rating {
+  margin-left: auto;
+  font-weight: 600;
+  color: #495057;
+  background: #f1f3f5;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.75rem;
 }
 
 .switchContainer {
@@ -110,18 +131,20 @@
   justify-content: center;
   padding: 8px;
   border-radius: 8px;
-  background: rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s ease;
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  transition: all 0.3s ease;
 }
 
 .switchContainer:hover {
-  background: rgba(0, 0, 0, 0.3);
+  background: #e9ecef;
+  border-color: #dee2e6;
 }
 
 .switch {
   width: 50px;
   height: 24px;
-  background: #7f8c8d;
+  background: #adb5bd;
   border-radius: 12px;
   position: relative;
   transition: background-color 0.3s ease;
@@ -129,11 +152,11 @@
 }
 
 .switchOn {
-  background: #2ecc71;
+  background: #28a745;
 }
 
 .switchOff {
-  background: #e74c3c;
+  background: #dc3545;
 }
 
 .switchHandle {
@@ -144,7 +167,7 @@
   background: white;
   border-radius: 50%;
   transition: transform 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
 }
 
 .switchOn .switchHandle {
@@ -153,4 +176,29 @@
 
 .switchOff .switchHandle {
   transform: translateX(2px);
+}
+
+/* Стили для разных типов автоматов */
+.typeLighting {
+  border-top: 2px solid rgba(255, 193, 7, 0.3);
+}
+
+.typeSocket {
+  border-top: 2px solid rgba(0, 123, 255, 0.3);
+}
+
+.typeMixed {
+  border-top: 2px solid rgba(111, 66, 193, 0.3);
+}
+
+.typeLighting:hover {
+  border-color: rgba(255, 193, 7, 0.5);
+}
+
+.typeSocket:hover {
+  border-color: rgba(0, 123, 255, 0.5);
+}
+
+.typeMixed:hover {
+  border-color: rgba(111, 66, 193, 0.5);
 }

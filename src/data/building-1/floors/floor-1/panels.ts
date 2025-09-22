@@ -227,4 +227,182 @@ export const floor1Panels: Panel[] = [
       },
     ],
   },
+  {
+    id: "panel-1-1(kitchen)", // 1 этаж 1 ЩО
+    name: "ЩО-1 (столовая)",
+    type: "lighting",
+    location: "коридор столовой",
+    cableType: "ВВГ 4x10 (15м)",
+    poweredFrom: "ЩС № 1",
+    breakers: [
+      {
+        id: "breaker-1-1-1(kitchen)", // 1 этаж, 1 ЩО, 1 автомат
+        designation: "QF1",
+        description: "Водонагреватель", // TODO: [REFACTOR] !!Уточнить где находится
+        rating: 16,
+        type: "socket",
+        isOn: true,
+        technicalInfo: {
+          ...techInfoTemplates.ABB_SOCKET_16A,
+          serialNumber: "ABB-S203-001",
+          comments: "Основной автомат рецепции",
+        },
+      },
+      {
+        id: "breaker-1-1-2(kitchen)",
+        designation: "QF2",
+        description: "Подвал",
+        rating: 16,
+        type: "socket",
+        isOn: true,
+        technicalInfo: {
+          ...techInfoTemplates.ABB_SOCKET_16A,
+          serialNumber: "ABB-S203-001",
+          comments: "Основной автомат рецепции",
+        },
+      },
+      {
+        id: "breaker-1-1-3(kitchen)",
+        designation: "QF3",
+        description: "Подвал",
+        rating: 16,
+        type: "socket",
+        isOn: true,
+        technicalInfo: {
+          ...techInfoTemplates.ABB_SOCKET_16A,
+          serialNumber: "ABB-S203-001",
+          comments: "Основной автомат рецепции",
+        },
+      },
+      {
+        id: "breaker-1-1-4(kitchen)",
+        designation: "QF4",
+        description: "Подвал Резерв",
+        rating: 16,
+        type: "socket",
+        isOn: true,
+        technicalInfo: {
+          ...techInfoTemplates.ABB_SOCKET_16A,
+          serialNumber: "ABB-S203-001",
+          comments: "Основной автомат рецепции",
+        },
+      },
+      {
+        id: "breaker-1-1-5(kitchen)",
+        designation: "QF5",
+        description: "Кабинет заведующей (122)",
+        rating: 16,
+        type: "mixed",
+        isOn: true,
+        controlledLoads: [
+          {
+            roomId: ROOM_IDS_1_FLOOR.HEAD_OFFICE,
+            lightFixtureIds: [
+              ELECTRICAL_POINT_IDS_1_FLOOR.FIX_112_1,
+              ELECTRICAL_POINT_IDS_1_FLOOR.FIX_112_2,
+            ],
+            outletGroupIds: [
+              ELECTRICAL_POINT_IDS_1_FLOOR.OUT_112_1,
+              ELECTRICAL_POINT_IDS_1_FLOOR.OUT_112_2,
+            ],
+          },
+        ],
+        technicalInfo: {
+          ...techInfoTemplates.ABB_SOCKET_16A,
+          serialNumber: "ABB-S203-001",
+          comments: "Основной автомат рецепции",
+        },
+      },
+      {
+        id: "breaker-1-1-6(kitchen)",
+        designation: "QF6",
+        description: "резерв",
+        rating: 16,
+        type: "mixed",
+        isOn: false,
+        technicalInfo: {
+          ...techInfoTemplates.ABB_SOCKET_16A,
+          serialNumber: "ABB-S203-001",
+          comments: "Основной автомат рецепции",
+        },
+      },
+      {
+        id: "breaker-1-1-7(kitchen)",
+        designation: "QF7",
+        description: "Обеденный зал (125)",
+        rating: 16,
+        type: "mixed",
+        isOn: true,
+        controlledLoads: [
+          {
+            roomId: ROOM_IDS_1_FLOOR.HEAD_OFFICE,
+            lightFixtureIds: [
+              ELECTRICAL_POINT_IDS_1_FLOOR.FIX_125_1,
+              ELECTRICAL_POINT_IDS_1_FLOOR.FIX_125_2,
+              ELECTRICAL_POINT_IDS_1_FLOOR.FIX_125_3,
+              ELECTRICAL_POINT_IDS_1_FLOOR.FIX_125_4,
+            ],
+            outletGroupIds: [ELECTRICAL_POINT_IDS_1_FLOOR.OUT_125_1],
+          },
+        ],
+        technicalInfo: {
+          ...techInfoTemplates.ABB_SOCKET_16A,
+          serialNumber: "ABB-S203-001",
+          comments: "Основной автомат рецепции",
+        },
+      },
+      {
+        id: "breaker-1-1-8(kitchen)",
+        designation: "QF8",
+        description: "Столовая VIP (112)",
+        rating: 16,
+        type: "mixed",
+        isOn: true,
+        controlledLoads: [
+          {
+            roomId: ROOM_IDS_1_FLOOR.VIP_DINING,
+            lightFixtureIds: [
+              ELECTRICAL_POINT_IDS_1_FLOOR.FIX_112_1,
+              ELECTRICAL_POINT_IDS_1_FLOOR.FIX_112_2,
+            ],
+            outletGroupIds: [
+              ELECTRICAL_POINT_IDS_1_FLOOR.OUT_112_1,
+              ELECTRICAL_POINT_IDS_1_FLOOR.OUT_112_2,
+            ],
+          },
+        ],
+        technicalInfo: {
+          ...techInfoTemplates.ABB_SOCKET_16A,
+          serialNumber: "ABB-S203-001",
+          comments: "Основной автомат рецепции",
+        },
+      },
+      {
+        id: "breaker-1-1-89(kitchen)",
+        designation: "QF89",
+        description: "Столовая зал (216)", // TODO: [REFACTOR] !!Уточнить (обеденный зал, столовая зал что это)
+        rating: 16,
+        type: "mixed",
+        isOn: true,
+        controlledLoads: [
+          {
+            roomId: ROOM_IDS_1_FLOOR.VIP_DINING,
+            lightFixtureIds: [
+              ELECTRICAL_POINT_IDS_1_FLOOR.FIX_126_1,
+              ELECTRICAL_POINT_IDS_1_FLOOR.FIX_126_2,
+            ],
+            outletGroupIds: [
+              ELECTRICAL_POINT_IDS_1_FLOOR.OUT_112_1,
+              ELECTRICAL_POINT_IDS_1_FLOOR.OUT_112_2,
+            ],
+          },
+        ],
+        technicalInfo: {
+          ...techInfoTemplates.ABB_SOCKET_16A,
+          serialNumber: "ABB-S203-001",
+          comments: "Основной автомат рецепции",
+        },
+      },
+    ],
+  },
 ];

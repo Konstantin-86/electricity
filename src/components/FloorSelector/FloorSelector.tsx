@@ -33,12 +33,12 @@ const FloorSelector = ({ floors, goBack }: FloorSelectorProps) => {
       <div className={styles.container}>
         <div className={styles.headerWrap}></div>
         <FloorPlan floor={currentFloor.id} />
-        <ElectricalPanel />
+        {/*   <ElectricalPanel />
         <RoomsList
           rooms={currentFloor.rooms}
           points={currentFloor.points}
           goBackButton={goBackButton}
-        />
+        /> */}
       </div>
     );
   }

@@ -1,35 +1,33 @@
-import { floor2Rooms } from "../../../../data/building-1/floors/floor-2/rooms";
-import styles from "./Floor2Plan.module.css";
+import { floor3Rooms } from "../../../../data/building-1/floors/floor-3/rooms";
+import styles from "./Floor3Plan.module.css";
 
-const Floor2Plan = () => {
+const Floor3Plan = () => {
   // Группируем помещения по уровням
-  const firstLevelRooms = floor2Rooms.filter(
+  const firstLevelRooms = floor3Rooms.filter(
     (room) =>
-      room.id === "room-2-204" || // OFFICE_ATX_HEAD
-      room.id === "room-2-205" || // OFFICE_EVS_HEAD
-      room.id === "room-2-206" || // OFFICE_AVR_HEAD
-      room.id === "room-2-207" || // OFFICE_DIPNR_HEAD
-      room.id === "room-2-211" || // DEPT_PTO
-      room.id === "room-2-212" // DEPT_ATX_TECH
+      room.id === "room-3-303" || // OCCUPATIONAL_SAFETY
+      room.id === "room-3-302" || // ECONOMIST
+      room.id === "room-3-304" || // ACCOUNTING
+      room.id === "room-3-313" || // HR_DEPARTMENT
+      room.id === "room-3-305" || // INVENTORY_ACCOUNTING
+      room.id === "room-3-306" // CHIEF_ENGINEER
   );
 
-  const secondLevelRooms = floor2Rooms.filter(
-    (room) =>
-      room.id === "room-2-201" || // CORRIDOR
-      room.id === "room-2-203" // STAIRS_PANTRY
+  const secondLevelRooms = floor3Rooms.filter(
+    (room) => room.id === "room-3-301" // CORRIDOR
   );
 
-  const thirdLevelRooms = floor2Rooms.filter(
+  const thirdLevelRooms = floor3Rooms.filter(
     (room) =>
-      room.id === "room-2-215" || // TOILET
-      room.id === "room-2-216" || // TOILET_MEN
-      room.id === "room-2-210" || // OFFICE_MTS_HEAD
-      room.id === "room-2-217" || // TOILET_WOMEN
-      room.id === "room-2-208" || // OFFICE_AVR4_DEPUTY
-      room.id === "room-2-209" || // OFFICE_GAZTORG_DIRECTOR
-      room.id === "room-2-218" || // HEATER_TOILET_MEN
-      room.id === "room-2-219" || // HEATER_TOILET_WOMEN
-      room.id === "room-2-220" // HEATER
+      room.id === "room-3-307" || // RECEPTION
+      room.id === "room-3-308" || // CHIEF_ACCOUNTANT
+      room.id === "room-3-309" || // REST_ROOM
+      room.id === "room-3-310" || // MEETING_ROOM
+      room.id === "room-3-311" || // XEROX_HALL
+      room.id === "room-3-312" || // PROGRAMMER
+      room.id === "room-3-314" || // DIRECTOR
+      room.id === "room-3-315" || // TOILET_MEN
+      room.id === "room-3-316" // TOILET_WOMEN
   );
 
   const roomid = (id: string) => {
@@ -38,7 +36,7 @@ const Floor2Plan = () => {
 
   return (
     <div className={styles.floorPlan}>
-      {/* Первый уровень - офисы и отделы */}
+      {/* Первый уровень - офисы и туалеты */}
       <div className={styles.level}>
         {firstLevelRooms.map((room) => (
           <div
@@ -54,7 +52,7 @@ const Floor2Plan = () => {
         ))}
       </div>
 
-      {/* Второй уровень - лестница, коридор, лестница */}
+      {/* Второй уровень - только коридор */}
       <div className={`${styles.level} ${styles.levelPanels}`}>
         {secondLevelRooms.map((room) => (
           <div
@@ -71,7 +69,7 @@ const Floor2Plan = () => {
         <div className={styles.panel2}>ЩО5</div>
       </div>
 
-      {/* Третий уровень - технические помещения и санузлы */}
+      {/* Третий уровень - руководство и дополнительные помещения */}
       <div className={styles.level}>
         {thirdLevelRooms.map((room) => (
           <div
@@ -89,4 +87,4 @@ const Floor2Plan = () => {
   );
 };
 
-export default Floor2Plan;
+export default Floor3Plan;

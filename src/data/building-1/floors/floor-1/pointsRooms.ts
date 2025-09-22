@@ -71,6 +71,132 @@ export const electricalInstances: (OutletInstance | LightFixtureInstance)[] = [
     estimatedLoad: 500,
   },
 
+  // ========== НОВЫЕ РОЗЕТКИ ==========
+
+  // Столовая VIP (112)
+  {
+    id: ELECTRICAL_POINT_IDS_1_FLOOR.OUT_112_1,
+    roomId: ROOM_IDS_1_FLOOR.VIP_DINING,
+    type: "outlet",
+    count: 8,
+    estimatedLoad: 2000,
+  },
+  {
+    id: ELECTRICAL_POINT_IDS_1_FLOOR.OUT_112_2,
+    roomId: ROOM_IDS_1_FLOOR.VIP_DINING,
+    type: "outlet",
+    count: 4,
+    estimatedLoad: 3000,
+  },
+
+  // Мучной цех (113)
+  {
+    id: ELECTRICAL_POINT_IDS_1_FLOOR.OUT_113_1,
+    roomId: ROOM_IDS_1_FLOOR.FLOUR_WORKSHOP,
+    type: "outlet",
+    count: 6,
+    estimatedLoad: 4000,
+  },
+
+  // Овощной цех (114)
+  {
+    id: ELECTRICAL_POINT_IDS_1_FLOOR.OUT_114_1,
+    roomId: ROOM_IDS_1_FLOOR.VEGETABLE_WORKSHOP,
+    type: "outlet",
+    count: 5,
+    estimatedLoad: 3500,
+  },
+
+  // Горячий цех (115)
+  {
+    id: ELECTRICAL_POINT_IDS_1_FLOOR.OUT_115_1,
+    roomId: ROOM_IDS_1_FLOOR.HOT_WORKSHOP,
+    type: "outlet",
+    count: 8,
+    estimatedLoad: 6000,
+  },
+
+  // Комната для персонала (116)
+  {
+    id: ELECTRICAL_POINT_IDS_1_FLOOR.OUT_116_1,
+    roomId: ROOM_IDS_1_FLOOR.STAFF_ROOM,
+    type: "outlet",
+    count: 4,
+    estimatedLoad: 1000,
+  },
+
+  // Мясной цех (117)
+  {
+    id: ELECTRICAL_POINT_IDS_1_FLOOR.OUT_117_1,
+    roomId: ROOM_IDS_1_FLOOR.MEAT_WORKSHOP,
+    type: "outlet",
+    count: 6,
+    estimatedLoad: 4500,
+  },
+
+  // Душевая (118)
+  {
+    id: ELECTRICAL_POINT_IDS_1_FLOOR.OUT_118_1,
+    roomId: ROOM_IDS_1_FLOOR.SHOWER,
+    type: "outlet",
+    count: 2,
+    estimatedLoad: 3000,
+  },
+
+  // Кладовая сухих продуктов (119)
+  {
+    id: ELECTRICAL_POINT_IDS_1_FLOOR.OUT_119_1,
+    roomId: ROOM_IDS_1_FLOOR.DRY_PRODUCTS_STORAGE,
+    type: "outlet",
+    count: 3,
+    estimatedLoad: 1500,
+  },
+
+  // Туалет столовая (120)
+  {
+    id: ELECTRICAL_POINT_IDS_1_FLOOR.OUT_120_1,
+    roomId: ROOM_IDS_1_FLOOR.DINING_TOILET,
+    type: "outlet",
+    count: 1,
+    estimatedLoad: 500,
+  },
+
+  // Холодильное отделение (121)
+  {
+    id: ELECTRICAL_POINT_IDS_1_FLOOR.OUT_121_1,
+    roomId: ROOM_IDS_1_FLOOR.REFRIGERATION,
+    type: "outlet",
+    count: 6,
+    estimatedLoad: 8000,
+  },
+
+  // Кабинет заведующей (122)
+  {
+    id: ELECTRICAL_POINT_IDS_1_FLOOR.OUT_122_1,
+    roomId: ROOM_IDS_1_FLOOR.HEAD_OFFICE,
+    type: "outlet",
+    count: 6,
+    estimatedLoad: 1500,
+  },
+
+  // Кладовая уборочного инвентаря (123)
+  {
+    id: ELECTRICAL_POINT_IDS_1_FLOOR.OUT_123_1,
+    roomId: ROOM_IDS_1_FLOOR.CLEANING_STORAGE,
+    type: "outlet",
+    count: 2,
+    estimatedLoad: 1000,
+  },
+
+  // Коридор столовая (124)
+  {
+    id: ELECTRICAL_POINT_IDS_1_FLOOR.OUT_124_1,
+    roomId: ROOM_IDS_1_FLOOR.DINING_CORRIDOR,
+    type: "outlet",
+    count: 3,
+    estimatedLoad: 900,
+  },
+
   // ========== СВЕТИЛЬНИКИ ==========
   // Холл Коридор  (101)
   {
@@ -184,7 +310,7 @@ export const electricalInstances: (OutletInstance | LightFixtureInstance)[] = [
     template: fixtureTemplates.RECESSED_SPOT_10W,
   },
 
-  // //Дежурное освещение (111)
+  // Дежурное освещение (111)
   {
     id: ELECTRICAL_POINT_IDS_1_FLOOR.FIX_111_1,
     roomId: ROOM_IDS_1_FLOOR.EMERGENCY_LIGHTING,
@@ -196,5 +322,197 @@ export const electricalInstances: (OutletInstance | LightFixtureInstance)[] = [
     roomId: ROOM_IDS_1_FLOOR.EMERGENCY_LIGHTING,
     type: "light",
     template: fixtureTemplates.EMERGENCY_LUMINAIRE,
+  },
+
+  // Столовая VIP (112)
+  {
+    id: ELECTRICAL_POINT_IDS_1_FLOOR.FIX_112_1,
+    roomId: ROOM_IDS_1_FLOOR.VIP_DINING,
+    type: "light",
+    template: fixtureTemplates.DECORATIVE_CHANDELIER_6x40W,
+  },
+  {
+    id: ELECTRICAL_POINT_IDS_1_FLOOR.FIX_112_2,
+    roomId: ROOM_IDS_1_FLOOR.VIP_DINING,
+    type: "light",
+    template: fixtureTemplates.LED_PANEL_SINGLE_40W,
+  },
+
+  // Мучной цех (113)
+  {
+    id: ELECTRICAL_POINT_IDS_1_FLOOR.FIX_113_1,
+    roomId: ROOM_IDS_1_FLOOR.FLOUR_WORKSHOP,
+    type: "light",
+    template: fixtureTemplates.INDUSTRIAL_LUMINAIRE_2x58W,
+  },
+  {
+    id: ELECTRICAL_POINT_IDS_1_FLOOR.FIX_113_2,
+    roomId: ROOM_IDS_1_FLOOR.FLOUR_WORKSHOP,
+    type: "light",
+    template: fixtureTemplates.INDUSTRIAL_LUMINAIRE_2x58W,
+  },
+
+  // Овощной цех (114)
+  {
+    id: ELECTRICAL_POINT_IDS_1_FLOOR.FIX_114_1,
+    roomId: ROOM_IDS_1_FLOOR.VEGETABLE_WORKSHOP,
+    type: "light",
+    template: fixtureTemplates.INDUSTRIAL_LUMINAIRE_2x58W,
+  },
+  {
+    id: ELECTRICAL_POINT_IDS_1_FLOOR.FIX_114_2,
+    roomId: ROOM_IDS_1_FLOOR.VEGETABLE_WORKSHOP,
+    type: "light",
+    template: fixtureTemplates.INDUSTRIAL_LUMINAIRE_2x58W,
+  },
+
+  // Горячий цех (115)
+  {
+    id: ELECTRICAL_POINT_IDS_1_FLOOR.FIX_115_1,
+    roomId: ROOM_IDS_1_FLOOR.HOT_WORKSHOP,
+    type: "light",
+    template: fixtureTemplates.INDUSTRIAL_LUMINAIRE_2x58W,
+  },
+  {
+    id: ELECTRICAL_POINT_IDS_1_FLOOR.FIX_115_2,
+    roomId: ROOM_IDS_1_FLOOR.HOT_WORKSHOP,
+    type: "light",
+    template: fixtureTemplates.INDUSTRIAL_LUMINAIRE_2x58W,
+  },
+  {
+    id: ELECTRICAL_POINT_IDS_1_FLOOR.FIX_115_3,
+    roomId: ROOM_IDS_1_FLOOR.HOT_WORKSHOP,
+    type: "light",
+    template: fixtureTemplates.INDUSTRIAL_LUMINAIRE_2x58W,
+  },
+
+  // Комната для персонала (116)
+  {
+    id: ELECTRICAL_POINT_IDS_1_FLOOR.FIX_116_1,
+    roomId: ROOM_IDS_1_FLOOR.STAFF_ROOM,
+    type: "light",
+    template: fixtureTemplates.OFFICE_PANEL_2x36W,
+  },
+
+  // Мясной цех (117)
+  {
+    id: ELECTRICAL_POINT_IDS_1_FLOOR.FIX_117_1,
+    roomId: ROOM_IDS_1_FLOOR.MEAT_WORKSHOP,
+    type: "light",
+    template: fixtureTemplates.INDUSTRIAL_LUMINAIRE_2x58W,
+  },
+  {
+    id: ELECTRICAL_POINT_IDS_1_FLOOR.FIX_117_2,
+    roomId: ROOM_IDS_1_FLOOR.MEAT_WORKSHOP,
+    type: "light",
+    template: fixtureTemplates.INDUSTRIAL_LUMINAIRE_2x58W,
+  },
+
+  // Душевая (118)
+  {
+    id: ELECTRICAL_POINT_IDS_1_FLOOR.FIX_118_1,
+    roomId: ROOM_IDS_1_FLOOR.SHOWER,
+    type: "light",
+    template: fixtureTemplates.WATERPROOF_LUMINAIRE_1x20W,
+  },
+
+  // Кладовая сухих продуктов (119)
+  {
+    id: ELECTRICAL_POINT_IDS_1_FLOOR.FIX_119_1,
+    roomId: ROOM_IDS_1_FLOOR.DRY_PRODUCTS_STORAGE,
+    type: "light",
+    template: fixtureTemplates.RECESSED_SPOT_10W,
+  },
+
+  // Туалет столовая (120)
+  {
+    id: ELECTRICAL_POINT_IDS_1_FLOOR.FIX_120_1,
+    roomId: ROOM_IDS_1_FLOOR.DINING_TOILET,
+    type: "light",
+    template: fixtureTemplates.LED_PANEL_SINGLE_40W,
+  },
+
+  // Холодильное отделение (121)
+  {
+    id: ELECTRICAL_POINT_IDS_1_FLOOR.FIX_121_1,
+    roomId: ROOM_IDS_1_FLOOR.REFRIGERATION,
+    type: "light",
+    template: fixtureTemplates.LOW_TEMP_LUMINAIRE_2x36W,
+  },
+  {
+    id: ELECTRICAL_POINT_IDS_1_FLOOR.FIX_121_2,
+    roomId: ROOM_IDS_1_FLOOR.REFRIGERATION,
+    type: "light",
+    template: fixtureTemplates.LOW_TEMP_LUMINAIRE_2x36W,
+  },
+
+  // Кабинет заведующей (122)
+  {
+    id: ELECTRICAL_POINT_IDS_1_FLOOR.FIX_122_1,
+    roomId: ROOM_IDS_1_FLOOR.HEAD_OFFICE,
+    type: "light",
+    template: fixtureTemplates.OFFICE_PANEL_2x36W,
+  },
+
+  // Кладовая уборочного инвентаря (123)
+  {
+    id: ELECTRICAL_POINT_IDS_1_FLOOR.FIX_123_1,
+    roomId: ROOM_IDS_1_FLOOR.CLEANING_STORAGE,
+    type: "light",
+    template: fixtureTemplates.RECESSED_SPOT_10W,
+  },
+
+  // Коридор столовая (124)
+  {
+    id: ELECTRICAL_POINT_IDS_1_FLOOR.FIX_124_1,
+    roomId: ROOM_IDS_1_FLOOR.DINING_CORRIDOR,
+    type: "light",
+    template: fixtureTemplates.LINEAR_4x18W,
+  },
+  {
+    id: ELECTRICAL_POINT_IDS_1_FLOOR.FIX_124_2,
+    roomId: ROOM_IDS_1_FLOOR.DINING_CORRIDOR,
+    type: "light",
+    template: fixtureTemplates.LINEAR_4x18W,
+  },
+  // Столовая  (125)
+  {
+    id: ELECTRICAL_POINT_IDS_1_FLOOR.FIX_125_1,
+    roomId: ROOM_IDS_1_FLOOR.DINING,
+    type: "light",
+    template: fixtureTemplates.LINEAR_4x18W,
+  },
+  {
+    id: ELECTRICAL_POINT_IDS_1_FLOOR.FIX_125_4,
+    roomId: ROOM_IDS_1_FLOOR.DINING,
+    type: "light",
+    template: fixtureTemplates.LINEAR_4x18W,
+  },
+  {
+    id: ELECTRICAL_POINT_IDS_1_FLOOR.FIX_125_2,
+    roomId: ROOM_IDS_1_FLOOR.DINING,
+    type: "light",
+    template: fixtureTemplates.LINEAR_4x18W,
+  },
+  {
+    id: ELECTRICAL_POINT_IDS_1_FLOOR.FIX_125_3,
+    roomId: ROOM_IDS_1_FLOOR.DINING,
+    type: "light",
+    template: fixtureTemplates.LINEAR_4x18W,
+  },
+
+  // Столовая зал  (126)
+
+  {
+    id: ELECTRICAL_POINT_IDS_1_FLOOR.FIX_126_1,
+    roomId: ROOM_IDS_1_FLOOR.DINING_ROOM,
+    type: "light",
+    template: fixtureTemplates.LINEAR_4x18W,
+  },
+  {
+    id: ELECTRICAL_POINT_IDS_1_FLOOR.FIX_126_2,
+    roomId: ROOM_IDS_1_FLOOR.DINING_ROOM,
+    type: "light",
+    template: fixtureTemplates.LINEAR_4x18W,
   },
 ];
