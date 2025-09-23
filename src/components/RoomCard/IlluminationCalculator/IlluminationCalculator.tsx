@@ -60,27 +60,38 @@ const IlluminationCalculator = ({
 
   return (
     <div className={styles.calculator}>
-      <span className={styles.label}>Освещенность:</span>
-      <span className={styles.value}>{illumination} лк</span>
-      <div className={styles.progressBar}>
-        <div
-          className={styles.progressFill}
-          style={{ width: `${percentage}%`, backgroundColor: currentColor }}
-        />
-        <div className={styles.progressMarkers} style={{ color: currentColor }}>
-          <span style={{ left: "0%" }}>0</span>
-          <span style={{ left: `${(standard.min / standard.optimal) * 100}%` }}>
-            мин
-          </span>
-          <span style={{ left: "100%" }}>опт</span>
-          <span style={{ left: `${(standard.max / standard.optimal) * 100}%` }}>
-            макс
-          </span>
-        </div>
+      <div className={styles.firstRow}>
+        <span className={styles.label}>Освещенность:</span>
+        <span className={styles.value}>{illumination} лк</span>
       </div>
-      <span className={styles.status} style={{ color: currentColor }}>
-        {statusText[status]}
-      </span>
+      <div className={styles.secondRow}>
+        <div className={styles.progressBar}>
+          <div
+            className={styles.progressFill}
+            style={{ width: `${percentage}%`, backgroundColor: currentColor }}
+          />
+          <div
+            className={styles.progressMarkers}
+            style={{ color: currentColor }}
+          >
+            <span style={{ left: "0%" }}>0</span>
+            <span
+              style={{ left: `${(standard.min / standard.optimal) * 100}%` }}
+            >
+              мин
+            </span>
+            <span style={{ left: "100%" }}>опт</span>
+            <span
+              style={{ left: `${(standard.max / standard.optimal) * 100}%` }}
+            >
+              макс
+            </span>
+          </div>
+        </div>
+        <span className={styles.status} style={{ color: currentColor }}>
+          {statusText[status]}
+        </span>
+      </div>
     </div>
   );
 };

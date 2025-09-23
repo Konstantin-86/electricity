@@ -28,16 +28,7 @@ const Modal: React.FC<ModalProps> = ({
   return (
     <div className={styles.overlay} onClick={handleOverlayClick}>
       <div className={`${styles.modal} ${styles[size]}`}>
-        {(title || size !== "fullscreen") && (
-          <div className={styles.header}>
-            {title && <h2 className={styles.title}>{title}</h2>}
-            {size !== "fullscreen" && (
-              <button className={styles.closeButton} onClick={onClose}>
-                ×
-              </button>
-            )}
-          </div>
-        )}
+        {title && <h2 className={styles.title}>{title}</h2>}
         <div className={styles.content}>{children}</div>
       </div>
     </div>

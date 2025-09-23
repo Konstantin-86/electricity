@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { fixtureTemplates } from "../../data/fixture/fixtureTemplates";
 import { lampTemplates } from "../../data/fixture/lampTemplates";
 import type { FixtureKey, Lamp, LightFixture } from "../../types";
@@ -15,6 +16,25 @@ const LightFixturePopup = ({
   isOpen,
   onClose,
 }: LightFixturePopupProps) => {
+  useEffect(() => {
+    if (isOpen) {
+      // Запоминаем текущую позицию скролла и запрещаем скролл
+      document.body.style.overflow = "hidden";
+      document.body.style.position = "fixed";
+      document.body.style.top = `-${window.scrollY}px`;
+      document.body.style.width = "100%";
+
+      return () => {
+        // Восстанавливаем скролл при закрытии
+        const scrollY = document.body.style.top;
+        document.body.style.overflow = "";
+        document.body.style.position = "";
+        document.body.style.top = "";
+        document.body.style.width = "";
+        window.scrollTo(0, parseInt(scrollY || "0") * -1);
+      };
+    }
+  }, [isOpen]);
   if (!isOpen) return null;
 
   // Добавляем проверку на существование светильника
@@ -25,9 +45,6 @@ const LightFixturePopup = ({
     return (
       <div className={styles.overlay} onClick={onClose}>
         <div className={styles.popup} onClick={(e) => e.stopPropagation()}>
-          <button className={styles.closeButton} onClick={onClose}>
-            ×
-          </button>
           <h2 className={styles.title}>Ошибка</h2>
           <p>Светильник "{fixtureKey}" не найден в базе данных.</p>
         </div>
@@ -46,10 +63,6 @@ const LightFixturePopup = ({
   return (
     <div className={styles.overlay} onClick={onClose}>
       <div className={styles.popup} onClick={(e) => e.stopPropagation()}>
-        <button className={styles.closeButton} onClick={onClose}>
-          ×
-        </button>
-
         <h2 className={styles.title}>{fixture.name}</h2>
 
         <div className={styles.section}>
