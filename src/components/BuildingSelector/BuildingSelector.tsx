@@ -1,7 +1,10 @@
-import { useState } from "react";
+// components/BuildingSelector/BuildingSelector.tsx
+import React from "react";
+import { useBuildingStore } from "../../store/useBuildingStore";
 import type { Building } from "../../types";
 
 import FloorSelector from "../FloorSelector/FloorSelector";
+import Header from "../Header/Header";
 
 import styles from "./BuildingSelector.module.css";
 
@@ -10,14 +13,15 @@ interface BuildingSelectorProps {
 }
 
 const BuildingSelector: React.FC<BuildingSelectorProps> = ({ buildings }) => {
-  const [floors, setFloors] = useState<Building | null>(null);
+  const { selectedBuilding, setSelectedBuilding } = useBuildingStore();
 
-  const goBack = () => {
-    setFloors(null);
-  };
-
-  if (floors) {
-    return <FloorSelector floors={floors.floors} goBack={goBack} />;
+  if (selectedBuilding) {
+    return (
+      <>
+        <Header />
+        <FloorSelector floors={selectedBuilding.floors} />
+      </>
+    );
   }
 
   return (
@@ -26,7 +30,7 @@ const BuildingSelector: React.FC<BuildingSelectorProps> = ({ buildings }) => {
         <div
           key={building.id}
           className={styles.buildingCard}
-          onClick={() => setFloors(building)}
+          onClick={() => setSelectedBuilding(building)}
         >
           <div className={styles.buildingIcon}>🏢</div>
           <h2 className={styles.buildingName}>{building.name}</h2>

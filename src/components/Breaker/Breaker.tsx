@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useBreakerStore } from "../../store/breakerStore";
+import { useBreakerStore } from "../../store/useBreakerStore";
 
 import BreakerTechnicalInfo from "./BreakerTechnicalInfo";
 

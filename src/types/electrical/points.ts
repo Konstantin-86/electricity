@@ -1,4 +1,4 @@
-import type { LightFixture } from "./fixture";
+import type { FixtureKey } from "./fixture";
 
 interface ElectricalPoint {
   id: string;
@@ -14,5 +14,5 @@ export interface OutletInstance extends ElectricalPoint {
 
 export interface LightFixtureInstance extends ElectricalPoint {
   type: "light";
-  template: LightFixture;
+  template: FixtureKey;
 }

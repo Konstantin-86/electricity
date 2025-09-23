@@ -1,0 +1,80 @@
+/* IlluminationCalculator.module.css */
+.calculator {
+  display: flex;
+  align-items: center;
+  margin-top: 7px;
+  gap: 8px;
+  font-size: 0.9rem;
+  padding: 8px 12px;
+  background: #f8f9fa;
+  border-radius: 6px;
+  border: 1px solid #e9ecef;
+}
+
+.label {
+  color: #6c757d;
+  font-weight: 500;
+}
+
+.value {
+  font-weight: 600;
+  color: #2b2d42;
+  min-width: 60px;
+}
+
+.progressBar {
+  position: relative;
+  flex: 1;
+  height: 16px;
+  background: #e9ecef;
+  border-radius: 8px;
+  overflow: hidden;
+  min-width: 100px;
+  max-width: 200px;
+}
+
+.progressFill {
+  height: 100%;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.progressMarkers {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  font-size: 0.6rem;
+  font-weight: 600;
+}
+
+.progressMarkers span {
+  position: absolute;
+  transform: translateX(-50%);
+  bottom: -16px;
+}
+
+.status {
+  font-size: 1rem;
+  min-width: 20px;
+  text-align: center;
+}
+
+/* Адаптивность */
+@media (max-width: 480px) {
+  .calculator {
+    font-size: 0.8rem;
+    gap: 6px;
+    display: flex;
+    padding: 7px 4px;
+    flex-wrap: wrap;
+  }
+
+  .progressBar {
+  }
+
+  .value {
+    min-width: 50px;
+  }
+}

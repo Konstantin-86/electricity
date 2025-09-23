@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { useBreakerStore } from "../../../store/breakerStore";
+import { useBreakerStore } from "../../../store/useBreakerStore";
 import type { Panel } from "../../../types";
 
 // hooks/useRoomElectricalState.ts

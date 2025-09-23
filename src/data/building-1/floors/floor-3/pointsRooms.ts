@@ -1,9 +1,10 @@
-import { fixtureTemplates } from "../../../fixture/fixture";
+import { fixtureTemplates } from "../../../fixture/fixtureTemplates";
 import { ROOM_IDS_3_FLOOR, ELECTRICAL_POINT_IDS_3_FLOOR } from "./roomID";
 import type {
   LightFixtureInstance,
   OutletInstance,
 } from "../../../../types/electrical/points";
+import { FIXTURE_KEYS } from "../../../../types";
 
 export const electricalInstances3Floor: (
   | OutletInstance
@@ -254,37 +255,37 @@ export const electricalInstances3Floor: (
     id: ELECTRICAL_POINT_IDS_3_FLOOR.FIX_301_1,
     roomId: ROOM_IDS_3_FLOOR.CORRIDOR,
     type: "light",
-    template: fixtureTemplates.LINEAR_4x18W,
+    template: FIXTURE_KEYS.LINEAR_4x18W,
   },
   {
     id: ELECTRICAL_POINT_IDS_3_FLOOR.FIX_301_2,
     roomId: ROOM_IDS_3_FLOOR.CORRIDOR,
     type: "light",
-    template: fixtureTemplates.LINEAR_4x18W,
+    template: FIXTURE_KEYS.LINEAR_4x18W,
   },
   {
     id: ELECTRICAL_POINT_IDS_3_FLOOR.FIX_301_3,
     roomId: ROOM_IDS_3_FLOOR.CORRIDOR,
     type: "light",
-    template: fixtureTemplates.LINEAR_4x18W,
+    template: FIXTURE_KEYS.LINEAR_4x18W,
   },
   {
     id: ELECTRICAL_POINT_IDS_3_FLOOR.FIX_301_4,
     roomId: ROOM_IDS_3_FLOOR.CORRIDOR,
     type: "light",
-    template: fixtureTemplates.EMERGENCY_EXIT_SIGN,
+    template: FIXTURE_KEYS.EMERGENCY_EXIT_SIGN,
   },
   {
     id: ELECTRICAL_POINT_IDS_3_FLOOR.FIX_301_5,
     roomId: ROOM_IDS_3_FLOOR.CORRIDOR,
     type: "light",
-    template: fixtureTemplates.EMERGENCY_EXIT_SIGN,
+    template: FIXTURE_KEYS.EMERGENCY_EXIT_SIGN,
   },
   {
     id: ELECTRICAL_POINT_IDS_3_FLOOR.FIX_301_6,
     roomId: ROOM_IDS_3_FLOOR.CORRIDOR,
     type: "light",
-    template: fixtureTemplates.EMERGENCY_EXIT_SIGN,
+    template: FIXTURE_KEYS.EMERGENCY_EXIT_SIGN,
   },
 
   // Экономист (302)
@@ -292,13 +293,13 @@ export const electricalInstances3Floor: (
     id: ELECTRICAL_POINT_IDS_3_FLOOR.FIX_302_1,
     roomId: ROOM_IDS_3_FLOOR.ECONOMIST,
     type: "light",
-    template: fixtureTemplates.OFFICE_PANEL_2x36W,
+    template: FIXTURE_KEYS.OFFICE_PANEL_2x36W,
   },
   {
     id: ELECTRICAL_POINT_IDS_3_FLOOR.FIX_302_2,
     roomId: ROOM_IDS_3_FLOOR.ECONOMIST,
     type: "light",
-    template: fixtureTemplates.OFFICE_PANEL_2x36W,
+    template: FIXTURE_KEYS.OFFICE_PANEL_2x36W,
   },
 
   // Охрана труда (303)
@@ -306,13 +307,13 @@ export const electricalInstances3Floor: (
     id: ELECTRICAL_POINT_IDS_3_FLOOR.FIX_303_1,
     roomId: ROOM_IDS_3_FLOOR.OCCUPATIONAL_SAFETY,
     type: "light",
-    template: fixtureTemplates.OFFICE_PANEL_2x36W,
+    template: FIXTURE_KEYS.OFFICE_PANEL_2x36W,
   },
   {
     id: ELECTRICAL_POINT_IDS_3_FLOOR.FIX_303_2,
     roomId: ROOM_IDS_3_FLOOR.OCCUPATIONAL_SAFETY,
     type: "light",
-    template: fixtureTemplates.OFFICE_PANEL_2x36W,
+    template: FIXTURE_KEYS.OFFICE_PANEL_2x36W,
   },
 
   // Бухгалтерия (304)
@@ -320,19 +321,19 @@ export const electricalInstances3Floor: (
     id: ELECTRICAL_POINT_IDS_3_FLOOR.FIX_304_1,
     roomId: ROOM_IDS_3_FLOOR.ACCOUNTING,
     type: "light",
-    template: fixtureTemplates.OFFICE_PANEL_2x36W,
+    template: FIXTURE_KEYS.OFFICE_PANEL_2x36W,
   },
   {
     id: ELECTRICAL_POINT_IDS_3_FLOOR.FIX_304_2,
     roomId: ROOM_IDS_3_FLOOR.ACCOUNTING,
     type: "light",
-    template: fixtureTemplates.OFFICE_PANEL_2x36W,
+    template: FIXTURE_KEYS.OFFICE_PANEL_2x36W,
   },
   {
     id: ELECTRICAL_POINT_IDS_3_FLOOR.FIX_304_3,
     roomId: ROOM_IDS_3_FLOOR.ACCOUNTING,
     type: "light",
-    template: fixtureTemplates.OFFICE_PANEL_2x36W,
+    template: FIXTURE_KEYS.OFFICE_PANEL_2x36W,
   },
 
   // Учет МПЗ (305)
@@ -340,13 +341,13 @@ export const electricalInstances3Floor: (
     id: ELECTRICAL_POINT_IDS_3_FLOOR.FIX_305_1,
     roomId: ROOM_IDS_3_FLOOR.INVENTORY_ACCOUNTING,
     type: "light",
-    template: fixtureTemplates.OFFICE_PANEL_2x36W,
+    template: FIXTURE_KEYS.OFFICE_PANEL_2x36W,
   },
   {
     id: ELECTRICAL_POINT_IDS_3_FLOOR.FIX_305_2,
     roomId: ROOM_IDS_3_FLOOR.INVENTORY_ACCOUNTING,
     type: "light",
-    template: fixtureTemplates.OFFICE_PANEL_2x36W,
+    template: FIXTURE_KEYS.OFFICE_PANEL_2x36W,
   },
 
   // Главный инженер (306)
@@ -354,13 +355,13 @@ export const electricalInstances3Floor: (
     id: ELECTRICAL_POINT_IDS_3_FLOOR.FIX_306_1,
     roomId: ROOM_IDS_3_FLOOR.CHIEF_ENGINEER,
     type: "light",
-    template: fixtureTemplates.OFFICE_PANEL_2x36W,
+    template: FIXTURE_KEYS.OFFICE_PANEL_2x36W,
   },
   {
     id: ELECTRICAL_POINT_IDS_3_FLOOR.FIX_306_2,
     roomId: ROOM_IDS_3_FLOOR.CHIEF_ENGINEER,
     type: "light",
-    template: fixtureTemplates.OFFICE_PANEL_2x36W,
+    template: FIXTURE_KEYS.OFFICE_PANEL_2x36W,
   },
 
   // Приемная (307)
@@ -368,13 +369,13 @@ export const electricalInstances3Floor: (
     id: ELECTRICAL_POINT_IDS_3_FLOOR.FIX_307_1,
     roomId: ROOM_IDS_3_FLOOR.RECEPTION,
     type: "light",
-    template: fixtureTemplates.OFFICE_PANEL_2x36W,
+    template: FIXTURE_KEYS.OFFICE_PANEL_2x36W,
   },
   {
     id: ELECTRICAL_POINT_IDS_3_FLOOR.FIX_307_2,
     roomId: ROOM_IDS_3_FLOOR.RECEPTION,
     type: "light",
-    template: fixtureTemplates.OFFICE_PANEL_2x36W,
+    template: FIXTURE_KEYS.OFFICE_PANEL_2x36W,
   },
 
   // Главный бухгалтер (308)
@@ -382,13 +383,13 @@ export const electricalInstances3Floor: (
     id: ELECTRICAL_POINT_IDS_3_FLOOR.FIX_308_1,
     roomId: ROOM_IDS_3_FLOOR.CHIEF_ACCOUNTANT,
     type: "light",
-    template: fixtureTemplates.OFFICE_PANEL_2x36W,
+    template: FIXTURE_KEYS.OFFICE_PANEL_2x36W,
   },
   {
     id: ELECTRICAL_POINT_IDS_3_FLOOR.FIX_308_2,
     roomId: ROOM_IDS_3_FLOOR.CHIEF_ACCOUNTANT,
     type: "light",
-    template: fixtureTemplates.OFFICE_PANEL_2x36W,
+    template: FIXTURE_KEYS.OFFICE_PANEL_2x36W,
   },
 
   // Комната отдыха (309)
@@ -396,13 +397,13 @@ export const electricalInstances3Floor: (
     id: ELECTRICAL_POINT_IDS_3_FLOOR.FIX_309_1,
     roomId: ROOM_IDS_3_FLOOR.REST_ROOM,
     type: "light",
-    template: fixtureTemplates.LED_PANEL_SINGLE_40W,
+    template: FIXTURE_KEYS.LED_PANEL_SINGLE_40W,
   },
   {
     id: ELECTRICAL_POINT_IDS_3_FLOOR.FIX_309_2,
     roomId: ROOM_IDS_3_FLOOR.REST_ROOM,
     type: "light",
-    template: fixtureTemplates.LED_PANEL_SINGLE_40W,
+    template: FIXTURE_KEYS.LED_PANEL_SINGLE_40W,
   },
 
   // Селекторная (310)
@@ -410,19 +411,19 @@ export const electricalInstances3Floor: (
     id: ELECTRICAL_POINT_IDS_3_FLOOR.FIX_310_1,
     roomId: ROOM_IDS_3_FLOOR.MEETING_ROOM,
     type: "light",
-    template: fixtureTemplates.OFFICE_PANEL_2x36W,
+    template: FIXTURE_KEYS.OFFICE_PANEL_2x36W,
   },
   {
     id: ELECTRICAL_POINT_IDS_3_FLOOR.FIX_310_2,
     roomId: ROOM_IDS_3_FLOOR.MEETING_ROOM,
     type: "light",
-    template: fixtureTemplates.OFFICE_PANEL_2x36W,
+    template: FIXTURE_KEYS.OFFICE_PANEL_2x36W,
   },
   {
     id: ELECTRICAL_POINT_IDS_3_FLOOR.FIX_310_3,
     roomId: ROOM_IDS_3_FLOOR.MEETING_ROOM,
     type: "light",
-    template: fixtureTemplates.OFFICE_PANEL_2x36W,
+    template: FIXTURE_KEYS.OFFICE_PANEL_2x36W,
   },
 
   // Ксерокс холл (311)
@@ -430,13 +431,13 @@ export const electricalInstances3Floor: (
     id: ELECTRICAL_POINT_IDS_3_FLOOR.FIX_311_1,
     roomId: ROOM_IDS_3_FLOOR.XEROX_HALL,
     type: "light",
-    template: fixtureTemplates.LED_PANEL_SINGLE_40W,
+    template: FIXTURE_KEYS.LED_PANEL_SINGLE_40W,
   },
   {
     id: ELECTRICAL_POINT_IDS_3_FLOOR.FIX_311_2,
     roomId: ROOM_IDS_3_FLOOR.XEROX_HALL,
     type: "light",
-    template: fixtureTemplates.LED_PANEL_SINGLE_40W,
+    template: FIXTURE_KEYS.LED_PANEL_SINGLE_40W,
   },
 
   // Программист (312)
@@ -444,13 +445,13 @@ export const electricalInstances3Floor: (
     id: ELECTRICAL_POINT_IDS_3_FLOOR.FIX_312_1,
     roomId: ROOM_IDS_3_FLOOR.PROGRAMMER,
     type: "light",
-    template: fixtureTemplates.OFFICE_PANEL_2x36W,
+    template: FIXTURE_KEYS.OFFICE_PANEL_2x36W,
   },
   {
     id: ELECTRICAL_POINT_IDS_3_FLOOR.FIX_312_2,
     roomId: ROOM_IDS_3_FLOOR.PROGRAMMER,
     type: "light",
-    template: fixtureTemplates.OFFICE_PANEL_2x36W,
+    template: FIXTURE_KEYS.OFFICE_PANEL_2x36W,
   },
 
   // Отдел кадров (313)
@@ -458,19 +459,19 @@ export const electricalInstances3Floor: (
     id: ELECTRICAL_POINT_IDS_3_FLOOR.FIX_313_1,
     roomId: ROOM_IDS_3_FLOOR.HR_DEPARTMENT,
     type: "light",
-    template: fixtureTemplates.OFFICE_PANEL_2x36W,
+    template: FIXTURE_KEYS.OFFICE_PANEL_2x36W,
   },
   {
     id: ELECTRICAL_POINT_IDS_3_FLOOR.FIX_313_2,
     roomId: ROOM_IDS_3_FLOOR.HR_DEPARTMENT,
     type: "light",
-    template: fixtureTemplates.OFFICE_PANEL_2x36W,
+    template: FIXTURE_KEYS.OFFICE_PANEL_2x36W,
   },
   {
     id: ELECTRICAL_POINT_IDS_3_FLOOR.FIX_313_3,
     roomId: ROOM_IDS_3_FLOOR.HR_DEPARTMENT,
     type: "light",
-    template: fixtureTemplates.OFFICE_PANEL_2x36W,
+    template: FIXTURE_KEYS.OFFICE_PANEL_2x36W,
   },
 
   // Директор (314)
@@ -478,18 +479,18 @@ export const electricalInstances3Floor: (
     id: ELECTRICAL_POINT_IDS_3_FLOOR.FIX_314_1,
     roomId: ROOM_IDS_3_FLOOR.DIRECTOR,
     type: "light",
-    template: fixtureTemplates.OFFICE_PANEL_2x36W,
+    template: FIXTURE_KEYS.OFFICE_PANEL_2x36W,
   },
   {
     id: ELECTRICAL_POINT_IDS_3_FLOOR.FIX_314_2,
     roomId: ROOM_IDS_3_FLOOR.DIRECTOR,
     type: "light",
-    template: fixtureTemplates.OFFICE_PANEL_2x36W,
+    template: FIXTURE_KEYS.OFFICE_PANEL_2x36W,
   },
   {
     id: ELECTRICAL_POINT_IDS_3_FLOOR.FIX_314_3,
     roomId: ROOM_IDS_3_FLOOR.DIRECTOR,
     type: "light",
-    template: fixtureTemplates.OFFICE_PANEL_2x36W,
+    template: FIXTURE_KEYS.OFFICE_PANEL_2x36W,
   },
 ];

@@ -1,70 +1,36 @@
-import { useState } from "react";
+// components/FloorSelector/FloorSelector.tsx
+import React from "react";
+import { useBuildingStore } from "../../store/useBuildingStore";
 import type { Floor } from "../../types";
-import RoomsList from "../RoomsList/RoomsList";
-import ElectricalPanel from "../ElectricalPanel/ElectricalPanel";
-import { useBreakerStore } from "../../store/breakerStore";
-import FloorPlan from "../FloorPlan/FloorPlan";
 
+import FloorView from "../FloorView/FloorView";
 import styles from "./FloorSelector.module.css";
 
 interface FloorSelectorProps {
   floors: Floor[];
-  goBack: () => void;
 }
 
-const FloorSelector = ({ floors, goBack }: FloorSelectorProps) => {
-  const [currentFloor, setCurrentFloor] = useState<Floor | null>(null);
+const FloorSelector: React.FC<FloorSelectorProps> = ({ floors }) => {
+  const { selectedFloor, setSelectedFloor } = useBuildingStore();
 
-  const setCurrentFloorInStore = useBreakerStore(
-    (state) => state.setCurrentFloor
-  );
-
-  const handleFloorClick = (floor: Floor) => {
-    setCurrentFloor(floor);
-    setCurrentFloorInStore(floor);
-  };
-
-  const goBackButton = () => {
-    setCurrentFloor(null);
-  };
-
-  if (currentFloor) {
-    return (
-      <div className={styles.container}>
-        <div className={styles.headerWrap}></div>
-        <FloorPlan floor={currentFloor.id} />
-        {/*   <ElectricalPanel />
-        <RoomsList
-          rooms={currentFloor.rooms}
-          points={currentFloor.points}
-          goBackButton={goBackButton}
-        /> */}
-      </div>
-    );
+  if (selectedFloor) {
+    return <FloorView />;
   }
 
   return (
-    <>
-      <button className={styles.backButton} onClick={goBack}>
-        Назад
-      </button>
-      <div className={styles.floorsGrid}>
-        {floors.map((floor) => (
-          <div
-            key={floor.id}
-            className={styles.floorCard}
-            onClick={() => handleFloorClick(floor)}
-          >
-            <div className={styles.floorNumber}>{floor.level}</div>
-            <h3 className={styles.floorName}>{floor.name}</h3>
-            <div className={styles.floorStats}>
-              <span>Щитов: {floor.panels.length}</span>
-              <span>Помещений: {floor.rooms.length}</span>
-            </div>
-          </div>
-        ))}
-      </div>
-    </>
+    <div className={styles.floorsGrid}>
+      {floors.map((floor) => (
+        <div
+          key={floor.id}
+          className={styles.floorCard}
+          onClick={() => setSelectedFloor(floor)} // Используем метод из buildingStore
+        >
+          <div className={styles.floorIcon}>🏢</div>
+          <h3 className={styles.floorName}>{floor.name}</h3>
+          <p className={styles.floorRooms}>Комнат: {floor.rooms.length}</p>
+        </div>
+      ))}
+    </div>
   );
 };
 
