@@ -238,10 +238,16 @@ export const floor1Panels: Panel[] = [
       {
         id: "breaker-1-1-1(kitchen)", // 1 этаж, 1 ЩО, 1 автомат
         designation: "QF1",
-        description: "Водонагреватель", // TODO: [REFACTOR] !!Уточнить где находится
+        description: "Водонагреватель (туалет) (120) ",
         rating: 16,
         type: "socket",
         isOn: true,
+        controlledLoads: [
+          {
+            roomId: ROOM_IDS_1_FLOOR.DINING_TOILET,
+            outletGroupIds: [ELECTRICAL_POINT_IDS_1_FLOOR.OUT_120_1],
+          },
+        ],
         technicalInfo: {
           ...techInfoTemplates.ABB_SOCKET_16A,
           serialNumber: "ABB-S203-001",
@@ -251,10 +257,16 @@ export const floor1Panels: Panel[] = [
       {
         id: "breaker-1-1-2(kitchen)",
         designation: "QF2",
-        description: "Подвал",
+        description: "Подвал (127)",
         rating: 16,
-        type: "socket",
+        type: "lighting",
         isOn: true,
+        controlledLoads: [
+          {
+            roomId: ROOM_IDS_1_FLOOR.BASEMENT,
+            lightFixtureIds: [ELECTRICAL_POINT_IDS_1_FLOOR.FIX_127_1],
+          },
+        ],
         technicalInfo: {
           ...techInfoTemplates.ABB_SOCKET_16A,
           serialNumber: "ABB-S203-001",
@@ -266,8 +278,14 @@ export const floor1Panels: Panel[] = [
         designation: "QF3",
         description: "Подвал",
         rating: 16,
-        type: "socket",
+        type: "lighting",
         isOn: true,
+        controlledLoads: [
+          {
+            roomId: ROOM_IDS_1_FLOOR.BASEMENT,
+            lightFixtureIds: [ELECTRICAL_POINT_IDS_1_FLOOR.FIX_127_2],
+          },
+        ],
         technicalInfo: {
           ...techInfoTemplates.ABB_SOCKET_16A,
           serialNumber: "ABB-S203-001",
@@ -298,13 +316,10 @@ export const floor1Panels: Panel[] = [
           {
             roomId: ROOM_IDS_1_FLOOR.HEAD_OFFICE,
             lightFixtureIds: [
-              ELECTRICAL_POINT_IDS_1_FLOOR.FIX_112_1,
-              ELECTRICAL_POINT_IDS_1_FLOOR.FIX_112_2,
+              ELECTRICAL_POINT_IDS_1_FLOOR.FIX_122_1,
+              ELECTRICAL_POINT_IDS_1_FLOOR.FIX_122_2,
             ],
-            outletGroupIds: [
-              ELECTRICAL_POINT_IDS_1_FLOOR.OUT_112_1,
-              ELECTRICAL_POINT_IDS_1_FLOOR.OUT_112_2,
-            ],
+            outletGroupIds: [ELECTRICAL_POINT_IDS_1_FLOOR.OUT_122_1],
           },
         ],
         technicalInfo: {
@@ -316,10 +331,27 @@ export const floor1Panels: Panel[] = [
       {
         id: "breaker-1-1-6(kitchen)",
         designation: "QF6",
-        description: "резерв",
+        description: "Туалет, душевая и коридор (120, 118, 124)",
         rating: 16,
         type: "mixed",
-        isOn: false,
+        isOn: true,
+        controlledLoads: [
+          {
+            roomId: ROOM_IDS_1_FLOOR.DINING_TOILET,
+            lightFixtureIds: [ELECTRICAL_POINT_IDS_1_FLOOR.FIX_120_1],
+          },
+          {
+            roomId: ROOM_IDS_1_FLOOR.SHOWER,
+            lightFixtureIds: [ELECTRICAL_POINT_IDS_1_FLOOR.FIX_118_1],
+          },
+          {
+            roomId: ROOM_IDS_1_FLOOR.DINING_CORRIDOR,
+            lightFixtureIds: [
+              ELECTRICAL_POINT_IDS_1_FLOOR.FIX_124_1,
+              ELECTRICAL_POINT_IDS_1_FLOOR.FIX_124_2,
+            ],
+          },
+        ],
         technicalInfo: {
           ...techInfoTemplates.ABB_SOCKET_16A,
           serialNumber: "ABB-S203-001",
@@ -335,7 +367,7 @@ export const floor1Panels: Panel[] = [
         isOn: true,
         controlledLoads: [
           {
-            roomId: ROOM_IDS_1_FLOOR.HEAD_OFFICE,
+            roomId: ROOM_IDS_1_FLOOR.DINING,
             lightFixtureIds: [
               ELECTRICAL_POINT_IDS_1_FLOOR.FIX_125_1,
               ELECTRICAL_POINT_IDS_1_FLOOR.FIX_125_2,
@@ -378,8 +410,8 @@ export const floor1Panels: Panel[] = [
         },
       },
       {
-        id: "breaker-1-1-89(kitchen)",
-        designation: "QF89",
+        id: "breaker-1-1-9(kitchen)",
+        designation: "QF9",
         description: "Столовая зал (216)", // TODO: [REFACTOR] !!Уточнить (обеденный зал, столовая зал что это)
         rating: 16,
         type: "mixed",

@@ -1,4 +1,5 @@
 .floorsGrid {
+  margin-top: 78px;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 20px;
@@ -69,5 +70,11 @@
     width: 100%;
     border-radius: 0 0 7px 7px;
     background-color: #c4c4c4cb;
+  }
+}
+@media (max-width: 480px) {
+  .floorsGrid {
+    margin-top: 44px;
+    gap: 7px;
   }
 }

@@ -1,6 +1,7 @@
 // components/Header/Header.tsx
 import React from "react";
 import { useBuildingStore } from "../../store/useBuildingStore";
+import { useScrollDirection } from "./hooks/useScrollDirection";
 import styles from "./Header.module.css";
 
 const Header: React.FC = () => {
@@ -12,10 +13,17 @@ const Header: React.FC = () => {
     goBack,
   } = useBuildingStore();
 
+  const scrollDirection = useScrollDirection();
+
   if (!selectedBuilding) return null;
 
+  // Определяем классы для анимации появления/скрытия
+  const headerClass = `${styles.header} ${
+    scrollDirection === "down" ? styles.hidden : ""
+  } ${scrollDirection === "up" ? styles.visible : ""}`;
+
   return (
-    <header className={styles.header}>
+    <header className={headerClass}>
       <div className={styles.headerLeft}>
         <button className={styles.backButton} onClick={goBack}>
           ← <span>Назад</span>

@@ -6,10 +6,11 @@ const Floor3Plan = () => {
   const firstLevelRooms = floor3Rooms.filter(
     (room) =>
       room.id === "room-3-303" || // OCCUPATIONAL_SAFETY
-      room.id === "room-3-302" || // ECONOMIST
       room.id === "room-3-304" || // ACCOUNTING
       room.id === "room-3-313" || // HR_DEPARTMENT
+      room.id === "room-3-308" || // CHIEF_ACCOUNTANT
       room.id === "room-3-305" || // INVENTORY_ACCOUNTING
+      room.id === "room-3-310" || // MEETING_ROOM
       room.id === "room-3-306" // CHIEF_ENGINEER
   );
 
@@ -19,10 +20,10 @@ const Floor3Plan = () => {
 
   const thirdLevelRooms = floor3Rooms.filter(
     (room) =>
+      room.id === "room-3-306" || // CHIEF_ENGINEER
+      room.id === "room-3-302" || // ECONOMIST
       room.id === "room-3-307" || // RECEPTION
-      room.id === "room-3-308" || // CHIEF_ACCOUNTANT
       room.id === "room-3-309" || // REST_ROOM
-      room.id === "room-3-310" || // MEETING_ROOM
       room.id === "room-3-311" || // XEROX_HALL
       room.id === "room-3-312" || // PROGRAMMER
       room.id === "room-3-314" || // DIRECTOR
@@ -65,7 +66,7 @@ const Floor3Plan = () => {
             <span className={styles.roomArea}>{room.area}м²</span>
           </div>
         ))}
-        <div className={styles.panel1}>ЩО3</div>
+        <div className={styles.panel1}>ЩО4</div>
         <div className={styles.panel2}>ЩО5</div>
       </div>
 

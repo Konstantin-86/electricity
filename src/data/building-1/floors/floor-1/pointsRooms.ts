@@ -134,15 +134,6 @@ export const electricalInstances: (OutletInstance | LightFixtureInstance)[] = [
     estimatedLoad: 4500,
   },
 
-  // Душевая (118)
-  {
-    id: ELECTRICAL_POINT_IDS_1_FLOOR.OUT_118_1,
-    roomId: ROOM_IDS_1_FLOOR.SHOWER,
-    type: "outlet",
-    count: 2,
-    estimatedLoad: 3000,
-  },
-
   // Кладовая сухих продуктов (119)
   {
     id: ELECTRICAL_POINT_IDS_1_FLOOR.OUT_119_1,
@@ -186,15 +177,6 @@ export const electricalInstances: (OutletInstance | LightFixtureInstance)[] = [
     type: "outlet",
     count: 2,
     estimatedLoad: 1000,
-  },
-
-  // Коридор столовая (124)
-  {
-    id: ELECTRICAL_POINT_IDS_1_FLOOR.OUT_124_1,
-    roomId: ROOM_IDS_1_FLOOR.DINING_CORRIDOR,
-    type: "outlet",
-    count: 3,
-    estimatedLoad: 900,
   },
 
   // ========== СВЕТИЛЬНИКИ ==========
@@ -514,5 +496,18 @@ export const electricalInstances: (OutletInstance | LightFixtureInstance)[] = [
     roomId: ROOM_IDS_1_FLOOR.DINING_ROOM,
     type: "light",
     template: FIXTURE_KEYS.LINEAR_4x18W,
+  },
+  // Подвал  (127)
+  {
+    id: ELECTRICAL_POINT_IDS_1_FLOOR.FIX_127_1,
+    roomId: ROOM_IDS_1_FLOOR.BASEMENT,
+    type: "light",
+    template: FIXTURE_KEYS.LINEAR_4x18W,
+  },
+  {
+    id: ELECTRICAL_POINT_IDS_1_FLOOR.FIX_127_2,
+    roomId: ROOM_IDS_1_FLOOR.BASEMENT,
+    type: "light",
+    template: FIXTURE_KEYS.LED_PANEL_SINGLE_40W,
   },
 ];

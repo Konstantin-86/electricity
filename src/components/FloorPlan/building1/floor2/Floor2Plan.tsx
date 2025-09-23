@@ -21,7 +21,6 @@ const Floor2Plan = () => {
 
   const thirdLevelRooms = floor2Rooms.filter(
     (room) =>
-      room.id === "room-2-215" || // TOILET
       room.id === "room-2-216" || // TOILET_MEN
       room.id === "room-2-210" || // OFFICE_MTS_HEAD
       room.id === "room-2-217" || // TOILET_WOMEN

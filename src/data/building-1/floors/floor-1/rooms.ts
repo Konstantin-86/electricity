@@ -134,4 +134,16 @@ export const floor1Rooms: Room[] = [
     type: "corridor",
     area: 15,
   },
+  {
+    id: ROOM_IDS_1_FLOOR.BASEMENT,
+    name: "Подвал",
+    type: "corridor",
+    area: 15,
+  },
+  {
+    id: ROOM_IDS_1_FLOOR.DINING,
+    name: "Обеденный зал",
+    type: "kitchen",
+    area: 15,
+  },
 ];

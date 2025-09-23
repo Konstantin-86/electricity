@@ -21,8 +21,9 @@ export const ROOM_IDS_1_FLOOR = {
   HEAD_OFFICE: "room-1-122", // Кабинет заведующей (122)
   CLEANING_STORAGE: "room-1-123", // Кладовая уборочного инвентаря (123)
   DINING_CORRIDOR: "room-1-124", // Коридор столовая (124)
-  DINING: "room-1-125", // Столовая  (125)
+  DINING: "room-1-125", // Обеденный зал  (125)
   DINING_ROOM: "room-1-126", // Столовая зал  (126)
+  BASEMENT: "room-1-127", // Подвал  (127)
 } as const;
 
 export const ELECTRICAL_POINT_IDS_1_FLOOR = {
@@ -177,6 +178,7 @@ export const ELECTRICAL_POINT_IDS_1_FLOOR = {
   // Кабинет заведующей (122)
 
   FIX_122_1: "fix-122-1",
+  FIX_122_2: "fix-122-2",
 
   // Кладовая уборочного инвентаря (123)
 
@@ -198,6 +200,10 @@ export const ELECTRICAL_POINT_IDS_1_FLOOR = {
 
   FIX_126_1: "fix-126-1",
   FIX_126_2: "fix-126-2",
+
+  // Подвал  (127)
+  FIX_127_1: "fix-127-1",
+  FIX_127_2: "fix-127-2",
 } as const;
 
 export type ElectricalPointId =
