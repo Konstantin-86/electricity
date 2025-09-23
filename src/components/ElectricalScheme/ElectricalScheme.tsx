@@ -1,11 +1,9 @@
 import { useState } from "react";
 import { useBreakerStore } from "../../store/useBreakerStore";
-import { useBuildingStore } from "../../store/useBuildingStore";
 
 import styles from "./ElectricalScheme.module.css";
 
 const ElectricalScheme: React.FC = () => {
-  const { showVisualization } = useBuildingStore();
   const { panels } = useBreakerStore();
   const [selectedPanelId, setSelectedPanelId] = useState<string>(
     panels[0]?.id || ""

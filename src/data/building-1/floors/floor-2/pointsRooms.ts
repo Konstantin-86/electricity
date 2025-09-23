@@ -1,4 +1,3 @@
-import { fixtureTemplates } from "../../../fixture/fixtureTemplates";
 import { ROOM_IDS_2_FLOOR, ELECTRICAL_POINT_IDS_2_FLOOR } from "./roomID";
 import type {
   LightFixtureInstance,

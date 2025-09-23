@@ -5,7 +5,6 @@ import type {
   LightFixtureInstance,
   OutletInstance,
   Room,
-  RoomType,
 } from "../../types";
 import { useRoomElectricalState } from "../RoomsList/hooks/useRoomElectricalState";
 import { useBreakerStore } from "../../store/useBreakerStore";
