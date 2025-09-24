@@ -1,10 +1,10 @@
 export const ROOM_IDS_1_FLOOR = {
-  HALL_CORRIDOR: "room-1-101",
-  STAIRS: "room-1-102",
-  TOILET: "room-1-103",
-  WASHROOM: "room-1-104",
-  DRESSING_ROOM: "room-1-105",
-  SENIOR_ROOM: "room-1-106",
+  HALL_CORRIDOR: "room-1-101", // Холл Коридор  (101)
+  STAIRS: "room-1-102", // Лестница  (102)
+  TOILET: "room-1-103", // Туалет  (103)
+  WASHROOM: "room-1-104", // Умывальня  (104)
+  DRESSING_ROOM: "room-1-105", // Раздевалка  (105)
+  SENIOR_ROOM: "room-1-106", // Помещение старшего смены (106)
   CHECKPOINT: "room-1-108", // Проходная (108)
   STORAGE_SOCKETS: "room-1-109", // Кладовка (109)
   EMERGENCY_LIGHTING: "room-1-111",

@@ -1,4 +1,5 @@
 import type { OutletInstance } from "../../../types";
+
 import styles from "../styles/OutletIcons.module.css";
 
 interface OutletIconsProps {
@@ -16,7 +17,6 @@ export const OutletIcons = ({ outlets, outletStates }: OutletIconsProps) => {
       {outlets.map((outlet) => {
         const isPowered = outletStates[outlet.id] ?? false;
 
-        // Создаем массив иконок розеток согласно outlet.count
         return Array.from({ length: outlet.count }, (_, index) => (
           <div
             key={`${outlet.id}-${index}`}
