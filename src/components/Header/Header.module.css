@@ -72,6 +72,29 @@
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
 }
+.roomTypeIcon {
+  margin-right: 8px;
+  font-size: 1.2em;
+}
+
+.roomTypeBadge {
+  margin-left: 8px;
+  padding: 2px 6px;
+  background-color: #f0f0f0;
+  border-radius: 4px;
+  font-size: 0.8em;
+  color: #666;
+  border: 1px solid #ddd;
+}
+
+.roomTitle h3 {
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+h3 span {
+  margin-right: 7px;
+}
 
 /* Убираем hover для тач-устройств */
 @media (hover: hover) and (pointer: fine) {
@@ -127,12 +150,14 @@
   }
 
   .backButton {
-    width: 40px;
+    width: 50px;
     min-height: auto;
     padding: 0;
+    display: flex;
+    flex-direction: column;
   }
   .backButton span {
-    display: none;
+    font-size: 10px;
   }
 
   .title {

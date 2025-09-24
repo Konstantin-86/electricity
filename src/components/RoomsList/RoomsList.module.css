@@ -24,10 +24,11 @@
   border-left: 4px solid #3b82f6;
 }
 
-.roomsGrid {
+.rooms {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 16px;
+  padding: 7px;
 }
 .backButton {
   position: fixed;
@@ -37,7 +38,7 @@
   background-color: #6f42c1;
 }
 @media (max-width: 768px) {
-  .roomsGrid {
+  .rooms {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;

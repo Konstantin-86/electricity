@@ -1,8 +1,8 @@
+// components/RoomCard/LightFixturePopup.tsx
 import { useEffect } from "react";
 import { fixtureTemplates } from "../../data/fixture/fixtureTemplates";
 import { lampTemplates } from "../../data/fixture/lampTemplates";
-import type { FixtureKey, Lamp, LightFixture } from "../../types";
-
+import type { FixtureKey } from "../../types";
 import styles from "./LightFixturePopup.module.css";
 
 interface LightFixturePopupProps {
@@ -18,14 +18,12 @@ const LightFixturePopup = ({
 }: LightFixturePopupProps) => {
   useEffect(() => {
     if (isOpen) {
-      // Запоминаем текущую позицию скролла и запрещаем скролл
       document.body.style.overflow = "hidden";
       document.body.style.position = "fixed";
       document.body.style.top = `-${window.scrollY}px`;
       document.body.style.width = "100%";
 
       return () => {
-        // Восстанавливаем скролл при закрытии
         const scrollY = document.body.style.top;
         document.body.style.overflow = "";
         document.body.style.position = "";
@@ -37,126 +35,102 @@ const LightFixturePopup = ({
   }, [isOpen]);
   if (!isOpen) return null;
 
-  // Добавляем проверку на существование светильника
-  const fixture: LightFixture | undefined = fixtureTemplates[fixtureKey];
-
-  // Если светильник не найден, показываем сообщение об ошибке
+  const fixture = fixtureTemplates[fixtureKey];
   if (!fixture) {
     return (
       <div className={styles.overlay} onClick={onClose}>
         <div className={styles.popup} onClick={(e) => e.stopPropagation()}>
-          <h2 className={styles.title}>Ошибка</h2>
-          <p>Светильник "{fixtureKey}" не найден в базе данных.</p>
+          <h2>Ошибка</h2>
+          <p>Светильник "{fixtureKey}" не найден</p>
         </div>
       </div>
     );
   }
 
-  const lamps: Lamp[] = fixture.lampIds
-    .map((lampId) => lampTemplates[lampId])
-    .filter((lamp): lamp is Lamp => lamp !== undefined); // Фильтруем undefined
+  const lamps = fixture.lampIds.map((id) => lampTemplates[id]).filter(Boolean);
 
-  // Рассчитываем общую мощность
   const totalWattage = lamps.reduce((sum, lamp) => sum + lamp.wattage, 0);
   const totalLumens = lamps.reduce((sum, lamp) => sum + (lamp.lumens || 0), 0);
+
+  const fixtureTypeLabels = {
+    ceiling: "Потолочный",
+    wall: "Настенный",
+    emergency: "Аварийный",
+  };
 
   return (
     <div className={styles.overlay} onClick={onClose}>
       <div className={styles.popup} onClick={(e) => e.stopPropagation()}>
         <h2 className={styles.title}>{fixture.name}</h2>
 
+        {/* Основные характеристики */}
         <div className={styles.section}>
           <h3>Основные характеристики</h3>
           <div className={styles.grid}>
             <div className={styles.gridItem}>
-              <span className={styles.label}>Тип:</span>
-              <span className={styles.value}>
-                {fixture.fixtureType === "ceiling" && "Потолочный"}
-                {fixture.fixtureType === "wall" && "Настенный"}
-                {fixture.fixtureType === "emergency" && "Аварийный"}
-                {!fixture.fixtureType && "Не указан"}
+              <span>Тип:</span>
+              <span>
+                {fixture.fixtureType
+                  ? fixtureTypeLabels[fixture.fixtureType]
+                  : "Не указан"}
               </span>
             </div>
             <div className={styles.gridItem}>
-              <span className={styles.label}>Общая мощность:</span>
-              <span className={styles.value}>{totalWattage} Вт</span>
+              <span>Мощность:</span>
+              <span>{totalWattage} Вт</span>
             </div>
             <div className={styles.gridItem}>
-              <span className={styles.label}>Световой поток:</span>
-              <span className={styles.value}>{totalLumens} лм</span>
+              <span>Световой поток:</span>
+              <span>{totalLumens} лм</span>
             </div>
             <div className={styles.gridItem}>
-              <span className={styles.label}>Количество ламп:</span>
-              <span className={styles.value}>{lamps.length} шт.</span>
+              <span>Количество ламп:</span>
+              <span>{lamps.length} шт.</span>
             </div>
           </div>
         </div>
 
+        {/* Техническая информация */}
         {fixture.technicalInfo && (
           <div className={styles.section}>
             <h3>Техническая информация</h3>
             <div className={styles.grid}>
               {fixture.technicalInfo.model && (
                 <div className={styles.gridItem}>
-                  <span className={styles.label}>Модель:</span>
-                  <span className={styles.value}>
-                    {fixture.technicalInfo.model}
-                  </span>
+                  <span>Модель:</span>
+                  <span>{fixture.technicalInfo.model}</span>
                 </div>
               )}
               {fixture.technicalInfo.socketType && (
                 <div className={styles.gridItem}>
-                  <span className={styles.label}>Тип цоколя:</span>
-                  <span className={styles.value}>
-                    {fixture.technicalInfo.socketType}
-                  </span>
+                  <span>Цоколь:</span>
+                  <span>{fixture.technicalInfo.socketType}</span>
                 </div>
               )}
               {fixture.technicalInfo.lifespan && (
                 <div className={styles.gridItem}>
-                  <span className={styles.label}>Срок службы:</span>
-                  <span className={styles.value}>
-                    {fixture.technicalInfo.lifespan} часов
-                  </span>
-                </div>
-              )}
-              {fixture.technicalInfo.safetyStandards && (
-                <div className={styles.gridItem}>
-                  <span className={styles.label}>Стандарты безопасности:</span>
-                  <span className={styles.value}>
-                    {fixture.technicalInfo.safetyStandards}
-                  </span>
+                  <span>Срок службы:</span>
+                  <span>{fixture.technicalInfo.lifespan} часов</span>
                 </div>
               )}
             </div>
           </div>
         )}
 
+        {/* Лампы */}
         <div className={styles.section}>
-          <h3>Лампы</h3>
+          <h3>Лампы ({lamps.length} шт.)</h3>
           <div className={styles.lampsList}>
             {lamps.map((lamp, index) => (
-              <div key={`${lamp.id}-${index}`} className={styles.lampItem}>
-                {" "}
-                {/* Уникальный ключ */}
+              <div key={index} className={styles.lampItem}>
                 <div className={styles.lampHeader}>
-                  <span className={styles.lampNumber}>Лампа {index + 1}</span>
-                  {lamp.type && (
-                    <span className={styles.lampType}>{lamp.type}</span>
-                  )}
+                  <span>Лампа {index + 1}</span>
+                  {lamp.type && <span>{lamp.type}</span>}
                 </div>
                 <div className={styles.lampDetails}>
                   <span>{lamp.wattage} Вт</span>
                   {lamp.lumens && <span>{lamp.lumens} лм</span>}
-                  {lamp.colorTemperature && (
-                    <span>{lamp.colorTemperature}K</span>
-                  )}
                 </div>
-                {lamp.manufacturer && (
-                  <div className={styles.lampModel}>
-                    {lamp.manufacturer} {lamp.model}
-                  </div>
-                )}
               </div>
             ))}
           </div>

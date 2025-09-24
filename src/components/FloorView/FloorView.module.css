@@ -1,12 +1,11 @@
 /* components/FloorView/FloorView.module.css */
 .container {
-  height: calc(100vh - 80px); /* учитываем высоту хедера */
-  padding: 1rem;
+  max-width: 1380px;
+  padding: 7px;
   margin-top: 50px;
 }
 
 .content {
-  height: 100%;
   background-color: white;
   border-radius: 8px;
   border: 1px solid #dee2e6;

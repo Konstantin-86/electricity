@@ -19,7 +19,7 @@ const RoomsList = ({ rooms, points }: RoomsListProps) => {
   }
 
   return (
-    <div className={styles.roomsGrid}>
+    <div className={styles.rooms}>
       {rooms.map((room) => {
         const roomPoints = points.filter((point) => point.roomId === room.id);
         return <RoomCard key={room.id} room={room} points={roomPoints} />;

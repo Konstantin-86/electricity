@@ -1,14 +1,17 @@
 .roomCard {
+  max-width: 320px;
+  overflow: hidden;
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background: white;
-  border-radius: 12px;
-  padding: 16px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-  border: 1px solid #e0e0e0;
+  background: #f8f9fa; /* Слегка серый фон */
+  border-radius: 7px;
+  padding: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  border: 1px solid #dee2e6; /* Четкая, темная граница */
   margin-bottom: 16px;
+  font-family: "Space Grotesk", sans-serif;
 }
 
 .header {
@@ -123,6 +126,7 @@
 /* Адаптивность для мобильных устройств */
 @media (max-width: 768px) {
   .roomCard {
+    padding: 4px;
     width: 100%;
     margin-bottom: 0;
   }
