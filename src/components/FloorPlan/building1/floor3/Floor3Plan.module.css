@@ -81,7 +81,7 @@
 }
 
 /*  -- middle side -- */
-[data-room-id="room-3-301"] {
+.roomCorridor {
   position: relative;
   min-width: 1486px;
   background: linear-gradient(135deg, #e8f5e8 0%, #d0e8d0 100%);
@@ -95,7 +95,7 @@
 }
 [data-room-id="room-3-306"] {
   order: 2;
-  min-width: 267px;
+  min-width: 404px;
 }
 [data-room-id="room-3-307"] {
   order: 3;
@@ -199,5 +199,5 @@
   background-color: #000000;
   color: #bbdefb;
   top: 10px;
-  right: -630px;
+  right: 7px;
 }

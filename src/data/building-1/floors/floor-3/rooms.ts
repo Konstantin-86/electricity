@@ -27,12 +27,6 @@ export const floor3Rooms: Room[] = [
     area: 47,
   },
   {
-    id: ROOM_IDS_3_FLOOR.INVENTORY_ACCOUNTING,
-    name: "Учет МПЗ",
-    type: "office",
-    area: 20,
-  },
-  {
     id: ROOM_IDS_3_FLOOR.CHIEF_ENGINEER,
     name: "Главный инженер",
     type: "office",
@@ -45,28 +39,22 @@ export const floor3Rooms: Room[] = [
     area: 17,
   },
   {
-    id: ROOM_IDS_3_FLOOR.CHIEF_ACCOUNTANT,
-    name: "Главный бухгалтер",
+    id: ROOM_IDS_3_FLOOR.PAYROLL,
+    name: "Бухгалтерия (расчет)",
     type: "office",
     area: 11,
   },
-  {
+  /*  {
     id: ROOM_IDS_3_FLOOR.REST_ROOM,
     name: "Комната отдыха",
     type: "other",
     area: 16,
-  },
+  }, */
   {
     id: ROOM_IDS_3_FLOOR.MEETING_ROOM,
     name: "Селекторная",
     type: "conference",
     area: 11,
-  },
-  {
-    id: ROOM_IDS_3_FLOOR.XEROX_HALL,
-    name: "Ксерокс холл",
-    type: "corridor",
-    area: 8,
   },
   {
     id: ROOM_IDS_3_FLOOR.PROGRAMMER,
@@ -82,7 +70,7 @@ export const floor3Rooms: Room[] = [
   },
   {
     id: ROOM_IDS_3_FLOOR.DIRECTOR,
-    name: "Директор",
+    name: "Начальник",
     type: "office",
     area: 44,
   },

@@ -95,21 +95,20 @@ export const floor3Panels: Panel[] = [
       {
         id: "breaker-3-4-5",
         designation: "QF5",
-        description: "Учет МПЗ (305)",
+        description: "Бухгалтерия (расчет) (308)",
         rating: 16,
         type: "socket",
         isOn: true,
         controlledLoads: [
           {
-            roomId: ROOM_IDS_3_FLOOR.INVENTORY_ACCOUNTING,
+            roomId: ROOM_IDS_3_FLOOR.PAYROLL,
             lightFixtureIds: [
-              ELECTRICAL_POINT_IDS_3_FLOOR.FIX_305_1,
-              ELECTRICAL_POINT_IDS_3_FLOOR.FIX_305_2,
+              ELECTRICAL_POINT_IDS_3_FLOOR.FIX_308_1,
+              ELECTRICAL_POINT_IDS_3_FLOOR.FIX_308_2,
             ],
             outletGroupIds: [
-              ELECTRICAL_POINT_IDS_3_FLOOR.OUT_305_1,
-              ELECTRICAL_POINT_IDS_3_FLOOR.OUT_305_2,
-              ELECTRICAL_POINT_IDS_3_FLOOR.OUT_305_3,
+              ELECTRICAL_POINT_IDS_3_FLOOR.OUT_308_1,
+              ELECTRICAL_POINT_IDS_3_FLOOR.OUT_308_2,
             ],
           },
         ],
@@ -190,7 +189,7 @@ export const floor3Panels: Panel[] = [
       {
         id: "breaker-3-4-9",
         designation: "QF9",
-        description: "Экономист по труду (302)",
+        description: "Экономист (302)",
         rating: 16,
         type: "mixed",
         isOn: true,
@@ -276,7 +275,7 @@ export const floor3Panels: Panel[] = [
       {
         id: "breaker-3-5-1", // 3 этаж, 4 ЩО, 1 автомат
         designation: "QF1",
-        description: "Директор розетки (314)",
+        description: "Начальник розетки (314)",
         rating: 16,
         type: "socket",
         isOn: true,
@@ -299,7 +298,7 @@ export const floor3Panels: Panel[] = [
       {
         id: "breaker-3-5-2",
         designation: "QF2",
-        description: "Директор водонагреватель (314)",
+        description: "Начальник водонагреватель (314)",
         rating: 16,
         type: "socket",
         isOn: true,
@@ -318,7 +317,7 @@ export const floor3Panels: Panel[] = [
       {
         id: "breaker-3-5-3",
         designation: "QF3",
-        description: "Директор освещение (314)",
+        description: "Начальник освещение (314)",
         rating: 16,
         type: "lighting",
         isOn: true,
@@ -394,21 +393,18 @@ export const floor3Panels: Panel[] = [
       {
         id: "breaker-3-5-6",
         designation: "QF6",
-        description: "Ксерокс холл (311)",
+        description: "Экономист по труду (317)",
         rating: 16,
         type: "mixed",
         isOn: true,
         controlledLoads: [
           {
-            roomId: ROOM_IDS_3_FLOOR.XEROX_HALL,
+            roomId: ROOM_IDS_3_FLOOR.WORK_ECONOMIST,
             lightFixtureIds: [
-              ELECTRICAL_POINT_IDS_3_FLOOR.FIX_311_1,
-              ELECTRICAL_POINT_IDS_3_FLOOR.FIX_311_2,
+              ELECTRICAL_POINT_IDS_3_FLOOR.FIX_317_1,
+              ELECTRICAL_POINT_IDS_3_FLOOR.FIX_317_2,
             ],
-            outletGroupIds: [
-              ELECTRICAL_POINT_IDS_3_FLOOR.OUT_311_1,
-              ELECTRICAL_POINT_IDS_3_FLOOR.OUT_311_2,
-            ],
+            outletGroupIds: [ELECTRICAL_POINT_IDS_3_FLOOR.OUT_317_1],
           },
         ],
         technicalInfo: {
@@ -519,10 +515,7 @@ export const floor3Panels: Panel[] = [
               ELECTRICAL_POINT_IDS_3_FLOOR.FIX_315_1,
               ELECTRICAL_POINT_IDS_3_FLOOR.FIX_315_2,
             ],
-            outletGroupIds: [
-              ELECTRICAL_POINT_IDS_3_FLOOR.OUT_315_1,
-              ELECTRICAL_POINT_IDS_3_FLOOR.OUT_315_2,
-            ],
+            outletGroupIds: [ELECTRICAL_POINT_IDS_3_FLOOR.OUT_315_1],
           },
           {
             roomId: ROOM_IDS_3_FLOOR.TOILET_WOMEN,
@@ -530,10 +523,7 @@ export const floor3Panels: Panel[] = [
               ELECTRICAL_POINT_IDS_3_FLOOR.FIX_316_1,
               ELECTRICAL_POINT_IDS_3_FLOOR.FIX_316_2,
             ],
-            outletGroupIds: [
-              ELECTRICAL_POINT_IDS_3_FLOOR.OUT_316_1,
-              ELECTRICAL_POINT_IDS_3_FLOOR.OUT_316_2,
-            ],
+            outletGroupIds: [ELECTRICAL_POINT_IDS_3_FLOOR.OUT_316_1],
           },
         ],
         technicalInfo: {
@@ -545,24 +535,18 @@ export const floor3Panels: Panel[] = [
       {
         id: "breaker-3-5-12",
         designation: "QF12",
-        description: "Главный бухгалтер и Комната отдыха (308, 309)",
+        description: "Руководитель учетно-контрольной группы (319)",
         rating: 16,
         type: "mixed",
         isOn: true,
         controlledLoads: [
           {
-            roomId: ROOM_IDS_3_FLOOR.CHIEF_ACCOUNTANT,
+            roomId: ROOM_IDS_3_FLOOR.ACCOUNTING_CONTROL_GROUP_LEAD,
             lightFixtureIds: [
-              ELECTRICAL_POINT_IDS_3_FLOOR.FIX_308_1,
-              ELECTRICAL_POINT_IDS_3_FLOOR.FIX_308_2,
+              ELECTRICAL_POINT_IDS_3_FLOOR.FIX_319_1,
+              ELECTRICAL_POINT_IDS_3_FLOOR.FIX_319_2,
             ],
-          },
-          {
-            roomId: ROOM_IDS_3_FLOOR.REST_ROOM,
-            lightFixtureIds: [
-              ELECTRICAL_POINT_IDS_3_FLOOR.FIX_309_1,
-              ELECTRICAL_POINT_IDS_3_FLOOR.FIX_309_2,
-            ],
+            outletGroupIds: [ELECTRICAL_POINT_IDS_3_FLOOR.OUT_319_1],
           },
         ],
         technicalInfo: {

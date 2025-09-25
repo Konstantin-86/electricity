@@ -80,28 +80,6 @@ export const electricalInstances3Floor: (
     estimatedLoad: 300,
   },
 
-  // Учет МПЗ (305)
-  {
-    id: ELECTRICAL_POINT_IDS_3_FLOOR.OUT_305_1,
-    roomId: ROOM_IDS_3_FLOOR.INVENTORY_ACCOUNTING,
-    type: "outlet",
-    count: 3,
-    estimatedLoad: 500,
-  },
-  {
-    id: ELECTRICAL_POINT_IDS_3_FLOOR.OUT_305_2,
-    roomId: ROOM_IDS_3_FLOOR.INVENTORY_ACCOUNTING,
-    type: "outlet",
-    count: 2,
-    estimatedLoad: 500,
-  },
-  {
-    id: ELECTRICAL_POINT_IDS_3_FLOOR.OUT_305_3,
-    roomId: ROOM_IDS_3_FLOOR.INVENTORY_ACCOUNTING,
-    type: "outlet",
-    count: 1,
-    estimatedLoad: 300,
-  },
   // Главный инженер (306)
   {
     id: ELECTRICAL_POINT_IDS_3_FLOOR.OUT_306_1,
@@ -124,6 +102,21 @@ export const electricalInstances3Floor: (
     count: 2,
     estimatedLoad: 300,
   },
+  // Главный бухгалтер (308)
+  {
+    id: ELECTRICAL_POINT_IDS_3_FLOOR.OUT_308_1,
+    roomId: ROOM_IDS_3_FLOOR.PAYROLL,
+    type: "outlet",
+    count: 2,
+    estimatedLoad: 300,
+  },
+  {
+    id: ELECTRICAL_POINT_IDS_3_FLOOR.OUT_308_2,
+    roomId: ROOM_IDS_3_FLOOR.PAYROLL,
+    type: "outlet",
+    count: 2,
+    estimatedLoad: 400,
+  },
 
   // Селекторная (310)
   {
@@ -140,21 +133,7 @@ export const electricalInstances3Floor: (
     count: 1,
     estimatedLoad: 400,
   },
-  // Ксерокс холл (311)
-  {
-    id: ELECTRICAL_POINT_IDS_3_FLOOR.OUT_311_1,
-    roomId: ROOM_IDS_3_FLOOR.XEROX_HALL,
-    type: "outlet",
-    count: 2,
-    estimatedLoad: 300,
-  },
-  {
-    id: ELECTRICAL_POINT_IDS_3_FLOOR.OUT_311_2,
-    roomId: ROOM_IDS_3_FLOOR.XEROX_HALL,
-    type: "outlet",
-    count: 2,
-    estimatedLoad: 300,
-  },
+
   // Программист (312)
   {
     id: ELECTRICAL_POINT_IDS_3_FLOOR.OUT_312_1,
@@ -246,6 +225,23 @@ export const electricalInstances3Floor: (
     count: 1,
     estimatedLoad: 1000,
   },
+  // Экономист по труду (317)
+
+  {
+    id: ELECTRICAL_POINT_IDS_3_FLOOR.OUT_317_1,
+    roomId: ROOM_IDS_3_FLOOR.WORK_ECONOMIST,
+    type: "outlet",
+    count: 1,
+    estimatedLoad: 300,
+  },
+  // Руководитель учетно-контрольной группы (319)
+  {
+    id: ELECTRICAL_POINT_IDS_3_FLOOR.OUT_319_1,
+    roomId: ROOM_IDS_3_FLOOR.ACCOUNTING_CONTROL_GROUP_LEAD,
+    type: "outlet",
+    count: 1,
+    estimatedLoad: 300,
+  },
 
   // ========== СВЕТИЛЬНИКИ ==========
 
@@ -335,20 +331,6 @@ export const electricalInstances3Floor: (
     template: FIXTURE_KEYS.OFFICE_PANEL_2x36W,
   },
 
-  // Учет МПЗ (305)
-  {
-    id: ELECTRICAL_POINT_IDS_3_FLOOR.FIX_305_1,
-    roomId: ROOM_IDS_3_FLOOR.INVENTORY_ACCOUNTING,
-    type: "light",
-    template: FIXTURE_KEYS.OFFICE_PANEL_2x36W,
-  },
-  {
-    id: ELECTRICAL_POINT_IDS_3_FLOOR.FIX_305_2,
-    roomId: ROOM_IDS_3_FLOOR.INVENTORY_ACCOUNTING,
-    type: "light",
-    template: FIXTURE_KEYS.OFFICE_PANEL_2x36W,
-  },
-
   // Главный инженер (306)
   {
     id: ELECTRICAL_POINT_IDS_3_FLOOR.FIX_306_1,
@@ -380,29 +362,15 @@ export const electricalInstances3Floor: (
   // Главный бухгалтер (308)
   {
     id: ELECTRICAL_POINT_IDS_3_FLOOR.FIX_308_1,
-    roomId: ROOM_IDS_3_FLOOR.CHIEF_ACCOUNTANT,
+    roomId: ROOM_IDS_3_FLOOR.PAYROLL,
     type: "light",
     template: FIXTURE_KEYS.OFFICE_PANEL_2x36W,
   },
   {
     id: ELECTRICAL_POINT_IDS_3_FLOOR.FIX_308_2,
-    roomId: ROOM_IDS_3_FLOOR.CHIEF_ACCOUNTANT,
+    roomId: ROOM_IDS_3_FLOOR.PAYROLL,
     type: "light",
     template: FIXTURE_KEYS.OFFICE_PANEL_2x36W,
-  },
-
-  // Комната отдыха (309)
-  {
-    id: ELECTRICAL_POINT_IDS_3_FLOOR.FIX_309_1,
-    roomId: ROOM_IDS_3_FLOOR.REST_ROOM,
-    type: "light",
-    template: FIXTURE_KEYS.LED_PANEL_SINGLE_40W,
-  },
-  {
-    id: ELECTRICAL_POINT_IDS_3_FLOOR.FIX_309_2,
-    roomId: ROOM_IDS_3_FLOOR.REST_ROOM,
-    type: "light",
-    template: FIXTURE_KEYS.LED_PANEL_SINGLE_40W,
   },
 
   // Селекторная (310)
@@ -423,20 +391,6 @@ export const electricalInstances3Floor: (
     roomId: ROOM_IDS_3_FLOOR.MEETING_ROOM,
     type: "light",
     template: FIXTURE_KEYS.OFFICE_PANEL_2x36W,
-  },
-
-  // Ксерокс холл (311)
-  {
-    id: ELECTRICAL_POINT_IDS_3_FLOOR.FIX_311_1,
-    roomId: ROOM_IDS_3_FLOOR.XEROX_HALL,
-    type: "light",
-    template: FIXTURE_KEYS.LED_PANEL_SINGLE_40W,
-  },
-  {
-    id: ELECTRICAL_POINT_IDS_3_FLOOR.FIX_311_2,
-    roomId: ROOM_IDS_3_FLOOR.XEROX_HALL,
-    type: "light",
-    template: FIXTURE_KEYS.LED_PANEL_SINGLE_40W,
   },
 
   // Программист (312)
@@ -489,6 +443,59 @@ export const electricalInstances3Floor: (
   {
     id: ELECTRICAL_POINT_IDS_3_FLOOR.FIX_314_3,
     roomId: ROOM_IDS_3_FLOOR.DIRECTOR,
+    type: "light",
+    template: FIXTURE_KEYS.OFFICE_PANEL_2x36W,
+  },
+  // Мужской туалет (315)
+
+  {
+    id: ELECTRICAL_POINT_IDS_3_FLOOR.FIX_315_1,
+    roomId: ROOM_IDS_3_FLOOR.TOILET_MEN,
+    type: "light",
+    template: FIXTURE_KEYS.OFFICE_PANEL_2x36W,
+  },
+  {
+    id: ELECTRICAL_POINT_IDS_3_FLOOR.FIX_315_2,
+    roomId: ROOM_IDS_3_FLOOR.TOILET_MEN,
+    type: "light",
+    template: FIXTURE_KEYS.OFFICE_PANEL_2x36W,
+  },
+  // Женский туалет (316)
+  {
+    id: ELECTRICAL_POINT_IDS_3_FLOOR.FIX_316_1,
+    roomId: ROOM_IDS_3_FLOOR.TOILET_WOMEN,
+    type: "light",
+    template: FIXTURE_KEYS.OFFICE_PANEL_2x36W,
+  },
+  {
+    id: ELECTRICAL_POINT_IDS_3_FLOOR.FIX_316_2,
+    roomId: ROOM_IDS_3_FLOOR.TOILET_WOMEN,
+    type: "light",
+    template: FIXTURE_KEYS.OFFICE_PANEL_2x36W,
+  },
+  // Экономист по труду (317)
+  {
+    id: ELECTRICAL_POINT_IDS_3_FLOOR.FIX_317_1,
+    roomId: ROOM_IDS_3_FLOOR.WORK_ECONOMIST,
+    type: "light",
+    template: FIXTURE_KEYS.OFFICE_PANEL_2x36W,
+  },
+  {
+    id: ELECTRICAL_POINT_IDS_3_FLOOR.FIX_317_2,
+    roomId: ROOM_IDS_3_FLOOR.WORK_ECONOMIST,
+    type: "light",
+    template: FIXTURE_KEYS.OFFICE_PANEL_2x36W,
+  },
+  // Руководитель учетно-контрольной группы (319)
+  {
+    id: ELECTRICAL_POINT_IDS_3_FLOOR.FIX_319_1,
+    roomId: ROOM_IDS_3_FLOOR.ACCOUNTING_CONTROL_GROUP_LEAD,
+    type: "light",
+    template: FIXTURE_KEYS.INDUSTRIAL_LUMINAIRE_2x58W,
+  },
+  {
+    id: ELECTRICAL_POINT_IDS_3_FLOOR.FIX_319_2,
+    roomId: ROOM_IDS_3_FLOOR.ACCOUNTING_CONTROL_GROUP_LEAD,
     type: "light",
     template: FIXTURE_KEYS.OFFICE_PANEL_2x36W,
   },

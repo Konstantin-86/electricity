@@ -1,18 +1,16 @@
 export const ROOM_IDS_3_FLOOR = {
   CORRIDOR: "room-3-301", // Коридор
-  ECONOMIST: "room-3-302", //
+  ECONOMIST: "room-3-302", // Экономист
   OCCUPATIONAL_SAFETY: "room-3-303", // Охрана труда
   ACCOUNTING: "room-3-304", // Бухгалтерия
-  INVENTORY_ACCOUNTING: "room-3-305", // Учет МПЗ
   CHIEF_ENGINEER: "room-3-306", // Главный инженер
   RECEPTION: "room-3-307", // Приемная
-  CHIEF_ACCOUNTANT: "room-3-308", // Главный бухгалтер
-  REST_ROOM: "room-3-309", // Комната отдыха
+  PAYROLL: "room-3-308", // Бухгалтерия (расчет)
+  /*   REST_ROOM: "room-3-309", // Комната отдыха */ /* под вопросом */
   MEETING_ROOM: "room-3-310", // Селекторная
-  XEROX_HALL: "room-3-311", // Ксерокс холл
   PROGRAMMER: "room-3-312", // Инженер Программист
   HR_DEPARTMENT: "room-3-313", // Специалист по кадрам
-  DIRECTOR: "room-3-314", // Директор
+  DIRECTOR: "room-3-314", // Начальник
   TOILET_MEN: "room-3-315", // Мужской туалет
   TOILET_WOMEN: "room-3-316", // Женский туалет
   WORK_ECONOMIST: "room-3-317", // Экономист по труду это ксерокс
@@ -23,7 +21,7 @@ export const ROOM_IDS_3_FLOOR = {
 export const ELECTRICAL_POINT_IDS_3_FLOOR = {
   // Розетки
 
-  // Экономист по труду (302)
+  // Экономист (302)
   OUT_302_1: "out-302-1",
   OUT_302_2: "out-302-2",
   OUT_302_3: "out-302-3",
@@ -38,24 +36,20 @@ export const ELECTRICAL_POINT_IDS_3_FLOOR = {
   OUT_304_3: "out-304-3",
   OUT_304_4: "out-304-4",
 
-  // Учет МПЗ (305)
-  OUT_305_1: "out-305-1",
-  OUT_305_2: "out-305-2",
-  OUT_305_3: "out-305-3",
-
   // Главный инженер (306)
 
   OUT_306_1: "out-306-1",
   OUT_306_2: "out-306-2",
   OUT_306_3: "out-306-3",
 
+  // Бухгалтерия (расчет)(308)
+
+  OUT_308_1: "out-308-1",
+  OUT_308_2: "out-308-2",
+
   // Селекторная (310)
   OUT_310_1: "out-310-1",
   OUT_310_2: "out-310-2",
-  // Ксерокс холл (311)
-
-  OUT_311_1: "out-311-1",
-  OUT_311_2: "out-311-2",
 
   // Инженер Программист(312)
 
@@ -67,7 +61,8 @@ export const ELECTRICAL_POINT_IDS_3_FLOOR = {
   OUT_313_1: "out-313-1",
   OUT_313_2: "out-313-2",
 
-  // Директор (314)
+  // Начальник (314)
+
   OUT_314_1: "out-314-1",
   OUT_314_2: "out-314-2",
   OUT_314_3: "out-314-3",
@@ -81,6 +76,11 @@ export const ELECTRICAL_POINT_IDS_3_FLOOR = {
   OUT_316_1: "out-316-1",
   OUT_316_2: "out-316-2",
 
+  // Экономист по труду (317)
+  OUT_317_1: "out-317-1",
+
+  // Руководитель учетно-контрольной группы (319)
+  OUT_319_1: "out-319-1",
   // Освещение
 
   // Коридор (301)
@@ -104,10 +104,6 @@ export const ELECTRICAL_POINT_IDS_3_FLOOR = {
   FIX_304_2: "fix-304-2",
   FIX_304_3: "fix-304-3",
 
-  // Учет МПЗ (305)
-  FIX_305_1: "fix-305-1",
-  FIX_305_2: "fix-305-2",
-
   // Главный инженер (306)
   FIX_306_1: "fix-306-1",
   FIX_306_2: "fix-306-2",
@@ -116,7 +112,7 @@ export const ELECTRICAL_POINT_IDS_3_FLOOR = {
   FIX_307_1: "fix-307-1",
   FIX_307_2: "fix-307-2",
 
-  // Главный бухгалтер (308)
+  // Бухгалтерия (расчет)(308)
   FIX_308_1: "fix-308-1",
   FIX_308_2: "fix-308-2",
 
@@ -129,10 +125,6 @@ export const ELECTRICAL_POINT_IDS_3_FLOOR = {
   FIX_310_2: "fix-310-2",
   FIX_310_3: "fix-310-3",
 
-  // Ксерокс холл (311)
-  FIX_311_1: "fix-311-1",
-  FIX_311_2: "fix-311-2",
-
   // Инженер Программист(312)
   FIX_312_1: "fix-312-1",
   FIX_312_2: "fix-312-2",
@@ -142,7 +134,8 @@ export const ELECTRICAL_POINT_IDS_3_FLOOR = {
   FIX_313_2: "fix-313-2",
   FIX_313_3: "fix-313-3",
 
-  // Директор (314)
+  // Начальник (314)
+
   FIX_314_1: "fix-314-1",
   FIX_314_2: "fix-314-2",
   FIX_314_3: "fix-314-3",
@@ -153,7 +146,15 @@ export const ELECTRICAL_POINT_IDS_3_FLOOR = {
   FIX_315_3: "fix-315-3",
 
   // Женский туалет (316)
+
   FIX_316_1: "fix-316-1",
   FIX_316_2: "fix-316-2",
   FIX_316_3: "fix-316-3",
+
+  // Экономист по труду (317)
+  FIX_317_1: "fix-317-1",
+  FIX_317_2: "fix-317-2",
+  // Руководитель учетно-контрольной группы (319)
+  FIX_319_1: "fix-319-1",
+  FIX_319_2: "fix-319-2",
 } as const;

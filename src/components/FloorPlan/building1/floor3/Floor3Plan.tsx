@@ -57,19 +57,15 @@ const Floor3Plan = () => {
 
       {/* Второй уровень - только коридор */}
       <div className={`${styles.level} ${styles.levelPanels}`}>
-        {secondLevelRooms.map((room) => (
-          <div
-            key={room.id}
-            onClick={() => roomid(room.id)}
-            className={`${styles.room} ${styles[room.type]}`}
-            data-room-id={room.id}
-          >
-            <span className={styles.roomName}>{room.name}</span>
-            <span className={styles.roomArea}>{room.area}м²</span>
-          </div>
-        ))}
-        <div className={styles.panel1}>ЩО4</div>
-        <div className={styles.panel2}>ЩО5</div>
+        <div
+          onClick={() => roomid("room-3-301")}
+          className={`${styles.room} ${styles.roomCorridor}`}
+        >
+          <span className={styles.roomName}>Корридор</span>
+          <span className={styles.roomArea}>53 м²</span>
+          <div className={styles.panel1}>ЩО4</div>
+          <div className={styles.panel2}>ЩО5</div>
+        </div>
       </div>
 
       {/* Третий уровень - руководство и дополнительные помещения */}
