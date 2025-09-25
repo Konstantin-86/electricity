@@ -1,6 +1,6 @@
 export const ROOM_IDS_3_FLOOR = {
   CORRIDOR: "room-3-301", // Коридор
-  ECONOMIST: "room-3-302", // Экономист
+  ECONOMIST: "room-3-302", //
   OCCUPATIONAL_SAFETY: "room-3-303", // Охрана труда
   ACCOUNTING: "room-3-304", // Бухгалтерия
   INVENTORY_ACCOUNTING: "room-3-305", // Учет МПЗ
@@ -10,17 +10,20 @@ export const ROOM_IDS_3_FLOOR = {
   REST_ROOM: "room-3-309", // Комната отдыха
   MEETING_ROOM: "room-3-310", // Селекторная
   XEROX_HALL: "room-3-311", // Ксерокс холл
-  PROGRAMMER: "room-3-312", // Программист
-  HR_DEPARTMENT: "room-3-313", // Отдел кадров
+  PROGRAMMER: "room-3-312", // Инженер Программист
+  HR_DEPARTMENT: "room-3-313", // Специалист по кадрам
   DIRECTOR: "room-3-314", // Директор
   TOILET_MEN: "room-3-315", // Мужской туалет
   TOILET_WOMEN: "room-3-316", // Женский туалет
+  WORK_ECONOMIST: "room-3-317", // Экономист по труду это ксерокс
+  MASS_WORK_SPECIALIST: "room-3-318", // Специалист по организационно массовой работе
+  ACCOUNTING_CONTROL_GROUP_LEAD: "room-3-319", // Руководитель учетно-контрольной группы
 } as const;
 
 export const ELECTRICAL_POINT_IDS_3_FLOOR = {
   // Розетки
 
-  // Экономист (302)
+  // Экономист по труду (302)
   OUT_302_1: "out-302-1",
   OUT_302_2: "out-302-2",
   OUT_302_3: "out-302-3",
@@ -54,12 +57,12 @@ export const ELECTRICAL_POINT_IDS_3_FLOOR = {
   OUT_311_1: "out-311-1",
   OUT_311_2: "out-311-2",
 
-  // Программист (312)
+  // Инженер Программист(312)
 
   OUT_312_1: "out-312-1",
   OUT_312_2: "out-312-2",
 
-  // Отдел кадров (313)
+  // Специалист по кадрам (313)
 
   OUT_313_1: "out-313-1",
   OUT_313_2: "out-313-2",
@@ -88,7 +91,7 @@ export const ELECTRICAL_POINT_IDS_3_FLOOR = {
   FIX_301_5: "fix-301-5",
   FIX_301_6: "fix-301-6",
 
-  // Экономист (302)
+  // Экономист по труду (302)
   FIX_302_1: "fix-302-1",
   FIX_302_2: "fix-302-2",
 
@@ -130,11 +133,11 @@ export const ELECTRICAL_POINT_IDS_3_FLOOR = {
   FIX_311_1: "fix-311-1",
   FIX_311_2: "fix-311-2",
 
-  // Программист (312)
+  // Инженер Программист(312)
   FIX_312_1: "fix-312-1",
   FIX_312_2: "fix-312-2",
 
-  // Отдел кадров (313)
+  //  Специалист по кадрам(313)
   FIX_313_1: "fix-313-1",
   FIX_313_2: "fix-313-2",
   FIX_313_3: "fix-313-3",

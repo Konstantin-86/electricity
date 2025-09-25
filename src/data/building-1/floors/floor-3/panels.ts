@@ -190,7 +190,7 @@ export const floor3Panels: Panel[] = [
       {
         id: "breaker-3-4-9",
         designation: "QF9",
-        description: "Экономист (302)",
+        description: "Экономист по труду (302)",
         rating: 16,
         type: "mixed",
         isOn: true,
@@ -341,7 +341,7 @@ export const floor3Panels: Panel[] = [
       {
         id: "breaker-3-5-4",
         designation: "QF4",
-        description: "Отдел кадров (313)",
+        description: "Специалист по кадрам (313)",
         rating: 16,
         type: "lighting",
         isOn: true,
@@ -368,7 +368,7 @@ export const floor3Panels: Panel[] = [
       {
         id: "breaker-3-5-5",
         designation: "QF5",
-        description: "Программист (312)",
+        description: "Инженер Программист (312)",
         rating: 16,
         type: "lighting",
         isOn: true,

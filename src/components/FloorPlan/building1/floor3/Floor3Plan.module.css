@@ -1,74 +1,26 @@
 .floorPlan {
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  padding: 20px;
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-  border-radius: 12px;
-  overflow-x: auto;
-  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.1);
+  gap: 7px;
+  min-height: 350px;
+  overflow: auto;
 }
-
-/* Уровни */
 .level {
-  width: 856px;
   display: flex;
-  gap: 12px;
-  align-items: center;
-  flex-wrap: nowrap;
+  gap: 7px;
 }
-
-/* Первый уровень - офисы и туалеты */
-.level:first-child {
-  justify-content: flex-start;
-  gap: 15px;
-}
-
-/* Второй уровень - только коридор */
-.level:nth-child(2) {
-  justify-content: center;
-  gap: 12px;
-}
-
-/* Третий уровень - руководство */
-.level:last-child {
-  justify-content: flex-start;
-  gap: 15px;
-}
-
 .room {
-  padding: 12px 8px;
-  border: 2px solid #ccc;
-  border-radius: 8px;
-  cursor: pointer;
+  min-width: 130px;
+  min-height: 100px;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  padding: 7px;
   text-align: center;
-  min-height: 80px;
-  min-width: 130px;
-  transition: all 0.3s ease;
-  background: white;
-  position: relative;
-  overflow: hidden;
-}
-
-/* Коридор - занимает всё доступное пространство */
-.room.corridor {
-  flex-grow: 1;
-  flex-basis: 0;
-  min-width: 200px;
-  max-width: calc(100% - 130px);
-  background: linear-gradient(135deg, #e8f5e8 0%, #d0e8d0 100%);
-  border-color: #4caf50;
-}
-
-/* Одинаковые размеры для всех комнат кроме коридора */
-.room:not(.corridor) {
-  width: 130px;
-  height: 80px;
-  flex: 0 0 auto;
+  border-radius: 7px;
+  gap: 7px;
+  /*  width: 1468px; */
 }
 
 /* Стили по типам помещений */
@@ -97,11 +49,78 @@
   font-size: 0.75em;
 }
 
+/* ////////// order //////////  */
 [data-room-id="room-3-303"] {
-  order: -1;
-  background-color: #19e780;
+  min-width: 260px;
+  order: 1;
+}
+[data-room-id="room-3-302"] {
+  order: 2;
+}
+[data-room-id="room-3-308"] {
+  order: 3;
+}
+[data-room-id="room-3-313"] {
+  order: 4;
+}
+[data-room-id="room-3-318"] {
+  order: 5;
+}
+[data-room-id="room-3-312"] {
+  order: 6;
+  min-width: 260px;
+}
+[data-room-id="room-3-317"] {
+  order: 7;
+}
+[data-room-id="room-3-319"] {
+  order: 8;
+}
+[data-room-id="room-3-310"] {
+  order: 9;
 }
 
+/*  -- middle side -- */
+[data-room-id="room-3-301"] {
+  position: relative;
+  min-width: 1486px;
+  background: linear-gradient(135deg, #e8f5e8 0%, #d0e8d0 100%);
+  border-color: #4caf50;
+}
+
+/*  -- bottom side -- */
+[data-room-id="room-3-304"] {
+  order: 1;
+  min-width: 260px;
+}
+[data-room-id="room-3-306"] {
+  order: 2;
+  min-width: 267px;
+}
+[data-room-id="room-3-307"] {
+  order: 3;
+}
+[data-room-id="room-3-314"] {
+  order: 4;
+  min-width: 397px;
+}
+[data-room-id="room-3-309"] {
+  order: 5;
+}
+[data-room-id="room-3-305"] {
+  order: 6;
+}
+[data-room-id="room-3-311"] {
+  order: 7;
+}
+[data-room-id="room-3-315"] {
+  order: 8;
+}
+[data-room-id="room-3-316"] {
+  order: 9;
+}
+
+/* ///////////////////  */
 .room.other {
   background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);
   border-color: #9c27b0;
@@ -170,7 +189,7 @@
   border-radius: 7px;
   background-color: #000000;
   color: #bbdefb;
-  top: 7px;
+  top: 10px;
   left: 7px;
 }
 .panel2 {
@@ -179,67 +198,6 @@
   border-radius: 7px;
   background-color: #000000;
   color: #bbdefb;
-  top: 7px;
-  left: calc(100% - 193px);
-}
-
-/* Адаптивность для мобильных */
-@media (max-width: 480px) {
-  .floorPlan {
-    padding: 12px;
-    gap: 10px;
-  }
-  .panel2 {
-    left: calc(100% - 164px);
-  }
-
-  .level {
-    width: 676px;
-    gap: 8px;
-  }
-
-  .room:not(.corridor) {
-    width: 100px;
-    height: 70px;
-    min-width: 100px;
-    min-height: 70px;
-  }
-
-  .room.corridor {
-    min-width: 150px;
-    max-width: calc(100% - 100px);
-  }
-
-  .roomName {
-    font-size: 0.8em;
-    max-width: 90px;
-  }
-
-  .roomArea {
-    font-size: 0.7em;
-  }
-}
-
-/* Для очень маленьких экранов */
-@media (max-width: 320px) {
-  .room:not(.corridor) {
-    width: 85px;
-    height: 65px;
-    min-width: 85px;
-    min-height: 65px;
-  }
-
-  .room.corridor {
-    min-width: 120px;
-    max-width: calc(100% - 190px);
-  }
-
-  .roomName {
-    font-size: 0.75em;
-    max-width: 80px;
-  }
-
-  .roomArea {
-    font-size: 0.65em;
-  }
+  top: 10px;
+  right: -630px;
 }
