@@ -16,10 +16,6 @@ const Floor3Plan = () => {
       room.id === "room-3-312" // PROGRAMMER
   );
 
-  const secondLevelRooms = floor3Rooms.filter(
-    (room) => room.id === "room-3-301" // CORRIDOR
-  );
-
   const thirdLevelRooms = floor3Rooms.filter(
     (room) =>
       room.id === "room-3-306" || // CHIEF_ENGINEER
