@@ -63,10 +63,6 @@ const Floor3Plan = () => {
       room.id === "room-3-316" // TOILET_WOMEN
   );
 
-  const roomid = (id: string) => {
-    console.log(id);
-  };
-
   return (
     <div className={styles.floorPlan}>
       {/* Первый уровень - офисы и туалеты */}

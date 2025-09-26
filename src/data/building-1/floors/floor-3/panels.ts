@@ -150,10 +150,24 @@ export const floor3Panels: Panel[] = [
       {
         id: "breaker-3-4-7",
         designation: "QF7",
-        description: "Резерв",
+        description: "Специалист по кадрам (313)",
         rating: 16,
         type: "mixed",
-        isOn: false,
+        isOn: true,
+        controlledLoads: [
+          {
+            roomId: ROOM_IDS_3_FLOOR.HR_DEPARTMENT,
+            lightFixtureIds: [
+              ELECTRICAL_POINT_IDS_3_FLOOR.FIX_313_1,
+              ELECTRICAL_POINT_IDS_3_FLOOR.FIX_313_2,
+            ],
+            outletGroupIds: [
+              ELECTRICAL_POINT_IDS_3_FLOOR.OUT_313_1,
+              ELECTRICAL_POINT_IDS_3_FLOOR.OUT_313_2,
+            ],
+          },
+        ],
+
         technicalInfo: {
           ...techInfoTemplates.ABB_SOCKET_16A,
           serialNumber: "ABB-S203-001",
@@ -340,22 +354,18 @@ export const floor3Panels: Panel[] = [
       {
         id: "breaker-3-5-4",
         designation: "QF4",
-        description: "Специалист по кадрам (313)",
+        description: "Руководитель учетно-контрольной группы (319)",
         rating: 16,
         type: "lighting",
         isOn: true,
         controlledLoads: [
           {
-            roomId: ROOM_IDS_3_FLOOR.HR_DEPARTMENT,
+            roomId: ROOM_IDS_3_FLOOR.ACCOUNTING_CONTROL_GROUP_LEAD,
             lightFixtureIds: [
-              ELECTRICAL_POINT_IDS_3_FLOOR.FIX_313_1,
-              ELECTRICAL_POINT_IDS_3_FLOOR.FIX_313_2,
-              ELECTRICAL_POINT_IDS_3_FLOOR.FIX_313_3,
+              ELECTRICAL_POINT_IDS_3_FLOOR.FIX_319_1,
+              ELECTRICAL_POINT_IDS_3_FLOOR.FIX_319_2,
             ],
-            outletGroupIds: [
-              ELECTRICAL_POINT_IDS_3_FLOOR.OUT_313_1,
-              ELECTRICAL_POINT_IDS_3_FLOOR.OUT_313_2,
-            ],
+            outletGroupIds: [ELECTRICAL_POINT_IDS_3_FLOOR.OUT_319_1],
           },
         ],
         technicalInfo: {

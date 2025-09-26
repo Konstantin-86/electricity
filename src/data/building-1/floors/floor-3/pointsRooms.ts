@@ -420,12 +420,6 @@ export const electricalInstances3Floor: (
     type: "light",
     template: FIXTURE_KEYS.OFFICE_PANEL_2x36W,
   },
-  {
-    id: ELECTRICAL_POINT_IDS_3_FLOOR.FIX_313_3,
-    roomId: ROOM_IDS_3_FLOOR.HR_DEPARTMENT,
-    type: "light",
-    template: FIXTURE_KEYS.OFFICE_PANEL_2x36W,
-  },
 
   // Директор (314)
   {
