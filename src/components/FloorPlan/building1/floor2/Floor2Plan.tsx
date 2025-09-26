@@ -1,8 +1,39 @@
+import { useMemo, useState } from "react";
 import { floor2Rooms } from "../../../../data/building-1/floors/floor-2/rooms";
+import { electricalInstances2Floor } from "../../../../data/building-1/floors/floor-2/pointsRooms";
+import { RoomPopup } from "../../../RoomCard/RoomPopup";
+import { floor2Panels } from "../../../../data/building-1/floors/floor-2/panels";
+
 import styles from "./Floor2Plan.module.css";
 
 const Floor2Plan = () => {
-  // Группируем помещения по уровням
+  const [selectedRoomId, setSelectedRoomId] = useState<string | null>(null);
+  const selectedRoom = useMemo(
+    () =>
+      selectedRoomId
+        ? floor2Rooms.find((room) => room.id === selectedRoomId)
+        : null,
+    [selectedRoomId]
+  );
+
+  const roomPoints = useMemo(
+    () =>
+      selectedRoomId
+        ? electricalInstances2Floor.filter(
+            (point) => point.roomId === selectedRoomId
+          )
+        : [],
+    [selectedRoomId]
+  );
+
+  const handleRoomClick = (id: string) => {
+    setSelectedRoomId(id);
+  };
+
+  const handleClosePopup = () => {
+    setSelectedRoomId(null);
+  };
+
   const firstLevelRooms = floor2Rooms.filter(
     (room) =>
       room.id === "room-2-204" || // OFFICE_ATX_HEAD
@@ -31,10 +62,6 @@ const Floor2Plan = () => {
       room.id === "room-2-220" // HEATER
   );
 
-  const roomid = (id: string) => {
-    console.log(id);
-  };
-
   return (
     <div className={styles.floorPlan}>
       {/* Первый уровень - офисы и отделы */}
@@ -42,10 +69,9 @@ const Floor2Plan = () => {
         {firstLevelRooms.map((room) => (
           <div
             key={room.id}
-            onClick={() => roomid(room.id)}
             className={`${styles.room} ${styles[room.type]}`}
-            title={`${room.name} (${room.area}м²)`}
             data-room-id={room.id}
+            onClick={() => handleRoomClick(room.id)}
           >
             <span className={styles.roomName}>{room.name}</span>
             <span className={styles.roomArea}>{room.area}м²</span>
@@ -59,8 +85,8 @@ const Floor2Plan = () => {
           <div
             key={room.id}
             className={`${styles.room} ${styles[room.type]}`}
-            title={`${room.name} (${room.area}м²)`}
             data-room-id={room.id}
+            onClick={() => handleRoomClick(room.id)}
           >
             <span className={styles.roomName}>{room.name}</span>
             <span className={styles.roomArea}>{room.area}м²</span>
@@ -76,14 +102,23 @@ const Floor2Plan = () => {
           <div
             key={room.id}
             className={`${styles.room} ${styles[room.type]}`}
-            title={`${room.name} (${room.area}м²)`}
             data-room-id={room.id}
+            onClick={() => handleRoomClick(room.id)}
           >
             <span className={styles.roomName}>{room.name}</span>
             <span className={styles.roomArea}>{room.area}м²</span>
           </div>
         ))}
       </div>
+      {selectedRoom && (
+        <RoomPopup
+          room={selectedRoom}
+          points={roomPoints}
+          panels={floor2Panels}
+          isOpen={!!selectedRoomId}
+          onClose={handleClosePopup}
+        />
+      )}
     </div>
   );
 };

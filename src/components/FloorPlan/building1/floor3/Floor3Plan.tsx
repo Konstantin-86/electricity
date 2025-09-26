@@ -7,8 +7,6 @@ import { floor3Panels } from "../../../../data/building-1/floors/floor-3/panels"
 
 const Floor3Plan = () => {
   const [selectedRoomId, setSelectedRoomId] = useState<string | null>(null);
-
-  // Находим выбранное помещение
   const selectedRoom = useMemo(
     () =>
       selectedRoomId
@@ -17,7 +15,6 @@ const Floor3Plan = () => {
     [selectedRoomId]
   );
 
-  // Находим электрические точки для выбранного помещения
   const roomPoints = useMemo(
     () =>
       selectedRoomId

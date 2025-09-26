@@ -21,8 +21,8 @@ export const floor2Rooms: Room[] = [
     area: 15,
   },
   {
-    id: ROOM_IDS_2_FLOOR.OFFICE_UOOP_PITANIE,
-    name: "УООП (питание)",
+    id: ROOM_IDS_2_FLOOR.OFFICE_UOOP_CHIEF,
+    name: "УООП (начальник)",
     type: "office",
     area: 25,
   },
@@ -87,8 +87,8 @@ export const floor2Rooms: Room[] = [
     area: 18,
   },
   {
-    id: ROOM_IDS_2_FLOOR.OFFICE_PROIZVODSTVENNY_OTDEL,
-    name: "Производственный отдел",
+    id: ROOM_IDS_2_FLOOR.OFFICE_UOOP,
+    name: "УООП",
     type: "office",
     area: 18,
   },
@@ -99,10 +99,16 @@ export const floor2Rooms: Room[] = [
     area: 18,
   },
   {
-    id: ROOM_IDS_2_FLOOR.DEPT_PTO,
-    name: "Производственно-технический отдел",
+    id: ROOM_IDS_2_FLOOR.CHIEF_PTO,
+    name: "Начальник ПТО, коридор ПТО",
     type: "office",
-    area: 30,
+    area: 15,
+  },
+  {
+    id: ROOM_IDS_2_FLOOR.PTO_ENGENEERS,
+    name: "Пто инженеры",
+    type: "office",
+    area: 20,
   },
   {
     id: ROOM_IDS_2_FLOOR.TOILET_WOMEN,

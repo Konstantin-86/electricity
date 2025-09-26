@@ -11,15 +11,6 @@ export const electricalInstances2Floor: (
 )[] = [
   // ========== РОЗЕТКИ ==========
 
-  // Коридор (209)
-  {
-    id: ELECTRICAL_POINT_IDS_2_FLOOR.OUT_201_1,
-    roomId: ROOM_IDS_2_FLOOR.CORRIDOR,
-    type: "outlet",
-    count: 2,
-    estimatedLoad: 300,
-  },
-
   // Бухгалтерия по учету МПЗ (204)
   {
     id: ELECTRICAL_POINT_IDS_2_FLOOR.OUT_204_1,
@@ -124,31 +115,17 @@ export const electricalInstances2Floor: (
   // УООП (питание) (202)
   {
     id: ELECTRICAL_POINT_IDS_2_FLOOR.OUT_202_1,
-    roomId: ROOM_IDS_2_FLOOR.OFFICE_UOOP_PITANIE,
+    roomId: ROOM_IDS_2_FLOOR.OFFICE_UOOP_CHIEF,
     type: "outlet",
     count: 5,
     estimatedLoad: 1000,
   },
   {
     id: ELECTRICAL_POINT_IDS_2_FLOOR.OUT_202_2,
-    roomId: ROOM_IDS_2_FLOOR.OFFICE_UOOP_PITANIE,
+    roomId: ROOM_IDS_2_FLOOR.OFFICE_UOOP_CHIEF,
     type: "outlet",
     count: 3,
     estimatedLoad: 600,
-  },
-  {
-    id: ELECTRICAL_POINT_IDS_2_FLOOR.OUT_202_3,
-    roomId: ROOM_IDS_2_FLOOR.OFFICE_UOOP_PITANIE,
-    type: "outlet",
-    count: 2,
-    estimatedLoad: 2000,
-  },
-  {
-    id: ELECTRICAL_POINT_IDS_2_FLOOR.OUT_202_4,
-    roomId: ROOM_IDS_2_FLOOR.OFFICE_UOOP_PITANIE,
-    type: "outlet",
-    count: 1,
-    estimatedLoad: 1500,
   },
 
   // TOILET_WOMEN (212)
@@ -166,17 +143,49 @@ export const electricalInstances2Floor: (
     count: 2,
     estimatedLoad: 400,
   },
-  // Производственный отдел (216) // TODO: [REFACTOR] Уточнить наличие розеток
+  // Пто инженеры (214_1)
+  {
+    id: ELECTRICAL_POINT_IDS_2_FLOOR.OUT_214_1_1,
+    roomId: ROOM_IDS_2_FLOOR.PTO_ENGENEERS,
+    type: "outlet",
+    count: 2,
+    estimatedLoad: 400,
+  },
+  {
+    id: ELECTRICAL_POINT_IDS_2_FLOOR.OUT_214_1_2,
+    roomId: ROOM_IDS_2_FLOOR.PTO_ENGENEERS,
+    type: "outlet",
+    count: 2,
+    estimatedLoad: 400,
+  },
+
+  //  Участок АВУ1 (215)
+  {
+    id: ELECTRICAL_POINT_IDS_2_FLOOR.OUT_215_1,
+    roomId: ROOM_IDS_2_FLOOR.OFFICE_AVU1,
+    type: "outlet",
+    count: 2,
+    estimatedLoad: 400,
+  },
+  {
+    id: ELECTRICAL_POINT_IDS_2_FLOOR.OUT_215_2,
+    roomId: ROOM_IDS_2_FLOOR.OFFICE_AVU1,
+    type: "outlet",
+    count: 2,
+    estimatedLoad: 400,
+  },
+
+  // УООП (216)
   {
     id: ELECTRICAL_POINT_IDS_2_FLOOR.OUT_216_1,
-    roomId: ROOM_IDS_2_FLOOR.TOILET_MEN,
+    roomId: ROOM_IDS_2_FLOOR.OFFICE_UOOP,
     type: "outlet",
     count: 1,
     estimatedLoad: 600,
   },
   {
     id: ELECTRICAL_POINT_IDS_2_FLOOR.OUT_216_2,
-    roomId: ROOM_IDS_2_FLOOR.TOILET_MEN,
+    roomId: ROOM_IDS_2_FLOOR.OFFICE_UOOP,
     type: "outlet",
     count: 1,
     estimatedLoad: 600,
@@ -201,37 +210,37 @@ export const electricalInstances2Floor: (
 
   // Коридор (209)
   {
-    id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_201_1,
+    id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_209_1,
     roomId: ROOM_IDS_2_FLOOR.CORRIDOR,
     type: "light",
     template: FIXTURE_KEYS.LINEAR_4x18W,
   },
   {
-    id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_201_2,
+    id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_209_2,
     roomId: ROOM_IDS_2_FLOOR.CORRIDOR,
     type: "light",
     template: FIXTURE_KEYS.LINEAR_4x18W,
   },
   {
-    id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_201_3,
+    id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_209_3,
     roomId: ROOM_IDS_2_FLOOR.CORRIDOR,
     type: "light",
     template: FIXTURE_KEYS.LINEAR_4x18W,
   },
   {
-    id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_201_4,
+    id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_209_4,
     roomId: ROOM_IDS_2_FLOOR.CORRIDOR,
     type: "light",
     template: FIXTURE_KEYS.LINEAR_4x18W,
   },
   {
-    id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_201_5,
+    id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_209_5,
     roomId: ROOM_IDS_2_FLOOR.CORRIDOR,
     type: "light",
     template: FIXTURE_KEYS.EMERGENCY_EXIT_SIGN,
   },
   {
-    id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_201_6,
+    id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_209_6,
     roomId: ROOM_IDS_2_FLOOR.CORRIDOR,
     type: "light",
     template: FIXTURE_KEYS.EMERGENCY_EXIT_SIGN,
@@ -330,21 +339,15 @@ export const electricalInstances2Floor: (
   // УООП (питание) (202)
   {
     id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_202_1,
-    roomId: ROOM_IDS_2_FLOOR.OFFICE_UOOP_PITANIE,
+    roomId: ROOM_IDS_2_FLOOR.OFFICE_UOOP_CHIEF,
     type: "light",
     template: FIXTURE_KEYS.OFFICE_PANEL_2x36W,
   },
   {
     id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_202_2,
-    roomId: ROOM_IDS_2_FLOOR.OFFICE_UOOP_PITANIE,
+    roomId: ROOM_IDS_2_FLOOR.OFFICE_UOOP_CHIEF,
     type: "light",
     template: FIXTURE_KEYS.OFFICE_PANEL_2x36W,
-  },
-  {
-    id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_202_3,
-    roomId: ROOM_IDS_2_FLOOR.OFFICE_UOOP_PITANIE,
-    type: "light",
-    template: FIXTURE_KEYS.PENDANT_LIGHT_3x18W,
   },
 
   // Мужской туалет (211)
@@ -375,16 +378,16 @@ export const electricalInstances2Floor: (
     template: FIXTURE_KEYS.OFFICE_PANEL_2x36W,
   },
 
-  // Производственный отдел (216)
+  // УООП (216)
   {
     id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_216_1,
-    roomId: ROOM_IDS_2_FLOOR.OFFICE_PROIZVODSTVENNY_OTDEL,
+    roomId: ROOM_IDS_2_FLOOR.OFFICE_UOOP,
     type: "light",
     template: FIXTURE_KEYS.LED_PANEL_SINGLE_40W,
   },
   {
     id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_216_2,
-    roomId: ROOM_IDS_2_FLOOR.OFFICE_PROIZVODSTVENNY_OTDEL,
+    roomId: ROOM_IDS_2_FLOOR.OFFICE_UOOP,
     type: "light",
     template: FIXTURE_KEYS.RECESSED_SPOT_10W,
   },
@@ -403,16 +406,54 @@ export const electricalInstances2Floor: (
     template: FIXTURE_KEYS.RECESSED_SPOT_10W,
   },
 
-  // Производственно-технический отдел (ПТО) (214)
+  // Начальник ПТО, коридор ПТО (214)
   {
     id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_214_1,
-    roomId: ROOM_IDS_2_FLOOR.DEPT_PTO,
+    roomId: ROOM_IDS_2_FLOOR.CHIEF_PTO,
     type: "light",
     template: FIXTURE_KEYS.OFFICE_PANEL_2x36W,
   },
   {
     id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_214_2,
-    roomId: ROOM_IDS_2_FLOOR.DEPT_PTO,
+    roomId: ROOM_IDS_2_FLOOR.CHIEF_PTO,
+    type: "light",
+    template: FIXTURE_KEYS.RECESSED_SPOT_10W,
+  },
+  {
+    id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_214_3,
+    roomId: ROOM_IDS_2_FLOOR.CHIEF_PTO,
+    type: "light",
+    template: FIXTURE_KEYS.RECESSED_SPOT_10W,
+  },
+  {
+    id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_214_4,
+    roomId: ROOM_IDS_2_FLOOR.CHIEF_PTO,
+    type: "light",
+    template: FIXTURE_KEYS.RECESSED_SPOT_10W,
+  },
+  // Пто инженеры (214_1)
+  {
+    id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_214_1_1,
+    roomId: ROOM_IDS_2_FLOOR.PTO_ENGENEERS,
+    type: "light",
+    template: FIXTURE_KEYS.RECESSED_SPOT_10W,
+  },
+  {
+    id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_214_1_2,
+    roomId: ROOM_IDS_2_FLOOR.PTO_ENGENEERS,
+    type: "light",
+    template: FIXTURE_KEYS.RECESSED_SPOT_10W,
+  },
+  //  Участок АВУ1 (215)
+  {
+    id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_215_1,
+    roomId: ROOM_IDS_2_FLOOR.OFFICE_AVU1,
+    type: "light",
+    template: FIXTURE_KEYS.RECESSED_SPOT_10W,
+  },
+  {
+    id: ELECTRICAL_POINT_IDS_2_FLOOR.FIX_215_2,
+    roomId: ROOM_IDS_2_FLOOR.OFFICE_AVU1,
     type: "light",
     template: FIXTURE_KEYS.RECESSED_SPOT_10W,
   },
