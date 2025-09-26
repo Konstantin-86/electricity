@@ -14,8 +14,8 @@ const FloorView: React.FC = () => {
 
   const getModalTitle = () => {
     switch (activeVisualization) {
-      case "floorPlan":
-        return `План этажа ${selectedFloor?.name || ""}`;
+      case "roomsList":
+        return `Помещения этажа ${selectedFloor?.name || ""}`;
       case "electricalPanel":
         return "Электрический щит";
       case "electricalScheme":
@@ -27,7 +27,7 @@ const FloorView: React.FC = () => {
 
   const getModalSize = () => {
     switch (activeVisualization) {
-      case "floorPlan":
+      case "roomsList":
       case "electricalScheme":
         return "fullscreen";
       case "electricalPanel":
@@ -41,8 +41,13 @@ const FloorView: React.FC = () => {
     if (!selectedFloor) return null;
 
     switch (activeVisualization) {
-      case "floorPlan":
-        return <FloorPlan floor={selectedFloor.id} />;
+      case "roomsList":
+        return (
+          <RoomsList
+            rooms={selectedFloor?.rooms || []}
+            points={selectedFloor?.points || []}
+          />
+        );
       case "electricalPanel":
         return <ElectricalPanel />;
       case "electricalScheme":
@@ -55,10 +60,7 @@ const FloorView: React.FC = () => {
   return (
     <div className={styles.container}>
       <div className={styles.content}>
-        <RoomsList
-          rooms={selectedFloor?.rooms || []}
-          points={selectedFloor?.points || []}
-        />
+        {selectedFloor && <FloorPlan floor={selectedFloor.id} />}
       </div>
 
       <Modal

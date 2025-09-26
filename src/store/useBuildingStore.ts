@@ -7,6 +7,7 @@ type VisualizationType =
   | "floorPlan"
   | "electricalPanel"
   | "electricalScheme"
+  | "roomsList"
   | null;
 
 interface BuildingState {

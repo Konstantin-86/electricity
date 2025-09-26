@@ -1,8 +1,41 @@
+import { useMemo, useState } from "react";
 import { floor3Rooms } from "../../../../data/building-1/floors/floor-3/rooms";
 import styles from "./Floor3Plan.module.css";
+import { electricalInstances3Floor } from "../../../../data/building-1/floors/floor-3/pointsRooms";
+import { RoomPopup } from "../../../RoomCard/RoomPopup";
+import { floor3Panels } from "../../../../data/building-1/floors/floor-3/panels";
 
 const Floor3Plan = () => {
-  // Группируем помещения по уровням
+  const [selectedRoomId, setSelectedRoomId] = useState<string | null>(null);
+
+  // Находим выбранное помещение
+  const selectedRoom = useMemo(
+    () =>
+      selectedRoomId
+        ? floor3Rooms.find((room) => room.id === selectedRoomId)
+        : null,
+    [selectedRoomId]
+  );
+
+  // Находим электрические точки для выбранного помещения
+  const roomPoints = useMemo(
+    () =>
+      selectedRoomId
+        ? electricalInstances3Floor.filter(
+            (point) => point.roomId === selectedRoomId
+          )
+        : [],
+    [selectedRoomId]
+  );
+
+  const handleRoomClick = (id: string) => {
+    console.log(id);
+    setSelectedRoomId(id);
+  };
+
+  const handleClosePopup = () => {
+    setSelectedRoomId(null);
+  };
   const firstLevelRooms = floor3Rooms.filter(
     (room) =>
       room.id === "room-3-303" || // OCCUPATIONAL_SAFETY
@@ -41,7 +74,7 @@ const Floor3Plan = () => {
         {firstLevelRooms.map((room) => (
           <div
             key={room.id}
-            onClick={() => roomid(room.id)}
+            onClick={() => handleRoomClick(room.id)}
             className={`${styles.room} ${styles[room.type]}`}
             data-room-id={room.id}
           >
@@ -54,7 +87,7 @@ const Floor3Plan = () => {
       {/* Второй уровень - только коридор */}
       <div className={`${styles.level} ${styles.levelPanels}`}>
         <div
-          onClick={() => roomid("room-3-301")}
+          onClick={() => handleRoomClick("room-3-301")}
           className={`${styles.room} ${styles.roomCorridor}`}
         >
           <span className={styles.roomName}>Корридор</span>
@@ -70,7 +103,7 @@ const Floor3Plan = () => {
           <div
             key={room.id}
             className={`${styles.room} ${styles[room.type]}`}
-            onClick={() => roomid(room.id)}
+            onClick={() => handleRoomClick(room.id)}
             data-room-id={room.id}
           >
             <span className={styles.roomName}>{room.name}</span>
@@ -78,6 +111,15 @@ const Floor3Plan = () => {
           </div>
         ))}
       </div>
+      {selectedRoom && (
+        <RoomPopup
+          room={selectedRoom}
+          points={roomPoints}
+          panels={floor3Panels}
+          isOpen={!!selectedRoomId}
+          onClose={handleClosePopup}
+        />
+      )}
     </div>
   );
 };
