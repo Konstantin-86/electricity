@@ -23,7 +23,7 @@ const FloorSelector: React.FC<FloorSelectorProps> = ({ floors }) => {
         <div
           key={floor.id}
           className={styles.floorCard}
-          onClick={() => setSelectedFloor(floor)} // Используем метод из buildingStore
+          onClick={() => setSelectedFloor(floor)}
         >
           <div className={styles.floorIcon}>🏢</div>
           <h3 className={styles.floorName}>{floor.name}</h3>

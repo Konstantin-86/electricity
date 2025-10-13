@@ -38,7 +38,7 @@ export const RoomPopup = ({
           ×
         </button>
 
-        <h2>
+        <h2 className={styles.popupTitle}>
           {room.name} ({room.area}м²)
         </h2>
 
@@ -49,7 +49,6 @@ export const RoomPopup = ({
 
         {/* Информация об электропитании */}
         <div className={styles.powerInfo}>
-          <h3>Электропитание помещения</h3>
           {roomBreakers.length > 0 ? (
             <div className={styles.breakersList}>
               {roomBreakers.map((breaker) => (
@@ -59,16 +58,6 @@ export const RoomPopup = ({
                   </span>
                   <span className={styles.breakerDescription}>
                     {breaker.description}
-                  </span>
-                  <span className={styles.breakerRating}>
-                    {breaker.rating}A
-                  </span>
-                  <span
-                    className={`${styles.breakerStatus} ${
-                      breaker.isOn ? styles.on : styles.off
-                    }`}
-                  >
-                    {breaker.isOn ? "ВКЛ" : "ВЫКЛ"}
                   </span>
                 </div>
               ))}
@@ -80,8 +69,6 @@ export const RoomPopup = ({
 
         {/* Детальная информация о точках */}
         <div className={styles.detailedPoints}>
-          <h3>Электрические точки</h3>
-
           {/* Светильники */}
           <div className={styles.pointsSection}>
             <h4>
@@ -91,7 +78,6 @@ export const RoomPopup = ({
               .filter((p) => p.type === "light")
               .map((fixture) => (
                 <div key={fixture.id} className={styles.fixtureItem}>
-                  <span>{fixture.id}</span>
                   <span>Тип: {(fixture as LightFixtureInstance).template}</span>
                 </div>
               ))}
@@ -106,9 +92,9 @@ export const RoomPopup = ({
               .filter((p) => p.type === "outlet")
               .map((outlet) => (
                 <div key={outlet.id} className={styles.outletItem}>
-                  <span>{outlet.id}</span>
                   <span>
-                    Нагрузка: {(outlet as OutletInstance).estimatedLoad}W
+                    Средняя нагрузка: {(outlet as OutletInstance).estimatedLoad}
+                    W
                   </span>
                   <span>Количество: {(outlet as OutletInstance).count}</span>
                 </div>

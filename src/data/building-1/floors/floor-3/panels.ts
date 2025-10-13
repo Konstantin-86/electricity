@@ -354,18 +354,18 @@ export const floor3Panels: Panel[] = [
       {
         id: "breaker-3-5-4",
         designation: "QF4",
-        description: "Руководитель учетно-контрольной группы (319)",
+        description: "Специалист по организационно массовой работе (318)",
         rating: 16,
-        type: "lighting",
+        type: "mixed",
         isOn: true,
         controlledLoads: [
           {
-            roomId: ROOM_IDS_3_FLOOR.ACCOUNTING_CONTROL_GROUP_LEAD,
+            roomId: ROOM_IDS_3_FLOOR.MASS_WORK_SPECIALIST,
             lightFixtureIds: [
-              ELECTRICAL_POINT_IDS_3_FLOOR.FIX_319_1,
-              ELECTRICAL_POINT_IDS_3_FLOOR.FIX_319_2,
+              ELECTRICAL_POINT_IDS_3_FLOOR.FIX_318_1,
+              ELECTRICAL_POINT_IDS_3_FLOOR.FIX_318_2,
             ],
-            outletGroupIds: [ELECTRICAL_POINT_IDS_3_FLOOR.OUT_319_1],
+            outletGroupIds: [ELECTRICAL_POINT_IDS_3_FLOOR.OUT_318_1],
           },
         ],
         technicalInfo: {

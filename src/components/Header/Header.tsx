@@ -17,7 +17,6 @@ const Header: React.FC = () => {
 
   if (!selectedBuilding) return null;
 
-  // Определяем классы для анимации появления/скрытия
   const headerClass = `${styles.header} ${
     scrollDirection === "down" ? styles.hidden : ""
   } ${scrollDirection === "up" ? styles.visible : ""}`;
@@ -36,18 +35,6 @@ const Header: React.FC = () => {
 
       {selectedFloor && (
         <div className={styles.headerRight}>
-          <button
-            className={`${styles.toggleButton} ${
-              activeVisualization === "floorPlan" ? styles.active : ""
-            }`}
-            onClick={() =>
-              showVisualization(
-                activeVisualization === "floorPlan" ? null : "floorPlan"
-              )
-            }
-          >
-            🏢 План
-          </button>
           <button
             className={`${styles.toggleButton} ${
               activeVisualization === "electricalPanel" ? styles.active : ""

@@ -26,7 +26,6 @@ const Floor3Plan = () => {
   );
 
   const handleRoomClick = (id: string) => {
-    console.log(id);
     setSelectedRoomId(id);
   };
 
@@ -49,11 +48,9 @@ const Floor3Plan = () => {
   const thirdLevelRooms = floor3Rooms.filter(
     (room) =>
       room.id === "room-3-306" || // CHIEF_ENGINEER
-      /*  room.id === "room-3-305" || // INVENTORY_ACCOUNTING */ /* уточнить!!! */
       room.id === "room-3-307" || // RECEPTION
       room.id === "room-3-304" || // ACCOUNTING
       room.id === "room-3-309" || // REST_ROOM
-      /*   room.id === "room-3-311" || // XEROX_HALL */
       room.id === "room-3-306" || // CHIEF_ENGINEER
       room.id === "room-3-314" || // DIRECTOR
       room.id === "room-3-315" || // TOILET_MEN

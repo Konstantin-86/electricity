@@ -1,6 +1,5 @@
-// components/RoomsList/RoomsList.tsx
 import { memo } from "react";
-import { useBreakerStore } from "../../store/useBreakerStore"; // Правильное хранилище!
+import { useBreakerStore } from "../../store/useBreakerStore";
 import RoomCard from "../RoomCard/RoomCard";
 import type { Room, LightFixtureInstance, OutletInstance } from "../../types";
 

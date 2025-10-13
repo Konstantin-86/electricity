@@ -20,6 +20,7 @@
   text-align: center;
   border-radius: 7px;
   gap: 7px;
+  cursor: pointer;
 }
 
 /* Стили по типам помещений */

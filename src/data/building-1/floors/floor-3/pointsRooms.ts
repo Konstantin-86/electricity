@@ -234,6 +234,15 @@ export const electricalInstances3Floor: (
     count: 1,
     estimatedLoad: 300,
   },
+
+  // Специалист по организационно массовой работе (318)
+  {
+    id: ELECTRICAL_POINT_IDS_3_FLOOR.OUT_318_1,
+    roomId: ROOM_IDS_3_FLOOR.MASS_WORK_SPECIALIST,
+    type: "outlet",
+    count: 2,
+    estimatedLoad: 300,
+  },
   // Руководитель учетно-контрольной группы (319)
   {
     id: ELECTRICAL_POINT_IDS_3_FLOOR.OUT_319_1,
@@ -477,6 +486,20 @@ export const electricalInstances3Floor: (
   {
     id: ELECTRICAL_POINT_IDS_3_FLOOR.FIX_317_2,
     roomId: ROOM_IDS_3_FLOOR.WORK_ECONOMIST,
+    type: "light",
+    template: FIXTURE_KEYS.OFFICE_PANEL_2x36W,
+  },
+
+  // Специалист по организационно массовой работе (318)
+  {
+    id: ELECTRICAL_POINT_IDS_3_FLOOR.FIX_318_1,
+    roomId: ROOM_IDS_3_FLOOR.MASS_WORK_SPECIALIST,
+    type: "light",
+    template: FIXTURE_KEYS.OFFICE_PANEL_2x36W,
+  },
+  {
+    id: ELECTRICAL_POINT_IDS_3_FLOOR.FIX_318_2,
+    roomId: ROOM_IDS_3_FLOOR.MASS_WORK_SPECIALIST,
     type: "light",
     template: FIXTURE_KEYS.OFFICE_PANEL_2x36W,
   },
