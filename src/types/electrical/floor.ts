@@ -1,6 +1,5 @@
-import type { Room } from "./room";
 import type { Panel } from "./panel";
-import type { LightFixtureInstance, OutletInstance } from "./points";
+import type { Room } from "./room";
 
 export interface Floor {
   id: string;
@@ -8,5 +7,4 @@ export interface Floor {
   level: number;
   rooms: Room[];
   panels: Panel[];
-  points: (OutletInstance | LightFixtureInstance)[];
 }

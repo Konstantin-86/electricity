@@ -80,6 +80,10 @@
   order: 9;
 }
 
+.room[data-room-id="room-3-306"] {
+  background: #810000;
+}
+
 /*  -- middle side -- */
 .roomCorridor {
   position: relative;
