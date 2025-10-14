@@ -36,30 +36,34 @@ const Floor2Plan = () => {
 
   const firstLevelRooms = floor2Rooms.filter(
     (room) =>
-      room.id === "room-2-204" || // OFFICE_ATX_HEAD
-      room.id === "room-2-205" || // OFFICE_EVS_HEAD
-      room.id === "room-2-206" || // OFFICE_AVR_HEAD
-      room.id === "room-2-207" || // OFFICE_DIPNR_HEAD
-      room.id === "room-2-211" || // DEPT_PTO
-      room.id === "room-2-212" // DEPT_ATX_TECH
+      room.id === "room-2-201" || // OFFICE_AVR4_DEPUTY
+      room.id === "room-2-202" || // OFFICE_UOOP_CHIEF
+      room.id === "room-2-203" || // OFFICE_ATX_HEAD
+      room.id === "room-2-204" || // OFFICE_BUH_MPZ
+      room.id === "room-2-205" || // OFFICE_AVU2
+      room.id === "room-2-206" || // OFFICE_AVU3
+      room.id === "room-2-207" || // DEPT_ATX_TECH
+      room.id === "room-2-208" || // OFFICE_PROGRAMMIST
+      room.id === "room-2-208-1" // VENTILYATSIYA
   );
 
   const secondLevelRooms = floor2Rooms.filter(
     (room) =>
-      room.id === "room-2-201" || // CORRIDOR
-      room.id === "room-2-203" // STAIRS_PANTRY
+      room.id === "room-2-209" || // CORRIDOR
+      room.id === "room-2-222" // STAIRS_PANTRY
   );
 
   const thirdLevelRooms = floor2Rooms.filter(
     (room) =>
-      room.id === "room-2-216" || // TOILET_MEN
-      room.id === "room-2-210" || // OFFICE_MTS_HEAD
-      room.id === "room-2-217" || // TOILET_WOMEN
-      room.id === "room-2-208" || // OFFICE_AVR4_DEPUTY
-      room.id === "room-2-209" || // OFFICE_GAZTORG_DIRECTOR
-      room.id === "room-2-218" || // HEATER_TOILET_MEN
-      room.id === "room-2-219" || // HEATER_TOILET_WOMEN
-      room.id === "room-2-220" // HEATER
+      room.id === "room-2-221" || // OFFICE_ARKHIV
+      room.id === "room-2-219" || // OFFICE_AVU1_HEAD
+      room.id === "room-2-217" || // OFFICE_AVU1_ENGINEER
+      room.id === "room-2-216" || // OFFICE_UOOP
+      room.id === "room-2-215" || // OFFICE_AVU1
+      room.id === "room-2-214" || // CHIEF_PTO
+      room.id === "room-2-214_1" || // PTO_ENGENEERS
+      room.id === "room-2-212" || // TOILET_WOMEN
+      room.id === "room-2-211" // TOILET_MEN
   );
 
   return (
@@ -93,7 +97,7 @@ const Floor2Plan = () => {
           </div>
         ))}
         <div className={styles.panel1}>ЩО3</div>
-        <div className={styles.panel2}>ЩО5</div>
+        <div className={styles.panel2}>ЩО2</div>
       </div>
 
       {/* Третий уровень - технические помещения и санузлы */}

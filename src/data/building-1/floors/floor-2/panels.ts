@@ -25,6 +25,7 @@ export const floor2Panels: Panel[] = [
             lightFixtureIds: [
               ELECTRICAL_POINT_IDS_2_FLOOR.FIX_201_1,
               ELECTRICAL_POINT_IDS_2_FLOOR.FIX_201_2,
+              ELECTRICAL_POINT_IDS_2_FLOOR.FIX_201_3,
             ],
             outletGroupIds: [
               ELECTRICAL_POINT_IDS_2_FLOOR.OUT_201_1,
@@ -118,15 +119,12 @@ export const floor2Panels: Panel[] = [
         isOn: true,
         controlledLoads: [
           {
-            roomId: ROOM_IDS_2_FLOOR.OFFICE_AVU1,
+            roomId: ROOM_IDS_2_FLOOR.OFFICE_UOOP_CHIEF,
             lightFixtureIds: [
               ELECTRICAL_POINT_IDS_2_FLOOR.FIX_202_1,
               ELECTRICAL_POINT_IDS_2_FLOOR.FIX_202_2,
             ],
-            outletGroupIds: [
-              ELECTRICAL_POINT_IDS_2_FLOOR.OUT_202_1,
-              ELECTRICAL_POINT_IDS_2_FLOOR.OUT_202_2,
-            ],
+            outletGroupIds: [ELECTRICAL_POINT_IDS_2_FLOOR.OUT_202_1],
           },
         ],
         technicalInfo: {
@@ -144,7 +142,7 @@ export const floor2Panels: Panel[] = [
         isOn: true,
         controlledLoads: [
           {
-            roomId: ROOM_IDS_2_FLOOR.OFFICE_AVU1,
+            roomId: ROOM_IDS_2_FLOOR.OFFICE_BUH_MPZ,
             lightFixtureIds: [
               ELECTRICAL_POINT_IDS_2_FLOOR.FIX_204_1,
               ELECTRICAL_POINT_IDS_2_FLOOR.FIX_204_2,
@@ -315,8 +313,13 @@ export const floor2Panels: Panel[] = [
               ELECTRICAL_POINT_IDS_2_FLOOR.FIX_214_3,
               ELECTRICAL_POINT_IDS_2_FLOOR.FIX_214_4,
             ],
+            outletGroupIds: [
+              ELECTRICAL_POINT_IDS_2_FLOOR.OUT_214_1,
+              ELECTRICAL_POINT_IDS_2_FLOOR.OUT_214_2,
+            ],
           },
         ],
+
         technicalInfo: {
           ...techInfoTemplates.ABB_SOCKET_16A,
           serialNumber: "ABB-S203-001",
@@ -326,14 +329,21 @@ export const floor2Panels: Panel[] = [
       {
         id: "breaker-2-3-2",
         designation: "QF2",
-        description: "Вентиляция (208)",
+        description: "Вентиляция (208-1)",
         rating: 25,
         type: "lighting",
         isOn: true,
         controlledLoads: [
           {
-            roomId: ROOM_IDS_2_FLOOR.OFFICE_VENTILYATSIYA,
-            lightFixtureIds: [ELECTRICAL_POINT_IDS_2_FLOOR.FIX_208_1],
+            roomId: ROOM_IDS_2_FLOOR.VENTILYATSIYA,
+            lightFixtureIds: [
+              ELECTRICAL_POINT_IDS_2_FLOOR.FIX_208_1_1,
+              ELECTRICAL_POINT_IDS_2_FLOOR.FIX_208_1_2,
+            ],
+            outletGroupIds: [
+              ELECTRICAL_POINT_IDS_2_FLOOR.OUT_208_1_1,
+              ELECTRICAL_POINT_IDS_2_FLOOR.OUT_208_1_2,
+            ],
           },
         ],
         technicalInfo: {
@@ -381,12 +391,10 @@ export const floor2Panels: Panel[] = [
             lightFixtureIds: [
               ELECTRICAL_POINT_IDS_2_FLOOR.FIX_207_1,
               ELECTRICAL_POINT_IDS_2_FLOOR.FIX_207_2,
-              ELECTRICAL_POINT_IDS_2_FLOOR.FIX_207_3,
             ],
             outletGroupIds: [
               ELECTRICAL_POINT_IDS_2_FLOOR.OUT_207_1,
               ELECTRICAL_POINT_IDS_2_FLOOR.OUT_207_2,
-              ELECTRICAL_POINT_IDS_2_FLOOR.OUT_207_3,
             ],
           },
           {
@@ -424,8 +432,8 @@ export const floor2Panels: Panel[] = [
               ELECTRICAL_POINT_IDS_2_FLOOR.FIX_206_3,
             ],
             outletGroupIds: [
-              ELECTRICAL_POINT_IDS_2_FLOOR.OUT_203_1,
-              ELECTRICAL_POINT_IDS_2_FLOOR.OUT_203_2,
+              ELECTRICAL_POINT_IDS_2_FLOOR.OUT_206_1,
+              ELECTRICAL_POINT_IDS_2_FLOOR.OUT_206_2,
             ],
           },
         ],
@@ -438,7 +446,7 @@ export const floor2Panels: Panel[] = [
       {
         id: "breaker-2-3-7",
         designation: "QF7",
-        description: "Водонагреватель мужской туалет (216)",
+        description: "Водонагреватель мужской туалет (211)",
         rating: 25,
         type: "socket",
         isOn: true,
@@ -446,7 +454,7 @@ export const floor2Panels: Panel[] = [
           {
             roomId: ROOM_IDS_2_FLOOR.TOILET_MEN,
 
-            outletGroupIds: [ELECTRICAL_POINT_IDS_2_FLOOR.OUT_216_2],
+            outletGroupIds: [ELECTRICAL_POINT_IDS_2_FLOOR.OUT_211_1],
           },
         ],
         technicalInfo: {
@@ -458,7 +466,7 @@ export const floor2Panels: Panel[] = [
       {
         id: "breaker-2-3-8",
         designation: "QF8",
-        description: "Водонагреватель женский туалет (217)",
+        description: "Водонагреватель женский туалет (212)",
         rating: 25,
         type: "socket",
         isOn: true,
@@ -466,7 +474,7 @@ export const floor2Panels: Panel[] = [
           {
             roomId: ROOM_IDS_2_FLOOR.TOILET_WOMEN,
 
-            outletGroupIds: [ELECTRICAL_POINT_IDS_2_FLOOR.OUT_217_2],
+            outletGroupIds: [ELECTRICAL_POINT_IDS_2_FLOOR.OUT_212_1],
           },
         ],
         technicalInfo: {
@@ -478,7 +486,7 @@ export const floor2Panels: Panel[] = [
       {
         id: "breaker-2-3-9",
         designation: "QF9",
-        description: "Освещение Лестница столовая (203)",
+        description: "Освещение Лестница столовая (222)",
         rating: 25,
         type: "lighting",
         isOn: true,
@@ -486,8 +494,8 @@ export const floor2Panels: Panel[] = [
           {
             roomId: ROOM_IDS_2_FLOOR.STAIRS_PANTRY,
             lightFixtureIds: [
-              ELECTRICAL_POINT_IDS_2_FLOOR.FIX_203_1,
-              ELECTRICAL_POINT_IDS_2_FLOOR.FIX_203_2,
+              ELECTRICAL_POINT_IDS_2_FLOOR.FIX_222_1,
+              ELECTRICAL_POINT_IDS_2_FLOOR.FIX_222_2,
             ],
           },
         ],
@@ -500,7 +508,7 @@ export const floor2Panels: Panel[] = [
       {
         id: "breaker-2-3-10",
         designation: "QF10",
-        description: "Освещение туалетов (216, 217)",
+        description: "Освещение туалетов (211, 212)",
         rating: 25,
         type: "lighting",
         isOn: true,
@@ -508,15 +516,15 @@ export const floor2Panels: Panel[] = [
           {
             roomId: ROOM_IDS_2_FLOOR.TOILET_MEN,
             lightFixtureIds: [
-              ELECTRICAL_POINT_IDS_2_FLOOR.FIX_216_1,
-              ELECTRICAL_POINT_IDS_2_FLOOR.FIX_216_2,
+              ELECTRICAL_POINT_IDS_2_FLOOR.FIX_211_1,
+              ELECTRICAL_POINT_IDS_2_FLOOR.FIX_211_2,
             ],
           },
           {
             roomId: ROOM_IDS_2_FLOOR.TOILET_WOMEN,
             lightFixtureIds: [
-              ELECTRICAL_POINT_IDS_2_FLOOR.FIX_217_1,
-              ELECTRICAL_POINT_IDS_2_FLOOR.FIX_217_2,
+              ELECTRICAL_POINT_IDS_2_FLOOR.FIX_212_1,
+              ELECTRICAL_POINT_IDS_2_FLOOR.FIX_212_2,
             ],
           },
         ],
@@ -529,20 +537,22 @@ export const floor2Panels: Panel[] = [
       {
         id: "breaker-2-3-11",
         designation: "QF11",
-        description: "Пто инженеры (214_1)",
+        description: "Пто инженеры (214)",
         rating: 25,
         type: "mixed",
         isOn: true,
         controlledLoads: [
           {
-            roomId: ROOM_IDS_2_FLOOR.PTO_ENGENEERS,
+            roomId: ROOM_IDS_2_FLOOR.CHIEF_PTO,
             lightFixtureIds: [
-              ELECTRICAL_POINT_IDS_2_FLOOR.FIX_214_1_1,
-              ELECTRICAL_POINT_IDS_2_FLOOR.FIX_214_1_2,
+              ELECTRICAL_POINT_IDS_2_FLOOR.FIX_214_5,
+              ELECTRICAL_POINT_IDS_2_FLOOR.FIX_214_6,
+              ELECTRICAL_POINT_IDS_2_FLOOR.FIX_214_7,
+              ELECTRICAL_POINT_IDS_2_FLOOR.FIX_214_8,
             ],
             outletGroupIds: [
-              ELECTRICAL_POINT_IDS_2_FLOOR.OUT_214_1_1,
-              ELECTRICAL_POINT_IDS_2_FLOOR.OUT_214_1_2,
+              ELECTRICAL_POINT_IDS_2_FLOOR.OUT_214_3,
+              ELECTRICAL_POINT_IDS_2_FLOOR.OUT_214_4,
             ],
           },
         ],

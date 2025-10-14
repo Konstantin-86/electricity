@@ -13,7 +13,7 @@
 .level {
   width: 856px;
   display: flex;
-  gap: 12px;
+  gap: 7px;
   align-items: center;
   flex-wrap: nowrap;
 }
@@ -21,7 +21,7 @@
 /* Первый уровень - офисы */
 .level:first-child {
   justify-content: flex-start;
-  gap: 15px;
+  gap: 7px;
 }
 
 /* Второй уровень - лестница, коридор, лестница */
@@ -58,8 +58,7 @@
 .room.corridor {
   flex-grow: 1;
   flex-basis: 0;
-  min-width: 200px;
-  max-width: calc(100% - 130px); /* Оставляем место для двух боковых комнат */
+  min-width: 1342px;
   background: linear-gradient(135deg, #e8f5e8 0%, #d0e8d0 100%);
   border-color: #4caf50;
 }
@@ -165,7 +164,20 @@
   background-color: #000000;
   color: #bbdefb;
   top: 7px;
-  left: calc(100% - 193px);
+  right: -479px;
+}
+
+[data-room-id="room-2-201"] {
+  min-width: 260px;
+}
+[data-room-id="room-2-203"] {
+  min-width: 260px;
+}
+[data-room-id="room-2-214"] {
+  min-width: 260px;
+}
+[data-room-id="room-2-209"] {
+  min-width: 1260px;
 }
 
 /* Адаптивность для мобильных */
