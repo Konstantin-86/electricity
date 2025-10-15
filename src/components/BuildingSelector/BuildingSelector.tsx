@@ -1,6 +1,5 @@
 import { useState } from "react";
 import type { Building, Floor } from "../../types";
-import Header from "../Header/Header";
 
 import styles from "./BuildingSelector.module.css";
 import FloorSelector from "../FloorSelector/FloorSelector";

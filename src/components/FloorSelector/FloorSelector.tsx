@@ -18,8 +18,11 @@ const FloorSelector = ({ floors }: FloorSelectorProps) => {
   if (selectedFloor)
     return (
       <>
-        <Header backButton={backButton} />
-        <FloorPlan rooms={selectedFloor.rooms} panels={selectedFloor.panels} />
+        <FloorPlan
+          rooms={selectedFloor.rooms}
+          panels={selectedFloor.panels}
+          backButton={backButton}
+        />
       </>
     );
 

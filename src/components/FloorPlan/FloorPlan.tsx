@@ -3,13 +3,15 @@ import styles from "./FloorPlan.module.css";
 import type { Panel, Room } from "../../types";
 import { getRoomInfo } from "./helpers/roomInfo";
 import RoomInfoPanel from "../RoomInfoPanel/RoomInfoPanel";
+import Header from "../Header/Header";
 
 interface FloorPlanProps {
   rooms: Room[];
   panels: Panel[];
+  backButton: () => void;
 }
 
-const FloorPlan = ({ rooms, panels }: FloorPlanProps) => {
+const FloorPlan = ({ rooms, panels, backButton }: FloorPlanProps) => {
   const [selectedRoomInfo, setSelectedRoomInfo] = useState<ReturnType<
     typeof getRoomInfo
   > | null>(null);
@@ -23,10 +25,13 @@ const FloorPlan = ({ rooms, panels }: FloorPlanProps) => {
     setSelectedRoomInfo(null);
   };
 
-  console.log(selectedRoomInfo);
-
   return (
     <div className={styles.floorPlan}>
+      <div className={styles.topNav}>
+        <button onClick={backButton}>назад</button>
+        <button>Щиты</button>
+        <button>Схема</button>
+      </div>
       <div className={styles.roomsContainer}>
         {rooms.map((room) => (
           <div
@@ -37,7 +42,6 @@ const FloorPlan = ({ rooms, panels }: FloorPlanProps) => {
           >
             <div className={styles.roomContent}>
               <h4 className={styles.roomName}>{room.name}</h4>
-              <span className={styles.roomType}>{room.type}</span>
               <span className={styles.roomArea}>{room.area} м²</span>
             </div>
           </div>

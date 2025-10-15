@@ -5,11 +5,7 @@ interface HeaderProps {
 }
 
 const Header = ({ backButton }: HeaderProps) => {
-  return (
-    <header className={styles.header}>
-      <button onClick={backButton}>назад</button>
-    </header>
-  );
+  return <header className={styles.header}></header>;
 };
 
 export default Header;
