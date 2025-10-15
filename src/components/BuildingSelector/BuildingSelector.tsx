@@ -11,8 +11,6 @@ interface BuildingSelectorProps {
 const BuildingSelector: React.FC<BuildingSelectorProps> = ({ buildings }) => {
   const [selectedFloors, setSelectedFloors] = useState<Floor[] | null>(null);
 
-  console.log(selectedFloors);
-
   if (!selectedFloors) {
     return (
       <div className={styles.buildingsGrid}>

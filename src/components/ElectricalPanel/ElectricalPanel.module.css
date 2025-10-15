@@ -1,132 +1,401 @@
-/* ElectricalPanel.module.css */
-.panel {
-  background: linear-gradient(145deg, #f8f9fa, #e9ecef);
-  border-radius: 12px;
-  padding: 7px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(0, 0, 0, 0.06);
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 16px;
 }
 
-.panelSection h2 {
-  color: #2c3e50;
-  font-size: 1.5rem;
+.panel {
+  background: white;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 1366px;
+  min-width: 320px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid #e0e0e0;
+  background: #f8f9fa;
+  border-radius: 8px 8px 0 0;
+  flex-shrink: 0;
+}
+
+.header h2 {
+  margin: 0;
+  color: #333;
+  font-size: 1.25rem;
   font-weight: 600;
-  margin: 0 0 12px 0;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #666;
+  padding: 4px;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Hover только для non-touch устройств */
+@media (hover: hover) and (pointer: fine) {
+  .closeButton:hover {
+    background: #e0e0e0;
+    color: #333;
+  }
+
+  .panelTab:hover {
+    color: #333;
+    background: #e8e8e8;
+  }
+
+  .breakerCard:hover {
+    border-color: #1976d2;
+    box-shadow: 0 1px 4px rgba(25, 118, 210, 0.1);
+    background: white;
+  }
+}
+
+.panelSelector {
+  display: flex;
+  padding: 0 20px;
+  background: #f5f5f5;
+  border-bottom: 1px solid #e0e0e0;
+  gap: 2px;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+  overflow-x: auto;
+}
+
+.panelTab {
+  padding: 10px 16px;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+  font-size: 13px;
+  color: #666;
+  transition: all 0.2s;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.panelTabActive {
+  color: #1976d2;
+  border-bottom-color: #1976d2;
+  background: white;
+  font-weight: 500;
+}
+
+.panelContent {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px 20px;
 }
 
 .panelHeader {
-  display: flex;
-  justify-content: space-between;
-  text-align: center;
-  margin-bottom: 7px;
-  padding-bottom: 7px;
-  border-bottom: 2px solid rgba(0, 0, 0, 0.06);
-  position: relative;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #1976d2;
 }
 
-.panelHeader::after {
-  content: "";
-  position: absolute;
-  bottom: -2px;
-  left: 25%;
-  right: 25%;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #6f42c1, transparent);
-}
-
-.panelName {
-  color: #2c3e50;
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin: 0 0 8px 0;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-}
-
-.panelType {
-  color: #6c757d;
-  font-size: 0.9rem;
-  font-weight: 500;
-  margin-bottom: 4px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+.panelHeader h3 {
+  margin: 0 0 4px 0;
+  color: #333;
+  font-size: 1.1rem;
+  font-weight: 600;
 }
 
 .panelLocation {
-  color: #6c757d;
-  font-size: 0.85rem;
+  color: #666;
+  font-size: 13px;
   font-style: italic;
 }
 
-.breakers {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 7px;
+.breakersList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
 }
 
-.breakersGrid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-}
-
-.btnOn,
-.btnOff {
-  position: fixed;
-  top: -5px;
-  left: 222px;
-  z-index: 100;
-  padding: 8px 16px;
+.breakerCard {
+  border: 1px solid #e0e0e0;
   border-radius: 6px;
-  border: 1px solid #ced4da;
+  padding: 12px;
+  background: #fafafa;
+  transition: all 0.2s;
+  display: flex;
+  flex-direction: column;
+  min-height: 120px;
+}
+
+.breakerHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+  gap: 8px;
+}
+
+.breakerDesignation {
+  font-weight: bold;
+  font-size: 15px;
+  color: #1976d2;
+  background: #e3f2fd;
+  padding: 3px 8px;
+  border-radius: 4px;
+  line-height: 1.2;
+}
+
+.breakerStatus {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  flex-shrink: 0;
+}
+
+.statusOn {
+  background: #4caf50;
+  color: white;
+}
+
+.statusOff {
+  background: #f44336;
+  color: white;
+}
+
+.breakerDescription {
+  font-size: 13px;
+  color: #333;
+  margin-bottom: 8px;
   font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s ease;
+  line-height: 1.3;
+  flex: 1;
 }
 
-.btnOn {
-  background-color: #6f42c1;
-  color: #fff;
-  box-shadow: 0 2px 4px rgba(111, 66, 193, 0.3);
+.breakerDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 8px;
 }
 
-.btnOff {
-  background-color: #f8f9fa;
-  color: #6c757d;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+.detailGroup {
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
-.btnOn:hover {
-  background-color: #5a359d;
+.detailLabel {
+  font-size: 11px;
+  color: #666;
+  font-weight: 500;
+  min-width: 70px;
+  flex-shrink: 0;
 }
 
-.btnOff:hover {
-  background-color: #e9ecef;
+.breakerRating {
+  font-weight: bold;
+  color: #333;
+  background: #f5f5f5;
+  padding: 1px 6px;
+  border-radius: 3px;
+  font-size: 12px;
 }
 
+.breakerManufacturer,
+.breakerModel,
+.breakerCharacteristic,
+.breakerSerial {
+  font-size: 12px;
+  color: #333;
+  background: #f5f5f5;
+  padding: 1px 6px;
+  border-radius: 3px;
+  line-height: 1.3;
+}
+
+.controlledRooms {
+  font-size: 11px;
+  color: #666;
+  padding-top: 8px;
+  border-top: 1px solid #e0e0e0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.controlledRoomsLabel {
+  font-weight: 500;
+  color: #333;
+  font-size: 10px;
+}
+
+/* Адаптивность для мобильных устройств */
 @media (max-width: 768px) {
-  .panelName {
-    font-size: 14px;
-    margin-bottom: 0;
+  .overlay {
+    padding: 12px;
   }
 
-  .panelType {
+  .header {
+    padding: 12px 16px;
+  }
+
+  .header h2 {
+    font-size: 1.1rem;
+  }
+
+  .panelSelector {
+    padding: 0 16px;
+  }
+
+  .panelTab {
+    padding: 8px 12px;
     font-size: 12px;
-    margin-bottom: 0;
   }
 
-  .panelHeader {
-    align-items: center;
+  .panelContent {
+    padding: 12px 16px;
   }
 
-  .breakers {
-    justify-content: center;
+  .breakersList {
+    grid-template-columns: 1fr;
+    gap: 10px;
   }
 
-  .btnOn,
-  .btnOff {
-    left: 10px;
-    top: 10px;
+  .breakerCard {
+    padding: 10px;
+    min-height: 110px;
+  }
+
+  .breakerHeader {
+    margin-bottom: 6px;
+  }
+
+  .breakerDesignation {
+    font-size: 14px;
+    padding: 2px 6px;
+  }
+
+  .breakerStatus {
+    padding: 3px 8px;
+    font-size: 10px;
+  }
+
+  .breakerDescription {
+    font-size: 12px;
+    margin-bottom: 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .overlay {
+    padding: 8px;
+  }
+
+  .panel {
+    max-height: 95vh;
+  }
+
+  .header {
+    padding: 10px 12px;
+  }
+
+  .header h2 {
+    font-size: 1rem;
+  }
+
+  .closeButton {
+    width: 24px;
+    height: 24px;
+    font-size: 18px;
+  }
+
+  .panelSelector {
+    padding: 0 12px;
+  }
+
+  .panelTab {
+    padding: 6px 10px;
+    font-size: 11px;
+  }
+
+  .panelContent {
+    padding: 10px 12px;
+  }
+
+  .panelHeader h3 {
+    font-size: 1rem;
+  }
+
+  .panelLocation {
+    font-size: 12px;
+  }
+
+  .breakerCard {
+    padding: 8px;
+    min-height: 100px;
+  }
+
+  .breakerDescription {
+    font-size: 11px;
+  }
+
+  .detailLabel {
+    min-width: 60px;
+    font-size: 10px;
+  }
+
+  .breakerRating,
+  .breakerManufacturer,
+  .breakerModel,
+  .breakerCharacteristic,
+  .breakerSerial {
+    font-size: 11px;
+  }
+}
+
+/* Для очень маленьких экранов */
+@media (max-width: 320px) {
+  .overlay {
+    padding: 4px;
+  }
+
+  .panel {
+    min-width: 312px; /* 320px - padding */
+  }
+
+  .header {
+    padding: 8px 10px;
+  }
+
+  .panelSelector,
+  .panelContent {
+    padding-left: 10px;
+    padding-right: 10px;
   }
 }

@@ -2,7 +2,6 @@ import { useState } from "react";
 import type { Floor } from "../../types";
 import styles from "./FloorSelector.module.css";
 import FloorPlan from "../FloorPlan/FloorPlan";
-import Header from "../Header/Header";
 
 interface FloorSelectorProps {
   floors: Floor[];

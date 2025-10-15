@@ -1,92 +1,93 @@
 import { useState } from "react";
-import { useBreakerStore } from "../../store/useBreakerStore";
-
+import type { Panel } from "../../types";
 import styles from "./ElectricalScheme.module.css";
 
-const ElectricalScheme: React.FC = () => {
-  const { panels } = useBreakerStore();
-  const [selectedPanelId, setSelectedPanelId] = useState<string>(
-    panels[0]?.id || ""
-  );
-  const [isPrinting, setIsPrinting] = useState(false);
+interface ElectricalSchemeProps {
+  panels: Panel[];
+  onClose: () => void;
+}
 
-  const selectedPanel = panels.find((panel) => panel.id === selectedPanelId);
-
-  const handlePrint = () => {
-    setIsPrinting(true);
-
-    setTimeout(() => {
-      window.print();
-      setTimeout(() => setIsPrinting(false), 100);
-    }, 100);
-  };
-
-  if (panels.length === 0) {
-    return (
-      <div className={styles.container}>
-        <div className={styles.emptyState}>
-          <h2>Нет данных о панелях</h2>
-          <p>Добавьте панели для отображения электрической схемы</p>
-        </div>
-      </div>
-    );
-  }
+const ElectricalScheme = ({ panels, onClose }: ElectricalSchemeProps) => {
+  const [selectedPanelIndex, setSelectedPanelIndex] = useState<number>(0);
+  const currentPanel = panels[selectedPanelIndex];
 
   return (
-    <div className={styles.wrap}>
-      <div className={styles.container}>
+    <div className={styles.overlay}>
+      <div className={styles.scheme}>
         <div className={styles.header}>
-          <h2>Электрическая схема</h2>
-          <div className={styles.controls}>
-            <select
-              value={selectedPanelId}
-              onChange={(e) => setSelectedPanelId(e.target.value)}
-              className={styles.select}
-            >
-              {panels.map((panel) => (
-                <option key={panel.id} value={panel.id}>
-                  {panel.name} - {panel.location}
-                </option>
-              ))}
-            </select>
-            <button className={styles.printButton} onClick={handlePrint}>
-              Печать
-            </button>
-          </div>
+          <h2>Схема щита освещения</h2>
+          <button className={styles.closeButton} onClick={onClose}>
+            ×
+          </button>
         </div>
 
-        <div
-          className={`${styles.singleLineScheme} ${
-            isPrinting ? styles.printView : ""
-          }`}
-          id="print-scheme"
-        >
-          {selectedPanel && (
-            <>
-              <div className={styles.panelHeader}>
-                <h3>{selectedPanel.name}</h3>
-                <p>{selectedPanel.location}</p>
-              </div>
+        {/* Панель переключения между щитами */}
+        <div className={styles.panelSelector}>
+          {panels.map((panel, index) => (
+            <button
+              key={panel.id}
+              className={`${styles.panelTab} ${
+                selectedPanelIndex === index ? styles.panelTabActive : ""
+              }`}
+              onClick={() => setSelectedPanelIndex(index)}
+            >
+              {panel.name}
+            </button>
+          ))}
+        </div>
 
-              <div className={styles.breakersList}>
-                {selectedPanel.breakers.map((breaker) => (
-                  <div key={breaker.id} className={styles.breakerItem}>
+        {/* Основная схема */}
+        <div className={styles.schemeContent}>
+          <div className={styles.schemePaper}>
+            {/* Заголовок схемы */}
+            <div className={styles.schemeHeader}>
+              <h3>{currentPanel.name}</h3>
+              <div className={styles.schemeLocation}>
+                {currentPanel.location}
+              </div>
+            </div>
+
+            {/* Таблица автоматов */}
+            <div className={styles.breakersTable}>
+              {currentPanel.breakers.map((breaker) => (
+                <div key={breaker.id} className={styles.breakerRow}>
+                  <div className={styles.breakerLeft}>
                     <div className={styles.breakerSymbol}>
-                      <span className={styles.designation}>
-                        {breaker.designation}
-                      </span>
+                      <div className={styles.circle}>{breaker.designation}</div>
                     </div>
+                    <div className={styles.breakerLine}></div>
+                  </div>
+
+                  <div className={styles.breakerRight}>
                     <div className={styles.breakerInfo}>
-                      <span className={styles.description}>
+                      <div className={styles.breakerMain}>
+                        <span className={styles.breakerRating}>
+                          {breaker.rating}А
+                        </span>
+                        {breaker.technicalInfo?.characteristic && (
+                          <span className={styles.breakerCharacteristic}>
+                            {breaker.technicalInfo.characteristic}
+                          </span>
+                        )}
+                      </div>
+                      <div className={styles.breakerDescription}>
                         {breaker.description}
-                      </span>
-                      <span className={styles.rating}>{breaker.rating}A</span>
+                      </div>
                     </div>
                   </div>
-                ))}
+                </div>
+              ))}
+            </div>
+
+            {/* Обозначения */}
+            <div className={styles.legend}>
+              <div className={styles.phaseLabels}>
+                <span>L</span>
+                <span>N</span>
+                <span>PE</span>
               </div>
-            </>
-          )}
+            </div>
+          </div>
         </div>
       </div>
     </div>

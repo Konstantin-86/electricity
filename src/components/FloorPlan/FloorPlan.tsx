@@ -1,9 +1,12 @@
 import { useState } from "react";
-import styles from "./FloorPlan.module.css";
-import type { Panel, Room } from "../../types";
 import { getRoomInfo } from "./helpers/roomInfo";
 import RoomInfoPanel from "../RoomInfoPanel/RoomInfoPanel";
-import Header from "../Header/Header";
+import ElectricalPanel from "../ElectricalPanel/ElectricalPanel";
+import ElectricalScheme from "../ElectricalScheme/ElectricalScheme";
+
+import type { Panel, Room } from "../../types";
+
+import styles from "./FloorPlan.module.css";
 
 interface FloorPlanProps {
   rooms: Room[];
@@ -15,6 +18,8 @@ const FloorPlan = ({ rooms, panels, backButton }: FloorPlanProps) => {
   const [selectedRoomInfo, setSelectedRoomInfo] = useState<ReturnType<
     typeof getRoomInfo
   > | null>(null);
+  const [showElectricalPanels, setShowElectricalPanels] = useState(false);
+  const [showElectricalScheme, setShowElectricalScheme] = useState(false);
 
   const handleRoomClick = (roomID: string) => {
     const roomInfo = getRoomInfo(roomID, rooms, panels);
@@ -25,13 +30,30 @@ const FloorPlan = ({ rooms, panels, backButton }: FloorPlanProps) => {
     setSelectedRoomInfo(null);
   };
 
+  const handleShowElectricalPanels = () => {
+    setShowElectricalPanels(true);
+  };
+
+  const handleCloseElectricalPanels = () => {
+    setShowElectricalPanels(false);
+  };
+
+  const handleShowElectricalScheme = () => {
+    setShowElectricalScheme(true);
+  };
+
+  const handleCloseElectricalScheme = () => {
+    setShowElectricalScheme(false);
+  };
+
   return (
     <div className={styles.floorPlan}>
       <div className={styles.topNav}>
         <button onClick={backButton}>назад</button>
-        <button>Щиты</button>
-        <button>Схема</button>
+        <button onClick={handleShowElectricalPanels}>Щиты</button>
+        <button onClick={handleShowElectricalScheme}>Схема</button>
       </div>
+
       <div className={styles.roomsContainer}>
         {rooms.map((room) => (
           <div
@@ -52,6 +74,20 @@ const FloorPlan = ({ rooms, panels, backButton }: FloorPlanProps) => {
         <RoomInfoPanel
           roomInfo={selectedRoomInfo}
           onClose={handleCloseRoomInfo}
+        />
+      )}
+
+      {showElectricalPanels && (
+        <ElectricalPanel
+          panels={panels}
+          onClose={handleCloseElectricalPanels}
+        />
+      )}
+
+      {showElectricalScheme && (
+        <ElectricalScheme
+          panels={panels}
+          onClose={handleCloseElectricalScheme}
         />
       )}
     </div>
