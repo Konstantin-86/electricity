@@ -54,20 +54,22 @@ const FloorPlan = ({ rooms, panels, backButton }: FloorPlanProps) => {
         <button onClick={handleShowElectricalScheme}>Схема</button>
       </div>
 
-      <div className={styles.roomsContainer}>
-        {rooms.map((room) => (
-          <div
-            key={room.id}
-            className={`${styles.room} ${styles[room.type]}`}
-            onClick={() => handleRoomClick(room.id)}
-            data-room-id={room.id}
-          >
-            <div className={styles.roomContent}>
-              <h4 className={styles.roomName}>{room.name}</h4>
-              <span className={styles.roomArea}>{room.area} м²</span>
+      <div className={styles.roomsContainerWrapper}>
+        <div className={styles.roomsContainer}>
+          {rooms.map((room) => (
+            <div
+              key={room.id}
+              className={`${styles.room} ${styles[room.type]}`}
+              onClick={() => handleRoomClick(room.id)}
+              data-room-id={room.id}
+            >
+              <div className={styles.roomContent}>
+                <h4 className={styles.roomName}>{room.name}</h4>
+                <span className={styles.roomArea}>{room.area} м²</span>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
 
       {selectedRoomInfo && (
