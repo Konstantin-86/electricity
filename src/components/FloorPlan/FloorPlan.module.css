@@ -5,13 +5,16 @@
 }
 
 .roomsContainer {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 16px;
-  padding: 20px;
+  position: relative;
+  width: 2100px;
+  height: 1080px;
+  overflow: hidden;
 }
 
 .room {
+  position: absolute;
+  width: 150px;
+  height: 150px;
   border: 2px solid #ccc;
   border-radius: 8px;
   padding: 16px;
@@ -106,4 +109,163 @@
 
 .room[data-powered="false"] {
   opacity: 0.6;
+}
+/* /////////////// 1этаж */
+.room[data-room-id="room-1-108"] {
+  top: 7px;
+  left: 314px;
+  background-color: #40a1ad;
+}
+.room[data-room-id="room-1-106"] {
+  top: 7px;
+  left: 471px;
+  background-color: #40a1ad;
+}
+.room[data-room-id="room-1-105"] {
+  top: 157px;
+  left: 7px;
+  background-color: #40a1ad;
+}
+.room[data-room-id="room-1-104"] {
+  top: 310px;
+  left: 7px;
+  width: 150px;
+  height: 75px;
+  background-color: #40a1ad;
+  z-index: 100;
+}
+.room[data-room-id="room-1-103"] {
+  top: 387px;
+  left: 7px;
+  width: 150px;
+  height: 75px;
+  background-color: #40a1ad;
+  z-index: 105;
+}
+.room[data-room-id="room-1-101"] {
+  top: 157px;
+  left: 157px;
+  width: 464px;
+  height: 306px;
+  background-color: #40a1ad;
+  z-index: 105;
+}
+.room[data-room-id="room-1-102"] {
+  top: 457px;
+  left: 7px;
+  background-color: #40a1ad;
+  z-index: 105;
+}
+.room[data-room-id="room-1-112"] {
+  top: 157px;
+  left: 623px;
+  width: 400px;
+  height: 150px;
+  background-color: #40a1ad;
+  z-index: 105;
+}
+.room[data-room-id="room-1-125"] {
+  top: 312px;
+  left: 623px;
+  width: 400px;
+  height: 300px;
+  background-color: #40a1ad;
+  z-index: 105;
+}
+.room[data-room-id="room-1-124"] {
+  top: 312px;
+  left: 1026px;
+  width: 1050px;
+  height: 150px;
+  background-color: #40a1ad;
+  z-index: 105;
+}
+.room[data-room-id="room-1-113"] {
+  top: 157px;
+  left: 1026px;
+  background-color: #1a6b3f;
+  z-index: 105;
+}
+.room[data-room-id="room-1-114"] {
+  top: 157px;
+  left: 1176px;
+  background-color: #1a6b3f;
+  z-index: 105;
+}
+.room[data-room-id="room-1-115"] {
+  top: 157px;
+  left: 1326px;
+  background-color: #1a6b3f;
+  z-index: 105;
+}
+.room[data-room-id="room-1-116"] {
+  top: 157px;
+  left: 1476px;
+  background-color: #1a6b3f;
+  z-index: 105;
+}
+.room[data-room-id="room-1-117"] {
+  top: 157px;
+  left: 1626px;
+  background-color: #1a6b3f;
+  z-index: 105;
+}
+.room[data-room-id="room-1-123"] {
+  top: 157px;
+  left: 1776px;
+  background-color: #1a6b3f;
+  z-index: 105;
+}
+.room[data-room-id="room-1-121"] {
+  top: 157px;
+  left: 1776px;
+  background-color: #1a6b3f;
+  z-index: 105;
+}
+.room[data-room-id="room-1-122"] {
+  top: 157px;
+  left: 1926px;
+  background-color: #1a6b3f;
+  z-index: 105;
+}
+.room[data-room-id="room-1-127"] {
+  top: 467px;
+  left: 1926px;
+  background-color: #1a6b3f;
+  z-index: 105;
+}
+.room[data-room-id="room-1-119"] {
+  top: 542px;
+  left: 1776px;
+  height: 75px;
+  background-color: #1a6b3f;
+  z-index: 105;
+}
+.room[data-room-id="room-1-120"] {
+  top: 467px;
+  left: 1776px;
+  height: 75px;
+  background-color: #1a6b3f;
+  z-index: 105;
+}
+.room[data-room-id="room-1-121"] {
+  top: 542px;
+  left: 1476px;
+  height: 75px;
+  background-color: #1a6b3f;
+  z-index: 105;
+}
+.room[data-room-id="room-1-118"] {
+  top: 467px;
+  left: 1476px;
+  height: 75px;
+  background-color: #1a6b3f;
+  z-index: 105;
+}
+.room[data-room-id="room-1-115"] {
+  top: 467px;
+  left: 1026px;
+  width: 450px;
+  background-color: #1a6b3f;
+  z-index: 105;
 }

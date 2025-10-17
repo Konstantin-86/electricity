@@ -9,8 +9,7 @@ export const ROOM_IDS_1_FLOOR = {
   DRESSING_ROOM: "room-1-105", // Раздевалка  (105)
   SENIOR_ROOM: "room-1-106", // Помещение старшего смены (106)
   CHECKPOINT: "room-1-108", // Проходная (108)
-  STORAGE_SOCKETS: "room-1-109", // Кладовка (109)
-  EMERGENCY_LIGHTING: "room-1-111",
+  /*  STORAGE_SOCKETS: "room-1-109", // Кладовка (109) */
   VIP_DINING: "room-1-112", // Столовая VIP (112)
   FLOUR_WORKSHOP: "room-1-113", // Мучной цех (113)
   VEGETABLE_WORKSHOP: "room-1-114", // Овощной цех (114)
@@ -25,7 +24,7 @@ export const ROOM_IDS_1_FLOOR = {
   CLEANING_STORAGE: "room-1-123", // Кладовая уборочного инвентаря (123)
   DINING_CORRIDOR: "room-1-124", // Коридор столовая (124)
   DINING: "room-1-125", // Обеденный зал  (125)
-  DINING_ROOM: "room-1-126", // Столовая зал  (126)
+  /* DINING_ROOM: "room-1-126", */ // Столовая зал  (126)
   BASEMENT: "room-1-127", // Подвал  (127)
 } as const;
 
@@ -118,7 +117,7 @@ export const floor1Rooms: Room[] = [
       count: 3,
     },
   },
-  {
+  /*  {
     id: ROOM_IDS_1_FLOOR.STORAGE_SOCKETS,
     name: "Розетки кладовка (прием пищи)",
     type: "other",
@@ -130,17 +129,7 @@ export const floor1Rooms: Room[] = [
     outlets: {
       count: 6,
     },
-  },
-  {
-    id: ROOM_IDS_1_FLOOR.EMERGENCY_LIGHTING,
-    name: "Дежурное освещение",
-    type: "corridor",
-    area: 12,
-    lighting: {
-      count: 2,
-      fixtureType: FIXTURE_KEYS.EMERGENCY_LUMINAIRE,
-    },
-  },
+  }, */
   {
     id: ROOM_IDS_1_FLOOR.VIP_DINING,
     name: "Столовая VIP",
@@ -333,7 +322,7 @@ export const floor1Rooms: Room[] = [
       count: 5,
     },
   },
-  {
+  /*   {
     id: ROOM_IDS_1_FLOOR.DINING_ROOM,
     name: "Столовая зал",
     type: "kitchen",
@@ -345,5 +334,5 @@ export const floor1Rooms: Room[] = [
     outlets: {
       count: 6,
     },
-  },
+  }, */
 ];
