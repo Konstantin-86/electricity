@@ -85,7 +85,7 @@ export const floor1PanelKitchen: Breaker[] = [
     description: "Столовая зал (126)",
     rating: 16,
     isOn: true,
-    controlledRooms: [ROOM_IDS_1_FLOOR.DINING_ROOM],
+    controlledRooms: [ROOM_IDS_1_FLOOR.DINING],
     technicalInfo: breakersTemplate.ABB_SOCKET_16A,
   },
   {
