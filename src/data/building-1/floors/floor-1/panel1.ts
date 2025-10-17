@@ -84,10 +84,7 @@ export const floor1Panel1: Breaker[] = [
     description: "Проходная, Розетка еда (108, 109)",
     rating: 16,
     isOn: true,
-    controlledRooms: [
-      ROOM_IDS_1_FLOOR.CHECKPOINT,
-      ROOM_IDS_1_FLOOR.STORAGE_SOCKETS,
-    ],
+    controlledRooms: [ROOM_IDS_1_FLOOR.CHECKPOINT],
     technicalInfo: breakersTemplate.ABB_SOCKET_16A,
   },
   {
@@ -105,7 +102,7 @@ export const floor1Panel1: Breaker[] = [
     description: "Дежурное освещение (111)",
     rating: 16,
     isOn: true,
-    controlledRooms: [ROOM_IDS_1_FLOOR.EMERGENCY_LIGHTING],
+    controlledRooms: [ROOM_IDS_1_FLOOR.CHECKPOINT],
     technicalInfo: breakersTemplate.SCHNEIDER_EMERGENCY,
   },
   {
